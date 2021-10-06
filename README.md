@@ -1,2 +1,2 @@
-# iptv-channels-master
+# MyIPTV
  
