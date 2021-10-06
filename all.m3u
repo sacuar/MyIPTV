@@ -1,4 +1,6 @@
 #EXTM3U 
+#EXTINF:-1,ALLADULT
+channels/au.m3uALLADULT.m3u
 
 
 #EXTINF:-1,Australia
