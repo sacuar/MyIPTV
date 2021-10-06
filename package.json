@@ -1,5 +1,5 @@
 {
-  "name": "iptv",
+  "name": "myiptv",
   "scripts": {
     "test": "node scripts/test.js",
     "format": "node scripts/format.js",
