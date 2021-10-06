@@ -2,112 +2,22 @@
 #EXTINF:-1,ALLADULT
 channels/au.m3uALLADULT.m3u
 
-
-#EXTINF:-1,Australia
-channels/au.m3u
-#EXTINF:-1,Austria
-channels/at.m3u
-
 #EXTINF:-1,Bangladesh
 channels/bd.m3u
 
-#EXTINF:-1,Belgium
-channels/be.m3u
-
-#EXTINF:-1,Brazil
-channels/br.m3u
-#EXTINF:-1,Brunei
-channels/bn.m3u
-
-
-#EXTINF:-1,Canada
-channels/ca.m3u
-
-
-#EXTINF:-1,Czech Republic
-channels/cz.m3u
-
-#EXTINF:-1,France
-channels/fr.m3u
-
-
-#EXTINF:-1,Germany
-channels/de.m3u
-#EXTINF:-1,Ghana
-channels/gh.m3u
-
-#EXTINF:-1,Greece
-
-#EXTINF:-1,Hong Kong
-channels/hk.m3u
-#EXTINF:-1,Hungary
-channels/hu.m3u
 
 #EXTINF:-1,India
 channels/in.m3u
+
 #EXTINF:-1,Indonesia
 channels/id.m3u
+
 #EXTINF:-1,International
 channels/int.m3u
 
-#EXTINF:-1,Ireland
-channels/ie.m3u
-
-#EXTINF:-1,Jamaica
-channels/jm.m3u
-#EXTINF:-1,Japan
-channels/jp.m3u
-
-#EXTINF:-1,Mexico
-channels/mx.m3u
-
-#EXTINF:-1,Morocco
-channels/ma.m3u
-
-#EXTINF:-1,Myanmar
-channels/mm.m3u
-#EXTINF:-1,Nepal
-channels/np.m3u
-#EXTINF:-1,Netherlands
-channels/nl.m3u
-#EXTINF:-1,New Zealand
-channels/nz.m3u
-
-#EXTINF:-1,Oman
-channels/om.m3u
-#EXTINF:-1,Pakistan
-channels/pk.m3u
-
-#EXTINF:-1,Qatar
-channels/qa.m3u
-
-#EXTINF:-1,South Africa
-channels/za.m3u
-#EXTINF:-1,South Korea
-channels/kr.m3u
-#EXTINF:-1,Spain
-channels/es.m3u
-
-#EXTINF:-1,Tanzania
-channels/tz.m3u
-#EXTINF:-1,Thailand
-channels/th.m3u
-
-#EXTINF:-1,Turkey
-channels/tr.m3u
-
-#EXTINF:-1,United Arab Emirates
-channels/ae.m3u
 #EXTINF:-1,United Kingdom
 channels/uk.m3u
+
 #EXTINF:-1,United States
 channels/us.m3u
 
-#EXTINF:-1,Uzbekistan
-channels/uz.m3u
-
-#EXTINF:-1,Virgin Islands of the United States
-channels/vi.m3u
-
-#EXTINF:-1,Zimbabwe
-channels/zw.m3u
