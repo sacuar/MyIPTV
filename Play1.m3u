@@ -3,8 +3,8 @@
 https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/sangeetbangla-audio_208482_und=208000-video=877600.m3u8
 #EXTINF:-1  tvg-id="N/A" group-title="N/A" tvg-logo="N/A",Bflix
 https://m-c036-j2apps.s.llnwi.net/hls/5045.BFlixMovies.in_480p/index.m3u8
-#EXTINF:-1  tvg-id="N/A" group-title="N/A" tvg-logo="N/A",Aj Tak
-https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8
+#EXTINF:-1  b4u Plus
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/364
 #EXTINF:-1  tvg-id="N/A" group-title="N/A" tvg-logo="N/A",1HD Music
 http://1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/tracks-v1a1/index.m3u8
 #EXTINF:-1  tvg-id="N/A" group-title="N/A" tvg-logo="N/A",9X Jalwa
