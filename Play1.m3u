@@ -3,6 +3,39 @@
 https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/sangeetbangla-audio_208482_und=208000-video=877600.m3u8
 #EXTINF:-1  tvg-id="N/A" group-title="N/A" tvg-logo="N/A",Bflix
 https://m-c036-j2apps.s.llnwi.net/hls/5045.BFlixMovies.in_480p/index.m3u8
+
+#EXTINF:-1  bein movies1
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/92
+
+#EXTINF:-1  bein movies2
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/91
+#EXTINF:-1  bein movies3
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/90
+#EXTINF:-1  bein movies4
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/89
+#EXTINF:-1  bein HD1
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/333
+#EXTINF:-1  bein HD1
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/332
+#EXTINF:-1  Chada Tv
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/566
+#EXTINF:-1  Fox movies
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/341
+#EXTINF:-1  Mazzika
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/520
+#EXTINF:-1  Fox 
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/342
+#EXTINF:-1  Discovery Science
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/2400
+
+
+#EXTINF:-1  National Geographic
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/10732
+#EXTINF:-1  ART Cinema
+http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/667
+
+
+
 #EXTINF:-1  b4u Plus
 http://appfactory.group:8080/9M2Bl5YikQ/8zly90qQUM/364
 #EXTINF:-1  tvg-id="N/A" group-title="N/A" tvg-logo="N/A",1HD Music
