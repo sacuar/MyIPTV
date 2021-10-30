@@ -1,0 +1,231 @@
+﻿#EXTM3U
+#EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,SangeetBangla
+https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/sangeetbangla-audio_208482_und=208000-video=877600.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="1hdru" ,1HD Music
+http://1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/tracks-v1a1/index.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="ArabicaMusic.lb" tvg-logo="https://arabicagroup.tv/images/app1.png" ,Arabica TV (720p)
+http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="9XM.in" ,9xm
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20595
+#EXTINF:-1 group-title="Bangla" tvg-id="NokshiTV.bd" tvg-logo="https://i.imgur.com/QWJNqS5.jpeg" ,Nokshi TV (720p) [Not 24/7]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/nakshitv.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="ChannelI.bd" tvg-logo="https://www.channelionline.com/wp-content/uploads/2019/07/channel-i-logo-1.png" ,Channel I (1080p) [Geo-blocked]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channeli-8-org.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV (1080p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/somoyt000011226615544544.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla news" tvg-id="DBCNews.bd" tvg-logo="https://dbcnews.tv/img/dbc.png" ,DBC News (1080p) [Geo-blocked]
+https://live.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/dbcnews.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="BanglaVision.bd" tvg-logo="https://i.imgur.com/doJuPjL.png" ,Bangla Vision (1080p) [Geo-blocked]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/banglav000.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="JamunaTV.bd" tvg-logo="https://www.jamuna.tv/wp-content/themes/jtv-news/img/logo.png" ,Jamuna TV (720p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/jamuna-test-sample-ok.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="IndependentTV.bd" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Independent_Television_Logo.svg/157px-Independent_Television_Logo.svg.png" ,Independent TV (1080p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/independent-8-org.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="EkusheyTV.bd" tvg-logo="https://i.imgur.com/5XjSZbN.png" ,Ekushey TV (480p)
+http://210.4.72.204/hls-live/livepkgr/_definst_/liveevent/livestream3.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="CanBanglaTV.ca" tvg-logo="https://i.imgur.com/CMUHtv3.png" ,GaanBangla TV (1080p) [Not 24/7]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/canbanglatv.stream/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="N/A" ,POP Music HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672320
+#EXTINF:-1 group-title="Music" tvg-id="N/A" ,XIte Music
+https://xite-samsung-de.amagi.tv/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="ATNBanglaUK.bd" tvg-logo="http://atnbanglauk.tv/wp-content/uploads/2015/04/sized1.png" ,ATN Bangla UK (576p) [Geo-blocked]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnbanglauk-off.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="BijoyTV.bd" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/63/BIJOY_TV_Logo_BD.png" ,Bijoy TV (720p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/bijoy00.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="BoishakhiTV.bd" tvg-logo="http://www.boishakhionline.com/frontend_source/assets/images/logo.png" ,Boishakhi TV (1080p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/boishakhitv-org.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="BTVChittagong.bd" tvg-logo="https://i.imgur.com/CMUHtv3.png" ,BTV Chittagong (720p) [Not 24/7]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/btvnational-ctg.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="BTVWorld.bd" tvg-logo="https://i.imgur.com/1Chamk9.png" ,BTV World (720p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/btvbd-office-sg.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="DesheBidesheTV.ca" tvg-logo="https://www.deshebideshe.tv/assets/importent_images/footer-logo.png" ,DesheBideshe TV (720p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/deshebideshe.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="DoyelTV.ca" tvg-logo="http://www.doyeltv.com/wp-content/uploads/2020/12/LOGO-BUG-without-Slogan.png" ,Doyel TV (720p)
+http://ipm.oncast.me:1934/iplived/ip-doyeltv.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="JonmoBhumiTV.au" tvg-logo="http://www.jonmobhumi.tv/wp-content/uploads/2017/11/Final-Red-Logo.png" ,JonmoBhumi TV (720p) [Not 24/7]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/jonmobhumitv.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="NTVEurope.bd" tvg-logo="https://europentv.ntvbd.com/sites/all/themes/sloth/logo.png" ,NTV Europe (720p) [Not 24/7]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/ntvuk00332211.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="RTV.bd" tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/41/Rtv_bangladesh.PNG" ,RTV (1080p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/rtv-sg.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla news" tvg-id="Channel24.bd" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel24logo.svg/400px-Channel24logo.svg.png" ,Channel 24 (1080p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel24-sg-e8e.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla news" tvg-id="News24.bd" tvg-logo="https://www.news24bd.tv/assets/desktop/images/logos/logo.png" ,News 24 (720p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/news24local.stream/playlist.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="AsianetMovies.in" ,Asianet Movies IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5577
+#EXTINF:-1 group-title="Movies" tvg-id="N/A" ,B4u Movies  (Uk).
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/92668
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Batter Life ANimal
+https://uni5rtmp.tulix.tv/betternature/betternature/playlist.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="N/A" ,Bflix
+https://m-c036-j2apps.s.llnwi.net/hls/5045.BFlixMovies.in_480p/index.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Bol News HD
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20605
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Bollywood Movies IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/4007
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Boogle Bollywood (400p)
+http://live.agmediachandigarh.com/booglebollywood/774e3ea9f3fa9bcdac47f445b83b6653.sdp/index.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="ChannelS.uk" ,Channel S
+https://a.jsrdn.com/r-373576a3/publish/22679_24MrQma9TX/index.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Channel-S Live TV - github.com/Free-IPTV
+https://a.jsrdn.com/broadcast/22679_24MrQma9TX/-0500/c.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="Colors.in" ,Colors  HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5579
+#EXTINF:-1 group-title="Movies" tvg-id="N/A" ,Crackle (720p)
+https://crackle-plex.amagi.tv/playlist.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,DUSTx (720p)
+https://dust.sinclair.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,Fashion TV (-10080p)
+https://fashiontv-fashiontv-4-de.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,Fashion TV (Italy) (-10080p)
+https://fashiontv-fashiontv-3-it.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,Fashion TV L'Original (-10080p)
+https://fashiontv-fashiontv-loriginal-fr.samsung.wurl.com/manifest/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,Fashion TV UHD (2-1060p)
+https://fash2043.cloudycdn.services/slive/ftv_ftv_4k_hevc_73d_42080_default_466_hls.smil/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,FashionBox HD (-10080p)
+https://fashionbox-localnow.cinedigm.com/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,FashionTV Czech&Slovak (450p)
+http://lb.streaming.sk/fashiontv/stream/playlist.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="FTV.in" ,FTV (720p)
+https://str2.yodacdn.net/publive/ftv/video.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Gaunda Punjab TV (720p)
+http://start.agmediachandigarh.com/gaundapunjab/tv/playlist.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="GEONews.uk" ,Geo News
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20606
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Global Fashion Channel (-10080p)
+https://vcngfcssai.teleosmedia.com/linear/globalfashionchannel/globalfashionchannel/playlist.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="GNNNews.in" ,Gnn News
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20607
+#EXTINF:-1 group-title="Channels" tvg-id="GNNNews.in" ,Gnn News.
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/89297
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,GTV HD
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/93849
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Hum Europe  (Uk).
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/89298
+#EXTINF:-1 group-title="Channels" tvg-id="HUMMasala.uk" ,Hum Masala
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20339
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Hum News HD
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20298
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,iFILM Arabic (720p)
+https://live.presstv.ir/ifilmlive/smil:ifilmar.smil/playlist.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,India Today (720p)
+https://feeds.intoday.in/hltapps/api/master.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="IndiaTV.in" ,India TV IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5562
+#EXTINF:-1 group-title="Channels" tvg-id="IndiaTV.in" ,India Tv.
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/20593
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Lifestyle (720p)
+https://bozztv.com/36bay2/gusa-lifestyle/index.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="MaaMovies.in" ,Maa Movies IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5585
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Maha Movie (480p)
+https://m-c036-j2apps.s.llnwi.net/hls/2820.MahaMovie.in.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="MoviesOK.in" ,Movies OK IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5558
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,MTV Beats IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5557
+#EXTINF:-1 group-title="Channels" tvg-id="N/A" ,MTV India IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5556
+#EXTINF:-1 group-title="Channels" tvg-id="NDTVIndia.in" ,NDTV India (480p)
+https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679/ndtvindia/master.m3u8
+#EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,World Fashion Channel (-10080p)
+https://wfcint.mediacdn.ru/cdn/wfcintweb/playlist.m3u8
+#EXTINF:-1 group-title="Channels" tvg-id="ZeeBangla.in" ,Zee Bangla IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5592
+#EXTINF:-1 group-title="Channels" tvg-id="ZeeBusiness.in" ,Zee Business IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5570
+#EXTINF:-1 group-title="General" tvg-id="IonTV.uk" tvg-logo="http://www.iontv.co.uk/wp-content/uploads/thegem-logos/logo_5052020503c1c4324dda9918122bbb46_2x.png" ,iON TV (576p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/iontvuk.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="TimeTelevision.us" tvg-logo="https://www.timetvusa.com/images/ttv200.png" ,Time Television (720p) [Not 24/7]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/timetvusa.stream/playlist.m3u8
+#EXTINF:-1 group-title="Hindi" tvg-id="SATV.bd" tvg-logo="https://www.satv.tv/wp-content/uploads/2016/07/logo1.png" ,SATV (720p)
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/satvoff5666.stream/playlist.m3u8
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,SBS World Movies [Geo-blocked]
+https://i.mjh.nz/au/Sydney/tv.320203000307.m3u8
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,SOfy TV movie
+https://sofytv-samsunges.amagi.tv/playlist.m3u8
+#EXTINF:-1 group-title="Hindi" tvg-id="SonyTVHD.in" ,Sony HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5574
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Sony Max  (Uk) 4k
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/94443
+#EXTINF:-1 group-title="Hindi" tvg-id="SonyMax2.in" ,Sony Max 2 IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3989
+#EXTINF:-1 group-title="Hindi" tvg-id="SonyMAX.in" ,Sony Max IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3990
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Sony MIX HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3988
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Sony Pal FHD VIP IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/676908
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Sony Set Max FHD IN VIP
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672324
+#EXTINF:-1 group-title="Hindi" tvg-id="TenSports.in" ,Sony Ten -10 IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672325
+#EXTINF:-1 group-title="Hindi" tvg-id="SonyEntertainmentTV.in" ,Sony TV IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3984
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Sony Waha FHD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672446
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Spin TV
+https://t2.tvmak.com/tv/SPINTV.m3u8
+#EXTINF:-1 group-title="Hindi" tvg-id="LifeOk.in" ,Star Bharat IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5544
+#EXTINF:-1 group-title="Hindi" tvg-id="StarGoldHD.in" ,Star Gold HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3983
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Star Jalsa Movies HD
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/64406
+#EXTINF:-1 group-title="Hindi" tvg-id="StarMovies.in" ,Star Movies IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672448
+#EXTINF:-1 group-title="Hindi" tvg-id="StarPlusHD.in" ,Star Plus HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672450
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zee Anmol Cinema IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3970
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zee Bollywood IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5565
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zee Cinema  (Uk) HD
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/58677
+#EXTINF:-1 group-title="Hindi" tvg-id="ZeeCinema.in" ,Zee Cinema IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/3967
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zee Etc
+http://ztvuk.com:80/9tsQfFaeTJ/hpd9sVIvFM/89358
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zee ETC Bollywood IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5539
+#EXTINF:-1 group-title="Hindi" tvg-id="ZEETV.in" ,Zee TV (480p)
+https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/ZEETV/ZEETV.isml/index.m3u8
+#EXTINF:-1 group-title="Hindi" tvg-id="ZeeTVHD.in" ,Zee TV HD IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/672459
+#EXTINF:-1 group-title="Hindi" tvg-id="Zing.in" ,Zing IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5596
+#EXTINF:-1 group-title="Hindi" tvg-id="Zoom.in" ,Zoom IN
+http://mytv.fun:8080/xhg36zuvv/vxj63lllg2/5538
+#EXTINF:-1 group-title="Local" tvg-id="Channel9.bd" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Channel9_bd.svg/350px-Channel9_bd.svg.png" ,Channel 9 (720p) [Geo-blocked]
+https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel9hd.stream/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="JawharaFM.jo" tvg-logo="https://www.jawharafm.net/ar/static/fr/image/png/logo-jfm.png" ,Jawhara FM (720p)
+http://streaming.toutech.net:1935/live/mp4:jawharafm.sdp/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="JawharaTV.tn" tvg-logo="https://i.postimg.cc/xT9fsvYQ/jawhara-fm-tv.jpg" ,JAWHARA TV (720p)
+https://streaming.toutech.net/live/jtv/index.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="NojoumTV.jo" tvg-logo="https://i.imgur.com/6ttWNu0.jpg" ,Nojoum TV (720p)
+https://nojoumhls.wns.live/hls/stream.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="PanoramaFM.sa" ,Panorama FM (1080p)
+https://shls-panoramafm-prod-dub.shahid.net/out/v1/66262e420d824475aaae794dc2d69f14/index.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RadioFannJordanCityView.jo" ,Radio Fann Jordan: City View (180p)
+http://188.247.86.66/RadioFann/CityView1/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RadioFannJordanControlStudio.jo" ,Radio Fann Jordan: Control Studio (220p)
+http://188.247.86.66/RadioFann/ControlStudio1/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RadioFannJordanStudio.jo" ,Radio Fann Jordan: Studio (180p)
+http://188.247.86.66/RadioFann/OnAirStudio1/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="Rotana Khalijiah" tvg-logo="https://rotana.net/assets/themes/TriTheme/images/channels/khalijiat.png" ,Rotana Khalijia (1080p)
+https://shls-rotanakhalijia-prod-dub.shahid.net/out/v1/a639fd49db684f1b8c063d398101a888/index.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RotanaRadioJordanCityView.jo" tvg-logo="http://service.mobile.rotanaradio.jo/sites/default/files/studio.png" ,Rotana Radio Jordan: City View (180p)
+http://188.247.86.66/RotanaRadio/CityView1/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RotanaRadioJordanControlStudio.jo" tvg-logo="http://service.mobile.rotanaradio.jo/sites/default/files/studio.png" ,Rotana Radio Jordan: Control Studio (180p)
+http://188.247.86.66/RotanaRadio/ControlStudio1/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RotanaRadioJordanStudio.jo" tvg-logo="http://service.mobile.rotanaradio.jo/sites/default/files/studio.png" ,Rotana Radio Jordan: Studio (220p) [Not 24/7]
+http://188.247.86.66/RotanaRadio/OnAirStudio1/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RotanaTarabJordanCityView.jo" ,Rotana Tarab Jordan: City View (180p)
+http://188.247.86.66/RadioFann/Audio32/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RotanaTarabJordanControlStudio.jo" ,Rotana Tarab Jordan: Control Studio (180p)
+http://188.247.86.66/RotanaRadio/Audio32/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="Wanasah.ae" tvg-logo="https://i.imgur.com/GmgibYW.jpg" ,Wanasah (1080p)
+https://shls-wanasah-prod-dub.shahid.net/out/v1/c84ef3128e564b74a6a796e8b6287de6/index.m3u8
