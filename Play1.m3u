@@ -13,6 +13,10 @@ https://5dcc6a9f1621dc5dd511ca14-s-5.ssai.zype.com/5dcc6a9f1621dc5dd511ca14-s-5/
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/gaanbangla-8-orgd.stream/playlist.m3u8
 #EXTINF:-1 group-title="Germany",Das Erste (720p)
 https://derste247liveint.akamaized.net/hls/live/662735/daserste_int/master.m3u8
+#EXTINF:-1 group-title="Movies",Xumo Free Movies (720p)
+https://dai2.xumo.com/amagi_hls_data_xumo1212A-rokuxumofreemovies/CDN/playlist.m3u8
+#EXTINF:-1 group-title="Movies",Xumo Free Westerns (540p)
+https://dai2.xumo.com/amagi_hls_data_xumo1212A-rokuxumowesterns/CDN/playlist.m3u8
 #EXTINF:-1 group-title="Germany",Euronews Deutsch (720p)
 https://rakuten-euronews-5-de.samsung.wurl.com/manifest/playlist.m3u8
 #EXTINF:-1 group-title="Music",Nojoum TV (720p)
