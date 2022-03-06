@@ -9,6 +9,12 @@ http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/856
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/857
 #EXTINF:0 group-title="Movies" ,AXN
 http://149.62.183.203:8000/play/a03y/index.m3u8
+#EXTINF:-1,&PRIVE HD-Rs 19
+http://103.153.39.36:8000/play/a01d
+#EXTINF:-1,&flix HD-Rs19
+http://103.153.39.36:8000/play/a00p
+#EXTINF:-1,&pictures HD -Rs19
+http://103.153.39.36:8000/play/a017
 #EXTINF:-1 group-title="bangla" tvg-id="N/A" ,BanglaVision
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/862
 #EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV
