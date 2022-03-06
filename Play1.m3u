@@ -21,7 +21,8 @@ http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/70
 http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/69
 #EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zing
 http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/83
-
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zing
+http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/83
 #EXTINF:-1 group-title="bangla" tvg-id="N/A" ,BanglaVision
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/862
 #EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV
@@ -372,7 +373,44 @@ https://cnn-cnninternational-1-eu.rakuten.wurl.com/manifest/playlist.m3u8
 https://rakuten-euronews-5-de.samsung.wurl.com/manifest/playlist.m3u8
 #EXTINF:-1 group-title="News" ,Euronews English (720p)
 https://d1mpprlbe8tn2j.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/euronewsLive/87O7AhxRUdeeIVqf/ewnsabren_eng.m3u8
-
+#EXTINF:-1group-title="News",CNN Asia
+http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/8
+#EXTINF:-1 group-title="Hindi",Sahara One
+http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/54
+#EXTINF:-1 group-title="Nat Geo",Nat Geo Wild HD
+http://red.ipfox.org:8080/1234/12345678/2874
+#EXTINF:-1 group-title="Movies",Bein Movies Family
+http://red.ipfox.org:8080/1234/12345678/2315
+#EXTINF:-1 group-title="Movies",Bein Movies Action
+http://red.ipfox.org:8080/1234/12345678/2316
+#EXTINF:-1 group-title="Movies",IPFox Movies Drama
+http://red.ipfox.org:8080/1234/12345678/12
+#EXTINF:-1 group-title="Movies",IPFox Movies Thriller
+http://red.ipfox.org:8080/1234/12345678/15
+#EXTINF:-1 group-title="Movies",Fox Majestic Romance
+http://red.ipfox.org:8080/1234/12345678/31941
+#EXTINF:-1 group-title="Movies",Fox Majestic Action
+http://red.ipfox.org:8080/1234/12345678/31942
+#EXTINF:-1 group-title="Movies",Shahid Action
+http://red.ipfox.org:8080/1234/12345678/31926
+#EXTINF:-1 group-title="Movies",Shahid Action 2
+http://red.ipfox.org:8080/1234/12345678/31925
+#EXTINF:-1 group-title="Movies",Shahid Romance
+http://red.ipfox.org:8080/1234/12345678/31924
+#EXTINF:-1 group-title="Movies",Shahid Romance
+http://red.ipfox.org:8080/1234/12345678/31923
+#EXTINF:-1 group-title="Nat Geo",Nat Geo HD
+http://red.ipfox.org:8080/1234/12345678/2875
+#EXTINF:-1 group-title="Nat Geo",Nat Geo HD
+http://red.ipfox.org:8080/1234/12345678/2875
+#EXTINF:-1 group-title="Discovery",Discovery Science
+http://red.ipfox.org:8080/1234/12345678/2850
+#EXTINF:-1 group-title="Discovery",Discovery ID
+http://red.ipfox.org:8080/1234/12345678/25926
+#EXTINF:-1 group-title="Movies",BeIN Movies Premiere
+http://red.ipfox.org:8080/1234/12345678/2314
+#EXTINF:-1 group-title="Movies",BeIN Movies Drama
+http://red.ipfox.org:8080/1234/12345678/2313
 #EXTINF:-1,ANIMAL PLAN HD-Rs3
 http://103.153.39.36:8000/play/a011
 #EXTINF:-1,BBC WORLD - Rs 1
