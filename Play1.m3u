@@ -15,6 +15,13 @@ http://103.153.39.36:8000/play/a01d
 http://103.153.39.36:8000/play/a00p
 #EXTINF:-1 group-title="Movies" ,&pictures HD -Rs19
 http://103.153.39.36:8000/play/a017
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,B4U music
+http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/70
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,B4U movies
+http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/69
+#EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Zing
+http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/83
+
 #EXTINF:-1 group-title="bangla" tvg-id="N/A" ,BanglaVision
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/862
 #EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV
