@@ -1,19 +1,19 @@
 #EXTM3U
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,SangeetBangla
 https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/sangeetbangla-audio_208482_und=208000-video=877600.m3u8
-#EXTINF:0 group-title="Movies" ,AXN white
+#EXTINF:-1 group-title="Movies" ,AXN white
 http://149.62.183.203:8000/play/a0al/index.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,Zee Bangla
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/856
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,Star Jalsha HD
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/857
-#EXTINF:0 group-title="Movies" ,AXN
+#EXTINF:-1 group-title="Movies" ,AXN
 http://149.62.183.203:8000/play/a03y/index.m3u8
-#EXTINF:-1,&PRIVE HD-Rs 19
+#EXTINF:-1,group-title="Movies" ,&PRIVE HD
 http://103.153.39.36:8000/play/a01d
-#EXTINF:-1,&flix HD-Rs19
+#EXTINF:-1,group-title="Movies" ,&flix HD-Rs19
 http://103.153.39.36:8000/play/a00p
-#EXTINF:-1,&pictures HD -Rs19
+#EXTINF:-1,group-title="Movies" ,&pictures HD -Rs19
 http://103.153.39.36:8000/play/a017
 #EXTINF:-1 group-title="bangla" tvg-id="N/A" ,BanglaVision
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/862
@@ -121,9 +121,9 @@ https://str2.yodacdn.net/publive/ftv/video.m3u8
 https://vcngfcssai.teleosmedia.com/linear/globalfashionchannel/globalfashionchannel/playlist.m3u8
 #EXTINF:-1 group-title="Fashion" tvg-id="N/A" ,Lifestyle (720p)
 https://bozztv.com/36bay2/gusa-lifestyle/index.m3u8
-#EXTINF:0 group-title="Music" tvg-logo="https://www.lyngsat-logo.com/logo/tv/num/9x_music.png" tvg-logo-small="https://www.lyngsat-logo.com/logo/tv/num/9x_music.png" ,9XM
+#EXTINF:-1 group-title="Music" tvg-logo="https://www.lyngsat-logo.com/logo/tv/num/9x_music.png" tvg-logo-small="https://www.lyngsat-logo.com/logo/tv/num/9x_music.png" ,9XM
 https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/9XM/9XM.isml/index.m3u8
-#EXTINF:0 group-title="Fashion" ,world fashion
+#EXTINF:-1 group-title="Fashion" ,world fashion
 https://wfcint.mediacdn.ru/cdn/wfcintweb/playlist_hdhigh.m3u8
 #EXTINF:-1 group-title="General" tvg-id="IonTV.uk" tvg-logo="http://www.iontv.co.uk/wp-content/uploads/thegem-logos/logo_5052020503c1c4324dda9918122bbb46_2x.png" ,iON TV (576p)
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/iontvuk.stream/playlist.m3u8
@@ -131,7 +131,7 @@ https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeF
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/timetvusa.stream/playlist.m3u8
 #EXTINF:0 group-title="German" ,Das Erste
 https://derste247liveint.akamaized.net/hls/live/662735/daserste_int/master.m3u8
-#EXTINF:0 group-title="German" ,NDR
+#EXTINF:-1 group-title="German" ,NDR
 https://mcdn.ndr.de/ndr/hls/ndr_fs/ndr_sh/master.m3u8
 #EXTINF:-1 group-title="Germany" ,WDR Koeln (720p)
 https://wdrfsww247.akamaized.net/hls/live/2009628/wdr_msl4_fs247ww/master.m3u8
@@ -313,9 +313,9 @@ https://cloudflare.streamgato.us:3901/live/radio105live.m3u8
 https://ammantv.c.s73cdn.net/23153d43-375a-472a-bc5f-9827582b5d22/elemental/live/master.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="JawharaFM.jo" tvg-logo="https://www.jawharafm.net/ar/static/fr/image/png/logo-jfm.png" ,Jawhara FM (720p)
 http://streaming.toutech.net:1935/live/mp4:jawharafm.sdp/playlist.m3u8
-#EXTINF:0 group-title="Music" ,Kronehit Music
+#EXTINF:-1 group-title="Music" ,Kronehit Music
 https://bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b1628000.m3u8
-#EXTINF:0 group-title="Music" ,music +
+#EXTINF:-1 group-title="Music" ,music +
 https://s02.diazol.hu:10192/hls/stream.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="NojoumTV.jo" tvg-logo="https://i.imgur.com/6ttWNu0.jpg" ,Nojoum TV (720p)
 https://nojoumhls.wns.live/hls/stream.m3u8
@@ -359,7 +359,7 @@ http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/868
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/865
 #EXTINF:-1 group-title="Nature" tvg-id="N/A" ,Batter Life ANimal
 https://uni5rtmp.tulix.tv/betternature/betternature/playlist.m3u8
-#EXTINF:0 group-title="News" ,cnn
+#EXTINF:-1 group-title="News" ,cnn
 https://cnn-cnninternational-1-eu.rakuten.wurl.com/manifest/playlist.m3u8
 #EXTINF:-1 group-title="News" ,Euronews Deutsch (720p)
 https://rakuten-euronews-5-de.samsung.wurl.com/manifest/playlist.m3u8
