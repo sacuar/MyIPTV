@@ -5,7 +5,9 @@ https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/sa
 http://149.62.183.203:8000/play/a0al/index.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,Zee Bangla
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/856
-#EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,Star Jalsha HD
+#EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,Willow Cricket
+#EXTINF:-1 group-title="Cricket" tvg-id="N/A" ,Star Jalsha HD
+http://starshare.live:8080/live/6788990/6788990/23943.ts
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/857
 #EXTINF:-1 group-title="Movies" ,AXN
 http://149.62.183.203:8000/play/a03y/index.m3u8
