@@ -1,6 +1,4 @@
 #EXTM3U
-#EXTINF:-1 ,https://server1.jadubd.com/ktvbangla/ktvbangla/playlist.m3u8
-https://server1.jadubd.com/ktvbangla/ktvbangla/playlist.m3u8
 #EXTINF:-1 group-title="Arabic" ,Aarab drama
 https://admdn5.cdn.mangomolo.com/drama/smil:drama.stream.smil/playlist.m3u8
 #EXTINF:-1 group-title="Arabic" ,PrimeTimeDrama
@@ -11,16 +9,10 @@ https://shls-mbcdramaksa-prod-dub.shahid.net/out/v1/ce0f0762d89e4394a856c5fd13e4
 http://irbtv.net/channelt1/1080/index.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="ChannelS.uk" ,Channel S
 https://a.jsrdn.com/r-373576a3/publish/22679_24MrQma9TX/index.m3u8
-#EXTINF:-1 group-title="Bangla" tvg-id="Channel9.bd" ,Channel 9 (720p)
-https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel9hd.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" ,Janmabhumi tv
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/jonmobhumitv.stream/playlist.m3u8
-#EXTINF:-1 group-title="Bangla" tvg-id="Nokshi" ,Nokshi tv
-https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/nakshitv.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="NexusTV.bd" ,Nexus TV (720p) [Not 24/7]
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/nexustv.stream/playlist.m3u8
-#EXTINF:0 group-title="Bangla" ,KTV Bangla
-https://server1.jadubd.com/ktvbangla/ktvbangla/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="ATNBanglaUK.bd" tvg-logo="http://atnbanglauk.tv/wp-content/uploads/2015/04/sized1.png" ,ATN Bangla UK (576p) [Geo-blocked]
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnbanglauk-off.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="BoishakhiTV.bd" tvg-logo="http://www.boishakhionline.com/frontend_source/assets/images/logo.png" tvg-logo-small="https://en.wikipedia.org/wiki/Boishakhi_Television#/media/File:Boishakhi_TV_logo.svg" ,Boishakhi TV (1080p)
@@ -33,10 +25,6 @@ https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeF
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnbd-8-org.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" tvg-logo="https://en.wikipedia.org/wiki/Colors_Bangla#/media/File:Colors_Bangla.png" ,Colors Bangla
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/863
-#EXTINF:-1 group-title="Bangla" tvg-logo="https://en.wikipedia.org/wiki/GTV_(Bangladesh)#/media/File:GTVBangladeshLogo.png" ,Gazi TV
-https://youtu.be/vSHelsYpvkc
-#EXTINF:-1 group-title="Bangla" tvg-logo="https://en.wikipedia.org/wiki/Zee_Bangla#/media/File:Zee_Bangla_New_Logo.jpg" ,Zee bangla
-http://1tv1.net:8080/hakim2021/123456/99412
 #EXTINF:-1 group-title="Bangla" tvg-logo="https://en.wikipedia.org/wiki/Zee_Bangla#/media/File:Zee_Bangla_New_Logo.jpg" ,Zee Bangla
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/856
 #EXTINF:-1 group-title="Bangla" tvg-id="BTVWorld.bd" tvg-logo="https://i.imgur.com/1Chamk9.png" ,BTV World (720p)
@@ -69,18 +57,12 @@ http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/857
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/862
 #EXTINF:-1 group-title="Bangla" tvg-id="SATV.bd" tvg-logo="https://www.satv.tv/wp-content/uploads/2016/07/logo1.png" ,SATV (720p)
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/satvoff5666.stream/playlist.m3u8
-#EXTINF:-1 group-title="Bangla news" tvg-id="ATNNews.bd" tvg-logo="https://en.wikipedia.org/wiki/ATN_News#/media/File:ATN_News_Logo_3.GIF" ,ATN News (720p) [Not 24/7]
-https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnws-sg.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla news" tvg-id="Channel24.bd" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel24logo.svg/400px-Channel24logo.svg.png" ,Channel 24 (1080p)
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel24-sg-e8e.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla news" tvg-id="News24.bd" tvg-logo="https://www.news24bd.tv/assets/desktop/images/logos/logo.png" ,News 24 (720p)
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/news24local.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/somoyt000011226615544544.stream/playlist.m3u8
-#EXTINF:-1 group-title="Discovery" ,Discovery ID
-http://red.ipfox.org:8080/1234/12345678/25926
-#EXTINF:-1 group-title="Discovery" ,Discovery Science
-http://red.ipfox.org:8080/1234/12345678/2850
 #EXTINF:-1 group-title="drama" tvg-id="LocalNowDrama.us" tvg-logo="https://f9q4g5j6.ssl.hwcdn.net/603ef0de115bdc7aec7b7e82" ,Local Now Drama (720p)
 https://linear-141.frequency.stream/dist/localnow/141/hls/master/playlist.m3u8
 #EXTINF:-1 group-title="Fashion" tvg-logo="https://i.imgur.com/LtQL1q9.jpg" ,Fashion UK
@@ -123,32 +105,8 @@ https://i.mjh.nz/au/Sydney/tv.320203000307.m3u8
 https://sofytv-samsunges.amagi.tv/playlist.m3u8
 #EXTINF:-1 group-title="Hindi" tvg-id="N/A" ,Spin TV
 https://t2.tvmak.com/tv/SPINTV.m3u8
-#EXTINF:-1 group-title="Movies" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/37/AXN_Logo.PNG" ,AXN
-http://149.62.183.203:8000/play/a03y/index.m3u8
-#EXTINF:-1 group-title="Movies" tvg-logo="https://tma-live.s3.ap-south-1.amazonaws.com/medias/5b6c321ecaa5ff1d18a5fb43/1565809276600/614784ddd470a1d3f1f270c260505c9a.jpg" ,&prive hd
-http://1tv1.net:8080/hakim2021/123456/108688
 #EXTINF:-1 group-title="Movies" tvg-id="N/A" ,Boogle Bollywood (400p)
 http://live.agmediachandigarh.com/booglebollywood/774e3ea9f3fa9bcdac47f445b83b6653.sdp/index.m3u8
-#EXTINF:-1 group-title="Movies" ,IPFox Movies Drama
-http://red.ipfox.org:8080/1234/12345678/12
-#EXTINF:-1 group-title="Bangla" ,IPFox Movies Thriller
-http://red.ipfox.org:8080/1234/12345678/15
-#EXTINF:-1 group-title="Movies" ,BeIN Movies Premiere
-http://red.ipfox.org:8080/1234/12345678/2314
-#EXTINF:-1 group-title="Movies" ,Bein Movies Family
-http://red.ipfox.org:8080/1234/12345678/2315
-#EXTINF:-1 group-title="Movies" ,Bein Movies Action
-http://red.ipfox.org:8080/1234/12345678/2316
-#EXTINF:-1 group-title="Movies" ,Shahid Romance
-http://red.ipfox.org:8080/1234/12345678/31923
-#EXTINF:-1 group-title="Movies" ,Shahid Romance
-http://red.ipfox.org:8080/1234/12345678/31924
-#EXTINF:-1 group-title="Movies" ,Shahid Action 2
-http://red.ipfox.org:8080/1234/12345678/31925
-#EXTINF:-1 group-title="Movies" ,Fox Majestic Romance
-http://red.ipfox.org:8080/1234/12345678/31941
-#EXTINF:-1 group-title="Movies" ,Fox Majestic Action
-http://red.ipfox.org:8080/1234/12345678/31942
 #EXTINF:-1 group-title="Movies" tvg-id="Parsiland.ir" ,Parsiland (540p) [Not 24/7]
 http://vps.parsiland.net/hls/ParsiLand.m3u8
 #EXTINF:-1 group-title="Movies" ,Film Hub (720p)
@@ -275,8 +233,6 @@ https://dai2.xumo.com/amagi_hls_data_xumo1212A-rokucineromantico/CDN/playlist.m3
 http://painelvj.com.br/tvaguaboa2/tvaguaboa2.sdp/playlist.m3u8
 #EXTINF:-1 group-title="Movies" tvg-id="GEMComedy.ir" tvg-logo="https://www.gemonline.tv/Assets/channels-box/gem_comedy.png" ,GEM Comedy (576p) [Not 24/7]
 http://216.66.42.47:7777/GemComedy_HD.m3u8
-#EXTINF:-1 group-title="Music" tvg-id="1hdru" ,1HD Music
-http://1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/tracks-v1a1/index.m3u8
 #EXTINF:-1 group-title="music" tvg-id="N/A" ,Zing
 http://d8380c4177d6.sn.mynetname.net:25461/demo/demo/83
 #EXTINF:-1 group-title="Music" tvg-id="1Mus" ,1Music
@@ -289,8 +245,6 @@ http://live-edge01.telecentro.net.ar/live/smil:musictop.smil/playlist.m3u8
 https://5dcc6a9f1621dc5dd511ca14-s-5.ssai.zype.com/5dcc6a9f1621dc5dd511ca14-s-5/manifest.m3u8
 #EXTINF:-1 group-title="Music" ,Vevo Latino
 https://5dcc6a9f1621dc5dd511ca14-s-5.ssai.zype.com/5dcc6a9f1621dc5dd511ca14-s-5/manifest.m3u8
-#EXTINF:-1 group-title="Music" ,vision music spanish
-https://5ee0faac3bbae.streamlock.net/visionmusica/visionmusica/chunklist_w1858673524.m3u8
 #EXTINF:-1 group-title="Music" ,Vevo POP UK
 https://5f3491c50b093e00015a3c4c-samsung.eu.ssai.zype.com/5f3491c50b093e00015a3c4c_samsung_eu/manifest.m3u8
 #EXTINF:-1 group-title="Music" ,Amman TV (720p)
@@ -315,12 +269,8 @@ https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeF
 https://shls-wanasah-prod-dub.shahid.net/out/v1/c84ef3128e564b74a6a796e8b6287de6/index.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="JawharaFM.jo" tvg-logo="https://www.jawharafm.net/ar/static/fr/image/png/logo-jfm.png" ,Jawhara FM (720p)
 http://streaming.toutech.net:1935/live/mp4:jawharafm.sdp/playlist.m3u8
-#EXTINF:-1 group-title="Nat Geo" ,Nat Geo HD
-http://red.ipfox.org:8080/1234/12345678/2875
 #EXTINF:-1 group-title="Nature" tvg-id="N/A" ,Batter Life ANimal
 https://uni5rtmp.tulix.tv/betternature/betternature/playlist.m3u8
-#EXTINF:-1 group-title="News" ,cnn
-https://cnn-cnninternational-1-eu.rakuten.wurl.com/manifest/playlist.m3u8
 #EXTINF:-1 group-title="News" ,Euronews English (720p)
 https://d1mpprlbe8tn2j.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/euronewsLive/87O7AhxRUdeeIVqf/ewnsabren_eng.m3u8
 #EXTINF:-1 group-title="Sony" tvg-id="N/A" ,Sony Tv
@@ -329,8 +279,6 @@ http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/866
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/868
 #EXTINF:-1 group-title="World News" ,Global News US
 https://live.corusdigitaldev.com/groupd/live/49a91e7f-1023-430f-8d66-561055f3d0f7/live.isml/master.m3u8
-#EXTINF:0 group-title="World News" tvg-logo=""https://i.imgur.com/fRivJD3.jpg"" ,Al Jazeera
-https://live-hls-aje-ak.getaj.net/AJE/index.m3u8
 #EXTINF:-1 group-title="World News" tvg-logo="http://logok.org/wp-content/uploads/2014/05/CNN-logo-880x660.png" ,CNN
 https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_2_1964000.m3u8
 #EXTINF:-1 group-title="Zee" tvg-id="N/A" ,Zee Cinema
