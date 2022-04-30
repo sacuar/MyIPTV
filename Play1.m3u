@@ -1,4 +1,8 @@
 #EXTM3U
+#EXTINF:-1 group-title="Undefined",ahlakid.com - &Picture HD
+http://new-pro.tv:8080/Fernando/123321/72654?checkedby:ahlakid.com
+#EXTINF:-1 ,&flix HD-Rs19
+http://42.201.253.14:4090/play/a00y/index.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="Sangeet Bangla" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/d/d5/Sangeet_Bangla_2021.jpg" ,SangeetBangla
 https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/sangeetbangla-audio_208482_und=208000-video=877600.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="Kronehits" tvg-logo="https://i.imgur.com/tLwBOtU.jpg" ,Kronehits
