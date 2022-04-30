@@ -3,6 +3,8 @@
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/857
 #EXTINF:-1 group-title="INDIA" ,B4U Kadak
 http://103.199.160.85/Content/moviehouse/Live/Channel(MovieHouse)/Stream(01)/index.m3u8?checkedby:iptvcat.com
+#EXTINF:-1 group-title="HINDI MOVIES" ,ZEE ANMOL CINEMA
+http://144.217.70.181:9587/hin2/ZEEANMOLCINEMA/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="MusicIndia.in" tvg-name="Music India" ,Music India
 http://103.199.160.85/Content/musicindia/Live/Channel(MusicIndia)/Stream(02)/index.m3u8
 #EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV
@@ -123,6 +125,8 @@ http://42.201.253.14:4090/play/a038/index.m3u8
 http://42.201.253.14:4090/play/2/index.m3u8
 #EXTINF:-1 group-title="Movies" ,and picture hd
 http://42.201.253.14:4090/play/a091/index.m3u8
+#EXTINF:-1 group-title="MOVIES" ,Hallmark Movies And More
+https://dai2.xumo.com/amagi_hls_data_xumo1212A-rokuhallmark/CDN/playlist.m3u8
 #EXTINF:-1 group-title="Movies" ,and prive hd
 http://42.201.253.14:4090/play/a092/index.m3u8
 #EXTINF:-1 group-title="Movies" ,animal planet
