@@ -1,6 +1,10 @@
 #EXTM3U
 #EXTINF:-1 group-title="Bangla" tvg-id="N/A" tvg-logo="https://www.pikpng.com/pngl/b/506-5061376_star-jalsha-bangla-all-serial-download-24th-october.png" ,Star Jalsha HD
 http://flussonicusa.bdcabletv.com:80/PCPSCEDAQt/ou0mthW/857
+#EXTINF:-1 group-title="INDIA" ,B4U Kadak
+http://103.199.160.85/Content/moviehouse/Live/Channel(MovieHouse)/Stream(01)/index.m3u8?checkedby:iptvcat.com
+#EXTINF:-1 group-title="Music" tvg-id="MusicIndia.in" tvg-name="Music India" ,Music India
+http://103.199.160.85/Content/musicindia/Live/Channel(MusicIndia)/Stream(02)/index.m3u8
 #EXTINF:-1 group-title="Bangla news" tvg-id="SomoyNewsTV.bd" tvg-logo="https://www.somoynews.tv/_nuxt/img/somoy-logo-192x192.33c3254.png" ,Somoy News TV
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/somoyt000011226615544544.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="Sangeet Bangla" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/d/d5/Sangeet_Bangla_2021.jpg" ,SangeetBangla
@@ -132,6 +136,10 @@ http://42.201.253.14:4090/play/a090/index.m3u8
 #EXTINF:-1 group-title="Movies" ,sonyten2 hd
 http://42.201.253.14:4090/play/a09a/index.m3u8
 #EXTINF:-1 group-title="Movies" ,star gold hd
+#EXTINF:-1 group-title="Music" tvg-id="Mastiii.in" tvg-name="Mastiii" tvg-logo="http://mhdtvworld.com/wp-content/uploads/2018/12/MASTIII.png" ,Mastiii (576p)
+http://103.199.160.85/Content/masthi/Live/Channel(Masthi)/index.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="JhanjarMusic.in" tvg-name="Jhanjar Music" tvg-logo="https://i.imgur.com/gIYOu4i.jpg" ,Jhanjar Music [Not 24/7]
+http://159.203.9.134/hls/jhanjar_music/jhanjar_music.m3u8
 http://42.201.253.14:4090/play/a098/index.m3u8
 #EXTINF:-1 group-title="Movies" ,star gold select
 http://42.201.253.14:4090/play/a095/index.m3u8
