@@ -3,8 +3,8 @@
 iptv m3u url:
 updated playlist music, bangla and hindi channels
 https://cutt.ly/gRXVGjq
-[alt text](http://https://qr.rebrandly.com/v1/qrcode?shortUrl=https%3A%2F%2Frebrand.ly%2F18b0e6&source=com.rebrandly.app&size=512)
-
+[alt text][(http://https://qr.rebrandly.com/v1/qrcode?shortUrl=https%3A%2F%2Frebrand.ly%2F18b0e6&source=com.rebrandly.app&size=512)
+](https://github.com/sacuar/MyIPTV/blob/main/photo/rebrand.ly.18b0e6.png)
 earlier list: Short:   https://cutt.ly/gRXVGjq
 
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
