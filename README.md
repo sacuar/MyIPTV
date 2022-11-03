@@ -5,6 +5,7 @@ updated playlist music, bangla and hindi channels
 https://cutt.ly/gRXVGjq
 
 ```
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
 ```
 
 ![QR Code](https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png)
