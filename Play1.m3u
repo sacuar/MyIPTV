@@ -1,12 +1,4 @@
 #EXTM3U
-#EXTINF:-1 group-title="Cricket" tvg-logo="https://toppng.com/uploads/preview/star-sports-hd1-star-sports-2-11563260393mf9fciusph.png" ,Live 6
-http://test-otv1.ftpbd.net/streams/110/index.m3u8
-#EXTINF:-1 group-title="Cricket" tvg-logo="https://upload.wikimedia.org/wikipedia/en/1/11/T_Sports_logo.png" ,Live 3
-http://test-otv1.ftpbd.net/streams/119/index.m3u8
-#EXTINF:-1 group-title="Cricket" ,Live 4
-http://test-otv1.ftpbd.net/streams/120/index.m3u8
-#EXTINF:-1 group-title="Cricket" ,Live 5
-http://test-otv1.ftpbd.net/streams/117/index.m3u8
 #EXTINF:-1 group-title="Bangla" ,Colors Bangla HD.
 http://208.86.19.13:81/904.stream/index.m3u8
 #EXTINF:-1 group-title="Bangla" ,JALSHA MOVIES HD S2
@@ -15,8 +7,6 @@ http://nayeem-ban.chadasaniya.ml/STAR_JHALSA_MOVIES_Bang/index.m3u8?token=test
 http://103.118.79.22:1935/live/maasrangalive/HODMTV/1.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-logo="https://i.ibb.co/GP8KqgF/Ekushey-TV.jpg" ,Ekusey TV
 http://210.4.72.204/hls-live/livepkgr/_definst_/liveevent/livestream3.m3u8
-#EXTINF:-1 group-title="Bangla" tvg-logo="https://i.imgur.com/cvWkhfb.png" ,Akash Aath [6]
-http://208.86.19.13:81/902.stream/index.m3u8
 #EXTINF:-1 ,StarGold HD
 http://144.217.70.181:9587/hin2/STARGOLDUK/tracks-v1a1/mono.m3u8?token=test
 #EXTINF:-1 ,Live Sports 7
@@ -27,8 +17,6 @@ https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeF
 https://tv.googledrivelinks.com:443/autoq.php?c=Jio_Cricket&e=.m3u8
 #EXTINF:-1 ,Sony Six
 http://premiumip.tv:8000/live/u5l04cavw4/comyx6eboz/363954.ts
-#EXTINF:-1 ,SonyTen 1
-http://premiumip.tv:8000/live/u5l04cavw4/comyx6eboz/363950.ts
 #EXTINF:-1 ,SonyTen 2
 http://premiumip.tv:8000/live/u5l04cavw4/comyx6eboz/363951.ts
 #EXTINF:-1 group-title="Algeria" ,Dubai One (1080p)
@@ -153,20 +141,12 @@ https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/sangeetbangla/sangeetbangla.isml/in
 https://5dcc6a9f1621dc5dd511ca14-s-5.ssai.zype.com/5dcc6a9f1621dc5dd511ca14-s-5/manifest.m3u8
 #EXTINF:-1 group-title="Music" ,Vevo POP UK
 https://5f3491c50b093e00015a3c4c-samsung.eu.ssai.zype.com/5f3491c50b093e00015a3c4c_samsung_eu/manifest.m3u8
-#EXTINF:-1 group-title="SPORTS" ,S Cricket
-http://uniontvs.com:8080/Whq44844vw/IuDNBXjzSXqrwd/160971
 #EXTINF:-1 group-title="SPORTS" tvg-logo="https://i.ytimg.com/vi/fPTlcNPVQtU/maxresdefault.jpg" ,Star Sports Select 1
 http://watchindia.net:8880/live/vvv/vvv/2292.ts
 #EXTINF:-1 group-title="SPORTS" tvg-logo="https://tv.bdtype.com/uploads/tv_image/star-sports-select-2.jpg" ,Star Sports Select 2
 http://www.tvxclnt.com:8080/tretvx2022/QP3J8nmeTvIZp82J/17923
-#EXTINF:-1 group-title="SPORTS" ,Star Sports1 HD
-http://uniontvs.com:8080/Whq44844vw/IuDNBXjzSXqrwd/253668
-#EXTINF:-1 group-title="SPORTS" ,Super Sport Granstand
-http://uniontvs.com:8080/Whq44844vw/IuDNBXjzSXqrwd/160972
 #EXTINF:-1 group-title="SPORTS" tvg-logo="https://iconape.com/wp-content/files/da/323865/png/323865.png" ,Ten Sports
 http://www.tvxclnt.com:8080/tretvx2022/QP3J8nmeTvIZp82J/4347
-#EXTINF:-1 group-title="Bangla" tvg-logo="https://i.imgur.com/cvWkhfb.png" ,Zee Bangla Cinama [6]
-http://208.86.19.13:81/708.stream/index.m3u8
 #EXTINF:0 group-title="bikini" ,bikini3tv
 https://vcnbikininetwork.teleosmedia.com/stream/bikininetwork/a3bikini/seglist_720p.m3u8
 #EXTINF:-1 group-title="Channels" tvg-id="N/A" ,Batter Life ANimal
@@ -301,8 +281,6 @@ https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/ZEETV/ZEETV.isml/index.m3u8
 http://190.83.119.67:8000/play/a0s5/index.m3u8
 #EXTINF:-1 group-title="HINDI ENTERTAINMENT" ,Sony HD
 http://190.83.119.67:8000/play/a0sk/index.m3u8
-#EXTINF:-1 group-title="HINDI ENTERTAINMENT" ,STAR BHARAT HD
-http://208.86.19.13:81/721.stream/index.m3u8
 #EXTINF:-1 group-title="HINDI MUSIC" ,9XM
 http://208.86.19.13:81/522.stream/index.m3u8
 #EXTINF:-1 group-title="HINDI MUSIC" ,MK Tune
@@ -453,8 +431,6 @@ http://103.199.160.85/Content/musicindia/Live/Channel(MusicIndia)/Stream(02)/ind
 http://live-edge01.telecentro.net.ar/live/smil:musictop.smil/playlist.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="PanoramaFM.sa" ,Panorama FM (1080p)
 https://shls-panoramafm-prod-dub.shahid.net/out/v1/66262e420d824475aaae794dc2d69f14/index.m3u8
-#EXTINF:-1 group-title="Music" ,Retro music
-http://stream.mediawork.cz/retrotv/smil:retrotv2.smil/chunklist_w680437373_b750000.m3u8?checkedby:iptvcat.com
 #EXTINF:-1 group-title="Music" ,RMC Sports 1
 http://51.178.65.238:80/RMC1/index.m3u8
 #EXTINF:-1 group-title="Music" ,RMC Sports 2
@@ -499,12 +475,8 @@ http://premiumip.tv:8000/live/u5l04cavw4/comyx6eboz/13371.ts
 http://premiumip.tv:8000/live/u5l04cavw4/comyx6eboz/9484.ts
 #EXTINF:-1 group-title="SPORTS" ,BeinSport AFC 3
 http://javaprotcol.com:2082/live/new-dreamstar/srdetysdfghxcf/141866.ts
-#EXTINF:-1 group-title="SPORTS" ,BeinSport Premium  2
-http://0011.me:2052/live/928933886921/366953965440/526.ts
 #EXTINF:-1 group-title="SPORTS" ,BeinSport Premium 1
 http://premiumip.tv:8000/live/u5l04cavw4/comyx6eboz/161721.ts
-#EXTINF:-1 group-title="SPORTS" ,BeINSport Premium 3
-http://0011.me:2052/live/928933886921/366953965440/528.ts
 #EXTINF:-1 group-title="sPORTS" ,SWISS SPORT TV 🇨🇭
 https://cdn02.upstream-cloud.ch/sstvlinear/ngrp:sstvlinear_all/chunklist_w1922077967_b2628000.m3u8
 #EXTINF:-1 group-title="sPORTS" ,🇿🇦 DSTV SUPERSPORT Football
@@ -527,9 +499,5 @@ http://89.187.175.143:80/3064/index.m3u8
 http://89.187.175.143:80/3013/index.m3u8
 #EXTINF:-1 group-title="Sports" ,Real Madrid HD
 https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/master.m3u8
-#EXTINF:-1 group-title="SPORTS" ,Variety1
-http://uniontvs.com:8080/Whq44844vw/IuDNBXjzSXqrwd/160975
 #EXTINF:-1 group-title="witv" ,Sony TV HD 1
 http://watchindia.net:8880/live/vvv/vvv/1969.m3u8
-#EXTINF:-1 group-title="witv" ,Sony TV HD 2
-http://watchindia.net:8880/live/vvv/vvv/2141.m3u8
