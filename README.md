@@ -2,8 +2,10 @@
  
 iptv m3u url:
 updated playlist music, bangla and hindi channels
-Short Link
+Short Link:
+```
 https://cutt.ly/gRXVGjq
+```
 Original link:
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
 
