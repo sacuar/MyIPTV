@@ -159,14 +159,10 @@ http://lawandcrime.samsung.wurl.com/manifest/playlist.m3u8
 https://bozztv.com/36bay2/gusa-lifestyle/index.m3u8
 #EXTINF:-1 group-title="Movies" tvg-id="LocalNowDrama.us" tvg-logo="https://f9q4g5j6.ssl.hwcdn.net/603ef0de115bdc7aec7b7e82" ,Local Now Drama (720p)
 https://linear-141.frequency.stream/dist/localnow/141/hls/master/playlist.m3u8
-#EXTINF:-1 group-title="ISLAMIC" ,Makkah Live
-http://m.live.net.sa:1935/live/quran/playlist.m3u8
 #EXTINF:0 group-title="Drama" ,MBC drama Arabic
 https://shls-mbcdramaksa-prod-dub.shahid.net/out/v1/ce0f0762d89e4394a856c5fd13e43645/index_2.m3u8
 #EXTINF:-1 group-title="Movies" tvg-id="MBCDramaPlus.ae" tvg-logo="https://i.imgur.com/F5ER0we.png" ,MBC Plus Drama (1080p)
 https://shls-mbcplusdrama-prod-dub.shahid.net/out/v1/97ca0ce6fc6142f4b14c0a694af59eab/index.m3u8
-#EXTINF:-1 group-title="Bangla" ,MEEM TV
-http://208.86.19.13:81/502.stream/index.m3u8
 #EXTINF:-1 group-title="HINDI MUSIC" ,MK Tune
 http://103.199.160.85/Content/mktunes/Live/Channel(MKTunes)/index.m3u8
 #EXTINF:-1 group-title="Movies" tvg-id="Moovimex.us" tvg-logo="https://i.imgur.com/mty0mgJ.jpg" ,Moovimex (720p)
