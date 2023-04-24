@@ -3,6 +3,10 @@
 http://parkpay.live:8080/overkill/dB2hBKSxdP/27059
 #EXTINF:-1 group-title="Bangla" tvg-name="BANGLA VISION" tvg-logo="https://asiagrandiptv.us/logo/logobanglavision6.png" ,BANGLA VISION
 http://parkpay.live:8080/overkill/dB2hBKSxdP/3103
+#EXTINF:-1 tvg-id="" tvg-name="BD: MY TV" tvg-logo="https://asiagrandiptv.us/logo/MYTV.png" group-title="BANGLADESH",BD: MY TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3124
+#EXTINF:-1 tvg-id="" tvg-name="BD: AAMAR" tvg-logo="https://asiagrandiptv.us/logo/AAMAR.png" group-title="BANGLADESH",BD: AAMAR
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3096
 #EXTINF:-1 group-title="Music" ,Arabica TV (720p)
 http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
 #EXTINF:-1 group-title="INDIA" tvg-name="IN: ZEE BANGLA" tvg-logo="https://asiagrandiptv.us/logo//zeebangla.png" ,IN: ZEE BANGLA
@@ -27,10 +31,125 @@ http://parkpay.live:8080/overkill/dB2hBKSxdP/3096
 http://parkpay.live:8080/overkill/dB2hBKSxdP/3120
 #EXTINF:-1 group-title="Bangla" tvg-name="ASIAN TV" tvg-logo="https://asiagrandiptv.us/logo/asiantvbd.png" ,ASIAN TV
 http://parkpay.live:8080/overkill/dB2hBKSxdP/3097
+#EXTINF:-1 tvg-id="" tvg-name="BD: AAKAASH BANGLA" tvg-logo="https://asiagrandiptv.us/logo/AAKAASHBANGLA.png" group-title="BANGLADESH",BD: AAKAASH BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/10671
 #EXTINF:-1 group-title="Bangla" tvg-id="ATNBanglaUK.bd" ,ATN Bangla UK (576p)
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnbanglauk-off.stream/playlist.m3u8
-#EXTINF:-1 group-title="Bangla" tvg-name="BANGLA TV" tvg-logo="https://asiagrandiptv.us/logo/BANGLATV.png" ,BANGLA TV
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: AAMAR" tvg-logo="https://asiagrandiptv.us/logo/AAMAR.png" ,BD: AAMAR
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3096
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: ASIAN TV" tvg-logo="https://asiagrandiptv.us/logo/asiantvbd.png" ,BD: ASIAN TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3097
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: BANGLA TV" tvg-logo="https://asiagrandiptv.us/logo/BANGLATV.png" ,BD: BANGLA TV
 http://parkpay.live:8080/overkill/dB2hBKSxdP/3102
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: BANGLA VISION" tvg-logo="https://asiagrandiptv.us/logo/logobanglavision6.png" ,BD: BANGLA VISION
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3103
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL 9" tvg-logo="https://asiagrandiptv.us/logo/channel9.png" ,BD: CHANNEL 9
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3107
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL 24" tvg-logo="https://asiagrandiptv.us/logo//CHANNEL-24.png" ,BD: CHANNEL 24
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3106
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL S" tvg-logo="https://asiagrandiptv.us/logo/channels.png" ,BD: CHANNEL S
+http://parkpay.live:8080/overkill/dB2hBKSxdP/53934
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: COLORS BANGLA" tvg-logo="https://asiagrandiptv.us/logo/colorsbangla.png" ,BD: COLORS BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3109
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: DEEPTO TV" tvg-logo="https://asiagrandiptv.us/logo/DEEPTOTV.jpg" ,BD: DEEPTO TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3110
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: DESH TV" tvg-logo="https://asiagrandiptv.us/logo/deshtv.png" ,BD: DESH TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3111
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: DESHE BIDESHE TV" tvg-logo="https://asiagrandiptv.us/logo/deshebideshetvbangla.png" ,BD: DESHE BIDESHE TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3112
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: EKUSHEY TV" tvg-logo="https://asiagrandiptv.us/logo/logoekusheytv6.png" ,BD: EKUSHEY TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3115
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: INDEPENDENT TV" tvg-logo="https://asiagrandiptv.us/logo/independenttv.png" ,BD: INDEPENDENT TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3118
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: JALSHA MOVIES" tvg-logo="https://asiagrandiptv.us/logo/jalshamovies.png" ,BD: JALSHA MOVIES
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3119
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: JAMUNA TV" tvg-logo="https://asiagrandiptv.us/logo/jamunatvbd.png" ,BD: JAMUNA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3120
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: MOHONA TV" tvg-logo="https://asiagrandiptv.us/logo/mohonatv.png" ,BD: MOHONA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3122
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: MY TV" tvg-logo="https://asiagrandiptv.us/logo/MYTV.png" ,BD: MY TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3124
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: NEWS 24" tvg-logo="https://asiagrandiptv.us/logo/news24.png" ,BD: NEWS 24
+http://parkpay.live:8080/overkill/dB2hBKSxdP/310802
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: NTV" tvg-logo="https://asiagrandiptv.us/logo/ntv.png" ,BD: NTV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3125
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: SA TV" tvg-logo="https://asiagrandiptv.us/logo/SATV.jpg" ,BD: SA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3129
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: SOMOY NEWS TV" tvg-logo="https://asiagrandiptv.us/logo/logosomoynewstv6.png" ,BD: SOMOY NEWS TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3132
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: SONY 8" tvg-logo="https://asiagrandiptv.us/logo/sony.png" ,BD: SONY 8
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3133
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: STAR JALSHA" tvg-logo="https://asiagrandiptv.us/logo/starjalsha.png" ,BD: STAR JALSHA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3134
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: ZEE BANGLA" tvg-logo="https://asiagrandiptv.us/logo/zeebangla.png" ,BD: ZEE BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3136
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: ZEE BANGLA CINEMA" tvg-logo="https://asiagrandiptv.us/logo/zeebanglacinema.png" ,BD: ZEE BANGLA CINEMA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3137
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: AAKAASH BANGLA" tvg-logo="https://asiagrandiptv.us/logo/AAKAASHBANGLA.png" ,BD: AAKAASH BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/10671
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL I" tvg-logo="https://asiagrandiptv.us/logo/channeli.png" ,BD: CHANNEL I
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3108
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: AAKAASH BANGLA" tvg-logo="https://asiagrandiptv.us/logo/AAKAASHBANGLA.png" ,BD: AAKAASH BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/10671
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: AAMAR" tvg-logo="https://asiagrandiptv.us/logo/AAMAR.png" ,BD: AAMAR
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3096
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: ASIAN TV" tvg-logo="https://asiagrandiptv.us/logo/asiantvbd.png" ,BD: ASIAN TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3097
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: BANGLA TV" tvg-logo="https://asiagrandiptv.us/logo/BANGLATV.png" ,BD: BANGLA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3102
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: BANGLA VISION" tvg-logo="https://asiagrandiptv.us/logo/logobanglavision6.png" ,BD: BANGLA VISION
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3103
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL 9" tvg-logo="https://asiagrandiptv.us/logo/channel9.png" ,BD: CHANNEL 9
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3107
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL 24" tvg-logo="https://asiagrandiptv.us/logo//CHANNEL-24.png" ,BD: CHANNEL 24
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3106
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL I" tvg-logo="https://asiagrandiptv.us/logo/channeli.png" ,BD: CHANNEL I
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3108
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: CHANNEL S" tvg-logo="https://asiagrandiptv.us/logo/channels.png" ,BD: CHANNEL S
+http://parkpay.live:8080/overkill/dB2hBKSxdP/53934
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: COLORS BANGLA" tvg-logo="https://asiagrandiptv.us/logo/colorsbangla.png" ,BD: COLORS BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3109
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: DEEPTO TV" tvg-logo="https://asiagrandiptv.us/logo/DEEPTOTV.jpg" ,BD: DEEPTO TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3110
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: DESH TV" tvg-logo="https://asiagrandiptv.us/logo/deshtv.png" ,BD: DESH TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3111
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: DESHE BIDESHE TV" tvg-logo="https://asiagrandiptv.us/logo/deshebideshetvbangla.png" ,BD: DESHE BIDESHE TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3112
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: EKUSHEY TV" tvg-logo="https://asiagrandiptv.us/logo/logoekusheytv6.png" ,BD: EKUSHEY TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3115
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: INDEPENDENT TV" tvg-logo="https://asiagrandiptv.us/logo/independenttv.png" ,BD: INDEPENDENT TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3118
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: JALSHA MOVIES" tvg-logo="https://asiagrandiptv.us/logo/jalshamovies.png" ,BD: JALSHA MOVIES
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3119
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: JAMUNA TV" tvg-logo="https://asiagrandiptv.us/logo/jamunatvbd.png" ,BD: JAMUNA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3120
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: JONMOBHUMI TV" tvg-logo="https://asiagrandiptv.us/logo/JONMOBHUMITV.jpg" ,BD: JONMOBHUMI TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/53946
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: MOHONA TV" tvg-logo="https://asiagrandiptv.us/logo/mohonatv.png" ,BD: MOHONA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3122
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: MY TV" tvg-logo="https://asiagrandiptv.us/logo/MYTV.png" ,BD: MY TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3124
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: NEWS 18" tvg-logo="https://asiagrandiptv.us/logo/news18.png" ,BD: NEWS 18
+http://parkpay.live:8080/overkill/dB2hBKSxdP/83069
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: NEWS 24" tvg-logo="https://asiagrandiptv.us/logo/news24.png" ,BD: NEWS 24
+http://parkpay.live:8080/overkill/dB2hBKSxdP/310802
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: NTV" tvg-logo="https://asiagrandiptv.us/logo/ntv.png" ,BD: NTV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3125
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: SA TV" tvg-logo="https://asiagrandiptv.us/logo/SATV.jpg" ,BD: SA TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3129
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: SOMOY NEWS TV" tvg-logo="https://asiagrandiptv.us/logo/logosomoynewstv6.png" ,BD: SOMOY NEWS TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3132
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: SONY 8" tvg-logo="https://asiagrandiptv.us/logo/sony.png" ,BD: SONY 8
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3133
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: STAR JALSHA" tvg-logo="https://asiagrandiptv.us/logo/starjalsha.png" ,BD: STAR JALSHA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3134
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: TIME TV" tvg-logo="https://asiagrandiptv.us/logo/chardiklatimetv.png" ,BD: TIME TV
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3135
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: ZEE BANGLA" tvg-logo="https://asiagrandiptv.us/logo/zeebangla.png" ,BD: ZEE BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3136
+#EXTINF:-1 group-title="BANGLADESH" tvg-name="BD: ZEE BANGLA CINEMA" tvg-logo="https://asiagrandiptv.us/logo/zeebanglacinema.png" ,BD: ZEE BANGLA CINEMA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/3137
+
 #EXTINF:-1 group-title="Bangla" tvg-name="CHANNEL 24" tvg-logo="https://asiagrandiptv.us/logo//CHANNEL-24.png" ,CHANNEL 24
 http://parkpay.live:8080/overkill/dB2hBKSxdP/3106
 #EXTINF:-1 group-title="INDIA" tvg-name="IN: 9XM" tvg-logo="https://asiagrandiptv.us/logo/9xm.png" ,IN: 9XM
