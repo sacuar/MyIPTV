@@ -1,6 +1,4 @@
-#EXTM3U 
-#EXTINF:-1 group-title="Bangla" tvg-name="SANGEET BANGLA" tvg-logo="https://asiagrandiptv.us/logo/sangeetbangla.png" ,SANGEET BANGLA
-http://parkpay.live:8080/overkill/dB2hBKSxdP/27059
+#EXTM3U x-tvg-url="https://iptv-org.github.io/epg/guides/bn/sky.com.xml,https://iptv-org.github.io/epg/guides/en/sky.com.xml"
 #EXTINF:-1 group-title="Bangla" tvg-id="RTV.bd" tvg-logo="https://i.imgur.com/yu8ugqt.png" ,RTV
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/rtv-sg.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-name="BANGLA VISION" tvg-logo="https://asiagrandiptv.us/logo/logobanglavision6.png" ,BANGLA VISION
@@ -19,6 +17,8 @@ https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeF
 https://cdn.appv.jagobd.com:444/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/boishakhitv-org.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-name="EKUSHEY TV" tvg-logo="https://asiagrandiptv.us/logo/logoekusheytv6.png" ,EKUSHEY TV
 http://parkpay.live:8080/overkill/dB2hBKSxdP/3115
+#EXTINF:-1 group-title="Bangla" tvg-name="SANGEET BANGLA" tvg-logo="https://asiagrandiptv.us/logo/sangeetbangla.png" ,SANGEET BANGLA
+http://parkpay.live:8080/overkill/dB2hBKSxdP/27059
 #EXTINF:-1 ,StarGold HD
 http://144.217.70.181:9587/hin2/STARGOLDUK/tracks-v1a1/mono.m3u8?token=test
 #EXTINF:-1 group-title="Bangla" tvg-name="AAKAASH BANGLA" tvg-logo="https://asiagrandiptv.us/logo/AAKAASHBANGLA.png" ,AAKAASH BANGLA
