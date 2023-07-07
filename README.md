@@ -1,9 +1,4 @@
 # MyIPTV
-
-new smarter link active till 23 February 
-```
-http://humiptv.live:8080/get.php?username=Arshadsuman&password=Zgyyu@987hh&type=m3u
-```
 iptv m3u url:
 updated playlist music, bangla and hindi channels
 Short Link:
