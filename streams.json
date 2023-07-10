@@ -1,0 +1,3222 @@
+[
+    {
+        "name": "9XM (480p)",
+        "logo": "https://i.imgur.com/F17QtN2.png",
+        "url": "https://d2q8p4pe5spbak.cloudfront.net/bpk-tv/9XM/9XM.isml/index.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "9XM.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Aaj Tak (404p)",
+        "logo": "https://i.imgur.com/RpIdCB3.png",
+        "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_404p/chunks.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "AajTak.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Apna Punjab TV (720p)",
+        "logo": "https://i.imgur.com/IM4D8Wz.png",
+        "url": "https://plus.gigabitcdn.net/live-stream/apna-punjab-H3sE/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ApnaPunjabTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "ABP News (720p)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/ABP_News_logo.svg/512px-ABP_News_logo.svg.png",
+        "url": "https://abplivetv.akamaized.net/hls/live/2043010/hindi/master.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "ABPNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Colors Cineplex Bollywood (1080p)",
+        "logo": "https://i.imgur.com/EbHSQAJ.png",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Colors_Cineplex_Bollywood_voot_MOB/Fallback/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "ColorsCineplexBollywood.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Colors Cineplex Superhits (1080p)",
+        "logo": "https://i.ibb.co/KbXhstz/Screenshot-20230610-130415.jpg",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Rishtey_Cineplex_voot_MOB/Fallback/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "ColorsCineplexSuperhits.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "ABP Ganga (1080p)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/ABP_Ganga.svg/512px-ABP_Ganga.svg.png",
+        "url": "https://abplivetv.akamaized.net/hls/live/2043013/ganga/master.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "ABPGanga.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Comedy Central India (1080p)",
+        "logo": "https://i.imgur.com/g0caQa2.png",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Comedy_Central_HD_voot_MOB/Fallback/index.m3u8",
+        "category": "Comedy",
+        "tvg": {
+            "id": "ComedyCentralIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Colors Cineplex (1080p)",
+        "logo": "https://i.imgur.com/Hvvjfk5.png",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Colors_Cineplex_voot_MOB/Fallback/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "ColorsCineplex.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Colors HD (1080p)",
+        "logo": "https://i.imgur.com/M8uCJ0D.png",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Colors_HD_voot_MOB/Fallback/index.m3u8",
+        "category": "Entertainment",
+        "tvg": {
+            "id": "Colors.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Colors Rishtey Asia (1080p)",
+        "logo": "https://i.imgur.com/YKWfMZo.png",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Colors_Rishtey_voot_MOB/Fallback/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ColorsRishteyAsia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Ashrafi Channel (484p) [Not 24/7]",
+        "logo": "https://i.imgur.com/IXpFcJA.png",
+        "url": "https://ashrafichannel.livebox.co.in/ashrafivhannelhls/live.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "AshrafiChannel.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "FASTWAY NEWS (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/cBkYHDZ.png",
+        "url": "http://163.47.214.155:1935/fwnews/live/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "FastwayNews.us",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Anjan (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/sh0yFSf.png",
+        "url": "https://f3.vstream.online:7443/bstb/ngrp:anjan_hdall/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "AnjanTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Asianet News Kannada (360p) [Not 24/7]",
+        "logo": "https://i.imgur.com/19joZ1o.png",
+        "url": "https://vidcdn.vidgyor.com/suvarna-origin/liveabr/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "AsianetNewsKannada.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Hornbill TV (720p)",
+        "logo": "https://i.imgur.com/7Y4vQnG.png",
+        "url": "http://172.104.191.216:1935/hornbilltv/hornbilltv/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "HornbillTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Music India (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/kXTCYqg.png",
+        "url": "http://103.199.160.85/Content/musicindia/Live/Channel(MusicIndia)/index.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "MusicIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "DD National (576p)",
+        "logo": "https://i.imgur.com/MohlE5B.png",
+        "url": "http://103.199.161.254/Content/ddnational/Live/Channel(DDNational)/index.m3u8",
+        "category": "Entertainment",
+        "tvg": {
+            "id": "DDNational.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "DD Sports (576p)",
+        "logo": "https://i.imgur.com/J2Ky5OO.png",
+        "url": "http://103.199.161.254/Content/ddsports/Live/Channel(DDSPORTS)/index.m3u8",
+        "category": "Sports",
+        "tvg": {
+            "id": "DDSports.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "B4U Kadak (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/CKLn0ft.png",
+        "url": "http://103.199.160.85/Content/moviehouse/Live/Channel(MovieHouse)/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "B4UKadak.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "IND 24 (360p)",
+        "logo": "https://i.imgur.com/exRpVmL.png",
+        "url": "https://gmkd5nkednxo-hls-live.wmncdn.net/ind24tv/live.stream/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "Ind24.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Dil Se (360p) [Not 24/7]",
+        "logo": "https://i.imgur.com/zYbltEk.png",
+        "url": "https://live.hungama.com/linear/dil-se/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "DilSe.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "First India News (360p) [Not 24/7]",
+        "logo": "https://i.imgur.com/MUTe7cu.png",
+        "url": "https://xlbor37ydvaj-hls-live.wmncdn.net/firstindianewstv1/live.stream/index.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "FirstIndiaNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "B4U Movies India (576p)",
+        "logo": "https://i.imgur.com/M9kMFJl.png",
+        "url": "http://183.89.246.119:8881/play/a08n/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "B4UMoviesIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Channel Y (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/OqSl2Qf.png",
+        "url": "http://cdn19.live247stream.com/channely/tv/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "ChannelY.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Bharat Samachar TV (360p)",
+        "logo": "https://i.imgur.com/x5f8E3K.png",
+        "url": "https://idvd.multitvsolution.com/idvo/bharatsamachar.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "BharatSamacharTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Zing! (576p)",
+        "logo": "https://i.imgur.com/zStK8g2.png",
+        "url": "http://183.89.246.119:8881/play/a09a/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "Zing.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "DD Bharati (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/4tfUIEo.png",
+        "url": "https://ythls.onrender.com/channel/UCIAnlTV3O9NYWMI-DwYZaWg.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDBharati.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "IBC 24 (720p)",
+        "logo": "https://i.imgur.com/2LbR2a0.png",
+        "url": "https://livetv.ibc24.in/livestream.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "IBC24.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Balle Balle (720p)",
+        "logo": "https://i.imgur.com/oxkkWH5.png",
+        "url": "https://mcncdndigital.com/balleballetv/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "BalleBalle.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Kadak Hits (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/jxZYTO2.png",
+        "url": "https://live.hungama.com/linear/kadak-hits/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "KadakHits.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Artist Aloud (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/urLlfSo.png",
+        "url": "https://live.hungama.com/linear/artist-aloud/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "ArtistAloud.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Ayush TV (360p) [Not 24/7]",
+        "logo": "https://i.imgur.com/PWzvp0B.png",
+        "url": "https://95eryw39dwn4-hls-live.wmncdn.net/Ayushu/271ddf829afeece44d8732757fba1a66.sdp/index.m3u8",
+        "category": "Lifestyle",
+        "tvg": {
+            "id": "AyushTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Argus News (1080p)",
+        "logo": "https://i.imgur.com/cGjRe01.png",
+        "url": "https://live.argusnews.in/hls/argustv.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "ArgusNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Kanshi TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/w6uXMrK.png",
+        "url": "https://live.kanshitv.co.uk/mobile/kanshitvkey.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "KanshiTV.uk",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Khabrain Abhi Tak (480p) [Not 24/7]",
+        "logo": "https://i.imgur.com/LIrolUQ.png",
+        "url": "https://vidcdn.vidgyor.com/kat-origin/liveabr/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "KhabrainAbhiTak.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "K News India (1080p)",
+        "logo": "https://i.imgur.com/LeBL7ML.png",
+        "url": "https://knews.livebox.co.in/youtubehls/live.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "KNewsIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Dhamaal (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/J6D56EF.png",
+        "url": "https://live.hungama.com/linear/dhamaal/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "Dhamaal.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "MTA7 Asia (1080p)",
+        "logo": "https://i.imgur.com/3Nl8Tpu.png",
+        "url": "https://livemtaasia.akamaized.net/hls/live/2039224/mtaasia2/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "MTA7Asia.uk",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Filmeraa (720p)",
+        "logo": "https://i.ibb.co/p4BwH0x/images-5.png",
+        "url": "https://a.jsrdn.com/broadcast/7ef91d3d7a/+0000/c.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "Filmeraa.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Hulchul TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/LvkdhRw.png",
+        "url": "http://cdn12.henico.net:8080/live/jbani/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "HulchulTVCanada.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "GurSikh Sabha TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/2EKCtQm.png",
+        "url": "http://cdn12.henico.net:8080/live/gsctv/index.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "GurSikhSabhaTV.ca",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Nick Jr India (1080p)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Nick_Jr._logo_2009.svg/512px-Nick_Jr._logo_2009.svg.png",
+        "url": "https://prod-sports-north-gm.jiocinema.com/bpk-tv/Nick_Junior_voot_MOB/Fallback/index.m3u8",
+        "category": "Kids",
+        "tvg": {
+            "id": "NickJrIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "GDNS Ludhiana (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/JRjcYGl.jpg",
+        "url": "http://akalmultimedia.net:1935/gdnslive/gdns-live/chunklist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "GDNSLudhiana.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "MTA2 Europe (720p)",
+        "logo": "https://i.imgur.com/aVts0sz.png",
+        "url": "https://chlivemta1.akamaized.net/hls/live/2008145/mta2/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "MTA2Europe.uk",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Republic Bharat (360p) [Geo-blocked]",
+        "logo": "https://i.imgur.com/NEAoh6O.png",
+        "url": "https://republic.pc.cdn.bitgravity.com/live/bharat_hls/master.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "RepublicBharat.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Nazrana (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/38Run52.png",
+        "url": "https://live.hungama.com/linear/nazrana/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "NazranaMusic.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Lighting Lives Blessing Nations TV South Asia (LLBN) (480p)",
+        "logo": "https://i.imgur.com/WsOfy19.png",
+        "url": "https://brightstar-southasia.secure.footprint.net/egress/bhandler/brightstar/brightstarSouthAsia/manifest.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "LLBNTVSouthAsia.us",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Pop Pataka (480p) [Not 24/7]",
+        "logo": "https://i.imgur.com/9NacSLW.png",
+        "url": "https://live.hungama.com/linear/pop-pataka/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "PopPataka.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News 24 (720p)",
+        "logo": "https://i.imgur.com/x72O77X.png",
+        "url": "https://vidcdn.vidgyor.com/news24-origin/liveabr/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News24.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India Voice (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/CwDznyQ.png",
+        "url": "https://ythls.onrender.com/channel/UCXJjjNmD9kfc63d9GumIagw.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "IndiaVoice.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Janta TV (360p) [Not 24/7]",
+        "logo": "https://i.imgur.com/0nKfwhV.png",
+        "url": "https://live.wmncdn.net/jantatv/live.stream/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "JantaTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "INH 24x7 (360p)",
+        "logo": "https://i.imgur.com/Es3QiVx.png",
+        "url": "https://7epd6o8edk9b-hls-live.wmncdn.net/inh24/live.stream/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "INH24x7.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Samachar Plus (1080p)",
+        "logo": "https://i.ibb.co/cLXkYvr/IMG-20230610-140232.jpg",
+        "url": "https://samacharplus.livebox.co.in/samacharplushls/live.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "SamacharPlus24x7.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "NDTV India (480p) [Not 24/7]",
+        "logo": "https://i.imgur.com/PyDjUZB.png",
+        "url": "https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679/ndtvindia/master.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "NDTVIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Punjabi Zindabad (360p) [Not 24/7]",
+        "logo": "https://i.imgur.com/H46oTS2.png",
+        "url": "http://stream.pztv.online/pztv/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "PunjabiZindabadTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Ishwar Bhakti TV (720p)",
+        "logo": "https://i.imgur.com/tsPPU1Y.png",
+        "url": "https://6n3yow8pl9ok-hls-live.5centscdn.com/ishwartvlive/tv.stream/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "IshwarBhaktiTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Kaumudy TV (720p)",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/7/74/Kaumudy_TV_Logo.jpg",
+        "url": "https://oqgdrkxby4rm-hls-live.5centscdn.com/kaumudytv/live.stream/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "KaumudyTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Global Punjab (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/WDLqcWW.png",
+        "url": "https://media.streambrothers.com:1936/8522/8522/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "GlobalPunjab.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Star Movies India (576p) [Not 24/7]",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/STAR_Movies_logo.svg/512px-STAR_Movies_logo.svg.png",
+        "url": "http://c0.cdn.trinity-tv.net/stream/nh9u54a7sfnc2hwzxr2zwykwkqm43bgyyzsm68ybbbnjei8kytwcgs3zm5gnw5c6efa5gr3fadzqe686w8gj2eaehrj89wvujvqza3kez78dtknwbbmnqf79yygmqqg7e9pnc3i3bpywjkiqrwke94yf.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "StarMoviesIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "NDTV 24X7 (480p) [Not 24/7]",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/NDTV_247.svg/512px-NDTV_247.svg.png",
+        "url": "https://ndtv24x7elemarchana.akamaized.net/hls/live/2003678/ndtv24x7/master.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "NDTV24x7.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Zee News (480p)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Zee_news.svg/512px-Zee_news.svg.png",
+        "url": "https://d233nwklwv8p4.cloudfront.net/out/v1/860cb318d23a4c64b58c9d625281170c/index_3.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "ZeeNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Zee Hindustan (720p)",
+        "logo": "https://i.imgur.com/3eAZMxA.png",
+        "url": "https://d336l5u76wvq7j.cloudfront.net/out/v1/5990b42d2b7b40bc8e581e90afe6ef94/index_4.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ZeeHindustan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Zee Rajasthan (720p)",
+        "logo": "https://i.imgur.com/iYrrGlL.png",
+        "url": "https://d3596fuob34tr0.cloudfront.net/out/v1/dc9cd568b52340d9a694877ad4b103a8/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ZeeRajasthan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Songdew TV (396p)",
+        "logo": "https://i.imgur.com/aFlKqH4.png",
+        "url": "https://yupplivefragcp3.yuppcdn.net/260423/smil:songdew.smil/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SongdewTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Hindi Khabar (720p)",
+        "logo": "https://i.imgur.com/iuz6K6i.png",
+        "url": "https://server.livelegitpro.in:9899/hindikhabar/hindikhabar/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "HindiKhabar.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Nambikkai TV (576p)",
+        "logo": "https://i.imgur.com/xnjkUOs.png",
+        "url": "https://live.wmncdn.net/nambikkaitv/live.stream/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "NambikkaiTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India News Rajasthan (576p)",
+        "logo": "https://i.imgur.com/i16786i.png",
+        "url": "https://livetv.newsx.com/itv/itvnetwork9/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "IndiaNewsRajasthan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India News (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/l54AGtz.png",
+        "url": "https://livetv.newsx.com/itv/itvnetwork5/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "IndiaNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India News Madhya Pradesh/Chhattisgarh (576p)",
+        "logo": "https://i.imgur.com/3IoC5QR.png",
+        "url": "https://livetv.newsx.com/itv/itvnetwork7/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "IndiaNewsMadhyaPradeshChhattisgarh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India News Haryana (576p)",
+        "logo": "https://i.imgur.com/Ot8FDqS.png",
+        "url": "https://livetv.newsx.com/itv/itvnetwork2/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "IndiaNewsHaryana.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "A1 TV Rajasthan (720p)",
+        "logo": "https://i.imgur.com/XJA3bh1.png",
+        "url": "https://5b48d7e1b4bce.streamlock.net/myapp/a1live/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "A1TVRajasthan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India News Uttar Pradesh (576p)",
+        "logo": "https://i.imgur.com/nMsMlig.png",
+        "url": "https://livetv.newsx.com/itv/itvnetwork3/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "IndiaNewsUttarPradesh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Hyder TV (720p)",
+        "logo": "https://i.imgur.com/reHjjRZ.png",
+        "url": "https://cdn.live247stream.com/hyder/tv/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "HyderTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "TAG TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/U1MHI18.png",
+        "url": "https://cdn30.liveonlineservices.com/hls/tagtv.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "TAGTV.us",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "MH One Shraddha (1080p)",
+        "logo": "https://i.imgur.com/Lrm8qTO.png",
+        "url": "https://mhoneshaddha.com/hls/stream.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "MHOneShraddha.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Total Bhakti (1080p)",
+        "logo": "https://i.imgur.com/LPwRdmF.png",
+        "url": "https://d34z4embz0hjf6.cloudfront.net/out/v1/d55b3323a9f142638f897378f0b526fe/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "TotalBhakti.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Kashish News (720p)",
+        "logo": "https://i.imgur.com/qfINs2r.png",
+        "url": "https://kashishnews.livebox.co.in/kashishnewshls/live.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "KashishNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Steelbird Music (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/Egijzx3.png",
+        "url": "http://cdn25.live247stream.com/steelbirdmusic/tv/playlist.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "SteelbirdMusic.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sadhna Plus News (720p)",
+        "logo": "https://i.imgur.com/h4UehKC.png",
+        "url": "https://6n3yow8pl9ok-hls-live.5centscdn.com/sadhananewstv/live.stream/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "SadhnaPlusNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sadhna (720p)",
+        "logo": "https://i.imgur.com/x13iiuI.png",
+        "url": "https://6n3yow8pl9ok-hls-live.5centscdn.com/sadhanalivetv/live.stream/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "Sadhna.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Taaza TV (1080p)",
+        "logo": "https://i.imgur.com/4nTpQLC.png",
+        "url": "https://stream.playbox.co.in:19360/taaza/taaza.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "TaazaTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Namdhari (404p) [Not 24/7]",
+        "logo": "https://i.imgur.com/NalsXTo.png",
+        "url": "https://namdhari.tv/live/sbs1.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "NamdhariTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "TAG TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/4PA2adF.png",
+        "url": "http://cdn11.live247stream.com/tag/tv/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "TAGTV.ca",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "DD India (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/45uptR8.png",
+        "url": "https://ythls.onrender.com/channel/UCGDQNvybfDDeGTf4GtigXaw.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Weatherspy",
+        "logo": "https://i.imgur.com/KIEKOt1.png",
+        "url": "https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8",
+        "category": "Weather",
+        "tvg": {
+            "id": "WeatherSpyIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "India TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/ztn2IR8.png",
+        "url": "https://ythls.onrender.com/channel/UCttspZesZIDEwwpVIgoZtWQ.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "IndiaTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "CNBC TV18 (720p) [Not 24/7]",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CNBC_TV18.png",
+        "url": "https://ythls.onrender.com/channel/UCmRbHAgG2k2vDUvb3xsEunQ.m3u8",
+        "category": "Business",
+        "tvg": {
+            "id": "CNBCTV18.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Bansal News (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/8QL8SiB.png",
+        "url": "https://ythls.onrender.com/channel/UCL_3_9PhDyZXu1oexm8gtFQ.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "BansalNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Bharat 24 (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/Jx1OX9N.png",
+        "url": "https://ythls.onrender.com/channel/UCCQmi1Bd-_tHRm6M2uPlGUA.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "Bharat24.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "DD News (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/H4f9R7n.png",
+        "url": "https://ythls.onrender.com/channel/UCKwucPzHZ7zCUIf7If-Wo1g.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "DDNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "DD Kashir (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/1EI4LOf.png",
+        "url": "https://ythls.onrender.com/channel/UCOqU-HfQxoyImaCW2tCDxJA.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDKashir.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "1Yes News (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/4HeuLuA.png",
+        "url": "https://ythls.onrender.com/channel/UC3mHciwDcBC8XucNnRt9C6A.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "1YesNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sanskar UK (1080p)",
+        "logo": "https://i.imgur.com/AU5vSPF.png",
+        "url": "https://d34z4embz0hjf6.cloudfront.net/out/v1/7ac2789ff9a544a49337d1ffc54ce61c/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SanskarUK.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sanskar USA (1080p)",
+        "logo": "https://i.imgur.com/5WBWruX.png",
+        "url": "https://d2netiedy8cz3x.cloudfront.net/out/v1/9bf6fa4ac8d6432cb98da13b121ba3c2/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SanskarUSA.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sanskar TV (1080p)",
+        "logo": "https://i.imgur.com/SDkiMvR.png",
+        "url": "https://d26idhjf0y1p2g.cloudfront.net/out/v1/cd66dd25b9774cb29943bab54bbf3e2f/index.m3u8",
+        "category": "Culture;Religious",
+        "tvg": {
+            "id": "SanskarTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sanskar Web TV (1080p)",
+        "logo": "https://i.imgur.com/mu2B6hw.png",
+        "url": "https://deatfcv3xdvi3.cloudfront.net/out/v1/7a43dd2f64e34ec28da1b4bd6923251a/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SanskarWebTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Shubhsandesh (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/XsuFVlf.png",
+        "url": "https://6284rn2xr7xv-hls-live.wmncdn.net/shubhsandeshtv1/live123.stream/index.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "Shubhsandesh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Satsang TV (1080p)",
+        "logo": "https://i.imgur.com/jnsaMrJ.png",
+        "url": "https://d2vfwvjxwtwq1t.cloudfront.net/out/v1/6b24239d5517495b986e7705490c6e65/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SatsangTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Swaraj Express (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/vuF6PCJ.png",
+        "url": "https://live.wmncdn.net/highnews/swaraj.stream/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SwarajExpressSMBC.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "TV9 Bharatvarsh (720p)",
+        "logo": "https://i.imgur.com/GEqUslW.png",
+        "url": "https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9hinjzgtpe/liveabr/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "TV9Bharatvarsh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "News 11 (360p)",
+        "logo": "https://i.imgur.com/brLsWXU.png",
+        "url": "https://rtmp.smartstream.video/news11/news11/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News11.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Shubh TV (1080p)",
+        "logo": "https://i.imgur.com/QHv8CL2.png",
+        "url": "https://d2g1vdc6ozl2o8.cloudfront.net/out/v1/0a0dc7d7911b4fddbb4dfc963fdd4b9e/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ShubhTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Satsang Web TV (1080p)",
+        "logo": "https://i.imgur.com/40kNu1w.png",
+        "url": "https://d1ji7e9jbzm5g8.cloudfront.net/out/v1/769f22f64d80442889306b9c4abea63c/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SatsangWebTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "SVBC 4 (1080p)",
+        "logo": "https://i.imgur.com/vCFdZny.png",
+        "url": "https://player.mslivestream.net/mslive/13a2927187b9700ae7ea82d7841d5b68.sdp/playlist.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "SVBC4.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Jinvani Channel (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/lztyGVi.png",
+        "url": "https://ythls.onrender.com/channel/UCDNNWj0oAFXngcwHAwnwP4w.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "JinvaniChannel.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "JK 24x7 News (720p)",
+        "logo": "https://i.imgur.com/VIPPB6t.png",
+        "url": "https://livestream.jktvonline.com/hls/jk.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "JK24x7News.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Khabar Fast (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/l5Li5Pd.png",
+        "url": "https://live.gbtechnology.in/khabarfast/khabarfast/index.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "KhabarFast.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Sudarshan News (720p)",
+        "logo": "https://i.imgur.com/7AV1VI9.png",
+        "url": "https://ott.livelegitpro.in/pusa/sudarshantv/index.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "SudarshanNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Zee Madhya Pradesh Chhattisgarh (720p)",
+        "logo": "https://i.imgur.com/YccuVVI.png",
+        "url": "https://dg2v5dko941am.cloudfront.net/out/v1/176d62f6612f47a4b94e78c5bc1bcee6/index_4.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ZeeMadhyaPradeshChhattisgarh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Mercy TV (1080p)",
+        "logo": "https://i.imgur.com/klNH4tV.png",
+        "url": "https://5dd3981940faa.streamlock.net/mercytv/mercytv/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "MercyTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Times Now [Geo-blocked]",
+        "logo": "https://i.imgur.com/C6QK1LB.png",
+        "url": "https://pubads.g.doubleclick.net/ssai/event/1mR1QUQ3Tg-VuKfiyjwNuA/master.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "TimesNow.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "Zee Delhi NCR Haryana (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/jeBUXYz.png",
+        "url": "https://ythls.onrender.com/channel/UCG6L5cIg2XZvXVksq5B9edw.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "ZeeDelhiNCRHaryana.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News State UP & UK (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/dQLaY5N.png",
+        "url": "https://ythls.onrender.com/channel/UCeNP3dAy9_A32IWYZq_PZMQ.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "NewsStateUPUK.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "News18 Rajasthan (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/Y7c0omK.png",
+        "url": "https://ythls.onrender.com/channel/UC7FlLbNo66YsCEAPuJITiNg.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18Rajasthan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "GOOD"
+    },
+    {
+        "name": "MTV HD",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/MTV_2021_%28brand_version%29.svg/512px-MTV_2021_%28brand_version%29.svg.png",
+        "url": "http://144.217.70.181:9587/hin2/MTVINDIA/index.m3u8",
+        "category": "Entertainment",
+        "tvg": {
+            "id": "MTVIndia.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Dheeran TV (576p)",
+        "logo": "https://i.imgur.com/jSedjXf.png",
+        "url": "https://live.we2live.in/dheerantv/dheerantv/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DheeranTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Boogle Bollywood (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/gaKzWdo.png",
+        "url": "http://live.agmediachandigarh.com/booglebollywood/774e3ea9f3fa9bcdac47f445b83b6653.sdp/index.m3u8",
+        "category": "Music",
+        "tvg": {
+            "id": "BoogleBollywood.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News18 Bihar Jharkhand (1080p)",
+        "logo": "https://i.imgur.com/FQ3zDZE.png",
+        "url": "https://ythls.onrender.com/channel/UC531MlZA5LUbeGwEN_zcppw.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18BiharJharkhand.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "STV Haryana News (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/TJRZo9e.png",
+        "url": "https://ythls.onrender.com/channel/UC6Hd69A3RKgu6Dj52H53ZDw.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "STVHaryanaNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Good News Today (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/iMzUrb9.png",
+        "url": "https://ythls.onrender.com/channel/UCQC1wGbOOIoC23fRGxt4kbg.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "GoodNewsToday.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Aradana TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/w48yzLu.png",
+        "url": "https://ythls.onrender.com/channel/UCMnz0yLX3afzFc8y822YO5g.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "AradanaTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Zee Uttar Pradesh/Uttarakhand (720p)",
+        "logo": "https://i.imgur.com/gxKFKRG.png",
+        "url": "https://livetv-channels.b-cdn.net/8076/playlist.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ZeeUttarPradeshUttarakhand.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Zoom (1080p)",
+        "logo": "https://i.imgur.com/kcDJ4g0.png",
+        "url": "http://103.81.104.118/hls/stream8.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "Zoom.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Maha Movie (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/hpShFDL.png",
+        "url": "http://14.199.164.20:4001/play/a0q7/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "MahaMovie.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Awakening TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/p26iWOi.png",
+        "url": "https://ythls.onrender.com/channel/UCQ8kxAu_on_YzVPMjB03rqA.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "AwakeningTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Hare Krsna TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/sZgON5J.png",
+        "url": "https://ythls.onrender.com/channel/UCZ8S3qwowiFztAQBRTawWfA.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "HareKrsnaTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Nethra TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/OQXzd3j.png",
+        "url": "https://ythls.onrender.com/channel/UC6b6XrsNOxQiS-FdfE8-Avw.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "NethraTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Food Food (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/J930pA1.png",
+        "url": "http://14.199.164.20:4001/play/a0qx/index.m3u8",
+        "category": "Entertainment",
+        "tvg": {
+            "id": "FoodFood.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Life TV (480p) [Not 24/7]",
+        "logo": "https://i.ibb.co/v1C0bdR/logo-1.png",
+        "url": "http://59c3ec70cfde0.streamlock.net/channel_6/channel6/playlist.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "LifeTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Aadinath TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/9u2jXKK.png",
+        "url": "https://ythls.onrender.com/channel/UCY8r_lukdRi5cK5wjK_O3qw.m3u8",
+        "category": "Religious",
+        "tvg": {
+            "id": "AadinathTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "CNBC Awaaz (720p) [Not 24/7]",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/CNBC_Awaaz_logo.png/512px-CNBC_Awaaz_logo.png",
+        "url": "https://ythls.onrender.com/channel/UCQIycDaLsBpMKjOCeaKUYVg.m3u8",
+        "category": "Business",
+        "tvg": {
+            "id": "CNBCAwaaz.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "TV 100 (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/EFpH8Ae.png",
+        "url": "https://ythls.onrender.com/channel/UCpLM_4NUnBYq0h3gruX0qQw.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "TV100.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Jan TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/RfJBuf5.png",
+        "url": "https://ythls.onrender.com/channel/UCjmnq35TvJ1J8JZS49OPg-Q.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "JanTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Star Gold HD (1080p)",
+        "logo": "https://i.imgur.com/QgP64Zf.png",
+        "url": "http://103.81.104.118/hls/stream19.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "StarGold.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "DD Tripura (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/ctlcdOw.png",
+        "url": "https://ythls.onrender.com/channel/UCtmSIB1S2LsT5OXC6H6x_rA.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDTripura.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Enter10 Bangla (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/fkOxQtS.png",
+        "url": "http://14.199.164.20:4001/play/a0j5/index.m3u8",
+        "category": "Entertainment",
+        "tvg": {
+            "id": "Enter10Bangla.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Sansad TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/TWSZC2H.png",
+        "url": "https://ythls.onrender.com/channel/UCISgnSNwqQ2i8lhCun3KtQg.m3u8",
+        "category": "Legislative",
+        "tvg": {
+            "id": "SansadTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Anaadi TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/Ir26BK6.png",
+        "url": "https://ythls.onrender.com/channel/UCK1Sl8bNLay45FeL30BFdxQ.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "AnaadiTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Sony BBC Earth HD (1080p)",
+        "logo": "https://i.imgur.com/9QJ9chZ.png",
+        "url": "http://103.81.104.118/hls/stream5.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SonyBBCEarth.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News18 Madhya Pradesh/Chhattisgarh (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/Yhg2eLH.png",
+        "url": "https://ythls.onrender.com/channel/UCBwc2cbPpvxNCNEI2-8YrqQ.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18MadhyaPradeshChhattisgarh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "FM News (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/4rUsbGZ.png",
+        "url": "https://ythls.onrender.com/channel/UCwGojq7oNNrMNaAMtyBhK0Q.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "FMNews.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Jantantra TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/IneOiic.png",
+        "url": "https://ythls.onrender.com/channel/UCJLmpzT9MkBAfJjSNJ-4Zmw.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "JantantraTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Paras TV (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/Jdb634P.png",
+        "url": "https://ythls.onrender.com/channel/UC6E1pvhGa55AaZ-svF70ViA.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "ParasTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Amar Ujala (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/ndQ8LZp.png",
+        "url": "https://ythls.onrender.com/channel/UCP_wvXToU5ohFLbTAkatvsw.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "AmarUjala.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Saam TV (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/SNsjJjt.png",
+        "url": "https://ythls.onrender.com/channel/UC6cxTsUnfSZrj96KNHhRTHQ.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "SaamTV.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "DD Uttarakhand (480p) [Not 24/7]",
+        "logo": "https://i.imgur.com/GzBsbos.png",
+        "url": "https://ythls.onrender.com/channel/UCx55tefMzKkaA0uDmj9g2XA.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDUttarakhand.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "DD Uttar Pradesh (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/oKsUqBs.png",
+        "url": "https://ythls.onrender.com/channel/UCxtPipsf2nUZ9xM33TPe93Q.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDUttarPradesh.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Dhinchaak (576p) [Not 24/7]",
+        "logo": "https://i.imgur.com/oqqChlH.png",
+        "url": "http://14.199.164.20:4001/play/a0o5/index.m3u8",
+        "category": "Movies",
+        "tvg": {
+            "id": "Dhinchaak.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News State MP & CHG (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/KS5xcx2.png",
+        "url": "https://ythls.onrender.com/channel/UCz6sfaICYbi4LEXC-022qpg.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "NewsStateMPCHG.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "DD Kisan (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/x56WJEa.png",
+        "url": "https://ythls.onrender.com/channel/UCnDfmcUyhgJp6xC1LmBLfUg.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "DDKisan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Patrika Rajashtan (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/iBQErQ3.png",
+        "url": "https://ythls.onrender.com/channel/UCWk-7Yosyvzln9ZzJg8BvVg.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "PatrikaRajasthan.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News18 Bangla (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/l6Ndjnh.png",
+        "url": "https://ythls.onrender.com/channel/UCbf0XHULBkTfv2hBjaaDw9Q.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18Bangla.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News Nation (720p)",
+        "logo": "https://i.imgur.com/9xeIWqm.png",
+        "url": "https://livetv-channels.b-cdn.net/8006/playlist.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "NewsNation.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News18 Uttar Pradesh Uttarakhand [Not 24/7]",
+        "logo": "https://i.imgur.com/VcwkEDM.png",
+        "url": "https://ythls.onrender.com/channel/UCafYgzpyw7aIUYOLjjADu7w.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18UttarPradeshUttarakhand.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News18 Punjab/Haryana/Himachal (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/iWpFxF7.png",
+        "url": "https://ythls.onrender.com/channel/UC-crZTQNRzZgzyighTKF0nQ.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18PunjabHaryanaHimachal.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News18 India (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/5VLCwbt.png",
+        "url": "https://ythls.onrender.com/channel/UCPP3etACgdUWvizcES1dJ8Q.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News18India.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Hindu Dharmam (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/VL6O6Ck.png",
+        "url": "https://ythls.onrender.com/channel/UCMg2yY8OzHhw6mOvgIkaXYg.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "HinduDharmam.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Har Khabar (720p) [Not 24/7]",
+        "logo": "https://i.imgur.com/QwZherx.png",
+        "url": "https://ythls.onrender.com/channel/UCkfMPrLxnaGaKon4ccRJ9Tg.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "HarKhabar.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "Agamvani Channel (1080p) [Not 24/7]",
+        "logo": "https://i.imgur.com/dQI1YkX.png",
+        "url": "https://ythls.onrender.com/channel/UClOK2dPmq8k8Xwii_4TjRnQ.m3u8",
+        "category": "Undefined",
+        "tvg": {
+            "id": "AgamvaniChannel.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    },
+    {
+        "name": "News 1 India (480p) [Not 24/7]",
+        "logo": "https://i.imgur.com/J3EWn2J.png",
+        "url": "https://ythls.onrender.com/channel/UCA9JOzo-2-0xAdihJkRKSyg.m3u8",
+        "category": "News",
+        "tvg": {
+            "id": "News1India.in",
+            "name": null,
+            "url": null
+        },
+        "country": {
+            "code": null,
+            "name": null
+        },
+        "language": {
+            "code": null,
+            "name": null
+        },
+        "status": "BAD"
+    }
+]
