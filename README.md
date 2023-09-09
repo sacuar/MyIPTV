@@ -1,5 +1,14 @@
 # MyIPTV
 iptv m3u url:
+
+new url september for sports and asia cup
+```
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/sports.m3u
+```
+shortened url for sports:::
+```
+
+```
 updated playlist music, bangla and hindi channels
 Short Link:
 ```
