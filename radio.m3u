@@ -1,49 +1,27 @@
 #EXTM3U
-#EXTINF:-1, Non Stop Hindi Radio
-http://198.178.123.14:8216/;
-#EXTINF:-1, Hindi - hits
-http://stream.zeno.fm/m38h4nmgxs8uv
-#EXTINF:-1, Fnf.Fm Hindi
-http://192.99.8.192:5032/;stream
-#EXTINF:-1, Radio City Hindi
-http://radio.garden/api/ara/content/listen/to5IKEqr/channel.mp3?1626611643750
-#EXTINF:-1, Radio City Hindi
-https://stream-60.zeno.fm/pxc55r5uyc9uv?zs=xkD7f1ttQe20opARKqWXuA
-#EXTINF:-1, Hindi Desi Bollywood Evergreen Hits Channel 2
-http://directchannel2.hindihits.top/
-#EXTINF:-1, Hindi Desi Bollywood Evergreen Hits Channel 1
-http://directchannel1.hindihits.top/
-#EXTINF:-1, CJSA-HD3 CMR Diversity FM 101.3 Hindi/Urdu Toronto, ON
-http://live.cmr24.net:8081/CMR/Desi_Music-MQ/icecast.audio
-#EXTINF:-1, Hand Of Jesus - HINDI
-https://dc1.serverse.com/proxy/hojhindi/stream
-#EXTINF:-1, Dhaka 88.8 FM
-http://as3.digitalsynapsebd.com:8263/;
-
-#EXTINF:-1, Dhaka Kha 630KHz
-http://as2.digitalsynapsebd.com:8741/;
-
-#EXTINF:-1, Jago FM 94.4
-http://128.199.184.111:12496/stream
-
-#EXTINF:-1, Dhaka FM 90.4
-http://stream.zenolive.com/ay4pqkk604zuv
-
-#EXTINF:-1, Radio Ambar
-http://118.179.215.45:8000/;stream/1
-
-#EXTINF:-1, Radio Foorti
+#EXTINF:-1 group-title="Entertainment" tvg-id="Radio Foorti" tvg-logo="https://cdn-profiles.tunein.com/s122537/images/logog.png?t=152691" ,Radio Foorti
 http://119.148.23.88:1021/
 
-#EXTINF:-1, Khulna FM 88.8MHz
-http://as2.digitalsynapsebd.com:9252/;
+#EXTINF:-1,group-title="Entertainment" tvg-id="Dhaka 88.8 FM" tvg-logo="https://upload.wikimedia.org/wikipedia/en/0/00/Bangladesh-betar-logo.jpg" ,Dhaka 88.8 FM
+http://as3.digitalsynapsebd.com:8263/;
 
-#EXTINF:-1, Capital FM 94.8
+#EXTINF:-1,group-title="Entertainment" tvg-id="Radio Today" tvg-logo="https://www.radiotodaybd.fm/wp-content/uploads/2019/02/cropped-favicon-192x192.png" , Radio Today
+"http://stream-25.zeno.fm/8wv4d8g4344tv?zs=S8fa0NpET3qEAr8zRdUK2w"
+
+#EXTINF:-1, group-title="Entertainment" tvg-id="Radio Ambar" tvg-logo="https://www.radioindialive.com//uploads/radios/wjwsmmxxzujh.png"
+http://118.179.215.45:8000/;stream/1
+
+#EXTINF:-1, group-title="Entertainment" tvg-id="Capital FM 94.8" tvg-logo="https://www.radiocapital.fm/wp-content/uploads/2017/02/capital-FM-Logo-png-1.png"
 http://stream.zenolive.com/4nzaapqw34zuv
 
-#EXTINF:-1, Chattogram FM 88.8MHz
-http://as2.digitalsynapsebd.com:9236/;
+#EXTINF:-1, group-title="Entertainment" tvg-id="Jago FM 94.4" tvg-logo="https://kuasark.com/files/stations-logos/jago-fm-944.png"
+http://128.199.184.111:12496/stream
 
-#EXTINF:-1, Radio Foorti 88.0FM
-http://stream.zenolive.com/f0bfdk2w34zuv
+
+#EXTINF:-1, group-title="Entertainment" tvg-id="Capital FM 94.8" tvg-logo="https://www.radiocapital.fm/wp-content/uploads/2017/02/capital-FM-Logo-png-1.png"
+http://stream.zenolive.com/4nzaapqw34zuv
+
+#EXTINF:-1, group-title="Entertainment" tvg-id="Dhaka FM 90.4" tvg-logo="
+http://stream.zenolive.com/ay4pqkk604zuv
+
 
