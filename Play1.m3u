@@ -1,255 +1,151 @@
 #EXTM3U
-#EXTINF:-1 group-title="FILM" ,IND - AND PICTURES HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58192
-#EXTINF:-1 group-title="Bangla" ,Zee Bangla HD (1)
-http://41a13220.ottolok.net/iptv/3WURL7P6THE3QU/6636/index.m3u8
-#EXTINF:-1 group-title="FILM" ,Zee Bangla Cinema (2)
-http://41a13220.ottolok.net/iptv/3WURL7P6THE3QU/6637/index.m3u8
-#EXTINF:-1 group-title="Bangla" ,Ekushay TV(BDIX)
-https://ekusheyserver.com/etvlivesn.m3u8
-#EXTINF:-1 group-title="Bangla" tvg-id="GaziTV.bd" tvg-logo="https://i.imgur.com/2Lzhiq6.png" ,Gazi TV (1080p) [Not 24/7]
-https://ythls.onrender.com/channel/UCXuHIkEezOy_b1pnkN0-TIg.m3u8
-#EXTINF:-1 ,7 Star
-https://drive.google.com/uc?export=download&id=1fJ46hqkJXL-lJbYegEfuG5XLOU8aEk1b
-#EXTINF:-1 group-title="Bangla" ,R Plus Gold(BD2)
-http://idvd.multitvsolution.com/idvo/rplusgold.m3u8
-#EXTINF:-1 group-title="Bangla" ,Bangla Talkies
-http://45.127.56.3:7698/live/Corpus-POL/SRV2/4/BANGLA-TALKIES/video.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="GBBB3800005QO" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB3800005QO_20220323T071808SQUARE.png_20220323071810.png" ,XITE Hits
+https://i.mjh.nz/SamsungTVPlus/GBBB3800005QO.m3u8
 #EXTINF:-1 group-title="Bangla" ,Star Jalsha
 http://45.127.56.3:9698/live/Corpus-POL/SRV4/3/STAR-JALSHA/video.m3u8
-#EXTINF:-1 group-title="Bangla" ,CCN BANGLA
-http://d1zuxgm0d4hmth.cloudfront.net/cnnbangla/01.m3u8
-#EXTINF:-1 ,DESHI TV
-https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="AlJazeeraEnglish.qa" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Aljazeera_eng.svg/512px-Aljazeera_eng.svg.png" ,Al Jazeera English
+https://d1cy85syyhvqz5.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/aljazeeraLive/AJE/index.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="AsianTV.bd" tvg-logo="https://i.imgur.com/k2adSjA.png" ,Asian TV (720p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/asian-test-sample-ok-d.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="CNNInternationalEurope.us" tvg-logo="https://i.imgur.com/05S3yYZ.png" ,CNN International Europe (720p)
+https://cnn-cnninternational-1-eu.rakuten.wurl.tv/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="IndependentTV.bd" tvg-logo="https://i.imgur.com/POXFhGN.png" ,Independent TV (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/independent-8-org.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="GBBD1900008O3" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1900008O3_20230614T010144SQUARE.png_20230614010144.png" ,CNN FAST
+https://i.mjh.nz/SamsungTVPlus/GBBD1900008O3.m3u8
+#EXTINF:-1 group-title="News" tvg-id="GBBD1100002L5" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1100002L5_20230823T033121SQUARE.png_20230823033121.png" ,FRANCE 24 FAST
+https://i.mjh.nz/SamsungTVPlus/GBBD1100002L5.m3u8
+#EXTINF:-1 group-title="News" tvg-id="GBBB1500004LG" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB1500004LG_20230913T031533SQUARE.png_20230913031533.png" ,NBC News NOW
+https://i.mjh.nz/SamsungTVPlus/GBBB1500004LG.m3u8
+#EXTINF:-1 group-title="News" tvg-id="GBAJ4900020VP" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ4900020VP_20230222T011312SQUARE.png_20230222011313.png" ,Euronews Live
+https://i.mjh.nz/SamsungTVPlus/GBAJ4900020VP.m3u8
+#EXTINF:-1 group-title="News" tvg-id="CBSNews.us" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/CBS_News_logo_%282020%29.svg/512px-CBS_News_logo_%282020%29.svg.png" ,CBS News National (720p)
+https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBAJ4900007I2" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ4900007I2_20230926T032317SQUARE.png_20230926032318.png" ,Comedy Movies - Rakuten TV
+https://i.mjh.nz/SamsungTVPlus/GBAJ4900007I2.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="GBBB3800005QO" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB3800005QO_20220323T071808SQUARE.png_20220323071810.png" ,XITE Hits
+https://i.mjh.nz/SamsungTVPlus/GBBB3800005QO.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBBB3800003JH" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB3800003JH_20220323T071458SQUARE.png_20220323071500.png" ,Moviedome
+https://i.mjh.nz/SamsungTVPlus/GBBB3800003JH.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBAJ400042T1" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ400042T1_20230222T011314SQUARE.png_20230222011314.png" ,Sparkle Movies
+https://i.mjh.nz/SamsungTVPlus/GBAJ400042T1.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBBD500007TG" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD500007TG_20230413T013222SQUARE.png_20230413013223.png" ,Grjngo - Western Movies
+https://i.mjh.nz/SamsungTVPlus/GBBD500007TG.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBBA3300050RG" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBA3300050RG_20220323T071656SQUARE.png_20220323071659.png" ,wedo movies
+https://i.mjh.nz/SamsungTVPlus/GBBA3300050RG.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBAJ4900011Y4" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ4900011Y4_20220323T071426SQUARE.png_20220323071430.png" ,Filmstream
+https://i.mjh.nz/SamsungTVPlus/GBAJ4900011Y4.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBBA3300020DM" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBA3300020DM_20230322T075406SQUARE.png_20230322075406.png" ,Romance Movies - Rakuten TV
+https://i.mjh.nz/SamsungTVPlus/GBBA3300020DM.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBBA33000557H" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBA33000557H_20221201T014509SQUARE.png_20221201014510.png" ,MovieSphere
+https://i.mjh.nz/SamsungTVPlus/GBBA33000557H.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBAJ400045P5" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ400045P5_20220810T012605SQUARE.png_20220810012605.png" ,Popflix
+https://i.mjh.nz/SamsungTVPlus/GBAJ400045P5.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBBC90001660" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBC90001660_20221012T015921SQUARE.png_20221012015922.png" ,Top Movies - Rakuten TV
+https://i.mjh.nz/SamsungTVPlus/GBBC90001660.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBAJ49000081B" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ49000081B_20220323T071414SQUARE.png_20220323071417.png" ,Drama Movies - Rakuten TV
+https://i.mjh.nz/SamsungTVPlus/GBAJ49000081B.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="GBAJ4900006TU" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ4900006TU_20220323T071344SQUARE.png_20220323071347.png" ,Action Movies - Rakuten TV
+https://i.mjh.nz/SamsungTVPlus/GBAJ4900006TU.m3u8
+#EXTINF:-1 group-title="General" tvg-id="BoishakhiTV.bd" tvg-logo="https://i.imgur.com/gxL05Y4.png" ,Boishakhi TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/boishakhitv-org.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="RTV.bd" tvg-logo="https://i.imgur.com/yu8ugqt.png" ,RTV (1080p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/rtv-sg.stream/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" ,Movie Bangla
 http://alvetv.com/moviebanglatv/8080/index.m3u8
-#EXTINF:-1 group-title="Bangla" ,Bangla Jago
-http://banglajagotv.livebox.co.in:80/banglajagohls/24x7.m3u8
-#EXTINF:-1 ,ZEE ACTION
-http://208.86.19.13:81/7288.stream/index.m3u8
-#EXTINF:-1 group-title="Bangla" ,Bangla TV
-http://208.86.19.13:81/504.stream/index.m3u8
-#EXTINF:-1 ,Free Cable TV
-http://freecatv-manik.xyz/freecatv.m3u8
+#EXTINF:-1 group-title="Bangla" ,R Plus Gold(BD2)
+http://idvd.multitvsolution.com/idvo/rplusgold.m3u8
 #EXTINF:-1 group-title="Bangla" tvg-id="SamayKolkata.in" tvg-logo="https://i.ibb.co/3mrYZDG/cropped-LOGO-web1.jpg" ,Samay Kolkata (720p)
 https://5dd3981940faa.streamlock.net/kbcration/kbcration/playlist.m3u8
-#EXTINF:-1 ,I IPTV [BD]
-http://162.244.81.142:1935/live/livestream/chunklist_w1681830417.m3u8
-#EXTINF:-1 group-title="Bangla" ,Channel S UK
-http://208.86.19.13:81/519.stream/index.m3u8
 #EXTINF:-1 group-title="freecatv" ,Hollywood HD
 http://iptv.prosto.tv:7000/ch50/video.m3u8
-#EXTINF:-1 ,Channel S (UK)
-https://ap02.iqplay.tv:8082/iqb8002/ch4n3ls/playlist.m3u8
-#EXTINF:-1 ,C MOVOIES
-http://208.86.19.13:81/22.stream/index.m3u8
-#EXTINF:-1 ,SUPER HD
-http://142.132.136.139:8000/play/a003/index.m3u8
-#EXTINF:-1 ,Wild EARTH
-https://wildearth-roku.amagi.tv/masterR720P.m3u8
-#EXTINF:-1 ,IND - DD Sports
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58185
-#EXTINF:-1 ,IND - SONY SAB UK HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58228
-#EXTINF:-1 ,IND - TRAVEL XP HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58227
-#EXTINF:-1 ,IND - SONY TV HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58223
-#EXTINF:-1 ,IND - SONY MAX 2
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58222
-#EXTINF:-1 ,IND - STAR SPORTS 1 HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58220
-#EXTINF:-1 ,IND - TEN 1 HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58219
-#EXTINF:-1 ,IND - B4U MUSIC
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58215
-#EXTINF:-1 ,IND - SONY SIX HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58207
-#EXTINF:-1 ,IND - ZEE ACTION
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58200
-#EXTINF:-1 group-title="FILM" ,IND - ZEE CINEMA HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58199
-#EXTINF:-1 ,IND - ZING
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58196
-#EXTINF:-1 ,IND - Sony MAX HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58193
-#EXTINF:-1 ,IND - ZEE TV
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58189
-#EXTINF:-1 ,IND - Zee TV UK
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58241
-#EXTINF:-1 ,IND - SONY PAL
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58239
-#EXTINF:-1 ,IND - SONY MAX UK HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58230
-#EXTINF:-1 ,IND - NDTV
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58379
-#EXTINF:-1 ,IND - FOOD FOOD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58375
-#EXTINF:-1 ,IND - B4U MOVIES
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58354
-#EXTINF:-1 ,IND - MTV PLUS
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58363
-#EXTINF:-1 ,IND - SET MAX
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58405
-#EXTINF:-1 ,IND - SAHARA SAMAY BIHAR
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58399
-#EXTINF:-1 ,IND - NEWS 24
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58389
-#EXTINF:-1 ,IND - MUSIC INDIA
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58385
-#EXTINF:-1 ,IND - Star Gold UK
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58450
-#EXTINF:-1 ,IND - ZOOM
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58441
-#EXTINF:-1 ,IND - ZEE TALKIES
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58436
-#EXTINF:-1 ,IND -  9X JALWA
-http://2hubs.ddns.net:25461/BabNour/telegrramm/62660
-#EXTINF:-1 ,IND - TEN SPORT 1
-http://2hubs.ddns.net:25461/BabNour/telegrramm/63594
-#EXTINF:-1 ,IND - TEN SPORT 2
-http://2hubs.ddns.net:25461/BabNour/telegrramm/63595
-#EXTINF:-1 group-title="FILM" ,IND - &flix
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67082
-#EXTINF:-1 group-title="FILM" ,IND - &Prive HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67084
-#EXTINF:-1 ,IND - &TV HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67085
-#EXTINF:-1 ,IND - 9XM
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67089
-#EXTINF:-1 ,IND - B4U Kadak
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67107
-#EXTINF:-1 ,IND - DD SPORTS
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67131
-#EXTINF:-1 ,IND - Bflix Movies HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67171
-#EXTINF:-1 ,IND - NAT GEO WILD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67181
-#EXTINF:-1 ,IND - Sony Pix HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67218
-#EXTINF:-1 ,IND - SONY SAB HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67220
-#EXTINF:-1 ,IND - SONY TEN 2
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67223
-#EXTINF:-1 ,IND - SONY TV UK
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67224
-#EXTINF:-1 ,IND - STAR BHARAT
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67231
-#EXTINF:-1 ,IND - STAR GOLD HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67232
-#EXTINF:-1 ,IND - STAR PLUS
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67236
-#EXTINF:-1 ,IND - Big Magic HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67243
-#EXTINF:-1 ,IND - DESI CHANNEL
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67251
-#EXTINF:-1 ,IND - TEN 2 HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67252
-#EXTINF:-1 ,IND - ZEE Action HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67266
-#EXTINF:-1 ,IND - STAR MOVIES
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67281
-#EXTINF:-1 ,IND - Brit Asia
-http://2hubs.ddns.net:25461/BabNour/telegrramm/66019
-#EXTINF:-1 ,IND - STAR SPORTS 2 HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69844
-#EXTINF:-1 ,IND - Peace TV Eng
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69847
-#EXTINF:-1 ,IND - Willow
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69848
-#EXTINF:-1 ,IND - STAR GOLD HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69850
-#EXTINF:-1 ,IND - Utsav Plus HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69853
-#EXTINF:-1 ,IND - COLORS HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69863
-#EXTINF:-1 ,IND - COLORS
-http://2hubs.ddns.net:25461/BabNour/telegrramm/69864
-#EXTINF:-1 ,IND - Food XP UK
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71063
-#EXTINF:-1 ,IND - ZEE AFLAM
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71064
-#EXTINF:-1 ,IND - Wow Cinema HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71096
-#EXTINF:-1 ,IND - STAR GOLD SELECT HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71097
-#EXTINF:-1 ,IND - TLC HD (JIO)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71098
-#EXTINF:-1 ,IND - ZEE BOLLYWOOD HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71101
-#EXTINF:-1 ,IND - Zee Punjabi HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71102
-#EXTINF:-1 ,IND - COLOR CINEPLEX HD (JIO)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71151
-#EXTINF:-1 ,IND - Discovery Science Hindi (jio)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71152
-#EXTINF:-1 ,IND - Discovery Turbo(JIO)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71153
-#EXTINF:-1 ,IND - JUS HINDI HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71154
-#EXTINF:-1 ,IND - MTV Beats HD (jio)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71155
-#EXTINF:-1 ,IND - Sony Ten 3 HD (JIO)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71157
-#EXTINF:-1 ,IND -   Filmchi India
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71158
-#EXTINF:-1 ,IND - Cartoon Networ (JIO)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71162
-#EXTINF:-1 ,IND - Nick Hindi HD (jio)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71166
-#EXTINF:-1 ,IND - Discovery HD World (jio)
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71169
-#EXTINF:-1 ,IND - Discovery Hindi HD *JIO*
-http://2hubs.ddns.net:25461/BabNour/telegrramm/71173
-#EXTINF:-1 ,IND - Sony YAY@VIP HINDI
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72597
-#EXTINF:-1 ,IND - Zee Cafe HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72598
-#EXTINF:-1 ,IND - ANIMAL PLANET HINDI
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67102
-#EXTINF:-1 ,IND - & Xplor
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72876
-#EXTINF:-1 ,IND - 9X Tashan HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72877
-#EXTINF:-1 ,IND - B4U Plus HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72879
-#EXTINF:-1 ,IND - HISTORY CHANNEL
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72904
-#EXTINF:-1 ,IND - Wow Kids
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72906
-#EXTINF:-1 ,IND -  POGO HINDI
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72919
-#EXTINF:-1 ,IND - COLORS HINDI DUB
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73014
-#EXTINF:-1 ,IND - Filmchi India
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73015
-#EXTINF:-1 ,IND - Epic HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73016
-#EXTINF:-1 ,IND - Fashion TV
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73017
-#EXTINF:-1 ,IND - Mastiii
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73018
-#EXTINF:-1 ,IND - Clasic Bollywood
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73019
-#EXTINF:-1 ,IND - Bolly Wood Premier
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73020
-#EXTINF:-1 ,IND - MTV HD +
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73021
-#EXTINF:-1 ,IND - STAR Bharat INDIA HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73023
-#EXTINF:-1 ,IND - Sony TV Asia HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73024
-#EXTINF:-1 ,IND - Sony Waha HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73025
-#EXTINF:-1 ,IND - BBO
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73026
-#EXTINF:-1 ,IND -  ZEE Zest
-http://2hubs.ddns.net:25461/BabNour/telegrramm/73027
-#EXTINF:-1 ,IND - Rishtey CinePlex UK
-http://2hubs.ddns.net:25461/BabNour/telegrramm/58448
-#EXTINF:-1 ,IND - SONY MAX
-http://2hubs.ddns.net:25461/BabNour/telegrramm/67216
-#EXTINF:-1 ,IND - Star Movies Select
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72599
-#EXTINF:-1 ,IND - Star Sports Select 1 HD
-http://2hubs.ddns.net:25461/BabNour/telegrramm/72905
+#EXTINF:-1 group-title="General" tvg-id="B24C.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2023/01/b24c-1.jpeg" ,B24C (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/b24c.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="BanglaVision.bd" tvg-logo="https://i.imgur.com/nCWgp38.png" ,Bangla Vision (1080p) [Geo-blocked]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/banglav000.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="Bangla21TV.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2016/02/bangla21tv.jpg?x50681" ,Bangla21 TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/bangla21tv000889956-sg.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="BTVWorld.bd" tvg-logo="https://i.imgur.com/sSnrg7o.png" ,BTV World (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/btvbd-office-sg.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="CanBanglaTV.ca" tvg-logo="https://i.imgur.com/CMUHtv3.png" ,CanBangla TV (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/canbanglatv.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="ChannelI.bd" tvg-logo="https://i.imgur.com/X0JJlOX.png" ,Channel I (1080p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channeli-8-org.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="DeenTV.uk" tvg-logo="https://i.imgur.com/Zp62Nbd.png" ,Deen TV (576p) [Not 24/7]
+https://ap02.iqplay.tv:8082/iqb8002/d33ntv/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="DesheBidesheTV.ca" tvg-logo="https://i.imgur.com/Ek1Ohj6.png" ,DesheBideshe TV (720p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/deshebideshe.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="JonmoBhumiTV.au" tvg-logo="https://i.imgur.com/2snahLk.png" ,JonmoBhumi TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/jonmobhumitv.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="NANTV.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2019/11/NAN-TV-Logo-02.png" ,NAN TV (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/nantv.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="NexusTV.bd" tvg-logo="https://i.imgur.com/XcJZKg4.png" ,Nexus TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/nexustv.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="NRBTV.ca" tvg-logo="https://i.imgur.com/oGNhnV3.png" ,NRB TV (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/nrb-eu.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="SomoyNewsTV.bd" tvg-logo="https://i.imgur.com/i54AQic.png" ,Somoy News TV (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/somoyt000011226615544544.stream/playlist.m3u8
+#EXTINF:-1 group-title="Undefined" tvg-id="MyTV.bd" tvg-logo="https://i.imgur.com/475qK5T.png" ,My TV (1080p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/mytv-up-off.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="DBCNews.bd" tvg-logo="https://i.imgur.com/Qbt6q4z.png" ,DBC News (1080p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/dbcnews.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="NTVEurope.bd" tvg-logo="https://europentv.ntvbd.com/sites/all/themes/sloth/logo.png" ,NTV Europe (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/ntvuk00332211.stream/playlist.m3u8
+#EXTINF:-1 group-title="Undefined" tvg-id="MohonaTV.bd" tvg-logo="https://i.imgur.com/E6doEWH.png" ,Mohona TV (1080p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/mohonatv00000223232244556633.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="SATV.bd" tvg-logo="https://i.imgur.com/tL9kxxB.png" ,SATV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/satvoff5666.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="ShreeBangla.in" tvg-logo="https://www.jagobd.com/wp-content/uploads/2022/07/shreebangla.jpg" ,Shree Bangla (576p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/shreebangla.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="TheChannelTV.ca" tvg-logo="https://i.imgur.com/pVAD0Zf.png" ,The Channel TV (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/thechanneltv.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="TimeTelevision.us" tvg-logo="https://i.imgur.com/foaF7e1.png" ,Time Television (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/timetvusa.stream/playlist.m3u8
+#EXTINF:-1 group-title="General" tvg-id="VarendraTV.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2017/01/varendro-tv.jpg?x50681" ,Varendra TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/varendratv.stream/playlist.m3u8
+#EXTINF:-1 group-title="Movies" tvg-id="MovieBangla.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2016/02/moviebangla.jpg?x50681" ,Movie Bangla (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/moviebanglalink2.stream/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="ATNMusic.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2015/12/atnmusic.jpg?x50681" ,ATN Music (360p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnmusic.stream/playlist.m3u8
+#EXTINF:-1 group-title="Music" tvg-id="RTVMusic.bd" tvg-logo="https://www.jagobd.com/wp-content/uploads/2017/01/rtvmusic.jpg?x50681" ,RTV Music (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/rtvmusic.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="ATNNews.bd" tvg-logo="https://i.imgur.com/4qZQKjo.png" ,ATN News (1080p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnws-sg.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="BijoyTV.bd" tvg-logo="https://i.imgur.com/Faetm0C.png" ,Bijoy TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/bijoy00.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="Channel24.bd" tvg-logo="https://i.imgur.com/4JLkaF7.png" ,Channel 24 (720p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel24-sg-e8e.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="EkusheyTV.bd" tvg-logo="https://i.imgur.com/lRpkGHj.png" ,Ekushey TV (480p)
+https://ekusheyserver.com/etvlivesn.m3u8
+#EXTINF:-1 group-title="News" tvg-id="HighNews.in" tvg-logo="https://pbs.twimg.com/profile_images/1104268476858937351/USUT4ykS_400x400.png" ,High News (480p)
+https://highmedia.livebox.co.in/HIGHNEWShls/LIVE.m3u8
+#EXTINF:-1 group-title="News" tvg-id="JamunaTV.bd" tvg-logo="https://www.jamuna.tv/wp-content/themes/jtv-news/img/logo.png" ,Jamuna TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/jamuna-test-sample-ok.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="News24.bd" tvg-logo="https://i.imgur.com/fkTHh75.png" ,News 24 (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/news24local.stream/playlist.m3u8
+#EXTINF:-1 group-title="News" tvg-id="SamayKolkata.in" tvg-logo="https://i.ibb.co/3mrYZDG/cropped-LOGO-web1.jpg" ,Samay Kolkata (720p)
+https://5dd3981940faa.streamlock.net/kbcration/kbcration/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="AnandaTV.bd" tvg-logo="https://i.imgur.com/jkbo7Qe.png" ,Ananda TV (720p) [Not 24/7]
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/anandatv.stream/playlist.m3u8
+#EXTINF:-1 group-title="Bangla" tvg-id="BanglaTV.bd" tvg-logo="https://i.imgur.com/DLGjTfI.png" ,Bangla TV (720p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/banglatvhd.stream/playlist.m3u8
+#EXTINF:-1 group-title="Undefined" tvg-id="Channel9.bd" tvg-logo="https://i.imgur.com/Xf5YuoE.png" ,Channel 9 (720p)
+https://us170.jagobd.com:447/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/channel9hd.stream/playlist.m3u8
+#EXTINF:-1 group-title="Natural History" tvg-id="GBBB5000002PL" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB5000002PL_20230823T033115SQUARE.png_20230823033116.png" ,Wild Planet
+https://i.mjh.nz/SamsungTVPlus/GBBB5000002PL.m3u8
+#EXTINF:-1 group-title="Natural History" tvg-id="GBBC900015D3" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBC900015D3_20230712T021136SQUARE.png_20230712021136.png" ,Adventure Earth
+https://i.mjh.nz/SamsungTVPlus/GBBC900015D3.m3u8
+#EXTINF:-1 group-title="Natural History" tvg-id="GBBA220000751" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBA220000751_20230125T022345SQUARE.png_20230125022346.png" ,INWILD
+https://i.mjh.nz/SamsungTVPlus/GBBA220000751.m3u8
+#EXTINF:-1 group-title="Natural History" tvg-id="GBBC4300002RW" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBC4300002RW_20230125T022354SQUARE.png_20230125022354.png" ,WildEarth
+https://i.mjh.nz/SamsungTVPlus/GBBC4300002RW.m3u8
+#EXTINF:-1 group-title="Natural History" tvg-id="GBBC300003UQ" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBC300003UQ_20231011T082518SQUARE.png_20231011082518.png" ,WaterBear
+https://i.mjh.nz/SamsungTVPlus/GBBC300003UQ.m3u8
+#EXTINF:-1 group-title="Factual Entertainment" tvg-id="GBBA22000063W" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBA22000063W_20230426T015615SQUARE.png_20230426015616.png" ,Wonder
+https://i.mjh.nz/SamsungTVPlus/GBBA22000063W.m3u8
+#EXTINF:-1 group-title="Factual Entertainment" tvg-id="GBAJ4900009UA" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBAJ4900009UA_20230322T075400SQUARE.png_20230322075401.png" ,Documentaries - Rakuten TV
+https://i.mjh.nz/SamsungTVPlus/GBAJ4900009UA.m3u8
+#EXTINF:-1 group-title="Factual Entertainment" tvg-id="GBBD1100001UI" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1100001UI_20230510T044353SQUARE.png_20230510044353.png" ,World War TV
+https://i.mjh.nz/SamsungTVPlus/GBBD1100001UI.m3u8
+#EXTINF:-1 group-title="Factual Entertainment" tvg-id="GBBA2200005ZA" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBA2200005ZA_20230426T015613SQUARE.png_20230426015614.png" ,History Hit
+https://i.mjh.nz/SamsungTVPlus/GBBA2200005ZA.m3u8
