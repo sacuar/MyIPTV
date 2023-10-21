@@ -1,11 +1,9 @@
 # MyIPTV
 iptv m3u url:
 
-new url september for sports and asia cup
 ```
-https://raw.githubusercontent.com/sacuar/MyIPTV/main/radio.m3u
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
 ```
-shortened url for sports:::
 ```
 
 ```
