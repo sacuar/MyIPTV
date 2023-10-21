@@ -1,6 +1,8 @@
 #EXTM3U
 #EXTINF:-1 group-title="Music" tvg-id="GBBB3800005QO" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBB3800005QO_20220323T071808SQUARE.png_20220323071810.png" ,XITE Hits
 https://i.mjh.nz/SamsungTVPlus/GBBB3800005QO.m3u8
+#EXTINF:-1 tvg-id="ArabicaTV.lb" tvg-logo="https://i.imgur.com/sTOoDy1.png" group-title="Music",Arabica TV (720p)
+http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
 #EXTINF:-1 group-title="Bangla" ,Star Jalsha
 http://45.127.56.3:9698/live/Corpus-POL/SRV4/3/STAR-JALSHA/video.m3u8
 #EXTINF:-1 group-title="News" tvg-id="AlJazeeraEnglish.qa" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Aljazeera_eng.svg/512px-Aljazeera_eng.svg.png" ,Al Jazeera English
