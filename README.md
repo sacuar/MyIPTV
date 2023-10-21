@@ -5,7 +5,10 @@ iptv m3u url:
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
 ```
 ```
-
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/radio.m3u
+```
+```
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 ```
 updated playlist music, bangla and hindi channels
 Short Link:
