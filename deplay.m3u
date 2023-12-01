@@ -1,6 +1,4 @@
 ﻿#EXTM3U
-#EXTINF:-1 group-title="Undefined" tvg-id="123tv.de" tvg-logo="https://i.imgur.com/slSUDNX.png" ,1-2-3 TV (270p)
-https://123tv-mx1.flex-cdn.net/index.m3u8
 #EXTINF:-1 group-title="Music" tvg-id="AdriaMusicTelevision.de" tvg-logo="https://i.imgur.com/QoDpnKg.png" ,ADRIA Music (1080p)
 https://cdne.folxplay.tv/folx-trz/streams/ch-1/master.m3u8
 #EXTINF:-1 group-title="Undefined" tvg-id="AlexBerlin.de" tvg-logo="https://i.imgur.com/eTmHk4e.png" ,Alex Berlin (1080p) [Not 24/7]
