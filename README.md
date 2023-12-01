@@ -4,6 +4,11 @@ iptv m3u url:
 ```
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
 ```
+
+Germain Playlist
+```
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/deplay.m3u
+```
 ```
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/radio.m3u
 ```
