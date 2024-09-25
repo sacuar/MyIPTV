@@ -5,7 +5,7 @@ iptv m3u url:
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
 ```
 
-Germain Playlist
+German Playlist
 ```
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/deu.m3u
 ```
