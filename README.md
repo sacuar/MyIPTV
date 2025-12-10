@@ -24,7 +24,7 @@ Original link:
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 
 ```
-https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 ```
 
 ![QR Code](https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png)
