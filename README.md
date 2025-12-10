@@ -2,7 +2,7 @@
 iptv m3u url:
 
 ```
-https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 ```
 
 German Playlist
