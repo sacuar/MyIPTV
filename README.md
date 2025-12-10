@@ -5,6 +5,10 @@ iptv m3u url:
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 ```
 
+MOVIE:
+```
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/movies.m3u
+```
 German Playlist
 ```
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/deu.m3u
