@@ -21,7 +21,7 @@ Short Link:
 https://cutt.ly/gRXVGjq
 ```
 Original link:
-https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
+https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 
 ```
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u
