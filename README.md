@@ -1,4 +1,5 @@
 # MyIPTV
+Randomly collected  working M3U links
 iptv m3u url:
 
 ```
@@ -31,6 +32,12 @@ https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 ```
 
+## Support the project
+
+If you find this project useful, you can support its development:
+
+<!--START_SECTION:buy-me-a-coffee-->
+<a href="https://www.buymeacoffee.com/sacuar" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 ![QR Code](https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png)
 
 https://rebrand.ly/18b0e6
