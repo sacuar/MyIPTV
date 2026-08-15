@@ -2,6 +2,14 @@
 Randomly collected  working M3U links
 iptv m3u url:
 
+<a href="https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png" target="_blank">
+    <img src="https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png"
+         alt="QR Code"
+         style="height:120px; width:auto; display:block; margin-bottom:10px;">
+</a>
+
+https://rebrand.ly/18b0e6
+
 ```
 https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u
 ```
@@ -40,19 +48,7 @@ If you find this project useful, you can support its development:
 <a href="https://www.buymeacoffee.com/sacuar" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
-<a href="https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png" target="_blank">
-    <img src="https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png"
-         alt="QR Code"
-         style="height:120px; width:auto; display:block; margin-bottom:10px;">
-</a>
 
-<a href="https://www.buymeacoffee.com/sacuar" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
-         alt="Buy Me A Coffee"
-         height="41" width="174">
-</a>
-
-https://rebrand.ly/18b0e6
 ```
 earlier list: Short:   https://cutt.ly/gRXVGjq
 
