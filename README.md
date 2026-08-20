@@ -1,4 +1,5 @@
-# 🎬 BANG IPTV Pro ## 🌟 Support the Project
+# 🎬 BANG IPTV Pro #
+🌟 Support the Project
 
 If you find this software useful, you can support its development:
 
