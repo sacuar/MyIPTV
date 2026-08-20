@@ -19,7 +19,7 @@ If you find this software useful, you can support its development:
     <em>Main Interface - World IPTV</em>
     <br><br>
     <img src="https://github.com/user-attachments/assets/1205d635-c3d6-40ec-88c3-820a7ec451a4" />
-" alt="Bangladesh Channels" width="800">
+"Bangladesh Channels" 
     <br>
     <em>Bangladesh Channels</em>
 </div>
