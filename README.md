@@ -22,7 +22,8 @@ I'm excited to announce the release of **BANG IPTV Pro v2.0** - a professional I
 
 ### Main Interface - World IPTV
 <p align="center">
-    <img src="screenshots/screenshot1.png" width="800" alt="Main Interface">
+    <img src="<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/01cf642b-89ab-4aad-88ff-b779081958ed" />
+" width="800" alt="Main Interface">
 </p>
 
 ### Bangladesh Channels
