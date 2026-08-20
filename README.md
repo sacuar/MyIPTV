@@ -1,7 +1,7 @@
 # 🎬 BANG IPTV Pro
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png" alt="BANG IPTV Pro" width="200">
+    ##<img src="https://raw.githubusercontent.com/sacuar/MyIPTV/main/photo/rebrand.ly.18b0e6.png" alt="BANG IPTV Pro" width="200">
     <br>
     <strong>Professional IPTV Player with Auto-Validation</strong>
     <br>
