@@ -1,4 +1,5 @@
 # 🎬 BANG IPTV Pro
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049" />
 
 <div align="center">
     <h3>Professional IPTV Player with Auto-Validation</h3>
