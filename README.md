@@ -18,6 +18,7 @@ I'm excited to announce the release of **BANG IPTV Pro v2.0** - a professional I
 ---
 
 ## 📸 Screenshots
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/9c206626-7719-4c02-90fa-31014b3864bb" />
 
 ### Main Interface - World IPTV
 <p align="center">
