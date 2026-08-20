@@ -42,7 +42,7 @@ I'm excited to announce the release of **BANG IPTV Pro v2.0** - a professional I
 | 🇧🇩 **Bangladesh Category** | ✅ | Dedicated BD channels from multiple sources |
 | 🖼️ **Channel Icons** | ✅ | Fetches icons from online databases |
 | 📅 **EPG Support** | ✅ | Electronic Program Guide integration |
-| 🔒 **Password Protection** | ✅ | Default password: `simple` - Ctrl+L to reveal links |
+| 🔒 **Password Protection** | ✅ | Default password: `mail me to get sacuar@gmail.com` - Ctrl+L to reveal links |
 | 🔄 **Auto-Update** | ✅ | Background link validation every 5 minutes |
 | 📺 **Professional UI** | ✅ | Dark theme, right-click menu, status indicators |
 | 🎵 **Music Channels** | ✅ | 650+ music channels from iptv-org |
@@ -86,7 +86,7 @@ https://iptv-org.github.io/iptv/categories/music.m3u
 ## 📥 Download
 
 **Download the latest release from:**
-**[Releases Page](https://github.com/sacuar/BANG-IPTV-Pro/releases/latest)**
+**[Releases Page](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO)**
 
 **Requirements:**
 - Windows 10/11
@@ -127,7 +127,7 @@ https://iptv-org.github.io/iptv/categories/music.m3u
 
 ## 🔐 Password Protection
 
-Default password: **`mail me`**
+Default password: **`mail me sacuar@gmail.com`**
 
 - Press `Ctrl+L` to toggle link visibility
 - Enter the password to reveal channel URLs
@@ -142,7 +142,7 @@ Default password: **`mail me`**
 - ✅ Added Bangladesh category with multiple sources
 - ✅ Added channel icons from online databases
 - ✅ Added EPG support
-- ✅ Added password-protected link visibility (default: `simple`)
+- ✅ Added password-protected link visibility (default: `mail me to get password sacuar@gmail.com`)
 - ✅ Added background auto-update every 5 minutes
 - ✅ Added 650+ music channels
 - ✅ Added professional dark theme UI
