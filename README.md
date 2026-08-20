@@ -1,4 +1,12 @@
-# 🎬 BANG IPTV Pro
+# 🎬 BANG IPTV Pro ## 🌟 Support the Project
+
+If you find this software useful, you can support its development:
+
+<!--START_SECTION:buy-me-a-coffee-->
+<a href="https://www.buymeacoffee.com/sacuar" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
+</a>
+<!--END_SECTION:buy-me-a-coffee-->
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049" />
 
 <div align="center">
@@ -110,14 +118,14 @@ https://iptv-org.github.io/iptv/categories/music.m3u
 | `M` | Mute |
 | `F` | Fullscreen |
 | `Esc` | Exit fullscreen |
-| `Ctrl+L` | Toggle link visibility (password: `simple`) |
+| `Ctrl+L` | Toggle link visibility (password: `mail me`) |
 | `Ctrl+R` | Refresh playlist |
 
 ---
 
 ## 🔐 Password Protection
 
-Default password: **`simple`**
+Default password: **`mail me`**
 
 - Press `Ctrl+L` to toggle link visibility
 - Enter the password to reveal channel URLs
