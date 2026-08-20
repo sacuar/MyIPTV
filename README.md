@@ -1,10 +1,16 @@
 # 🎬 BANG IPTV Pro
 
 <div align="center">
-    <img src="screenshots/icon.png" alt="BANG IPTV Pro" width="200">
-    <br>
     <h3>Professional IPTV Player with Auto-Validation</h3>
     <p>Bangladesh Category · EPG Support · Music Channels · Auto-Link Validation</p>
+    <br>
+    <img src="screenshots/screenshot1.png" alt="Main Interface" width="800">
+    <br>
+    <em>Main Interface - World IPTV</em>
+    <br><br>
+    <img src="screenshots/screenshot2.png" alt="Bangladesh Channels" width="800">
+    <br>
+    <em>Bangladesh Channels</em>
 </div>
 
 ---
@@ -14,21 +20,6 @@
 ### 🚀 BANG IPTV Pro v2.0 - Happy New Release!
 
 I'm excited to announce the release of **BANG IPTV Pro v2.0** - a professional IPTV player with automatic link validation, Bangladesh category support, channel icons, and EPG integration.
-
----
-
-## 📸 Screenshots
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/9c206626-7719-4c02-90fa-31014b3864bb" />
-
-### Main Interface - World IPTV
-<p align="center">
-    <img src="<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/01cf642b-89ab-4aad-88ff-b779081958ed" />
-</p>
-
-### Bangladesh Channels
-<p align="center">
-    <img src="screenshots/screenshot2.png" width="800" alt="Bangladesh Channels">
-</p>
 
 ---
 
@@ -81,44 +72,30 @@ https://iptv-org.github.io/iptv/categories/music.m3u
 
 ---
 
-## 🔧 Installation
+## 📥 Download
 
-### Method 1: Run from Source
-
-#### Requirements
-- Python 3.10 or higher
-- VLC Media Player installed
-
-#### Install Dependencies
-```bash
-pip install python-vlc Pillow requests
-```
-
-#### Run the App
-```bash
-python iptv_pro.py
-```
-
-### Method 2: Download EXE
-
-Download the latest release from:
+**Download the latest release from:**
 **[Releases Page](https://github.com/sacuar/BANG-IPTV-Pro/releases/latest)**
 
-No Python installation required!
+**Requirements:**
+- Windows 10/11
+- VLC Media Player installed
+- No Python installation required
 
 ---
 
 ## 🚀 How to Use
 
-1. **Launch the app** (double-click `BANG_IPTV_Pro.exe` or run `python iptv_pro.py`)
-2. **Select a source** from the dropdown menu
-3. Click **"📥 Load"** to load channels
-4. **Browse channels** - scroll through the list
-5. **Search** - type to filter channels by name
-6. **Filter by category** - use the category dropdown
-7. **Double-click** a channel to watch
-8. **Controls**: Play/Pause, Stop, Previous/Next channel
+1. **Download** `BANG_IPTV_Pro.exe` from the releases page
+2. **Double-click** the `.exe` file to launch
+3. **Select a source** from the dropdown menu
+4. Click **"📥 Load"** to load channels
+5. **Browse channels** - scroll through the list
+6. **Search** - type to filter channels by name
+7. **Filter by category** - use the category dropdown
+8. **Double-click** a channel to watch
 9. **Right-click** a channel for options (Copy URL, Info)
+10. **Controls**: Play/Pause, Stop, Previous/Next channel
 
 ---
 
@@ -134,37 +111,6 @@ No Python installation required!
 | `Esc` | Exit fullscreen |
 | `Ctrl+L` | Toggle link visibility (password: `simple`) |
 | `Ctrl+R` | Refresh playlist |
-
----
-
-## 🛠️ Build EXE
-
-### Batch Builder
-Run the included batch file:
-```batch
-build_exe.bat
-```
-
-### Manual PyInstaller
-```bash
-pip install pyinstaller
-pyinstaller --noconfirm --onefile --windowed --name "BANG_IPTV_Pro" iptv_pro.py
-```
-
----
-
-## 📋 Requirements
-
-### For Source Code
-- Windows 10/11, Linux, or macOS
-- Python 3.10+
-- VLC Media Player installed
-- pip (Python package manager)
-
-### For EXE Version
-- Windows 10/11
-- VLC Media Player installed
-- No Python required
 
 ---
 
