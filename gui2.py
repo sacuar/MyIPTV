@@ -14,6 +14,19 @@ from playlist_service import (
 )
 
 
+
+FREE_SOURCES = {
+    "Custom URL / file": "",
+    "Global free TV": "https://iptv-org.github.io/iptv/index.m3u",
+    "Bangladesh": "https://iptv-org.github.io/iptv/countries/bd.m3u",
+    "United Kingdom": "https://iptv-org.github.io/iptv/countries/uk.m3u",
+    "Germany": "https://iptv-org.github.io/iptv/countries/de.m3u",
+    "News": "https://iptv-org.github.io/iptv/categories/news.m3u",
+    "Sports": "https://iptv-org.github.io/iptv/categories/sports.m3u",
+    "Music": "https://iptv-org.github.io/iptv/categories/music.m3u",
+    "Movies": "https://iptv-org.github.io/iptv/categories/movies.m3u",
+}
+
 class PlaylistApp(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -21,6 +34,7 @@ class PlaylistApp(tk.Tk):
         self.geometry("1020x620")
         self.minsize(760, 460)
         self.source = tk.StringVar()
+        self.preset = tk.StringVar(value="Custom URL / file")
         self.search = tk.StringVar()
         self.category = tk.StringVar(value="All")
         self.status = tk.StringVar(value="All")
@@ -43,6 +57,13 @@ class PlaylistApp(tk.Tk):
         frame = ttk.Frame(self, padding=16)
         frame.pack(fill="both", expand=True)
         ttk.Label(frame, text="BANG IPTV Pro · Playlist Validator", style="Heading.TLabel").pack(anchor="w")
+
+        preset_bar = ttk.Frame(frame)
+        preset_bar.pack(fill="x", pady=(12, 3))
+        ttk.Label(preset_bar, text="Free playlist").pack(side="left")
+        presets = ttk.Combobox(preset_bar, textvariable=self.preset, state="readonly", values=list(FREE_SOURCES), width=25)
+        presets.pack(side="left", padx=(10, 0))
+        presets.bind("<<ComboboxSelected>>", self.select_preset)
 
         source_bar = ttk.Frame(frame)
         source_bar.pack(fill="x", pady=(14, 8))
@@ -104,6 +125,11 @@ class PlaylistApp(tk.Tk):
         self.search.trace_add("write", self._schedule_render)
         self.status_box.bind("<<ComboboxSelected>>", lambda _event: self.render())
         self.category_box.bind("<<ComboboxSelected>>", lambda _event: self.render())
+
+    def select_preset(self, _event=None):
+        source = FREE_SOURCES.get(self.preset.get())
+        if source:
+            self.source.set(source)
 
     def browse(self):
         path = filedialog.askopenfilename(
