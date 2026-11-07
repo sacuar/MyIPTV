@@ -141,7 +141,7 @@ class BANGIPTVPlayer(tk.Tk):
         self.search_job = None
         self.messages = queue.Queue()
         self.fullscreen = False
-        self.volume = tk.IntVar(value=max(0, min(100, int(settings.get("volume", 70)))))
+        self.volume = tk.DoubleVar(value=max(0, min(100, int(settings.get("volume", 70)))))
         self.source_kind = tk.StringVar(value="Bangladesh — Free TV")
         self.source = tk.StringVar(value=FREE_PLAYLISTS["Bangladesh — Free TV"])
         self.search = tk.StringVar()
@@ -324,7 +324,9 @@ class BANGIPTVPlayer(tk.Tk):
             self.channels, query=self.search.get(), group=self.group.get(),
             favorites=self.favorites if self.only_favorites.get() else None,
         )
-        self.tree.delete(*self.tree.get_children())
+        items = self.tree.get_children()
+        if items:
+            self.tree.delete(*items)
         self._add_rows(token, 0)
 
     def _add_rows(self, token, start):
@@ -356,7 +358,7 @@ class BANGIPTVPlayer(tk.Tk):
         try:
             if self.backend is None:
                 self.backend = VLCController(self.surface)
-                self.backend.player.audio_set_volume(self.volume.get())
+                self.backend.player.audio_set_volume(int(self.volume.get()))
             self.backend.play(channel.url)
         except Exception as error:
             self.status.set("Playback is unavailable.")
@@ -386,7 +388,7 @@ class BANGIPTVPlayer(tk.Tk):
 
     def set_volume(self, _value=None):
         if self.backend:
-            self.backend.player.audio_set_volume(self.volume.get())
+            self.backend.player.audio_set_volume(int(self.volume.get()))
 
     def toggle_favorite(self):
         channel = self._selected_channel()
