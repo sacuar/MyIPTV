@@ -1,6 +1,8 @@
+import tempfile
 import unittest
+from pathlib import Path
 
-from m3u_export import serialize_m3u
+from m3u_export import save_m3u, serialize_m3u
 
 
 class M3uExportTests(unittest.TestCase):
@@ -20,6 +22,7 @@ class M3uExportTests(unittest.TestCase):
         channels = [
             {"name": "Missing"},
             {"name": "Multiline", "url": "https://a.example\n#EXTINF:-1,Injected"},
+            {"name": "Directive", "url": "#EXTINF:-1,Fake"},
             {"name": "Valid", "url": "https://example.com/live"},
         ]
         self.assertEqual(
@@ -27,14 +30,30 @@ class M3uExportTests(unittest.TestCase):
             "#EXTM3U\n#EXTINF:-1,Valid\nhttps://example.com/live\n",
         )
 
-    def test_normalizes_multiline_names(self):
-        self.assertEqual(
-            serialize_m3u([{"name": "BBC\nNews", "url": "rtsp://example.com/live"}]),
-            "#EXTM3U\n#EXTINF:-1,BBC News\nrtsp://example.com/live\n",
-        )
+    def test_metadata_preserved_and_sanitized(self):
+        content = serialize_m3u([{
+            "name": "BBC\nNews", "url": "https://example.com/live",
+            "tvg": {"id": "bbc.news", "name": 'BBC "One"'},
+            "logo": "https://example.com/logo.png", "category": "UK\nNews",
+            "language": {"name": "English"},
+        }])
+        self.assertIn('tvg-id="bbc.news"', content)
+        self.assertIn('tvg-name="BBC &quot;One&quot;"', content)
+        self.assertIn('group-title="UK News"', content)
+        self.assertIn('tvg-logo="https://example.com/logo.png"', content)
+        self.assertIn('tvg-language="English"', content)
+        self.assertIn(',BBC News\nhttps://example.com/live\n', content)
 
     def test_empty_playlist_still_has_header(self):
         self.assertEqual(serialize_m3u([]), "#EXTM3U\n")
+
+    def test_save_utf8_and_replace(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "channels.m3u"
+            target.write_text("old", encoding="utf-8")
+            save_m3u(target, [{"name": "বাংলা", "url": "https://example.com/a"}])
+            self.assertIn("বাংলা", target.read_text(encoding="utf-8"))
+            self.assertEqual(list(Path(tmp).iterdir()), [target])
 
 
 if __name__ == "__main__":

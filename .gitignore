@@ -10,3 +10,12 @@ helpers/countries.md
 
 # OS
 .DS_Store
+
+# Generated IPTV playlist outputs
+cleaned.m3u
+reachable.m3u
+bang_channels.m3u
+bang_working_channels.m3u
+working_channels.m3u
+__pycache__/
+*.pyc
