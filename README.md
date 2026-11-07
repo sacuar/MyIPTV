@@ -181,6 +181,37 @@ The repository contains an Unlicense `LICENSE` file, but earlier versions of thi
 
 The `main` branch currently contains playlist processing utilities (`gui.py`, `gui2.py`, `m3u_export.py`) and test helpers, but does **not** contain the full source for the released Windows player. To run the playlist export tests, use `python -m unittest discover -s tests -v` from the repository root. The `gui2.py` helper additionally needs the `m3u-parser` package.
 
+## Playlist management (new)
+
+The playlist utility is **separate from the released Windows player**. Start it with:
+
+```bash
+python -m pip install m3u-parser
+python gui2.py
+```
+
+Choose a maintained, free-to-access **iptv-org** playlist (Global, Bangladesh, UK, Germany, News, Sports, Music or Movies), or paste a URL/open a local M3U file. Use **Check live streams** to check connectivity in the background; the UI remains responsive. Search by channel name, filter by category or status, and export a standard UTF-8 M3U with logos, groups and EPG identifiers retained.
+
+- **Export working only** is available after validation and removes duplicates by URL by default.
+- **Without validation**, exported channels are *unchecked*, never labelled working or dead. Disable *Export working only* if you want to export every channel without checking.
+- A URL returning 200/206 does not guarantee the media plays; DRM, geoblocking and authentication may still prevent viewing.
+- Broken or old playlist files have been removed from the current source tree. They remain recoverable from Git history, but bookmarks to their raw URLs should be updated.
+
+To clean **your own legacy local playlists** without overwriting them:
+
+```bash
+python scripts/clean_playlists.py Play1.m3u play.m3u --output cleaned.m3u
+python scripts/clean_playlists.py Play1.m3u --verify --output reachable.m3u
+```
+
+The first command removes duplicate URLs but does **not** classify unchecked streams as working. The optional `--verify` command exports only streams that responded successfully to an HTTP request; 404/410 are considered missing only after two checks, while access denied, rate limited or timed-out streams remain *unknown*, not proved broken. The original input files are unchanged. These checks may take time and should be used with playlists you have permission to access.
+
+Run automated checks:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
 ## 📜 Disclaimer
 
 All IPTV streams are sourced from publicly available playlists. Users are responsible for ensuring they have the right to access any content they stream. This software does not host or provide any copyrighted content.
