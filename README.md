@@ -173,20 +173,7 @@ If you find this software useful, you can support its development:
 
 ## ⚠️ Legal & Copyright
 
-**© 2024 BANG IPTV Pro - All Rights Reserved**
-
-**Licensing needs clarification:** the repository's `LICENSE` file contains the Unlicense, which permits redistribution and modification, while the restrictions below describe a proprietary distribution. The maintainer should reconcile these terms; consult the repository licence and seek clarification before relying on the conflicting README restrictions.
-
-### ❌ Not Permitted:
-- Commercial use
-- Resale or redistribution
-- Copying or modification without permission
-- Claiming as your own work
-
-### ✅ Permitted:
-- Personal use
-- Non-commercial use
-- Testing and evaluation
+The repository contains an Unlicense `LICENSE` file, but earlier versions of this README also described the software as proprietary. These statements conflict. **The maintainer must review the distribution terms and clarify whether the licence covers the released executable as well as the source files.** This documentation change does not amend the existing licence or revoke any rights previously granted.
 
 ---
 
