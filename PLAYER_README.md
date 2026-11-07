@@ -20,16 +20,16 @@ This folder introduces a **real desktop IPTV player**. The source is independent
 2. Install the official [VLC Media Player](https://www.videolan.org/vlc/).
 3. From the repository directory:
 
-\`\`\`powershell
+```powershell
 python -m pip install -r requirements-player.txt
 python bang_iptv_player.py
-\`\`\`
+```
 
 Select a free playlist (Bangladesh is the default), click **Load channels**, then double-click a channel. F11 makes the player fullscreen; Escape exits fullscreen, Ctrl+F searches, Ctrl+O opens a local playlist, Space toggles play/pause, and M toggles mute.
 
 ## Windows EXE build
 
-The workflow at \`.github/workflows/build-player-windows.yml\` runs unit tests and packages the new application with PyInstaller. On a successful run, the **BANG-IPTV-Pro-Windows** GitHub Actions artifact contains \`BANG_IPTV_Pro.exe\`. This is a **new build**, not a replacement of the older GitHub Release until you test it and choose to publish it.
+The workflow at `.github/workflows/build-player-windows.yml` runs unit tests and packages the new application with PyInstaller. On a successful run, the **BANG-IPTV-Pro-Windows** GitHub Actions artifact contains `BANG_IPTV_Pro.exe`. This is a **new build**, not a replacement of the older GitHub Release until you test it and choose to publish it.
 
 The EXE still needs VLC Media Player installed on the Windows computer; VLC libraries are not bundled.
 
@@ -41,9 +41,9 @@ Use only content you are authorised to access.
 
 ## Tests
 
-\`\`\`powershell
+```powershell
 python -m unittest discover -s tests -p "test_player_core.py" -v
-\`\`\`
+```
 
 ## Source and licence
 
