@@ -14,7 +14,7 @@ If you find this software useful, you can support its development:
     <h3>Professional IPTV Player with Auto-Validation</h3>
     <p>Bangladesh Category · EPG Support · Music Channels · Auto-Link Validation</p>
     <br>
-    <img src="screenshots/screenshot1.png" alt="Main Interface" width="800">
+    <img src="https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049" alt="BANG IPTV Pro interface" width="800">
     <br>
     <em>Main Interface - World IPTV</em>
     <br><br>
@@ -42,7 +42,7 @@ I'm excited to announce the release of **BANG IPTV Pro v2.0** - a professional I
 | 🇧🇩 **Bangladesh Category** | ✅ | Dedicated BD channels from multiple sources |
 | 🖼️ **Channel Icons** | ✅ | Fetches icons from online databases |
 | 📅 **EPG Support** | ✅ | Electronic Program Guide integration |
-| 🔒 **Password Protection** | ✅ | Default password: `mail me to get sacuar@gmail.com` - Ctrl+L to reveal links |
+| 🔒 **Password Protection** | ✅ | Ctrl+L opens the protected link-visibility control |
 | 🔄 **Auto-Update** | ✅ | Background link validation every 5 minutes |
 | 📺 **Professional UI** | ✅ | Dark theme, right-click menu, status indicators |
 | 🎵 **Music Channels** | ✅ | 650+ music channels from iptv-org |
@@ -120,14 +120,14 @@ https://iptv-org.github.io/iptv/categories/music.m3u
 | `M` | Mute |
 | `F` | Fullscreen |
 | `Esc` | Exit fullscreen |
-| `Ctrl+L` | Toggle link visibility (password: `mail me`) |
+| `Ctrl+L` | Toggle protected link visibility |
 | `Ctrl+R` | Refresh playlist |
 
 ---
 
 ## 🔐 Password Protection
 
-Default password: **`mail me sacuar@gmail.com`**
+For access details, contact the maintainer. The password is not published here.
 
 - Press `Ctrl+L` to toggle link visibility
 - Enter the password to reveal channel URLs
@@ -142,7 +142,7 @@ Default password: **`mail me sacuar@gmail.com`**
 - ✅ Added Bangladesh category with multiple sources
 - ✅ Added channel icons from online databases
 - ✅ Added EPG support
-- ✅ Added password-protected link visibility (default: `mail me to get password sacuar@gmail.com`)
+- ✅ Added password-protected link visibility
 - ✅ Added background auto-update every 5 minutes
 - ✅ Added 650+ music channels
 - ✅ Added professional dark theme UI
@@ -173,22 +173,13 @@ If you find this software useful, you can support its development:
 
 ## ⚠️ Legal & Copyright
 
-**© 2024 BANG IPTV Pro - All Rights Reserved**
-
-This software is **proprietary** and **not for copying, distribution, or sale** without explicit permission from the author.
-
-### ❌ Not Permitted:
-- Commercial use
-- Resale or redistribution
-- Copying or modification without permission
-- Claiming as your own work
-
-### ✅ Permitted:
-- Personal use
-- Non-commercial use
-- Testing and evaluation
+The repository contains an Unlicense `LICENSE` file, but earlier versions of this README also described the software as proprietary. These statements conflict. **The maintainer must review the distribution terms and clarify whether the licence covers the released executable as well as the source files.** This documentation change does not amend the existing licence or revoke any rights previously granted.
 
 ---
+
+## 🧰 Source Code and Development
+
+The `main` branch currently contains playlist processing utilities (`gui.py`, `gui2.py`, `m3u_export.py`) and test helpers, but does **not** contain the full source for the released Windows player. To run the playlist export tests, use `python -m unittest discover -s tests -v` from the repository root. The `gui2.py` helper additionally needs the `m3u-parser` package.
 
 ## 📜 Disclaimer
 
@@ -200,7 +191,7 @@ All IPTV streams are sourced from publicly available playlists. Users are respon
 
 - **GitHub:** [sacuar](https://github.com/sacuar)
 - **Buy Me a Coffee:** [buymeacoffee.com/sacuar](https://buymeacoffee.com/sacuar)
-- **Issues:** [Report a Bug](https://github.com/sacuar/BANG-IPTV-Pro/issues)
+- **Issues:** [Report a Bug](https://github.com/sacuar/MyIPTV/issues)
 
 ---
 
