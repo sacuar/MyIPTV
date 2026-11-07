@@ -1,7 +1,11 @@
 from tkinter import Tk, Label, Entry, Button, Text, END
 from m3u_parser import M3uParser
+from m3u_export import serialize_m3u
+
+working_streams = []
 
 def process_url():
+    global working_streams
     url = url_entry.get()
 
     useragent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
@@ -33,8 +37,8 @@ def process_url():
         result_text.insert(END, "{}\n{}\n\n".format(stream['name'], stream['url']))
 
 def save_playlist():
-    playlist = result_text.get(1.0, END)
-    with open("working_channels.m3u", "w") as f:
+    playlist = serialize_m3u(working_streams)
+    with open("working_channels.m3u", "w", encoding="utf-8", newline="\n") as f:
         f.write(playlist)
 
     save_label.config(text="M3U playlist saved as working_channels.m3u")
