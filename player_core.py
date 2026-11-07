@@ -52,7 +52,10 @@ def _safe_stream_url(value):
     value = value.strip().strip('"')
     if not value or any(char.isspace() for char in value):
         return ""
-    parts = urlsplit(value)
+    try:
+        parts = urlsplit(value)
+    except ValueError:
+        return ""
     if parts.scheme.lower() not in STREAM_SCHEMES or not parts.netloc:
         return ""
     return value
