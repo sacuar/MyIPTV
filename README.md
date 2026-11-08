@@ -17,7 +17,7 @@
 
 ## 📥 Choose your version
 
-**Both Windows releases are available. The original stable release has NOT been replaced or deleted.** These are separate applications; the beta is a new implementation, not a patch to the original executable.
+**The original stable release and both beta releases remain available. The August 2026 version has NOT been replaced or deleted.** These are separate applications; the beta is a new implementation, not a patch to the original executable.
 
 | | **Original stable** | **New v3.0 Beta 2** |
 |---|---|---|
@@ -34,7 +34,7 @@
 
 The **stable** column describes features *advertised for the original executable* in earlier project documentation, not independently retested in this update. The **beta** column reflects features implemented in the current source; successful compilation does not guarantee every stream will play.
 
-| Capability | Original stable (advertised) | v3.0 Beta 1 (implemented) |
+| Capability | Original stable (advertised) | v3.0 Beta 2 (implemented) |
 |---|:---:|:---:|
 | Watch IPTV in an embedded video player | ✅ | ✅ |
 | Free-TV playlists / Bangladesh channels | ✅ | ✅ |
@@ -175,7 +175,8 @@ Checks run while the application is open. Channels hidden as stopped remain reco
 
 ## 📌 Release history
 
-- **8 November 2026 — [v3.0 Beta 2](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.2):** Automatic playlist reload, background health checks, Hide stopped option, manual recheck and verified M3U export.\n- **8 November 2026 — [v3.0 Beta 1](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.1):** New Python-based Windows player with VLC playback, free-playlist presets, favourites, search, categories, duplicate removal and independent EXE build.
+- **8 November 2026 — [v3.0 Beta 2](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.2):** Automatic playlist reload, background health checks, Hide stopped option, manual recheck and verified M3U export.
+- **8 November 2026 — [v3.0 Beta 1](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.1):** New Python-based Windows player with VLC playback, free-playlist presets, favourites, search, categories, duplicate removal and independent EXE build.
 - **20 August 2026 — [Original stable release](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO):** Preserved legacy Windows player; its earlier documentation described EPG, channel icons, link validation and password-restricted link visibility.
 
 The beta does **not** replace the original release. Further versions should be tagged separately.
