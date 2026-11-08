@@ -1,4 +1,4 @@
-name: Publish BANG IPTV Pro v3 beta 2
+name: Publish BANG IPTV Pro v3 beta 3
 
 on:
   push:
@@ -40,16 +40,16 @@ jobs:
       - name: Publish beta release without overwriting existing stable release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v3.0.0-beta.2
+          tag_name: v3.0.0-beta.3
           target_commitish: ${{ github.sha }}
-          name: BANG IPTV Pro v3.0 Beta 2 — Auto-refresh and stream health
+          name: BANG IPTV Pro v3.0 Beta 3 — Community and channel controls
           prerelease: true
           make_latest: false
           fail_on_unmatched_files: true
           files: dist/BANG_IPTV_Pro.exe
           body: |
             ## New Windows player — beta build
-            This is the second beta of the new BANG IPTV Pro player. Beta 1 and the original August 2026 stable release remain unchanged.
+            This is the third beta of the new BANG IPTV Pro player. Both earlier betas and the original August 2026 stable release remain unchanged.
             The original August 2026 release remains available and unchanged.
 
             ### Included
@@ -61,6 +61,8 @@ jobs:
             - Background stream checks in bounded batches, with confirmation of HTTP 404/410 before hiding
             - Hide stopped links in the channel list, Show stopped toggle, and live status badges
             - Check now and Export verified working M3U options
+            - Previous/next channel buttons (Ctrl+Left/Ctrl+Right), manual reconnect (Ctrl+R)
+            - In-app Help & Contribute links to GitHub issues, code contributions and optional support
 
             ### Important
             - This is a replacement implementation, not an upgrade applied to the original EXE.
