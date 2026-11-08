@@ -233,7 +233,8 @@ class BANGIPTVPlayer(tk.Tk):
         picker.pack(fill="x", pady=(4, 7))
         picker.bind("<<ComboboxSelected>>", self.select_preset)
 
-        ttk.Entry(self.sidebar, textvariable=self.source).pack(fill="x", pady=(0, 7))
+        self.source_entry = ttk.Entry(self.sidebar, textvariable=self.source, show="•")
+        self.source_entry.pack(fill="x", pady=(0, 7))
         source_buttons = ttk.Frame(self.sidebar)
         source_buttons.pack(fill="x", pady=(0, 15))
         ttk.Button(source_buttons, text="Browse…", command=self.choose_file).pack(side="left")
@@ -487,6 +488,8 @@ class BANGIPTVPlayer(tk.Tk):
         )
 
     def export_working(self):
+        if not self._links_are_unlocked() and not self._unlock_links():
+            return
         verified = [c for c in self.channels if self.health.status(c.url) == "online"]
         if not verified:
             messagebox.showinfo("Export", "No channels verified online yet. Use Check now first.")
@@ -509,6 +512,154 @@ class BANGIPTVPlayer(tk.Tk):
             return
         messagebox.showinfo("Saved", f"Exported {len(verified):,} verified channels. "
                             "Unverified and stopped channels were not included.")
+
+    def _links_are_unlocked(self):
+        return time.monotonic() < self.links_unlocked_until
+
+    def _lock_links(self):
+        self.links_unlocked_until = 0.0
+        self.preview_url.set("")
+        self.source_entry.configure(show="•")
+        self.link_panel.pack_forget()
+        self.link_button.configure(text="Unlock links")
+
+    def _unlock_links(self):
+        now = time.monotonic()
+        if now < self.pin_blocked_until:
+            messagebox.showwarning("Access temporarily unavailable",
+                                   "Too many unsuccessful attempts. Try again later.")
+            return False
+        entered = simpledialog.askstring("Private links", "Enter access code:",
+                                          parent=self, show="*")
+        if entered is None:
+            return False
+        if not verify_link_pin(entered):
+            self.pin_failed_attempts += 1
+            if self.pin_failed_attempts >= 5:
+                self.pin_blocked_until = now + 60
+                self.pin_failed_attempts = 0
+            messagebox.showwarning("Access denied", "Incorrect code.")
+            return False
+        self.pin_failed_attempts = 0
+        self.links_unlocked_until = time.monotonic() + 300
+        self.source_entry.configure(show="")
+        self.link_panel.pack(fill="x", pady=(7, 0))
+        self.link_button.configure(text="Hide links")
+        self._update_link_preview()
+        return True
+
+    def toggle_links(self):
+        if self._links_are_unlocked():
+            self._lock_links()
+        else:
+            self._unlock_links()
+
+    def _privacy_tick(self):
+        if self.links_unlocked_until and not self._links_are_unlocked():
+            self._lock_links()
+        self.after(1000, self._privacy_tick)
+
+    def _update_link_preview(self):
+        if not self._links_are_unlocked():
+            self.preview_url.set("")
+            return
+        channel = self._selected_channel()
+        self.preview_url.set(channel.url if channel else "")
+
+    def copy_selected_link(self):
+        if not self._links_are_unlocked():
+            self._lock_links()
+            return
+        channel = self._selected_channel()
+        if channel is None:
+            messagebox.showinfo("No selection", "Select a channel first.")
+            return
+        self.clipboard_clear()
+        self.clipboard_append(channel.url)
+        self.status.set("Selected URL copied to clipboard.")
+
+    def find_selected_alternative(self):
+        channel = self._selected_channel() or self.current
+        if channel is None:
+            messagebox.showinfo("No selection", "Select a channel first.")
+            return
+        self._queue_repair(channel.url, manual=True)
+
+    def _queue_repair(self, url, manual=False):
+        if not manual and not self.auto_repair.get():
+            return
+        channel = next((c for c in self.channels if c.url == url), None)
+        if channel is None or url in self.repair_queued:
+            return
+        now = time.monotonic()
+        if not manual and now - self.repair_attempts.get(url, -3601) < 3600:
+            return
+        # Limit automatic work on very large playlists. A failure remains
+        # hidden but recoverable, even if no replacement has yet been found.
+        if len(self.repair_queue) >= 32 and not manual:
+            return
+        self.repair_attempts[url] = now
+        self.repair_queued.add(url)
+        self.repair_queue.append((channel, manual))
+        self._start_next_repair()
+
+    def _start_next_repair(self):
+        if self.repair_busy or not self.repair_queue or self.busy:
+            return
+        channel, manual = self.repair_queue.popleft()
+        self.repair_busy = True
+        generation = self.health_generation
+        current = list(self.channels)
+        known_bad = {url for url, entry in self.health.entries.items()
+                     if entry.status in ("offline", "failed")}
+        known_bad.update(self.repairs.keys())
+        pool = self.repair_pool if (
+            self.repair_pool is not None and
+            time.monotonic() - self.repair_pool_checked_at < 3600
+        ) else None
+
+        def worker():
+            def suitable(candidate_set):
+                candidates = [c for c in candidate_set if c.url not in known_bad]
+                return first_reachable_replacement(channel, candidates, check_stream)
+
+            candidate = suitable(current)
+            fetched_pool = None
+            if candidate is None:
+                try:
+                    if pool is None:
+                        fetched_pool = load_channels(
+                            FREE_PLAYLISTS["World — Free TV"], timeout=20
+                        )
+                    candidate = suitable(fetched_pool if fetched_pool is not None else pool)
+                except (OSError, ValueError, TimeoutError):
+                    candidate = None
+            self.messages.put(("repair_done", generation, channel.url,
+                               candidate, fetched_pool, manual))
+
+        threading.Thread(target=worker, daemon=True).start()
+        self.status.set(f"Searching public channel alternatives for {channel.name}…")
+
+    def _finish_repair(self, old_url, candidate, manual):
+        old = next((c for c in self.channels if c.url == old_url), None)
+        if old is None:
+            return
+        if candidate is None or candidate.url == old_url:
+            if manual:
+                self.status.set(f"No verified public replacement found for {old.name}.")
+            return
+        self.repairs[old_url] = candidate.url
+        if old_url in self.favorites:
+            self.favorites.discard(old_url)
+            self.favorites.add(candidate.url)
+        self.channels = apply_replacements(self.channels, self.repairs)
+        self.health.record(candidate.url, CheckResult(
+            "online", "A matching public alternative responded; playback not yet confirmed."
+        ))
+        if self.current is not None and self.current.url == old_url:
+            self.play_channel(replace(self.current, url=candidate.url))
+        self.status.set(f"Found a replacement stream for {old.name}.")
+        self._save_settings()
 
     def _delay_filter(self, *_args):
         if self.search_job is not None:
