@@ -102,6 +102,14 @@ class HealthMonitor:
         elif status == "playback_failed":
             entry.status = "failed"
             entry.missing_count = 0
+        elif status == "playback_ok":
+            entry.status = "online"
+            entry.missing_count = 0
+        elif entry.status == "failed" and status == "online":
+            # HTTP 200 is not enough to rehabilitate a VLC playback failure.
+            entry.reason = "Endpoint responds but VLC previously failed playback."
+            entry.checked_at = now
+            return entry.status
         else:
             entry.status = status if status in ("online", "blocked", "unknown", "unsupported") else "unknown"
             entry.missing_count = 0
