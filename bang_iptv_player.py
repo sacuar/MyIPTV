@@ -6,6 +6,7 @@ Requires: python-vlc and a desktop installation of VLC Media Player.
 
 import json
 import os
+import webbrowser
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import queue
@@ -16,7 +17,7 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
-from player_core import FREE_PLAYLISTS, filtered_channels, load_channels
+from player_core import FREE_PLAYLISTS, adjacent_channel, filtered_channels, load_channels
 from health_engine import (
     BATCH_SIZE, MAX_WORKERS, CheckResult, HealthMonitor, check_stream, hidden_status,
 )
@@ -168,6 +169,7 @@ class BANGIPTVPlayer(tk.Tk):
         self.now_playing = tk.StringVar(value="No channel selected")
 
         self._build_ui()
+        self._build_help_menu()
         self.search.trace_add("write", self._delay_filter)
         self.protocol("WM_DELETE_WINDOW", self.close)
         self.after(100, self._drain_messages)
@@ -181,6 +183,9 @@ class BANGIPTVPlayer(tk.Tk):
         self.bind("<F11>", lambda _event: self.toggle_fullscreen())
         self.bind("<space>", self._space_key)
         self.bind("<KeyPress-m>", self._mute_key)
+        self.bind("<Control-Left>", lambda event: self._channel_shortcut(event, -1))
+        self.bind("<Control-Right>", lambda event: self._channel_shortcut(event, 1))
+        self.bind("<Control-r>", lambda event: self._retry_shortcut(event))
 
     def _build_ui(self):
         style = ttk.Style(self)
@@ -293,8 +298,39 @@ class BANGIPTVPlayer(tk.Tk):
         ttk.Scale(controls, from_=0, to=100, orient="horizontal", variable=self.volume,
                   command=self.set_volume).pack(side="left", fill="x", expand=True)
 
+        navigation = ttk.Frame(self.video_column)
+        navigation.pack(fill="x", pady=(0, 8))
+        ttk.Button(navigation, text="◀ Previous channel",
+                   command=lambda: self.next_channel(-1)).pack(side="left")
+        ttk.Button(navigation, text="Next channel ▶",
+                   command=lambda: self.next_channel(1)).pack(side="left", padx=(8, 0))
+        ttk.Button(navigation, text="↻ Reconnect",
+                   command=self.retry_current).pack(side="left", padx=(8, 0))
+
         tk.Label(self.video_column, textvariable=self.status, bg=PANEL, fg=MUTED,
                  anchor="w", wraplength=650).pack(fill="x")
+
+    def _build_help_menu(self):
+        menu_bar = tk.Menu(self)
+        community = tk.Menu(menu_bar, tearoff=False)
+        community.add_command(label="Report a bug or broken stream",
+                              command=lambda: webbrowser.open_new_tab(
+                                  "https://github.com/sacuar/MyIPTV/issues/new/choose"))
+        community.add_command(label="Suggest an improvement",
+                              command=lambda: webbrowser.open_new_tab(
+                                  "https://github.com/sacuar/MyIPTV/issues/new?template=feature-request.md"))
+        community.add_command(label="Contribute code or translations",
+                              command=lambda: webbrowser.open_new_tab(
+                                  "https://github.com/sacuar/MyIPTV/blob/main/CONTRIBUTING.md"))
+        community.add_separator()
+        community.add_command(label="Support the project (optional)",
+                              command=lambda: webbrowser.open_new_tab(
+                                  "https://www.buymeacoffee.com/sacuar"))
+        community.add_command(label="All versions and downloads",
+                              command=lambda: webbrowser.open_new_tab(
+                                  "https://github.com/sacuar/MyIPTV/releases"))
+        menu_bar.add_cascade(label="Help & Contribute", menu=community)
+        self.configure(menu=menu_bar)
 
     def select_preset(self, _event=None):
         self.source.set(FREE_PLAYLISTS.get(self.source_kind.get(), ""))
@@ -507,6 +543,44 @@ class BANGIPTVPlayer(tk.Tk):
             messagebox.showinfo("Select a channel", "Select a channel to play.")
             return
         self.play_channel(channel)
+
+    def next_channel(self, direction):
+        reference = self.current.url if self.current is not None else None
+        if reference is None:
+            selected = self._selected_channel()
+            reference = selected.url if selected is not None else None
+        target = adjacent_channel(self.visible, reference, direction)
+        if target is None:
+            self.status.set("No visible channels. Load a playlist or change filters.")
+            return
+        self.play_channel(target)
+        # Keep the selected row synchronised with the channel actually playing.
+        for index, item in enumerate(self.visible):
+            if item.url == target.url:
+                row = str(index)
+                if self.tree.exists(row):
+                    self.tree.selection_set(row)
+                    self.tree.see(row)
+                break
+
+    def retry_current(self):
+        if self.current is None:
+            self.play_selected()
+            return
+        self.status.set(f"Reconnecting to {self.current.name}…")
+        self.play_channel(self.current)
+
+    def _channel_shortcut(self, event, direction):
+        if isinstance(self.focus_get(), (ttk.Entry, tk.Entry)):
+            return
+        self.next_channel(direction)
+        return "break"
+
+    def _retry_shortcut(self, event):
+        if isinstance(self.focus_get(), (ttk.Entry, tk.Entry)):
+            return
+        self.retry_current()
+        return "break"
 
     def play_channel(self, channel):
         try:
