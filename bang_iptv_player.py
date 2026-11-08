@@ -610,7 +610,7 @@ class BANGIPTVPlayer(tk.Tk):
                     if self.playing_reported_url != self.current.url:
                         self.playing_reported_url = self.current.url
                         self.health.record(self.current.url,
-                                           CheckResult("online", "Playback confirmed by VLC."))
+                                           CheckResult("playback_ok", "Playback confirmed by VLC."))
                         self.render()
                     self.status.set(f"Playing: {self.current.name}")
                 elif state == self.backend.vlc.State.Buffering:
