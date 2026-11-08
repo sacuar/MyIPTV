@@ -1,0 +1,4 @@
+requests>=2.31,<3
+beautifulsoup4>=4.12,<5
+pillow>=10,<13
+python-vlc>=3.0.20123,<4
