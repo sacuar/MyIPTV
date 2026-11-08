@@ -405,6 +405,7 @@ class BANGIPTVPlayer(tk.Tk):
                     needs_render = True
                     if self.auto_check.get():
                         self.after(500, self._start_health)
+                    self.after(0, self._start_next_repair)
                 elif event[0] == "health":
                     _, generation, url, result = event
                     if generation != self.health_generation:
