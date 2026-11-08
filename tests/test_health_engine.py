@@ -81,7 +81,8 @@ class HealthEngineTests(unittest.TestCase):
         u = "https://example.com/failing"
         self.assertEqual(m.record(u, "playback_failed", now=20), "failed")
         self.assertTrue(hidden_status(m.status(u)))
-        self.assertEqual(m.record(u, "online", now=21), "online")
+        self.assertEqual(m.record(u, "online", now=21), "failed")
+        self.assertEqual(m.record(u, "playback_ok", now=22), "online")
 
     def test_choose_prefers_visible_and_respects_cooldown(self):
         m = HealthMonitor()
