@@ -8,7 +8,9 @@
 [![Latest beta](https://img.shields.io/badge/Latest_beta-v4.0.0--beta.1-blue)](https://github.com/sacuar/MyIPTV/releases/tag/v4.0.0-beta.1)
 [![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4)](https://github.com/sacuar/MyIPTV/releases)
 
-**[Download v4 beta EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.0.0-beta.1/BANG_IPTV_v4.exe)** · **[Download old stable EXE](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** · **[All versions](https://github.com/sacuar/MyIPTV/releases)** · **[Report a problem](https://github.com/sacuar/MyIPTV/issues)**
+**[Download v4 beta EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.0.0-beta.1/BANG_IPTV_v4.exe)** · **[Original IPTV stable release](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO)** · **[All versions](https://github.com/sacuar/MyIPTV/releases)**
+
+**☕ [Buy Me a Coffee — Support BANG IPTV](https://www.buymeacoffee.com/sacuar)** · **[Report a problem](https://github.com/sacuar/MyIPTV/issues)**
 
 </div>
 
@@ -27,6 +29,20 @@ The **original August 2026 stable release and all v3 beta versions remain availa
 | **Original stable** | 20 Aug 2026 | **[BANG_IPTV_Pro.exe (31.2 MB)](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** | Preserved original release and settings asset |
 
 **Recommendation:** Keep the original stable EXE if it is your known working version. Test the new v4 beta separately; Windows compilation passed but full stream playback has not yet been confirmed on users' computers.
+
+## 📼 Original IPTV links and earlier resources
+
+These links are retained for users who prefer the earlier IPTV setup. The original Windows release is still downloadable; it has **not** been removed or replaced.
+
+- **[Original BANG IPTV EXE — August 2026](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)**
+- **[Original release page and settings file](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO)**
+- **[Original Bangladesh playlist — play.m3u](play.m3u)** · [Raw M3U](https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u)
+- **[Earlier IPTV playlist — Play1.m3u](Play1.m3u)**
+- **[Older Germany playlist — deu.m3u](deu.m3u)**
+- **[Earlier radio playlist — radio.m3u](radio.m3u)**
+- **[Earlier movie playlist — movies.m3u](movies.m3u)**
+
+*Legacy M3U files are reference material and may contain expired or unavailable third-party streams. Their presence does not guarantee that channels still play. Use only streams you are authorised to access.*
 
 ## 🖥️ Interface
 
@@ -151,7 +167,7 @@ The stream-link unlock is **visual privacy only**, not strong security or encryp
 - [Report a bug or request an improvement](https://github.com/sacuar/MyIPTV/issues)
 - [See all GitHub releases](https://github.com/sacuar/MyIPTV/releases)
 - [GitHub Actions build history](https://github.com/sacuar/MyIPTV/actions)
-- [Optional project support](https://www.buymeacoffee.com/sacuar)
+- ☕ **[Buy Me a Coffee — Support BANG IPTV](https://www.buymeacoffee.com/sacuar)**
 
 <div align="center">
 <strong>BANG IPTV</strong> · Windows IPTV player · <a href="https://github.com/sacuar">sacuar</a>
