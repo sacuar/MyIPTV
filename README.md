@@ -1,241 +1,183 @@
-# 🎬 BANG IPTV Pro #
-🌟 Support the Project
-
-If you find this software useful, you can support its development:
-
-<!--START_SECTION:buy-me-a-coffee-->
-<a href="https://www.buymeacoffee.com/sacuar" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
-</a>
-<!--END_SECTION:buy-me-a-coffee-->
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049" />
-
 <div align="center">
-    <h3>Professional IPTV Player with Auto-Validation</h3>
-    <p>Bangladesh Category · EPG Support · Music Channels · Auto-Link Validation</p>
-    <br>
-    <img src="https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049" alt="BANG IPTV Pro interface" width="800">
-    <br>
-    <em>Main Interface - World IPTV</em>
-    <br><br>
-    <img src="https://github.com/user-attachments/assets/1205d635-c3d6-40ec-88c3-820a7ec451a4" />
-"Bangladesh Channels" 
-    <br>
-    <em>Bangladesh Channels</em>
+
+# 📺 BANG IPTV Pro
+
+**Live TV for Windows · Free-to-access M3U playlists · VLC-powered playback**
+
+[![Stable](https://img.shields.io/badge/Stable-August_2026-236c44)](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO)
+[![Beta](https://img.shields.io/badge/Beta-v3.0.0--beta.1-blue)](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.1)
+[![Windows](https://img.shields.io/badge/Platform-Windows_10%2F11-0078D4)](https://github.com/sacuar/MyIPTV/releases)
+[![Issues](https://img.shields.io/github/issues/sacuar/MyIPTV)](https://github.com/sacuar/MyIPTV/issues)
+
+**[Download stable EXE](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** · **[Download new beta EXE](https://github.com/sacuar/MyIPTV/releases/download/v3.0.0-beta.1/BANG_IPTV_Pro.exe)** · **[All releases](https://github.com/sacuar/MyIPTV/releases)** · **[Report an issue](https://github.com/sacuar/MyIPTV/issues)**
+
 </div>
 
 ---
 
-## 📢 Announcement
+## 📥 Choose your version
 
-### 🚀 BANG IPTV Pro v2.0 - Happy New Release!
+**Both Windows releases are available. The original stable release has NOT been replaced or deleted.** These are separate applications; the beta is a new implementation, not a patch to the original executable.
 
-I'm excited to announce the release of **BANG IPTV Pro v2.0** - a professional IPTV player with automatic link validation, Bangladesh category support, channel icons, and EPG integration.
+| | **Original stable** | **New v3.0 Beta 1** |
+|---|---|---|
+| Release | [BANG_IPTV_Player_PRO](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO) | [v3.0.0-beta.1](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.1) |
+| Published | 20 August 2026 | 8 November 2026 |
+| Windows EXE | **[Download original (31.2 MB)](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** | **[Download beta (12.3 MB)](https://github.com/sacuar/MyIPTV/releases/download/v3.0.0-beta.1/BANG_IPTV_Pro.exe)** |
+| Status | Existing stable release, preserved | New build; please test before relying on it |
+| Source code | Original full app source not present in this repo | [Python player source](bang_iptv_player.py) and [playback/playlist core](player_core.py) available |
+| VLC Media Player | Required | Required; VLC DLLs are not bundled |
 
----
+**Which should I use?** Keep the **original stable** if you need its established interface and older functionality. Try **v3 beta** if you want to test the newly developed player, favourites and simpler free-playlist workflow.
 
-## 📺 Features
+## ✨ Feature comparison
 
-| Feature | Status | Description |
-|---------|--------|-------------|
-| 🔗 **Auto Link Validation** | ✅ | Automatically checks and marks working/dead links |
-| 🇧🇩 **Bangladesh Category** | ✅ | Dedicated BD channels from multiple sources |
-| 🖼️ **Channel Icons** | ✅ | Fetches icons from online databases |
-| 📅 **EPG Support** | ✅ | Electronic Program Guide integration |
-| 🔒 **Password Protection** | ✅ | Ctrl+L opens the protected link-visibility control |
-| 🔄 **Auto-Update** | ✅ | Background link validation every 5 minutes |
-| 📺 **Professional UI** | ✅ | Dark theme, right-click menu, status indicators |
-| 🎵 **Music Channels** | ✅ | 650+ music channels from iptv-org |
-| 🎬 **Movie Channels** | ✅ | Dedicated movie category |
-| ⚽ **Sports Channels** | ✅ | Sports channels worldwide |
-| 📰 **News Channels** | ✅ | News channels worldwide |
+The **stable** column describes features *advertised for the original executable* in earlier project documentation, not independently retested in this update. The **beta** column reflects features implemented in the current source; successful compilation does not guarantee every stream will play.
 
----
+| Capability | Original stable (advertised) | v3.0 Beta 1 (implemented) |
+|---|:---:|:---:|
+| Watch IPTV in an embedded video player | ✅ | ✅ |
+| Free-TV playlists / Bangladesh channels | ✅ | ✅ |
+| Channel search and category filtering | ✅ | ✅ |
+| Play / pause, stop, volume, fullscreen | ✅ | ✅ |
+| Load custom M3U URLs or local files | — | ✅ |
+| Remove repeated stream URLs while loading | — | ✅ |
+| Save favourite channels locally | — | ✅ |
+| Background playlist loading (responsive window) | — | ✅ |
+| Electronic programme guide (EPG) display | ✅ | ❌ Not yet |
+| Channel-logo display | ✅ | ❌ Not yet |
+| Automatic link health checks / timed refresh | ✅ | ❌ Not yet |
+| Password-protected URL visibility | ✅ | ❌ Not yet |
 
-## 📦 Sources Included
+A dash means **not established** for that release, rather than a claim that the feature is impossible.
 
-| Source | Description | Channels |
-|--------|-------------|----------|
-| 🌍 **World IPTV** | Free-TV IPTV collection | 5,000+ |
-| 📺 **Global TV** | iptv-org official playlist | 10,000+ |
-| 🇧🇩 **Bangladesh IPTV** | Bangladeshi channels | 200+ |
-| 🇧🇩 **BDIX IPTV** | BDIX supported channels | 600+ |
-| 🇧🇩 **Bangladesh (iptv-org)** | Official BD channels | 100+ |
-| 🇬🇧 **UK Free** | UK free channels | 500+ |
-| 🇺🇸 **US Free** | US free channels | 500+ |
-| 📰 **News** | News worldwide | 1,000+ |
-| ⚽ **Sports** | Sports channels | 500+ |
-| 🎵 **Music** | Music channels | 650+ |
-| 🎬 **Movies** | Movie channels | 300+ |
+## 🖥️ Screenshots
 
----
+The following images show the **original stable application**, not the newly rewritten v3 beta. Updated beta screenshots will be added after its Windows interface is manually checked.
 
-## 🎵 Music Channels
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049" alt="Original BANG IPTV Pro Windows player screenshot" width="780">
+  <p><em>Original stable player interface</em></p>
+  <img src="https://github.com/user-attachments/assets/1205d635-c3d6-40ec-88c3-820a7ec451a4" alt="Original BANG IPTV Pro Bangladesh channels" width="780">
+  <p><em>Original Bangladesh channel view</em></p>
+</div>
 
-Access music channels by:
-1. Loading the **"🌍 World IPTV"** or **"📺 Global TV"** source
-2. Selecting **"Music"** from the category filter
+## 🚀 Install and watch
 
-**Direct Music Playlist:**
-```
-https://iptv-org.github.io/iptv/categories/music.m3u
-```
+**For either EXE (Windows 10/11):**
 
----
+1. Install the official [VLC Media Player](https://www.videolan.org/vlc/), matching your Windows architecture.
+2. Download the **original stable** or **v3 beta** EXE from the links above.
+3. Run `BANG_IPTV_Pro.exe`. No separate Python installation is needed for the EXE.
+4. Select a playlist, load channels, then double-click a channel to play it.
 
-## 📥 Download
+**For v3 beta specifically:** The default preset is Bangladesh — Free TV. You can switch to World, UK, Germany, News, Sports, Music or Movies, or open your own local M3U. Searching, grouping and favourites are built into the interface. A playlist loading successfully does **not** guarantee that each stream is playable: availability depends on its provider, location, format and access rights.
 
-**Download the latest release from:**
-**[Releases Page](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO)**
+### v3 beta keyboard shortcuts
 
-**Requirements:**
-- Windows 10/11
-- VLC Media Player installed
-- No Python installation required
-
----
-
-## 🚀 How to Use
-
-1. **Download** `BANG_IPTV_Pro.exe` from the releases page
-2. **Double-click** the `.exe` file to launch
-3. **Select a source** from the dropdown menu
-4. Click **"📥 Load"** to load channels
-5. **Browse channels** - scroll through the list
-6. **Search** - type to filter channels by name
-7. **Filter by category** - use the category dropdown
-8. **Double-click** a channel to watch
-9. **Right-click** a channel for options (Copy URL, Info)
-10. **Controls**: Play/Pause, Stop, Previous/Next channel
-
----
-
-## ⌨️ Keyboard Shortcuts
-
-| Key | Action |
-|-----|--------|
-| `Space` | Play/Pause |
-| `←` `→` | Seek backward/forward 5s |
-| `↑` `↓` | Volume up/down |
-| `M` | Mute |
-| `F` | Fullscreen |
+| Shortcut | Action |
+|---|---|
+| `Ctrl+O` | Open a local playlist |
+| `Ctrl+F` | Focus channel search |
+| `Space` | Play / pause (when not typing) |
+| `M` | Mute / unmute (when not typing) |
+| `F11` | Toggle fullscreen |
 | `Esc` | Exit fullscreen |
-| `Ctrl+L` | Toggle protected link visibility |
-| `Ctrl+R` | Refresh playlist |
 
----
+**Original stable shortcuts:** See the [original release](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO); do not assume v3 shortcuts are identical. The original application's `Ctrl+L` password control, EPG and periodic stream checking have **not** been carried over to the beta.
 
-## 🔐 Password Protection
+## 🌍 Free IPTV sources
 
-For access details, contact the maintainer. The password is not published here.
+The beta includes preset playlists from the community-maintained [iptv-org](https://github.com/iptv-org/iptv) collection. You can also load your own lawful playlist.
 
-- Press `Ctrl+L` to toggle link visibility
-- Enter the password to reveal channel URLs
-- Links are hidden by default for normal users
+| Preset | Playlist |
+|---|---|
+| Bangladesh | [Free Bangladesh channels](https://iptv-org.github.io/iptv/countries/bd.m3u) |
+| United Kingdom | [Free UK channels](https://iptv-org.github.io/iptv/countries/uk.m3u) |
+| Germany | [Free German channels](https://iptv-org.github.io/iptv/countries/de.m3u) |
+| Worldwide | [Global playlist](https://iptv-org.github.io/iptv/index.m3u) |
+| News | [News playlist](https://iptv-org.github.io/iptv/categories/news.m3u) |
+| Sports | [Sports playlist](https://iptv-org.github.io/iptv/categories/sports.m3u) |
+| Music | [Music playlist](https://iptv-org.github.io/iptv/categories/music.m3u) |
+| Movies | [Movies playlist](https://iptv-org.github.io/iptv/categories/movies.m3u) |
 
----
+These are free-to-access playlist indexes, **not a promise of channel uptime or rights to all content**. Stream links may expire, be geoblocked, require authorisation, or be DRM-protected. The project does not host these broadcasts.
 
-## 📝 Changelog
+## 🧑‍💻 Source code, tools and building
 
-### v2.0 (2024)
-- ✅ Added automatic link validation
-- ✅ Added Bangladesh category with multiple sources
-- ✅ Added channel icons from online databases
-- ✅ Added EPG support
-- ✅ Added password-protected link visibility
-- ✅ Added background auto-update every 5 minutes
-- ✅ Added 650+ music channels
-- ✅ Added professional dark theme UI
-- ✅ Added right-click menu for channels
-- ✅ Added copy URL functionality (password protected)
-- ✅ Improved performance and stability
+The source of the **new v3 beta** is in this repository. The full source code used to build the **original August stable EXE** is not available here.
 
-### v1.0 (2023)
-- ✅ Initial release
-- ✅ Basic IPTV player functionality
-- ✅ Multiple source support
-- ✅ Category filtering
-- ✅ Search functionality
+| File | Purpose |
+|---|---|
+| [`bang_iptv_player.py`](bang_iptv_player.py) | New desktop player interface and VLC controls |
+| [`player_core.py`](player_core.py) | M3U parsing, preset lists, channel filtering and duplicate removal |
+| [`requirements-player.txt`](requirements-player.txt) | New player's Python dependency |
+| [`gui2.py`](gui2.py) | Separate M3U checking, filtering and exporting utility |
+| [`playlist_service.py`](playlist_service.py) | Playlist utility logic |
+| [`m3u_export.py`](m3u_export.py) | Extended M3U metadata export |
+| [`scripts/clean_playlists.py`](scripts/clean_playlists.py) | On-demand deduplication and optional HTTP reachability probe |
+| [`tests/`](tests) | Automated checks |
+| [Windows player build workflow](.github/workflows/build-player-windows.yml) | Builds an EXE artifact from source |
+| [Beta release workflow](.github/workflows/publish-player-beta.yml) | Publishes a separately tagged prerelease |
 
----
+### Run v3 from source
 
-## 🌟 Support the Project
+Install Python 3.12+ and VLC Media Player. From a clone of this repository:
 
-If you find this software useful, you can support its development:
+```powershell
+python -m pip install -r requirements-player.txt
+python bang_iptv_player.py
+```
 
-<!--START_SECTION:buy-me-a-coffee-->
-<a href="https://www.buymeacoffee.com/sacuar" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
-</a>
-<!--END_SECTION:buy-me-a-coffee-->
+### Run the playlist-checking utility
 
----
+This is a **separate tool**, not the main video player:
 
-## ⚠️ Legal & Copyright
-
-The repository contains an Unlicense `LICENSE` file, but earlier versions of this README also described the software as proprietary. These statements conflict. **The maintainer must review the distribution terms and clarify whether the licence covers the released executable as well as the source files.** This documentation change does not amend the existing licence or revoke any rights previously granted.
-
----
-
-## 🧰 Source Code and Development
-
-The `main` branch currently contains playlist processing utilities (`gui.py`, `gui2.py`, `m3u_export.py`) and test helpers, but does **not** contain the full source for the released Windows player. To run the playlist export tests, use `python -m unittest discover -s tests -v` from the repository root. The `gui2.py` helper additionally needs the `m3u-parser` package.
-
-## Playlist management (new)
-
-The playlist utility is **separate from the released Windows player**. Start it with:
-
-```bash
+```powershell
 python -m pip install m3u-parser
 python gui2.py
 ```
 
-Choose a maintained, free-to-access **iptv-org** playlist (Global, Bangladesh, UK, Germany, News, Sports, Music or Movies), or paste a URL/open a local M3U file. Use **Check live streams** to check connectivity in the background; the UI remains responsive. Search by channel name, filter by category or status, and export a standard UTF-8 M3U with logos, groups and EPG identifiers retained.
+It supports URL/local-file loading, optional background stream checks, category/status filtering, UTF-8 M3U export and removal of duplicate URLs. Links that haven't been checked are marked *unchecked*, not working.
 
-- **Export working only** is available after validation and removes duplicates by URL by default.
-- **Without validation**, exported channels are *unchecked*, never labelled working or dead. Disable *Export working only* if you want to export every channel without checking.
-- A URL returning 200/206 does not guarantee the media plays; DRM, geoblocking and authentication may still prevent viewing.
-- Broken or old playlist files have been removed from the current source tree. They remain recoverable from Git history, but bookmarks to their raw URLs should be updated.
+### Clean old playlist files
 
-To clean **your own legacy local playlists** without overwriting them:
-
-```bash
+```powershell
 python scripts/clean_playlists.py Play1.m3u play.m3u --output cleaned.m3u
 python scripts/clean_playlists.py Play1.m3u --verify --output reachable.m3u
 ```
 
-The first command removes duplicate URLs but does **not** classify unchecked streams as working. The optional `--verify` command exports only streams that responded successfully to an HTTP request; 404/410 are considered missing only after two checks, while access denied, rate limited or timed-out streams remain *unknown*, not proved broken. The original input files are unchanged. These checks may take time and should be used with playlists you have permission to access.
+The first command deduplicates without testing streams. The second exports URLs that respond to HTTP checks; a positive HTTP response does not prove actual media playback. Original input files are not overwritten. Some legacy playlists were removed from the current repo tree during cleanup but remain accessible in Git history.
 
-Run automated checks:
+### Tests and builds
 
-```bash
+```powershell
 python -m unittest discover -s tests -v
 ```
 
-## 📜 Disclaimer
+The [GitHub Actions page](https://github.com/sacuar/MyIPTV/actions) contains the Windows EXE build logs. Passing automated tests and building an EXE do **not** replace manual playback testing on Windows.
 
-All IPTV streams are sourced from publicly available playlists. Users are responsible for ensuring they have the right to access any content they stream. This software does not host or provide any copyrighted content.
+## 📌 Release history
 
----
+- **8 November 2026 — [v3.0 Beta 1](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.1):** New Python-based Windows player with VLC playback, free-playlist presets, favourites, search, categories, duplicate removal and independent EXE build.
+- **20 August 2026 — [Original stable release](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO):** Preserved legacy Windows player; its earlier documentation described EPG, channel icons, link validation and password-restricted link visibility.
 
-## 📞 Contact & Support
+The beta does **not** replace the original release. Further versions should be tagged separately.
 
-- **GitHub:** [sacuar](https://github.com/sacuar)
-- **Buy Me a Coffee:** [buymeacoffee.com/sacuar](https://buymeacoffee.com/sacuar)
-- **Issues:** [Report a Bug](https://github.com/sacuar/MyIPTV/issues)
+## 🛡️ Licence and streaming responsibility
 
----
+The repository's [`LICENSE`](LICENSE) contains the Unlicense, while older project documentation described the software as proprietary. These statements conflict. The maintainer should clarify licensing for the source and separately distributed binaries; this README does not change the existing licence or revoke any previously granted rights.
 
-## ❤️ Enjoy!
+Only watch streams you are entitled to access. Playlist entries are third-party links; this repository does not host the broadcast content.
 
-Enjoy!! :heart::heart:
+## 💬 Help and support
 
----
+- 🐛 **[Report a bug or request a feature](https://github.com/sacuar/MyIPTV/issues)** — mention **Original stable** or **v3 beta**, your Windows version, and the steps to reproduce.
+- 📦 **[All downloads and releases](https://github.com/sacuar/MyIPTV/releases)**
+- 💻 **[Project source](https://github.com/sacuar/MyIPTV)**
+- ☕ **[Support development](https://www.buymeacoffee.com/sacuar)**
 
 <div align="center">
-    <strong>BANG IPTV Pro</strong>
-    <br>
-    Professional IPTV Player with Auto-Validation
-    <br><br>
-    Made with ❤️ by <strong>sacuar</strong>
+  <strong>BANG IPTV Pro</strong><br>
+  Windows IPTV playback · Free playlist tools · Maintained by <a href="https://github.com/sacuar">sacuar</a>
 </div>
