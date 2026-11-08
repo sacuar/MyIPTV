@@ -39,7 +39,7 @@ def _ensure(module, pip_name=None):
     """Load optional dependencies; never install packages at application startup."""
     try:
         return __import__(module)
-    except ImportError:
+    except (ImportError, OSError):
         return None
 
 
