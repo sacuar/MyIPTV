@@ -5,11 +5,11 @@
 **Live TV for Windows · Free-to-access M3U playlists · VLC-powered playback**
 
 [![Stable](https://img.shields.io/badge/Stable-August_2026-236c44)](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO)
-[![Beta](https://img.shields.io/badge/Beta-v3.0.0--beta.2-blue)](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.2)
+[![Beta](https://img.shields.io/badge/Beta-v3.0.0--beta.3-blue)](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.2)
 [![Windows](https://img.shields.io/badge/Platform-Windows_10%2F11-0078D4)](https://github.com/sacuar/MyIPTV/releases)
 [![Issues](https://img.shields.io/github/issues/sacuar/MyIPTV)](https://github.com/sacuar/MyIPTV/issues)
 
-**[Download stable EXE](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** · **[Download new beta EXE](https://github.com/sacuar/MyIPTV/releases/download/v3.0.0-beta.2/BANG_IPTV_Pro.exe)** · **[All releases](https://github.com/sacuar/MyIPTV/releases)** · **[Report an issue](https://github.com/sacuar/MyIPTV/issues)**
+**[Download stable EXE](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** · **[Download new beta EXE](https://github.com/sacuar/MyIPTV/releases/download/v3.0.0-beta.3/BANG_IPTV_Pro.exe)** · **[All releases](https://github.com/sacuar/MyIPTV/releases)** · **[Report an issue](https://github.com/sacuar/MyIPTV/issues)**
 
 </div>
 
@@ -17,13 +17,13 @@
 
 ## 📥 Choose your version
 
-**The original stable release and both beta releases remain available. The August 2026 version has NOT been replaced or deleted.** These are separate applications; the beta is a new implementation, not a patch to the original executable.
+**The original stable release and previous beta releases remain available. The August 2026 version has NOT been replaced or deleted.** These are separate applications; the beta is a new implementation, not a patch to the original executable.
 
-| | **Original stable** | **New v3.0 Beta 2** |
+| | **Original stable** | **New v3.0 Beta 3** |
 |---|---|---|
-| Release | [BANG_IPTV_Player_PRO](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO) | [v3.0.0-beta.2](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.2) |
+| Release | [BANG_IPTV_Player_PRO](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO) | [v3.0.0-beta.3](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.3) |
 | Published | 20 August 2026 | 8 November 2026 |
-| Windows EXE | **[Download original (31.2 MB)](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** | **[Download beta (12.7 MB)](https://github.com/sacuar/MyIPTV/releases/download/v3.0.0-beta.2/BANG_IPTV_Pro.exe)** |
+| Windows EXE | **[Download original (31.2 MB)](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe)** | **[Download latest beta EXE](https://github.com/sacuar/MyIPTV/releases/download/v3.0.0-beta.2/BANG_IPTV_Pro.exe)** |
 | Status | Existing stable release, preserved | New build; please test before relying on it |
 | Source code | Original full app source not present in this repo | [Python player source](bang_iptv_player.py) and [playback/playlist core](player_core.py) available |
 | VLC Media Player | Required | Required; VLC DLLs are not bundled |
@@ -34,7 +34,7 @@
 
 The **stable** column describes features *advertised for the original executable* in earlier project documentation, not independently retested in this update. The **beta** column reflects features implemented in the current source; successful compilation does not guarantee every stream will play.
 
-| Capability | Original stable (advertised) | v3.0 Beta 2 (implemented) |
+| Capability | Original stable (advertised) | v3.0 Beta 3 (implemented) |
 |---|:---:|:---:|
 | Watch IPTV in an embedded video player | ✅ | ✅ |
 | Free-TV playlists / Bangladesh channels | ✅ | ✅ |
@@ -48,9 +48,11 @@ The **stable** column describes features *advertised for the original executable
 | Background health checking in bounded batches | ✅ | ✅ Beta 2 |
 | Hide confirmed stopped channels and VLC playback failures | — | ✅ Beta 2 |
 | Manual recheck and export verified streams | — | ✅ Beta 2 |
+| Previous / next channel and reconnect controls | — | ✅ Beta 3 |
+| In-app bug reporting and contribution links | — | ✅ Beta 3 |
 | Electronic programme guide (EPG) display | ✅ | ❌ Not yet |
 | Channel-logo display | ✅ | ❌ Not yet |
-| Automatic link health checks / timed refresh | ✅ | ❌ Not yet |
+| Automatic link health checks / timed refresh | ✅ | ✅ Beta 2 |
 | Password-protected URL visibility | ✅ | ❌ Not yet |
 
 A dash means **not established** for that release, rather than a claim that the feature is impossible.
@@ -175,6 +177,8 @@ Checks run while the application is open. Channels hidden as stopped remain reco
 
 ## 📌 Release history
 
+- **8 November 2026 — [v3.0 Beta 3](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.3):** Previous/next channel controls, manual reconnect, contributor links and improved testing.
+
 - **8 November 2026 — [v3.0 Beta 2](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.2):** Automatic playlist reload, background health checks, Hide stopped option, manual recheck and verified M3U export.
 - **8 November 2026 — [v3.0 Beta 1](https://github.com/sacuar/MyIPTV/releases/tag/v3.0.0-beta.1):** New Python-based Windows player with VLC playback, free-playlist presets, favourites, search, categories, duplicate removal and independent EXE build.
 - **20 August 2026 — [Original stable release](https://github.com/sacuar/MyIPTV/releases/tag/BANG_IPTV_Player_PRO):** Preserved legacy Windows player; its earlier documentation described EPG, channel icons, link validation and password-restricted link visibility.
@@ -186,6 +190,18 @@ The beta does **not** replace the original release. Further versions should be t
 The repository's [`LICENSE`](LICENSE) contains the Unlicense, while older project documentation described the software as proprietary. These statements conflict. The maintainer should clarify licensing for the source and separately distributed binaries; this README does not change the existing licence or revoke any previously granted rights.
 
 Only watch streams you are entitled to access. Playlist entries are third-party links; this repository does not host the broadcast content.
+
+## 🤝 Contribute to BANG IPTV Pro
+
+BANG IPTV Pro welcomes **volunteer contributions**: Windows testing, reports of broken streams, code fixes, new feature proposals, documentation, Bengali/English translations, and accessibility improvements. You do not need to donate to help.
+
+- **[Contributing guide](CONTRIBUTING.md)** — how to run tests and submit a pull request.
+- **[Report a bug](https://github.com/sacuar/MyIPTV/issues/new/choose)** — please include your Windows and player versions; redact private M3U credentials.
+- **[Request a feature](https://github.com/sacuar/MyIPTV/issues/new?template=feature-request.md)** — ideas for EPG, logos, performance, stream reliability or UI.
+- **[Contribute a code change](https://github.com/sacuar/MyIPTV/pulls)** — focused patches and tests are especially useful.
+- **[Buy Me a Coffee (optional)](https://www.buymeacoffee.com/sacuar)** — financial contributions support development but are never required.
+
+The new Windows player also includes a **Help & Contribute** menu with these links. The [licensing note](README.md) should be clarified before substantial external code contributions.
 
 ## 💬 Help and support
 
