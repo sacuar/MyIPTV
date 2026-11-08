@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from player_core import Channel, filtered_channels, load_channels, parse_m3u, read_playlist
+from player_core import Channel, adjacent_channel, filtered_channels, load_channels, parse_m3u, read_playlist
 
 
 SAMPLE = '''\ufeff#EXTM3U
@@ -93,6 +93,23 @@ class PlayerCoreTests(unittest.TestCase):
         with patch("player_core.urlopen", return_value=DummyResponse()):
             rows = load_channels("https://example.com/list.m3u")
             self.assertEqual(rows[0].name, "One")
+
+
+    def test_channel_navigation_wraps_forward_and_backward(self):
+        channels = parse_m3u(SAMPLE)
+        self.assertEqual(adjacent_channel(channels, channels[0].url, 1), channels[1])
+        self.assertEqual(adjacent_channel(channels, channels[0].url, -1), channels[-1])
+        self.assertEqual(adjacent_channel(channels, channels[-1].url, 1), channels[0])
+
+    def test_channel_navigation_handles_empty_and_filtered(self):
+        channels = parse_m3u(SAMPLE)
+        visible = [channels[0], channels[2]]
+        self.assertIsNone(adjacent_channel([], direction=1))
+        self.assertEqual(adjacent_channel(visible, channels[1].url, 1), channels[0])
+        self.assertEqual(adjacent_channel(visible, channels[1].url, -1), channels[-1])
+        self.assertEqual(adjacent_channel(visible, direction=-1), channels[-1])
+        with self.assertRaises(ValueError):
+            adjacent_channel(visible, direction=0)
 
 
 if __name__ == "__main__":
