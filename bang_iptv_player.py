@@ -6,6 +6,8 @@ Requires: python-vlc and a desktop installation of VLC Media Player.
 
 import json
 import os
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import queue
 import sys
 import tempfile
@@ -15,6 +17,10 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
 from player_core import FREE_PLAYLISTS, filtered_channels, load_channels
+from health_engine import (
+    BATCH_SIZE, MAX_WORKERS, CheckResult, HealthMonitor, check_stream, hidden_status,
+)
+from m3u_export import save_m3u
 
 
 BG = "#10151f"
@@ -147,6 +153,17 @@ class BANGIPTVPlayer(tk.Tk):
         self.search = tk.StringVar()
         self.group = tk.StringVar(value="All")
         self.only_favorites = tk.BooleanVar(value=False)
+        self.health = HealthMonitor()
+        self.health_generation = 0
+        self.health_busy = False
+        self.loaded_source = ""
+        self.last_refresh = 0.0
+        self.auto_check = tk.BooleanVar(value=settings.get("auto_check", True))
+        self.auto_refresh = tk.BooleanVar(value=settings.get("auto_refresh", True))
+        self.hide_unavailable = tk.BooleanVar(value=settings.get("hide_unavailable", True))
+        self.health_summary = tk.StringVar(value="Stream health: unchecked. Background checking starts after loading.")
+        self.failed_playback_url = None
+        self.playing_reported_url = None
         self.status = tk.StringVar(value="Load a playlist to start watching.")
         self.now_playing = tk.StringVar(value="No channel selected")
 
@@ -155,6 +172,8 @@ class BANGIPTVPlayer(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self.close)
         self.after(100, self._drain_messages)
         self.after(1400, self._monitor_playback)
+        self.after(15000, self._health_tick)
+        self.after(60000, self._refresh_tick)
 
         self.bind("<Control-f>", lambda _event: self.search_entry.focus_set())
         self.bind("<Control-o>", lambda _event: self.choose_file())
@@ -200,6 +219,20 @@ class BANGIPTVPlayer(tk.Tk):
         ttk.Button(source_buttons, text="Browse…", command=self.choose_file).pack(side="left")
         self.load_button = ttk.Button(source_buttons, text="Load channels", command=self.load)
         self.load_button.pack(side="right")
+        ttk.Button(source_buttons, text="Refresh", command=self.refresh_playlist).pack(side="right", padx=(0, 8))
+
+        health_controls = ttk.Frame(self.sidebar)
+        health_controls.pack(fill="x", pady=(0, 8))
+        ttk.Checkbutton(health_controls, text="Auto-check links", variable=self.auto_check,
+                        command=self._save_settings).pack(side="left")
+        ttk.Checkbutton(health_controls, text="Auto-refresh list", variable=self.auto_refresh,
+                        command=self._save_settings).pack(side="right")
+
+        health_actions = ttk.Frame(self.sidebar)
+        health_actions.pack(fill="x", pady=(0, 10))
+        ttk.Checkbutton(health_actions, text="Hide stopped", variable=self.hide_unavailable,
+                        command=self._health_visibility_change).pack(side="left")
+        ttk.Button(health_actions, text="Check now", command=lambda: self._start_health(force=True)).pack(side="right")
 
         ttk.Label(self.sidebar, text="Search channels").pack(anchor="w")
         self.search_entry = ttk.Entry(self.sidebar, textvariable=self.search)
@@ -216,14 +249,16 @@ class BANGIPTVPlayer(tk.Tk):
 
         channel_frame = ttk.Frame(self.sidebar)
         channel_frame.pack(fill="both", expand=True)
-        self.tree = ttk.Treeview(channel_frame, columns=("fav", "name", "group"),
+        self.tree = ttk.Treeview(channel_frame, columns=("fav", "name", "group", "health"),
                                  show="headings", selectmode="browse")
         self.tree.heading("fav", text="★")
         self.tree.heading("name", text="Channel")
         self.tree.heading("group", text="Group")
+        self.tree.heading("health", text="Health")
         self.tree.column("fav", width=32, stretch=False, anchor="center")
         self.tree.column("name", width=200, minwidth=100)
-        self.tree.column("group", width=105, minwidth=65)
+        self.tree.column("group", width=90, minwidth=60)
+        self.tree.column("health", width=74, stretch=False, anchor="center")
         scroll = ttk.Scrollbar(channel_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=scroll.set)
         self.tree.pack(side="left", fill="both", expand=True)
@@ -236,6 +271,10 @@ class BANGIPTVPlayer(tk.Tk):
         ttk.Button(sidebar_actions, text="▶ Watch", command=self.play_selected).pack(side="left")
         ttk.Button(sidebar_actions, text="★ Add / remove favourite",
                    command=self.toggle_favorite).pack(side="right")
+        ttk.Button(self.sidebar, text="Save verified working channels as M3U…",
+                   command=self.export_working).pack(fill="x", pady=(8, 0))
+        ttk.Label(self.sidebar, textvariable=self.health_summary,
+                  wraplength=370, foreground=ACCENT).pack(fill="x", pady=(8, 0))
 
         self.video_column = ttk.Frame(self, padding=(10, 16, 16, 16))
         self.video_column.pack(side="right", fill="both", expand=True)
@@ -268,48 +307,158 @@ class BANGIPTVPlayer(tk.Tk):
             self.source_kind.set("Custom URL / file")
             self.source.set(path)
 
-    def load(self):
+    def refresh_playlist(self):
+        if not self.loaded_source:
+            self.load()
+        else:
+            self.load(refresh=True)
+
+    def load(self, refresh=False):
         if self.busy:
             return
-        source = self.source.get().strip()
+        source = self.loaded_source if refresh else self.source.get().strip()
         if not source:
             messagebox.showwarning("Playlist", "Choose a playlist first.")
             return
         self.busy = True
         self.load_button.configure(state="disabled")
-        self.status.set("Loading channels…")
+        self.status.set("Refreshing playlist from its source…" if refresh else "Loading channels…")
         self.request_id += 1
         request_id = self.request_id
 
         def worker():
             try:
                 channels = load_channels(source)
-                self.messages.put((request_id, channels, None))
+                self.messages.put(("playlist", request_id, channels, None, source))
             except Exception as error:
-                self.messages.put((request_id, None, str(error)))
+                self.messages.put(("playlist", request_id, None, str(error), source))
 
         threading.Thread(target=worker, daemon=True).start()
 
     def _drain_messages(self):
+        needs_render = False
         try:
             while True:
-                request_id, channels, error = self.messages.get_nowait()
-                if request_id != self.request_id:
-                    continue
-                self.busy = False
-                self.load_button.configure(state="normal")
-                if error:
-                    self.status.set("Could not load playlist. Check the URL or file.")
-                    messagebox.showerror("Playlist loading failed", error)
-                    continue
-                self.channels = channels
-                self.group.set("All")
-                self.groups.configure(values=["All"] + sorted({c.group for c in channels}))
-                self.status.set(f"{len(channels):,} unique channels loaded. Double-click a channel to watch.")
-                self.render()
+                event = self.messages.get_nowait()
+                if event[0] == "playlist":
+                    _, request_id, channels, error, source = event
+                    if request_id != self.request_id:
+                        continue
+                    self.busy = False
+                    self.load_button.configure(state="normal")
+                    if error:
+                        self.status.set("Playlist refresh failed; existing channels retained.")
+                        messagebox.showerror("Playlist loading failed", error)
+                        continue
+                    source_changed = source != self.loaded_source
+                    self.loaded_source = source
+                    self.last_refresh = time.monotonic()
+                    self.channels = channels
+                    self.group.set("All" if source_changed else
+                                   self.group.get() if self.group.get() in
+                                   {c.group for c in channels} else "All")
+                    self.groups.configure(values=["All"] + sorted({c.group for c in channels}))
+                    if source_changed:
+                        self.health = HealthMonitor()
+                    self.health_generation += 1
+                    self.health_busy = False
+                    self.status.set(f"{len(channels):,} unique channels loaded. Auto-checking is " +
+                                    ("enabled." if self.auto_check.get() else "disabled."))
+                    needs_render = True
+                    if self.auto_check.get():
+                        self.after(500, self._start_health)
+                elif event[0] == "health":
+                    _, generation, url, result = event
+                    if generation != self.health_generation:
+                        continue
+                    self.health.record(url, result)
+                    needs_render = True
+                elif event[0] == "health_done":
+                    _, generation = event
+                    if generation == self.health_generation:
+                        self.health_busy = False
+                        needs_render = True
         except queue.Empty:
             pass
+        if needs_render:
+            self.render()
         self.after(100, self._drain_messages)
+
+    def _health_visibility_change(self):
+        self._save_settings()
+        self.render()
+
+    def _start_health(self, force=False):
+        if self.health_busy or self.busy or not self.channels:
+            return
+        preferred = [c.url for c in self.visible]
+        urls = self.health.choose(self.channels, preferred=preferred,
+                                  limit=BATCH_SIZE, force=force)
+        if not urls:
+            self._update_health_summary()
+            return
+        self.health_busy = True
+        generation = self.health_generation
+        self._update_health_summary()
+
+        def worker():
+            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+                tasks = {executor.submit(check_stream, url): url for url in urls}
+                for future in as_completed(tasks):
+                    url = tasks[future]
+                    try:
+                        result = future.result()
+                    except Exception:
+                        result = CheckResult("unknown", "Unexpected validation error.")
+                    self.messages.put(("health", generation, url, result))
+            self.messages.put(("health_done", generation))
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _health_tick(self):
+        if self.auto_check.get():
+            self._start_health()
+        self.after(15000, self._health_tick)
+
+    def _refresh_tick(self):
+        if (self.auto_refresh.get() and self.loaded_source and
+                time.monotonic() - self.last_refresh >= 1800 and not self.busy):
+            self.load(refresh=True)
+        self.after(60000, self._refresh_tick)
+
+    def _update_health_summary(self):
+        summary = self.health.counts(self.channels)
+        hidden = sum(hidden_status(self.health.status(c.url)) for c in self.channels)
+        self.health_summary.set(
+            f"{len(self.visible):,} shown / {len(self.channels):,} channels · "
+            f"{summary['online']:,} online · {hidden:,} stopped · "
+            f"{summary['blocked']:,} restricted · {summary['unchecked']:,} unchecked" +
+            (" · Checking…" if self.health_busy else "")
+        )
+
+    def export_working(self):
+        verified = [c for c in self.channels if self.health.status(c.url) == "online"]
+        if not verified:
+            messagebox.showinfo("Export", "No channels verified online yet. Use Check now first.")
+            return
+        path = filedialog.asksaveasfilename(
+            title="Save verified channels", defaultextension=".m3u",
+            initialfile="BANG_IPTV_verified.m3u",
+            filetypes=[("M3U playlist", "*.m3u")],
+        )
+        if not path:
+            return
+        streams = [{
+            "name": c.name, "url": c.url, "logo": c.logo, "category": c.group,
+            "tvg": {"id": c.tvg_id},
+        } for c in verified]
+        try:
+            save_m3u(path, streams)
+        except OSError as error:
+            messagebox.showerror("Export failed", str(error))
+            return
+        messagebox.showinfo("Saved", f"Exported {len(verified):,} verified channels. "
+                            "Unverified and stopped channels were not included.")
 
     def _delay_filter(self, *_args):
         if self.search_job is not None:
@@ -324,6 +473,10 @@ class BANGIPTVPlayer(tk.Tk):
             self.channels, query=self.search.get(), group=self.group.get(),
             favorites=self.favorites if self.only_favorites.get() else None,
         )
+        if self.hide_unavailable.get():
+            self.visible = [c for c in self.visible
+                            if not hidden_status(self.health.status(c.url))]
+        self._update_health_summary()
         items = self.tree.get_children()
         if items:
             self.tree.delete(*items)
@@ -336,6 +489,7 @@ class BANGIPTVPlayer(tk.Tk):
             item = self.visible[index]
             self.tree.insert("", "end", iid=str(index), values=(
                 "★" if item.url in self.favorites else "", item.name, item.group,
+                self.health.status(item.url),
             ))
         if start + 150 < len(self.visible):
             self.after(1, self._add_rows, token, start + 150)
@@ -359,6 +513,8 @@ class BANGIPTVPlayer(tk.Tk):
             if self.backend is None:
                 self.backend = VLCController(self.surface)
                 self.backend.player.audio_set_volume(int(self.volume.get()))
+            self.failed_playback_url = None
+            self.playing_reported_url = None
             self.backend.play(channel.url)
         except Exception as error:
             self.status.set("Playback is unavailable.")
@@ -403,7 +559,13 @@ class BANGIPTVPlayer(tk.Tk):
 
     def _save_settings(self):
         try:
-            write_settings({"favorites": sorted(self.favorites), "volume": self.volume.get()})
+            write_settings({
+                "favorites": sorted(self.favorites),
+                "volume": int(self.volume.get()),
+                "auto_check": self.auto_check.get(),
+                "auto_refresh": self.auto_refresh.get(),
+                "hide_unavailable": self.hide_unavailable.get(),
+            })
         except OSError:
             self.status.set("Preferences could not be saved.")
 
@@ -436,8 +598,20 @@ class BANGIPTVPlayer(tk.Tk):
             try:
                 state = self.backend.player.get_state()
                 if state == self.backend.vlc.State.Error:
-                    self.status.set("Stream failed. Try another channel or reload the playlist.")
+                    if self.failed_playback_url != self.current.url:
+                        self.failed_playback_url = self.current.url
+                        self.health.record(
+                            self.current.url, CheckResult("playback_failed", "VLC failed to play stream.")
+                        )
+                        self.render()
+                    self.status.set("Stream failed and is hidden from the channel list. "
+                                    "Untick Hide stopped to see it.")
                 elif state == self.backend.vlc.State.Playing:
+                    if self.playing_reported_url != self.current.url:
+                        self.playing_reported_url = self.current.url
+                        self.health.record(self.current.url,
+                                           CheckResult("online", "Playback confirmed by VLC."))
+                        self.render()
                     self.status.set(f"Playing: {self.current.name}")
                 elif state == self.backend.vlc.State.Buffering:
                     self.status.set("Buffering…")
