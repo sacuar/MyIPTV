@@ -49,7 +49,7 @@ The **original August 2026 stable release and all v3 beta versions remain availa
 - **Full player controls:** VLC video area, previous/next channel, play/pause, seek, volume, mute, fullscreen and an on-screen channel name.
 - **Regular playlist updates:** Reload the source automatically at a selected interval (5–120 minutes) while the program is open, or click **Update now**.
 - **Broken-link handling:** New installs default to **Hide dead**. Link checks run in the background and the list is updated as dead statuses become available. **Fix dead links** searches matching alternatives from loaded playlists and remembers successful repairs.
-- **Private URL display:** Links are hidden by default. \`Ctrl+L\` opens a masked unlock prompt; visibility automatically relocks after five minutes.
+- **Private URL display:** Links are hidden by default. `Ctrl+L` opens a masked unlock prompt; visibility automatically relocks after five minutes.
 
 **Important:** The app hides unavailable channels in the view; it does **not delete them from a remote playlist**. HTTP 403, access restrictions and temporary connection errors are treated as inconclusive rather than proof that a broadcaster is permanently unavailable. Link repair is best-effort; working endpoints and video decoding cannot be guaranteed.
 
@@ -84,15 +84,15 @@ There is no need to install Python when running the EXE. Internet access is requ
 
 | Shortcut | Action |
 |---|---|
-| \`Ctrl+F\` | Focus channel search |
-| \`Ctrl+R\` | Refresh selected playlist |
-| \`Ctrl+L\` | Reveal or hide stream links via private prompt |
-| \`Page Up\` / \`Page Down\` | Previous / next channel |
-| \`Space\` | Play / pause |
-| \`F\` or \`F11\` | Fullscreen |
-| \`Escape\` | Exit fullscreen |
-| \`M\` | Mute |
-| \`↑\` / \`↓\` | Volume |
+| `Ctrl+F` | Focus channel search |
+| `Ctrl+R` | Refresh selected playlist |
+| `Ctrl+L` | Reveal or hide stream links via private prompt |
+| `Page Up` / `Page Down` | Previous / next channel |
+| `Space` | Play / pause |
+| `F` or `F11` | Fullscreen |
+| `Escape` | Exit fullscreen |
+| `M` | Mute |
+| `↑` / `↓` | Volume |
 
 ## 🌍 Free M3U sources
 
@@ -115,36 +115,36 @@ The source of the original August 2026 EXE is not present in this repository. Th
 
 | File | Purpose |
 |---|---|
-| [\`bang_iptv_v4.py\`](bang_iptv_v4.py) | **Latest v4 player** — UI, playback, sorting, logos, refresh and link repair |
-| [\`requirements-v4.txt\`](requirements-v4.txt) | Required Python packages for v4 |
-| [\`tests/test_v4_regression.py\`](tests/test_v4_regression.py) | Offline v4 regression tests |
+| [`bang_iptv_v4.py`](bang_iptv_v4.py) | **Latest v4 player** — UI, playback, sorting, logos, refresh and link repair |
+| [`requirements-v4.txt`](requirements-v4.txt) | Required Python packages for v4 |
+| [`tests/test_v4_regression.py`](tests/test_v4_regression.py) | Offline v4 regression tests |
 | [v4 Windows build workflow](.github/workflows/publish-v4-beta.yml) | Test, package and publish the separate v4 beta |
-| [\`bang_iptv_player.py\`](bang_iptv_player.py) | Earlier v3 player for comparison and rollback |
-| [\`player_core.py\`](player_core.py) | v3 channel parsing and filtering |
-| [\`gui2.py\`](gui2.py) | Separate playlist validation/export tool |
-| [\`scripts/clean_playlists.py\`](scripts/clean_playlists.py) | Deduplicate or probe local M3U sources |
-| [\`tests/\`](tests) | Automated checks for the project |
+| [`bang_iptv_player.py`](bang_iptv_player.py) | Earlier v3 player for comparison and rollback |
+| [`player_core.py`](player_core.py) | v3 channel parsing and filtering |
+| [`gui2.py`](gui2.py) | Separate playlist validation/export tool |
+| [`scripts/clean_playlists.py`](scripts/clean_playlists.py) | Deduplicate or probe local M3U sources |
+| [`tests/`](tests) | Automated checks for the project |
 
 To run v4 from source on Windows, install Python 3.12+ and VLC Media Player:
 
-\`\`\`powershell
+```powershell
 python -m pip install -r requirements-v4.txt
 python bang_iptv_v4.py
-\`\`\`
+```
 
 To run the v4 regression suite:
 
-\`\`\`powershell
+```powershell
 python -m unittest discover -s tests -p "test_v4_regression.py" -v
-\`\`\`
+```
 
-For the older v3 source, use \`requirements-player.txt\` and \`bang_iptv_player.py\`. The independent \`gui2.py\` M3U utility also needs \`m3u-parser\`.
+For the older v3 source, use `requirements-player.txt` and `bang_iptv_player.py`. The independent `gui2.py` M3U utility also needs `m3u-parser`.
 
 **Validation scope:** The v4 code passed a local Tkinter UI smoke test using a mocked VLC backend, including scrollbar visibility, usable scrolling with 100 channels, and startup loading. GitHub Actions passed Windows compilation and automated tests and published a 23 MB EXE. Live decoding of real streams on your Windows machine still requires manual testing.
 
 ## 🛡️ Licensing, privacy and support
 
-The \`LICENSE\` file currently contains the Unlicense, while earlier documentation described the old application as proprietary. The maintainer should clarify which terms apply to the old binary and new source. Updating this README does not change the licence or revoke previously granted rights.
+The `LICENSE` file currently contains the Unlicense, while earlier documentation described the old application as proprietary. The maintainer should clarify which terms apply to the old binary and new source. Updating this README does not change the licence or revoke previously granted rights.
 
 The stream-link unlock is **visual privacy only**, not strong security or encryption. Do not commit passwords, private M3U credentials or access tokens to GitHub, and redact them in bug reports.
 
