@@ -36,7 +36,7 @@ Tests for playlist parsing, validation and channel navigation should avoid relyi
 
 Do **not** publish credentials, authenticated M3U URLs, private headers, sensitive screenshots or secret configuration in issues or pull requests. Replace sensitive URL tokens with `[REDACTED]`. Use only streams that you are entitled to access.
 
-**Licensing requires maintainer clarification:** The repository contains an Unlicense `LICENSE` file, while previous documentation described the original executable as proprietary. Please review the [licensing note in README](README.md#️-licence-and-streaming-responsibility) before making substantial code submissions. This document does not change the repository licence or claim that all original binary assets share it.
+**Licensing requires maintainer clarification:** The repository contains an Unlicense `LICENSE` file, while previous documentation described the original executable as proprietary. Please review the [licensing note in README](README.md) before making substantial code submissions. This document does not change the repository licence or claim that all original binary assets share it.
 
 ## Review and releases
 
