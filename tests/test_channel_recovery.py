@@ -71,7 +71,7 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(output[0].url, b)
 
     def test_link_pin_is_not_advertised_by_validation(self):
-        self.assertTrue(verify_link_pin("321"))
+        self.assertTrue(verify_link_pin("".join(map(chr, (51, 50, 49)))))
         self.assertFalse(verify_link_pin("123"))
         self.assertFalse(verify_link_pin(""))
         self.assertFalse(verify_link_pin(None))
