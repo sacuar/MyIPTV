@@ -74,7 +74,7 @@ The following images show the **original stable application**, not the newly rew
 
 1. Install the official [VLC Media Player](https://www.videolan.org/vlc/), matching your Windows architecture.
 2. Download the **original stable** or **v3 beta** EXE from the links above.
-3. Run `BANG_IPTV_Pro.exe`. No separate Python installation is needed for the EXE.
+3. Run the downloaded EXE: `BANG_IPTV.exe` for Beta 3, or `BANG_IPTV_Pro.exe` for earlier releases. No separate Python installation is needed.
 4. Select a playlist, load channels, then double-click a channel to play it.
 
 **For v3 beta specifically:** The default preset is Bangladesh — Free TV. You can switch to World, UK, Germany, News, Sports, Music or Movies, or open your own local M3U. Searching, grouping and favourites are built into the interface. A playlist loading successfully does **not** guarantee that each stream is playable: availability depends on its provider, location, format and access rights.
@@ -85,6 +85,7 @@ The following images show the **original stable application**, not the newly rew
 |---|---|
 | `Ctrl+O` | Open a local playlist |
 | `Ctrl+F` | Focus channel search |
+| `Ctrl+L` | Unlock or hide stream URLs (Beta 3) |
 | `Space` | Play / pause (when not typing) |
 | `M` | Mute / unmute (when not typing) |
 | `F11` | Toggle fullscreen |
