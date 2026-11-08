@@ -130,6 +130,24 @@ def load_channels(source, *, timeout=15):
     return channels
 
 
+
+def adjacent_channel(channels, current_url=None, direction=1):
+    """Choose next/previous visible channel, wrapping at either end.
+
+    An empty list returns None. If the current channel is filtered out,
+    navigation starts from the first/last visible channel.
+    """
+    if direction not in (-1, 1):
+        raise ValueError("Direction must be -1 or +1.")
+    if not channels:
+        return None
+    for index, channel in enumerate(channels):
+        if channel.url == current_url:
+            return channels[(index + direction) % len(channels)]
+    return channels[0] if direction == 1 else channels[-1]
+
+
+
 def filtered_channels(channels, *, query="", group="All", favorites=None):
     phrase = query.strip().casefold()
     favs = favorites if favorites is not None else None
