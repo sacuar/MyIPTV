@@ -24,6 +24,11 @@ jobs:
         shell: pwsh
         run: |
           python -m pip install -r requirements-v4.txt pyinstaller
+      - name: Check Python packaging environment
+        shell: pwsh
+        run: |
+          python --version
+          python -m pip show python-vlc pyinstaller
       - name: Check source and run regression tests
         shell: pwsh
         run: |
