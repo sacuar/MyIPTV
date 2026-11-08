@@ -94,8 +94,14 @@ class HealthEngineTests(unittest.TestCase):
         m.record(channels[1].url, "online", now=100)
         urls = m.choose(channels, now=101, preferred=[channels[2].url], limit=2)
         self.assertEqual(urls, [channels[2].url, channels[0].url])
+        # Unchecked channels are prioritised over periodic rechecks.
         self.assertEqual(
             m.choose(channels, now=401, preferred=[channels[1].url], limit=1),
+            [channels[0].url],
+        )
+        # A manual forced scan respects the visible channel ordering.
+        self.assertEqual(
+            m.choose(channels, now=401, preferred=[channels[1].url], limit=1, force=True),
             [channels[1].url],
         )
 
@@ -114,6 +120,21 @@ class HealthEngineTests(unittest.TestCase):
         m.record(channels[0].url, CheckResult("online", "Ok"), now=2)
         self.assertEqual(m.counts(channels)["online"], 1)
         self.assertEqual(m.counts(channels)["unchecked"], 1)
+
+    def test_large_list_reaches_new_channels(self):
+        m = HealthMonitor()
+        channels = [Channel(str(i), f"https://example.com/{i}") for i in range(150)]
+        for c in channels[:100]:
+            m.record(c.url, "online", now=10)
+        chosen = m.choose(channels, now=400, limit=5)
+        self.assertEqual(chosen, [c.url for c in channels[100:105]])
+
+    def test_suspects_are_prioritised_for_confirmation(self):
+        m = HealthMonitor()
+        channels = [Channel(str(i), f"https://example.com/{i}") for i in range(4)]
+        m.record(channels[-1].url, "missing", now=10)
+        chosen = m.choose(channels, now=40, limit=1)
+        self.assertEqual(chosen, [channels[-1].url])
 
 
 if __name__ == "__main__":

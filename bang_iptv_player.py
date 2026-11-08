@@ -7,6 +7,8 @@ Requires: python-vlc and a desktop installation of VLC Media Player.
 import json
 import os
 import time
+from collections import deque
+from dataclasses import replace
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import queue
 import sys
@@ -14,13 +16,15 @@ import tempfile
 import threading
 import tkinter as tk
 from pathlib import Path
-from tkinter import filedialog, messagebox, ttk
+from tkinter import filedialog, messagebox, simpledialog, ttk
 
 from player_core import FREE_PLAYLISTS, filtered_channels, load_channels
 from health_engine import (
     BATCH_SIZE, MAX_WORKERS, CheckResult, HealthMonitor, check_stream, hidden_status,
 )
 from m3u_export import save_m3u
+from channel_recovery import apply_replacements, first_reachable_replacement
+from link_access import verify_link_pin
 
 
 BG = "#10151f"
@@ -130,13 +134,27 @@ class VLCController:
 class BANGIPTVPlayer(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("BANG IPTV Pro")
+        self.title("BANG IPTV")
         self.geometry("1210x730")
         self.minsize(860, 530)
         self.configure(background=BG)
 
         settings = read_settings()
         self.favorites = set(v for v in settings.get("favorites", []) if isinstance(v, str))
+        raw_repairs = settings.get("repairs", {})
+        self.repairs = {a: b for a, b in raw_repairs.items()
+                        if isinstance(a, str) and isinstance(b, str)} if isinstance(raw_repairs, dict) else {}
+        self.links_unlocked_until = 0.0
+        self.pin_failed_attempts = 0
+        self.pin_blocked_until = 0.0
+        self.preview_url = tk.StringVar(value="")
+        self.auto_repair = tk.BooleanVar(value=settings.get("auto_repair", True))
+        self.repair_queue = deque()
+        self.repair_queued = set()
+        self.repair_busy = False
+        self.repair_attempts = {}
+        self.repair_pool = None
+        self.repair_pool_checked_at = 0.0
         self.channels = []
         self.visible = []
         self.backend = None
@@ -174,6 +192,7 @@ class BANGIPTVPlayer(tk.Tk):
         self.after(1400, self._monitor_playback)
         self.after(15000, self._health_tick)
         self.after(60000, self._refresh_tick)
+        self.after(1000, self._privacy_tick)
 
         self.bind("<Control-f>", lambda _event: self.search_entry.focus_set())
         self.bind("<Control-o>", lambda _event: self.choose_file())
@@ -181,6 +200,7 @@ class BANGIPTVPlayer(tk.Tk):
         self.bind("<F11>", lambda _event: self.toggle_fullscreen())
         self.bind("<space>", self._space_key)
         self.bind("<KeyPress-m>", self._mute_key)
+        self.bind("<Control-l>", lambda event: self.toggle_links())
 
     def _build_ui(self):
         style = ttk.Style(self)
@@ -213,7 +233,8 @@ class BANGIPTVPlayer(tk.Tk):
         picker.pack(fill="x", pady=(4, 7))
         picker.bind("<<ComboboxSelected>>", self.select_preset)
 
-        ttk.Entry(self.sidebar, textvariable=self.source).pack(fill="x", pady=(0, 7))
+        self.source_entry = ttk.Entry(self.sidebar, textvariable=self.source, show="•")
+        self.source_entry.pack(fill="x", pady=(0, 7))
         source_buttons = ttk.Frame(self.sidebar)
         source_buttons.pack(fill="x", pady=(0, 15))
         ttk.Button(source_buttons, text="Browse…", command=self.choose_file).pack(side="left")
@@ -233,6 +254,8 @@ class BANGIPTVPlayer(tk.Tk):
         ttk.Checkbutton(health_actions, text="Hide stopped", variable=self.hide_unavailable,
                         command=self._health_visibility_change).pack(side="left")
         ttk.Button(health_actions, text="Check now", command=lambda: self._start_health(force=True)).pack(side="right")
+        ttk.Checkbutton(self.sidebar, text="Find public replacements", variable=self.auto_repair,
+                        command=self._save_settings).pack(anchor="w", pady=(0, 6))
 
         ttk.Label(self.sidebar, text="Search channels").pack(anchor="w")
         self.search_entry = ttk.Entry(self.sidebar, textvariable=self.search)
@@ -265,12 +288,27 @@ class BANGIPTVPlayer(tk.Tk):
         scroll.pack(side="right", fill="y")
         self.tree.bind("<Double-1>", lambda _event: self.play_selected())
         self.tree.bind("<Return>", lambda _event: self.play_selected())
+        self.tree.bind("<<TreeviewSelect>>", lambda _event: self._update_link_preview())
 
         sidebar_actions = ttk.Frame(self.sidebar)
         sidebar_actions.pack(fill="x", pady=(10, 0))
         ttk.Button(sidebar_actions, text="▶ Watch", command=self.play_selected).pack(side="left")
         ttk.Button(sidebar_actions, text="★ Add / remove favourite",
                    command=self.toggle_favorite).pack(side="right")
+        link_controls = ttk.Frame(self.sidebar)
+        link_controls.pack(fill="x", pady=(8, 0))
+        self.link_button = ttk.Button(link_controls, text="Unlock links",
+                                      command=self.toggle_links)
+        self.link_button.pack(side="left")
+        ttk.Button(link_controls, text="Find alternative",
+                   command=self.find_selected_alternative).pack(side="right")
+        self.link_panel = ttk.Frame(self.sidebar)
+        ttk.Label(self.link_panel, text="Selected stream URL").pack(anchor="w")
+        ttk.Entry(self.link_panel, textvariable=self.preview_url, state="readonly").pack(
+            side="left", fill="x", expand=True)
+        ttk.Button(self.link_panel, text="Copy", command=self.copy_selected_link).pack(
+            side="right", padx=(6, 0))
+
         ttk.Button(self.sidebar, text="Save verified working channels as M3U…",
                    command=self.export_working).pack(fill="x", pady=(8, 0))
         ttk.Label(self.sidebar, textvariable=self.health_summary,
@@ -331,7 +369,7 @@ class BANGIPTVPlayer(tk.Tk):
                 channels = load_channels(source)
                 self.messages.put(("playlist", request_id, channels, None, source))
             except Exception as error:
-                self.messages.put(("playlist", request_id, None, str(error), source))
+                self.messages.put(("playlist", request_id, None, type(error).__name__, source))
 
         threading.Thread(target=worker, daemon=True).start()
 
@@ -353,31 +391,45 @@ class BANGIPTVPlayer(tk.Tk):
                     source_changed = source != self.loaded_source
                     self.loaded_source = source
                     self.last_refresh = time.monotonic()
-                    self.channels = channels
+                    self.channels = apply_replacements(channels, self.repairs)
                     self.group.set("All" if source_changed else
                                    self.group.get() if self.group.get() in
                                    {c.group for c in channels} else "All")
-                    self.groups.configure(values=["All"] + sorted({c.group for c in channels}))
+                    self.groups.configure(values=["All"] + sorted({c.group for c in self.channels}))
                     if source_changed:
                         self.health = HealthMonitor()
                     self.health_generation += 1
                     self.health_busy = False
-                    self.status.set(f"{len(channels):,} unique channels loaded. Auto-checking is " +
+                    self.status.set(f"{len(self.channels):,} unique channels loaded. Auto-checking is " +
                                     ("enabled." if self.auto_check.get() else "disabled."))
                     needs_render = True
                     if self.auto_check.get():
                         self.after(500, self._start_health)
+                    self.after(0, self._start_next_repair)
                 elif event[0] == "health":
                     _, generation, url, result = event
                     if generation != self.health_generation:
                         continue
-                    self.health.record(url, result)
+                    updated_status = self.health.record(url, result)
+                    if updated_status == "offline":
+                        self._queue_repair(url)
                     needs_render = True
                 elif event[0] == "health_done":
                     _, generation = event
                     if generation == self.health_generation:
                         self.health_busy = False
                         needs_render = True
+                elif event[0] == "repair_done":
+                    _, generation, old_url, candidate, new_pool, manual = event
+                    self.repair_busy = False
+                    self.repair_queued.discard(old_url)
+                    if new_pool is not None:
+                        self.repair_pool = new_pool
+                        self.repair_pool_checked_at = time.monotonic()
+                    if generation == self.health_generation:
+                        self._finish_repair(old_url, candidate, manual)
+                        needs_render = True
+                    self.after(0, self._start_next_repair)
         except queue.Empty:
             pass
         if needs_render:
@@ -437,6 +489,8 @@ class BANGIPTVPlayer(tk.Tk):
         )
 
     def export_working(self):
+        if not self._links_are_unlocked() and not self._unlock_links():
+            return
         verified = [c for c in self.channels if self.health.status(c.url) == "online"]
         if not verified:
             messagebox.showinfo("Export", "No channels verified online yet. Use Check now first.")
@@ -459,6 +513,154 @@ class BANGIPTVPlayer(tk.Tk):
             return
         messagebox.showinfo("Saved", f"Exported {len(verified):,} verified channels. "
                             "Unverified and stopped channels were not included.")
+
+    def _links_are_unlocked(self):
+        return time.monotonic() < self.links_unlocked_until
+
+    def _lock_links(self):
+        self.links_unlocked_until = 0.0
+        self.preview_url.set("")
+        self.source_entry.configure(show="•")
+        self.link_panel.pack_forget()
+        self.link_button.configure(text="Unlock links")
+
+    def _unlock_links(self):
+        now = time.monotonic()
+        if now < self.pin_blocked_until:
+            messagebox.showwarning("Access temporarily unavailable",
+                                   "Too many unsuccessful attempts. Try again later.")
+            return False
+        entered = simpledialog.askstring("Private links", "Enter access code:",
+                                          parent=self, show="*")
+        if entered is None:
+            return False
+        if not verify_link_pin(entered):
+            self.pin_failed_attempts += 1
+            if self.pin_failed_attempts >= 5:
+                self.pin_blocked_until = now + 60
+                self.pin_failed_attempts = 0
+            messagebox.showwarning("Access denied", "Incorrect code.")
+            return False
+        self.pin_failed_attempts = 0
+        self.links_unlocked_until = time.monotonic() + 300
+        self.source_entry.configure(show="")
+        self.link_panel.pack(fill="x", pady=(7, 0))
+        self.link_button.configure(text="Hide links")
+        self._update_link_preview()
+        return True
+
+    def toggle_links(self):
+        if self._links_are_unlocked():
+            self._lock_links()
+        else:
+            self._unlock_links()
+
+    def _privacy_tick(self):
+        if self.links_unlocked_until and not self._links_are_unlocked():
+            self._lock_links()
+        self.after(1000, self._privacy_tick)
+
+    def _update_link_preview(self):
+        if not self._links_are_unlocked():
+            self.preview_url.set("")
+            return
+        channel = self._selected_channel()
+        self.preview_url.set(channel.url if channel else "")
+
+    def copy_selected_link(self):
+        if not self._links_are_unlocked():
+            self._lock_links()
+            return
+        channel = self._selected_channel()
+        if channel is None:
+            messagebox.showinfo("No selection", "Select a channel first.")
+            return
+        self.clipboard_clear()
+        self.clipboard_append(channel.url)
+        self.status.set("Selected URL copied to clipboard.")
+
+    def find_selected_alternative(self):
+        channel = self._selected_channel() or self.current
+        if channel is None:
+            messagebox.showinfo("No selection", "Select a channel first.")
+            return
+        self._queue_repair(channel.url, manual=True)
+
+    def _queue_repair(self, url, manual=False):
+        if not manual and not self.auto_repair.get():
+            return
+        channel = next((c for c in self.channels if c.url == url), None)
+        if channel is None or url in self.repair_queued:
+            return
+        now = time.monotonic()
+        if not manual and now - self.repair_attempts.get(url, -3601) < 3600:
+            return
+        # Limit automatic work on very large playlists. A failure remains
+        # hidden but recoverable, even if no replacement has yet been found.
+        if len(self.repair_queue) >= 32 and not manual:
+            return
+        self.repair_attempts[url] = now
+        self.repair_queued.add(url)
+        self.repair_queue.append((channel, manual))
+        self._start_next_repair()
+
+    def _start_next_repair(self):
+        if self.repair_busy or not self.repair_queue or self.busy:
+            return
+        channel, manual = self.repair_queue.popleft()
+        self.repair_busy = True
+        generation = self.health_generation
+        current = list(self.channels)
+        known_bad = {url for url, entry in self.health.entries.items()
+                     if entry.status in ("offline", "failed")}
+        known_bad.update(self.repairs.keys())
+        pool = self.repair_pool if (
+            self.repair_pool is not None and
+            time.monotonic() - self.repair_pool_checked_at < 3600
+        ) else None
+
+        def worker():
+            def suitable(candidate_set):
+                candidates = [c for c in candidate_set if c.url not in known_bad]
+                return first_reachable_replacement(channel, candidates, check_stream)
+
+            candidate = suitable(current)
+            fetched_pool = None
+            if candidate is None:
+                try:
+                    if pool is None:
+                        fetched_pool = load_channels(
+                            FREE_PLAYLISTS["World — Free TV"], timeout=20
+                        )
+                    candidate = suitable(fetched_pool if fetched_pool is not None else pool)
+                except (OSError, ValueError, TimeoutError):
+                    candidate = None
+            self.messages.put(("repair_done", generation, channel.url,
+                               candidate, fetched_pool, manual))
+
+        threading.Thread(target=worker, daemon=True).start()
+        self.status.set(f"Searching public channel alternatives for {channel.name}…")
+
+    def _finish_repair(self, old_url, candidate, manual):
+        old = next((c for c in self.channels if c.url == old_url), None)
+        if old is None:
+            return
+        if candidate is None or candidate.url == old_url:
+            if manual:
+                self.status.set(f"No verified public replacement found for {old.name}.")
+            return
+        self.repairs[old_url] = candidate.url
+        if old_url in self.favorites:
+            self.favorites.discard(old_url)
+            self.favorites.add(candidate.url)
+        self.channels = apply_replacements(self.channels, self.repairs)
+        self.health.record(candidate.url, CheckResult(
+            "online", "A matching public alternative responded; playback not yet confirmed."
+        ))
+        if self.current is not None and self.current.url == old_url:
+            self.play_channel(replace(self.current, url=candidate.url))
+        self.status.set(f"Found a replacement stream for {old.name}.")
+        self._save_settings()
 
     def _delay_filter(self, *_args):
         if self.search_job is not None:
@@ -493,6 +695,8 @@ class BANGIPTVPlayer(tk.Tk):
             ))
         if start + 150 < len(self.visible):
             self.after(1, self._add_rows, token, start + 150)
+        else:
+            self._update_link_preview()
 
     def _selected_channel(self):
         selected = self.tree.selection()
@@ -518,7 +722,8 @@ class BANGIPTVPlayer(tk.Tk):
             self.backend.play(channel.url)
         except Exception as error:
             self.status.set("Playback is unavailable.")
-            messagebox.showerror("Cannot play channel", str(error))
+            messagebox.showerror("Cannot play channel",
+                                 f"Playback could not start ({type(error).__name__}).")
             return
         self.current = channel
         self.now_playing.set(channel.name)
@@ -565,6 +770,8 @@ class BANGIPTVPlayer(tk.Tk):
                 "auto_check": self.auto_check.get(),
                 "auto_refresh": self.auto_refresh.get(),
                 "hide_unavailable": self.hide_unavailable.get(),
+                "auto_repair": self.auto_repair.get(),
+                "repairs": self.repairs,
             })
         except OSError:
             self.status.set("Preferences could not be saved.")
@@ -604,6 +811,7 @@ class BANGIPTVPlayer(tk.Tk):
                             self.current.url, CheckResult("playback_failed", "VLC failed to play stream.")
                         )
                         self.render()
+                        self._queue_repair(self.current.url)
                     self.status.set("Stream failed and is hidden from the channel list. "
                                     "Untick Hide stopped to see it.")
                 elif state == self.backend.vlc.State.Playing:

@@ -1,4 +1,4 @@
-name: Publish BANG IPTV Pro v3 beta 2
+name: Publish BANG IPTV beta 3
 
 on:
   push:
@@ -25,50 +25,46 @@ jobs:
       - name: Compile player and run core tests
         shell: pwsh
         run: |
-          python -m compileall -q player_core.py health_engine.py m3u_export.py bang_iptv_player.py
+          python -m compileall -q player_core.py health_engine.py m3u_export.py link_access.py channel_recovery.py bang_iptv_player.py
           python -m unittest discover -s tests -v
 
       - name: Build standalone Python executable
         shell: pwsh
         run: |
           python -m pip install -r requirements-player.txt pyinstaller
-          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_Pro --hidden-import vlc bang_iptv_player.py
-          if (-not (Test-Path dist/BANG_IPTV_Pro.exe)) {
+          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV --hidden-import vlc bang_iptv_player.py
+          if (-not (Test-Path dist/BANG_IPTV.exe)) {
             throw "The Windows executable was not created."
           }
 
       - name: Publish beta release without overwriting existing stable release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v3.0.0-beta.2
+          tag_name: v3.0.0-beta.3
           target_commitish: ${{ github.sha }}
-          name: BANG IPTV Pro v3.0 Beta 2 — Auto-refresh and stream health
+          name: BANG IPTV v3.0 Beta 3 — Private links and recovery
           prerelease: true
           make_latest: false
           fail_on_unmatched_files: true
-          files: dist/BANG_IPTV_Pro.exe
+          files: dist/BANG_IPTV.exe
           body: |
-            ## New Windows player — beta build
-            This is the second beta of the new BANG IPTV Pro player. Beta 1 and the original August 2026 stable release remain unchanged.
-            The original August 2026 release remains available and unchanged.
+            ## BANG IPTV v3 Beta 3 — Stream privacy and recovery
+            This beta is a separate release. The original August 2026 stable version and Beta 1/Beta 2 stay available unchanged.
 
-            ### Included
-            - Embedded VLC video playback (requires VLC Media Player installed on Windows)
-            - Free M3U source presets for Bangladesh, UK, Germany and international channels
-            - Search, favourites, group filtering, play/pause/stop, volume and fullscreen
-            - Asynchronous playlist loading and duplicate URL removal
-            - Automatic playlist refresh every 30 minutes while the app is running (optional)
-            - Background stream checks in bounded batches, with confirmation of HTTP 404/410 before hiding
-            - Hide stopped links in the channel list, Show stopped toggle, and live status badges
-            - Check now and Export verified working M3U options
+            ### Improvements
+            - Stream URLs and playlist source are hidden by default; Ctrl+L opens the private access prompt.
+            - Links automatically relock after five minutes; no unlock code is published here.
+            - Confirmed offline streams remain hidden from the channel list, but are recoverable.
+            - Automatically look for exact channel-ID/name matches from an established free IPTV source, verify the candidate endpoint, and reuse a suitable alternative when available.
+            - Save found replacements locally and preserve them across playlist refreshes, maintaining favourite channels.
+            - Prioritise unchecked channels on large playlists so checks reach the whole list rather than continuously rechecking its beginning.
+            - Manual Find alternative and Show stopped options remain available.
 
-            ### Important
-            - This is a replacement implementation, not an upgrade applied to the original EXE.
-            - EPG display, channel logos in the channel list, and protected-link visibility are not implemented in this new player.
-            - A successful HTTP response does not prove video decodes; HLS manifests are inspected and VLC playback errors hide failed channels.
-            - Repeated missing (404/410) links are hidden, not deleted permanently. Uncertain/time-out/geoblocked links are not silently removed.
-            - For very large playlists, checks run in batches and full revalidation takes longer than 5 minutes.
-            - Windows playback has not been manually validated; please report problems using GitHub Issues.
-            - Only stream content that you have permission to access.
+            ### Limitations
+            - This private-link control is NOT encryption or robust access control. Public source and binaries can be examined.
+            - Online HTTP/HLS checks cannot guarantee video decode, rights or geographic availability.
+            - No alternative can be promised for every broadcaster. The player does not bypass DRM or subscriptions.
+            - Windows playback has not yet been manually verified. Please report bugs through GitHub Issues.
+            - Install VLC Media Player to enable video playback.
 
-            Download BANG_IPTV_Pro.exe under Assets below.
+            The executable is now named BANG_IPTV.exe. Historic releases retain their earlier filenames.

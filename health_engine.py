@@ -118,13 +118,18 @@ class HealthMonitor:
         return entry.status
 
     def choose(self, channels, *, limit=BATCH_SIZE, now=None, preferred=(), force=False):
-        """Prioritise displayed channels without repeatedly checking recent results."""
+        """Finish inspecting new channels before cycling already checked URLs.
+
+        Prioritise suspects needing confirmation, then unchecked URLs, then
+        eligible periodic rechecks. This prevents a 10,000-item list from
+        repeatedly checking only the first 1,000 entries.
+        """
         if now is None:
             now = time.monotonic()
         urls = {channel.url for channel in channels}
         order = list(dict.fromkeys(list(preferred) + [channel.url for channel in channels]))
-        chosen = []
-        for url in order:
+        eligible = []
+        for index, url in enumerate(order):
             if url not in urls:
                 continue
             try:
@@ -138,10 +143,17 @@ class HealthMonitor:
                 delay = SUSPECT_RETRY_SECONDS if entry.status == "suspect" else CHECK_INTERVAL_SECONDS
                 if age < delay:
                     continue
-            chosen.append(url)
-            if len(chosen) >= limit:
-                break
-        return chosen
+            if force:
+                priority = 0
+            elif entry is not None and entry.status == "suspect":
+                priority = 0
+            elif entry is None or entry.status == "unchecked":
+                priority = 1
+            else:
+                priority = 2
+            eligible.append((priority, index, url))
+        eligible.sort()
+        return [url for _, _, url in eligible[:max(0, limit)]]
 
     def counts(self, channels):
         summary = {"online": 0, "offline": 0, "failed": 0, "blocked": 0,

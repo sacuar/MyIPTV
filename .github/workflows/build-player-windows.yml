@@ -23,7 +23,7 @@ jobs:
           python-version: "3.12"
 
       - name: Check source syntax
-        run: python -m compileall -q player_core.py health_engine.py m3u_export.py bang_iptv_player.py
+        run: python -m compileall -q player_core.py health_engine.py m3u_export.py link_access.py channel_recovery.py bang_iptv_player.py
 
       - name: Run player core tests
         run: python -m unittest discover -s tests -v
@@ -32,12 +32,12 @@ jobs:
         run: python -m pip install -r requirements-player.txt pyinstaller
 
       - name: Build portable Windows EXE
-        run: pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_Pro --hidden-import vlc bang_iptv_player.py
+        run: pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV --hidden-import vlc bang_iptv_player.py
 
       - name: Upload player executable
         uses: actions/upload-artifact@v4
         with:
-          name: BANG-IPTV-Pro-Windows
-          path: dist/BANG_IPTV_Pro.exe
+          name: BANG-IPTV-PrivateLinks-Beta3-Windows
+          path: dist/BANG_IPTV.exe
           retention-days: 30
           if-no-files-found: error
