@@ -182,6 +182,52 @@ IPTV_SOURCES["🌐 MEGA pack (all major sources)"] = {
              "https://raw.githubusercontent.com/time2shine/IPTV/refs/heads/master/combined.m3u"],
     "desc": "Everything merged - biggest list, takes longer"}
 
+# User-supplied optional M3U presets. These require explicit selection and
+# are deliberately excluded from startup, South Asia and MEGA bundles.
+# A list downloading successfully does not establish that its streams play.
+OPTIONAL_PLAYLIST_SOURCES = {
+    "📺 Roku FAST (community)": {
+        "urls": ["https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"],
+        "desc": "Community Roku channel playlist, availability varies",
+    },
+    "📺 Tubi FAST (community)": {
+        "urls": ["https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"],
+        "desc": "Community Tubi channel playlist, availability varies",
+    },
+    "🇺🇸 US Local (APSAT, unverified)": {
+        "urls": ["https://www.apsattv.com/uslg.m3u"],
+        "desc": "US local playlist supplied by user; playback not verified",
+    },
+    "📁 Play1 (legacy, unverified)": {
+        "urls": ["https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u"],
+        "desc": "Older playlist from this repository; streams may be outdated",
+    },
+}
+
+# Keep age-restricted presets isolated. They are never auto-loaded or
+# included in general, country, language, or mega collections.
+OPTIONAL_ADULT_PLAYLIST_SOURCES = {
+    "18+ · MyIPTV adult (legacy)": {
+        "urls": ["https://raw.githubusercontent.com/sacuar/MyIPTV/main/adult.m3u"],
+        "desc": "Optional age-restricted legacy playlist",
+    },
+    "18+ · IPTV Mate (adult)": {
+        "urls": ["https://iptvmate.net/files/adult.m3u"],
+        "desc": "Optional age-restricted list, unverified",
+    },
+    "18+ · IPTV Mate (XXX)": {
+        "urls": ["https://iptvmate.net/files/xxx.m3u"],
+        "desc": "Optional age-restricted list, unverified",
+    },
+    "18+ · Older archive (2022)": {
+        "urls": ["https://adultm3u.com/dl/x-adultm3u-com-07-03-2022.m3u"],
+        "desc": "Optional older archive, availability unverified",
+    },
+}
+IPTV_SOURCES.update(OPTIONAL_PLAYLIST_SOURCES)
+IPTV_SOURCES.update(OPTIONAL_ADULT_PLAYLIST_SOURCES)
+
+
 # ============================================
 # VIDEO SEARCH SOURCES (unchanged from v3)
 # ============================================
