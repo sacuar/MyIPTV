@@ -98,9 +98,9 @@ class HealthBook:
             row["misses"] = min(100, row["misses"] + 1)
             row["status"] = False if row["misses"] >= 2 else None
         else:
-            if row["status"] is False:
-                row["status"] = None
-            # Network timeouts must not fabricate permanent dead status.
+            # A timeout/HTTP 403 must not overturn prior confirmed evidence
+            # or reset its timestamp; the cache will expire naturally.
+            return row["status"]
         row["checked"] = current
         return row["status"]
 
