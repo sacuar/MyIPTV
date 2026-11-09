@@ -680,6 +680,7 @@ class IPTVPro:
         self.seen_playing = False
         self.cur_is_live = False
         self.fix_attempted = False
+        self.connection_retry_remaining = 1
         self.fullscreen = False
         self.seeking = False
         self.loading_gen = 0
@@ -842,7 +843,7 @@ class IPTVPro:
     def setup_top_bar(self, parent):
         top = tk.Frame(parent, bg="#0d0d0d")
         top.pack(fill=tk.X, pady=(0, 8))
-        tk.Label(top, text="🎬 BANG IPTV Pro", font=("Segoe UI", 18, "bold"), fg="#ff3b30", bg="#0d0d0d").pack(
+        tk.Label(top, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#ff3b30", bg="#0d0d0d").pack(
             side=tk.LEFT, padx=5)
 
         tk.Label(top, text="Source:", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=(15, 3))
@@ -1791,19 +1792,28 @@ class IPTVPro:
                 return
         self.play_channel(ch)
 
-    def play_channel(self, ch):
-        """ch: dict with at least name + url (opts/logo optional)."""
+    def play_channel(self, ch, retry=False):
+        """Start playback; preserve one automatic reconnect attempt per selection."""
+        if not retry:
+            self.connection_retry_remaining = 1
         try:
             ch.setdefault("opts", [])
             self.current = ch
             self.placeholder.place_forget()
             media = self.instance.media_new(ch["url"])
+            preference = self.settings.get("quality_preference", "Balanced")
+            buffer_ms = {"High quality": 2200, "Balanced": 1500,
+                         "Data saver": 1000}.get(preference, 1500)
+            media.add_option(f":network-caching={buffer_ms}")
+            media.add_option(f":live-caching={buffer_ms}")
+            media.add_option(":http-reconnect")
             for o in ch["opts"]:
                 try:
                     media.add_option(o)
                 except Exception:
                     pass
             self.player.set_media(media)
+            media.release()
             if sys.platform == "win32":
                 self.player.set_hwnd(self.video_frame.winfo_id())
             elif sys.platform == "darwin":
@@ -1811,7 +1821,8 @@ class IPTVPro:
             else:
                 self.player.set_xwindow(self.video_frame.winfo_id())
             self.player.audio_set_volume(int(self.vol_bar.get()))
-            self.player.play()
+            if self.player.play() == -1:
+                raise RuntimeError("VLC could not start this stream")
             self.is_playing, self.is_paused = True, False
             self.play_started, self.seen_playing, self.cur_is_live = time.time(), False, False
             self.fix_attempted = False
@@ -1921,6 +1932,8 @@ class IPTVPro:
                     if not self.seen_playing:
                         self.seen_playing = True
                         self.current["working"] = True
+                        self.health.record(
+                            self.current["url"], True, playback=True)
                         iid = str(self.current.get("_i", ""))
                         if self.tree.exists(iid):
                             self.tree.set(iid, "st", "✅")
@@ -1946,21 +1959,38 @@ class IPTVPro:
             if not self.is_closing:
                 self.root.after(500, self.tick)
 
+    def _retry_channel(self, ch):
+        if not self.is_closing and self.current is ch:
+            self.play_channel(ch, retry=True)
+
     def on_stream_failure(self):
         ch = self.current
         if ch is None or self.fix_attempted:
             return
         self.fix_attempted = True
+        if self.connection_retry_remaining > 0:
+            # One short retry avoids treating a temporary buffering problem
+            # as a permanently dead broadcaster.
+            self.connection_retry_remaining -= 1
+            self.set_status(f"Reconnecting to {ch['name']}…")
+            self.root.after(1100, self._retry_channel, ch)
+            return
+
+        # After a repeated VLC failure, hide the channel until reconnection
+        # or a validated alternative becomes available.
+        self.health.record(ch["url"], False)
+        self.health.record(ch["url"], False)
         ch["working"] = False
         iid = str(ch.get("_i", ""))
         if self.tree.exists(iid):
             self.tree.set(iid, "st", "❌")
-        self.live_badge.config(text="✖ BROKEN", bg="#7a1d16")
+        self.live_badge.config(text="✖ UNAVAILABLE", bg="#7a1d16")
         if self.settings.get("auto_fix", True) and "_i" in ch:
-            self.set_status(f"⚠ {ch['name']} stopped working — searching for a replacement link...")
+            self.set_status(f"Trying another stream for {ch['name']}…")
             self.repair_channel(ch, auto_play=True)
         else:
-            self.set_status(f"⚠ {ch['name']} could not be played")
+            self.set_status(f"{ch['name']} could not be played")
+            self.display_channels()
 
     # ================================================================ FULL SCREEN
     def toggle_fullscreen(self):
