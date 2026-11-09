@@ -120,6 +120,7 @@ DEFAULT_SETTINGS = {
     "auto_fix": True,
     "quality_preference": "Balanced",
     "custom_sources": [],
+    "last_local_file": "",
 }
 
 # ============================================
@@ -785,6 +786,11 @@ class IPTVPro:
 
     def all_sources(self):
         d = dict(IPTV_SOURCES)
+        recent_file = self.settings.get("last_local_file", "")
+        if isinstance(recent_file, str) and recent_file and Path(recent_file).is_file():
+            d["📂 Local M3U file"] = {
+                "urls": [recent_file], "desc": "Last selected local playlist"
+            }
         for cs in self.settings.get("custom_sources", []):
             d[f"⭐ {cs['name']}"] = {"urls": [cs["url"]], "desc": "Custom"}
         return d
@@ -1192,17 +1198,20 @@ class IPTVPro:
         self.load_selected_source()
 
     def open_m3u_file(self):
-        path = filedialog.askopenfilename(title="Open playlist", filetypes=[("Playlists", "*.m3u *.m3u8 *.txt"), ("All", "*.*")])
+        path = filedialog.askopenfilename(
+            title="Open playlist", filetypes=[
+                ("Playlists", "*.m3u *.m3u8 *.txt"), ("All", "*.*")])
         if not path:
             return
-        try:
-            text = Path(path).read_text(encoding="utf-8", errors="ignore")
-        except OSError as e:
-            self.show_error(str(e))
+        if not Path(path).is_file():
+            self.show_error("The selected file could not be opened.")
             return
-        chans = merge_playlists([parse_m3u(text, "file")], self.overrides)
-        self.loading_gen += 1
-        self.finish_load(self.loading_gen, chans, False, [], f"📂 {Path(path).name}")
+        self.settings["last_local_file"] = str(path)
+        self.settings["last_source"] = "📂 Local M3U file"
+        self.save_all()
+        self.source_menu["values"] = list(self.all_sources().keys())
+        self.source_var.set("📂 Local M3U file")
+        self.load_source(self.source_var.get())
 
     def load_source(self, name, silent=False):
         src = self.all_sources().get(name)
@@ -1219,6 +1228,13 @@ class IPTVPro:
         threading.Thread(target=self.fetch_source, args=(gen, name, src["urls"], silent), daemon=True).start()
 
     def fetch_text(self, url, conditional):
+        # Local playlists are loaded privately from disk, never uploaded to
+        # GitHub or to a third-party website.
+        local_path = Path(url)
+        if "://" not in url and local_path.is_file():
+            if local_path.stat().st_size > 8 * 1024 * 1024:
+                raise ValueError("Local playlist exceeds the 8 MB safety limit.")
+            return local_path.read_text(encoding="utf-8-sig", errors="replace"), True
         if requests is None:
             raise RuntimeError("The requests package is required to load online playlists.")
         headers = dict(UA)
