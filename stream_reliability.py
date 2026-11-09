@@ -139,7 +139,11 @@ def ordered_alternatives(channel, candidates, health, *, preference="Balanced", 
             continue
         if not same_channel(channel, entry) and url not in trusted_alts:
             continue
-        if urlsplit(url).scheme.lower() not in ("http", "https", "rtsp", "rtmp"):
+        try:
+            scheme = urlsplit(url).scheme.lower()
+        except ValueError:
+            continue
+        if scheme not in ("http", "https", "rtsp", "rtmp"):
             continue
         used.add(url)
         out.append(entry)
