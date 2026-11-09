@@ -19,7 +19,7 @@ class ReliabilityTests(unittest.TestCase):
         h = HealthBook()
         self.assertIsNone(h.record("https://a.test", False, now=100))
         self.assertIs(h.record("https://a.test", False, now=110), False)
-        self.assertIsNone(h.record("https://a.test", None, now=111))
+        self.assertIs(h.record("https://a.test", None, now=111), False)
         self.assertIs(h.record("https://a.test", True, now=120, playback=True), True)
         self.assertEqual(h.entries["https://a.test"]["played"], 1)
 
