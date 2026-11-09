@@ -712,7 +712,11 @@ class IPTVPro:
         self.val_inflight = 0
         self.recheck_cursor = 0
         self.public_index_lock = threading.Lock()
-        self.public_index_updated = 0.0
+        self.public_index_updated = {}
+        self.auto_repair_queue = deque()
+        self.auto_repair_seen = set()
+        self.auto_repair_last = {}
+        self.auto_repair_busy = False
         self.logo_img = {}             # (url,size) -> PhotoImage
         self.logo_req = set()
         self.placeholders = {}
@@ -1549,6 +1553,8 @@ class IPTVPro:
                 self.health.record(ch["url"], False)
             status = self.health.record(ch["url"], result)
             ch["working"], ch["checked"] = status, time.time()
+            if status is False:
+                self._queue_auto_repair(ch)
             self.val_done += 1
             self.val_inflight = max(0, self.val_inflight - 1)
             iid = str(ch.get("_i", ""))
@@ -1596,6 +1602,102 @@ class IPTVPro:
                 self.root.after(5 * 60000, self.recheck_loop)
 
     # ================================================================ LINK REPAIR
+    def _discover_public_alternatives(self, ch):
+        """Fetch an official, public IPTV index on demand; no private URLs sent.
+
+        A failed stream's name or credential is not transmitted to the index.
+        Rate-limit each index to one request per six hours.
+        """
+        if requests is None:
+            return
+        country = (ch.get("country") or "").strip().lower()
+        country = country if re.fullmatch(r"[a-z]{2}", country) else None
+        suffix = f"countries/{country}.m3u" if country else "index.m3u"
+        url = "https://iptv-org.github.io/iptv/" + suffix
+        with self.public_index_lock:
+            if time.time() - self.public_index_updated.get(url, 0) < 6 * 3600:
+                return
+            # Avoid repeatedly hammering a source that is unavailable.
+            self.public_index_updated[url] = time.time()
+            try:
+                response = requests.get(url, headers=UA, timeout=(5, 15),
+                                        stream=True)
+                try:
+                    response.raise_for_status()
+                    total = 0
+                    chunks = []
+                    for block in response.iter_content(65536):
+                        if block:
+                            total += len(block)
+                            if total > 8 * 1024 * 1024:
+                                return
+                            chunks.append(block)
+                finally:
+                    response.close()
+                content = b"".join(chunks).decode("utf-8-sig", errors="replace")
+                if not content.lstrip().startswith("#EXTM3U"):
+                    return
+                self.repairer.add(parse_m3u(content, url))
+            except Exception:
+                return
+
+    def _find_replacement(self, ch, exclude=(), workers=4):
+        preference = self.settings.get("quality_preference", "Balanced")
+        found = self.repairer.find_working(
+            ch, exclude=exclude, workers=workers, preference=preference)
+        if found is not None:
+            return found
+        # Don't mix age-restricted channels into general public discovery.
+        if self.source_var.get().startswith("18+"):
+            return None
+        self._discover_public_alternatives(ch)
+        return self.repairer.find_working(
+            ch, exclude=exclude, workers=workers, preference=preference)
+
+    def _queue_auto_repair(self, ch):
+        if not self.settings.get("auto_fix", True) or self.is_closing:
+            return
+        if self.source_var.get().startswith("18+"):
+            return
+        url = ch.get("url")
+        if not url or url in self.auto_repair_seen:
+            return
+        now = time.time()
+        if now - self.auto_repair_last.get(url, 0) < 3600:
+            return
+        if len(self.auto_repair_queue) >= 16:
+            return
+        self.auto_repair_seen.add(url)
+        self.auto_repair_last[url] = now
+        self.auto_repair_queue.append(ch)
+        self._run_auto_repair()
+
+    def _run_auto_repair(self):
+        if self.auto_repair_busy or not self.auto_repair_queue or self.is_closing:
+            return
+        ch = self.auto_repair_queue.popleft()
+        url = ch.get("url")
+        self.auto_repair_busy = True
+
+        def worker():
+            dead = {c["url"] for c in self.channels if c.get("working") is False}
+            try:
+                found = self._find_replacement(ch, exclude=dead)
+            except Exception:
+                found = None
+            self.call_ui(self._finish_auto_repair, ch, url, found)
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _finish_auto_repair(self, ch, old_url, found):
+        self.auto_repair_seen.discard(old_url)
+        self.auto_repair_busy = False
+        if not self.is_closing and found and ch in self.channels and ch.get("url") == old_url:
+            self.apply_fix(ch, found)
+            self.display_channels()
+            self.set_status(f"Recovered an alternative stream for {ch['name']}")
+        self._run_auto_repair()
+
     def fix_current(self):
         if self.current:
             self.repair_channel(self.current, auto_play=True, manual=True)
@@ -1612,7 +1714,7 @@ class IPTVPro:
         dead = {c["url"] for c in self.channels if c.get("working") is False}
 
         def work():
-            found = self.repairer.find_working(ch, exclude=dead)
+            found = self._find_replacement(ch, exclude=dead)
             self.call_ui(done, found)
 
         def done(found):
@@ -1659,7 +1761,7 @@ class IPTVPro:
             for i, ch in enumerate(dead, 1):
                 if self.is_closing:
                     return
-                found = self.repairer.find_working(ch, exclude=deadset, workers=6)
+                found = self._find_replacement(ch, exclude=deadset, workers=4)
                 if found:
                     fixed += 1
                     self.call_ui(self.apply_fix, ch, found)
