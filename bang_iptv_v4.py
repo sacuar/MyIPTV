@@ -1490,65 +1490,107 @@ class IPTVPro:
             self.logo_pool.submit(work)
 
     # ================================================================ LINK VALIDATION
-    def start_validation(self, force=False):
+    def start_validation(self, force=False, subset=None):
+        """Check streams in bounded background batches, prioritising visible rows."""
         self.val_gen += 1
         gen = self.val_gen
         if self.val_pool:
             self.val_pool.shutdown(wait=False, cancel_futures=True)
-        todo = [c for c in self.view if force or c.get("working") is None]
-        seen = {id(c) for c in todo}
-        todo += [c for c in self.channels if id(c) not in seen and (force or c.get("working") is None)]
+
+        if subset is not None:
+            todo = list(subset)
+        else:
+            todo = [c for c in self.view if force or c.get("working") is None]
+            seen = {id(c) for c in todo}
+            todo.extend(c for c in self.channels
+                        if id(c) not in seen and (force or c.get("working") is None))
+        self.val_queue = deque(todo)
+        self.val_inflight = 0
         self.val_total, self.val_done = len(todo), 0
         if not todo:
-            self.link_count_label.config(text=f"🔗 all {len(self.channels):,} checked")
+            self.link_count_label.config(
+                text=f"🔗 {len(self.channels):,} recently checked")
             return
-        self.val_pool = ThreadPoolExecutor(max_workers=24)
-        for c in todo:
-            self.val_pool.submit(self.val_task, c, gen)
-        self.root.after(400, self.flush_validation, gen)
+        # Eight workers; no more than 32 queued futures, even for 30k links.
+        self.val_pool = ThreadPoolExecutor(
+            max_workers=8, thread_name_prefix="bang-stream-health")
+        self._submit_validation_batch(gen)
+        self.root.after(300, self.flush_validation, gen)
+
+    def _submit_validation_batch(self, gen):
+        if gen != self.val_gen or self.is_closing or self.val_pool is None:
+            return
+        while self.val_queue and self.val_inflight < 32:
+            ch = self.val_queue.popleft()
+            self.val_inflight += 1
+            self.val_pool.submit(self.val_task, ch, gen)
 
     def val_task(self, ch, gen):
         if gen != self.val_gen or self.is_closing:
             return
-        ok = check_stream(ch["url"], ch.get("opts", []))
+        try:
+            result = confirm_probe(check_stream, ch["url"], ch.get("opts", []))
+        except Exception:
+            result = None
         with self.val_lock:
-            self.val_buf.append((ch, ok, gen))
+            self.val_buf.append((ch, result, gen))
 
     def flush_validation(self, gen):
         if gen != self.val_gen or self.is_closing:
             return
         with self.val_lock:
             batch, self.val_buf = self.val_buf, []
-        for ch, ok, g in batch:
-            if g != gen:
+        for ch, result, generation in batch:
+            if generation != gen:
                 continue
-            ch["working"], ch["checked"] = ok, time.time()
+            # confirm_probe already repeated 404/410; preserve two-failure
+            # evidence in the local reliability book.
+            if result is False:
+                self.health.record(ch["url"], False)
+            status = self.health.record(ch["url"], result)
+            ch["working"], ch["checked"] = status, time.time()
             self.val_done += 1
-            iid = str(ch["_i"])
+            self.val_inflight = max(0, self.val_inflight - 1)
+            iid = str(ch.get("_i", ""))
             if self.tree.exists(iid):
                 self.tree.set(iid, "st", self.status_icon(ch))
-        good = sum(1 for c in self.channels if c.get("working") is True)
-        bad = sum(1 for c in self.channels if c.get("working") is False)
-        self.link_count_label.config(text=f"🔗 {self.val_done}/{self.val_total} checked   ✅ {good:,}   ❌ {bad:,}")
-        if (batch and self.status_var.get() in ("Hide dead", "Dead only", "Working only")
-                and time.monotonic() - self._last_filter_redraw >= 4):
-            self._last_filter_redraw = time.monotonic()
-            self.display_channels()
+        self._submit_validation_batch(gen)
+
+        reachable = sum(c.get("working") is True for c in self.channels)
+        missing = sum(c.get("working") is False for c in self.channels)
+        self.link_count_label.config(
+            text=f"Links {self.val_done:,}/{self.val_total:,} · "
+                 f"Reachable {reachable:,} · Missing {missing:,}")
+        if batch and self.status_var.get() in ("Hide dead", "Dead only", "Working only"):
+            if time.monotonic() - self._last_filter_redraw >= 3:
+                self._last_filter_redraw = time.monotonic()
+                self.display_channels()
+
         if self.val_done < self.val_total:
-            self.root.after(400, self.flush_validation, gen)
-        elif self.sort_var.get() == "Working first" or self.status_var.get() != "All":
-            self.display_channels()
+            self.root.after(350, self.flush_validation, gen)
+        else:
+            self.val_pool.shutdown(wait=False)
+            self.val_pool = None
+            self.save_all()
+            if self.sort_var.get() == "Working first" or self.status_var.get() != "All":
+                self.display_channels()
 
     def recheck_loop(self):
-        """Every few minutes: give dead links another chance and refresh stale 'working' marks."""
+        """Rotate through stale links so no section of a large playlist starves."""
         try:
             if self.channels and not self.is_closing and self.val_done >= self.val_total:
+                total = len(self.channels)
+                start = self.recheck_cursor % total
+                rotated = self.channels[start:] + self.channels[:start]
                 now = time.time()
-                stale = [c for c in self.channels if c.get("working") is False or now - c.get("checked", 0) > 1800][:300]
-                for c in stale:
-                    c["working"] = None
+                stale = [ch for ch in rotated
+                         if ch.get("working") is False or
+                         now - ch.get("checked", 0) > 1800][:160]
+                self.recheck_cursor = (start + 160) % total
                 if stale:
-                    self.start_validation()
+                    for ch in stale:
+                        ch["working"] = None
+                    self.start_validation(subset=stale)
         finally:
             if not self.is_closing:
                 self.root.after(5 * 60000, self.recheck_loop)
