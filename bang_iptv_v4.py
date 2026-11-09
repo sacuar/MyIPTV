@@ -649,7 +649,7 @@ class IPTVPro:
         self.root.title(f"🎬 {APP_NAME} v{APP_VERSION}")
         self.root.geometry("1400x900")
         self.root.minsize(1100, 700)
-        self.root.configure(bg="#0d0d0d")
+        self.root.configure(bg="#101318")
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.is_closing = False
         self.is_authenticated = False
@@ -796,30 +796,30 @@ class IPTVPro:
             st.theme_use("clam")
         except Exception:
             pass
-        bg, fg = "#1a1a1a", "#ffffff"
+        bg, fg = "#1C2430", "#ffffff"
         st.configure("Ch.Treeview", background=bg, fieldbackground=bg, foreground=fg, rowheight=self.ROW_H,
                      borderwidth=0, font=("Segoe UI", 10))
-        st.map("Ch.Treeview", background=[("selected", "#ff3b30")], foreground=[("selected", "#ffffff")])
-        st.configure("Ch.Treeview.Heading", background="#232323", foreground="#bbbbbb", relief="flat",
+        st.map("Ch.Treeview", background=[("selected", "#31567D")], foreground=[("selected", "#ffffff")])
+        st.configure("Ch.Treeview.Heading", background="#253144", foreground="#CFD8E7", relief="flat",
                      font=("Segoe UI", 9, "bold"))
-        st.map("Ch.Treeview.Heading", background=[("active", "#333333")])
-        st.configure("TNotebook", background="#0d0d0d", borderwidth=0)
-        st.configure("TNotebook.Tab", background="#1a1a1a", foreground="#cccccc", padding=(14, 6))
-        st.map("TNotebook.Tab", background=[("selected", "#ff3b30")], foreground=[("selected", "#ffffff")])
-        st.configure("TFrame", background="#0d0d0d")
-        st.configure("TCombobox", fieldbackground="#1a1a1a", background="#2a2a2a", foreground="#ffffff",
+        st.map("Ch.Treeview.Heading", background=[("active", "#34465E")])
+        st.configure("TNotebook", background="#101318", borderwidth=0)
+        st.configure("TNotebook.Tab", background="#1C2430", foreground="#cccccc", padding=(14, 6))
+        st.map("TNotebook.Tab", background=[("selected", "#8AB4F8")], foreground=[("selected", "#ffffff")])
+        st.configure("TFrame", background="#101318")
+        st.configure("TCombobox", fieldbackground="#1C2430", background="#304055", foreground="#ffffff",
                      arrowcolor="#ffffff")
-        st.map("TCombobox", fieldbackground=[("readonly", "#1a1a1a")], foreground=[("readonly", "#ffffff")])
-        self.root.option_add("*TCombobox*Listbox.background", "#1a1a1a")
+        st.map("TCombobox", fieldbackground=[("readonly", "#1C2430")], foreground=[("readonly", "#ffffff")])
+        self.root.option_add("*TCombobox*Listbox.background", "#1C2430")
         self.root.option_add("*TCombobox*Listbox.foreground", "#ffffff")
-        self.root.option_add("*TCombobox*Listbox.selectBackground", "#ff3b30")
+        self.root.option_add("*TCombobox*Listbox.selectBackground", "#8AB4F8")
 
     # ---------------------------------------------------------------- UI
     def setup_ui(self):
         # The video container lives directly under root so it can be moved to full screen
         # without re-embedding VLC. It is positioned over `video_slot` with place(in_=...).
         self.video_container = tk.Frame(self.root, bg="#000000")
-        self.main_frame = tk.Frame(self.root, bg="#0d0d0d")
+        self.main_frame = tk.Frame(self.root, bg="#101318")
         self.setup_status_bar()
         self.main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         self.setup_top_bar(self.main_frame)
@@ -829,24 +829,24 @@ class IPTVPro:
         self.root.after(200, self.place_video)
 
     def setup_status_bar(self):
-        self.status = tk.Label(self.root, text="Ready", font=("Segoe UI", 9), fg="#888888", bg="#1a1a1a",
+        self.status = tk.Label(self.root, text="Ready", font=("Segoe UI", 9), fg="#A1ACBC", bg="#1C2430",
                                anchor=tk.W, padx=10)
         self.status.pack(side=tk.BOTTOM, fill=tk.X)
 
     def btn(self, parent, text, cmd, fg="#ffffff", **kw):
-        b = tk.Button(parent, text=text, command=cmd, bg="#1a1a1a", fg=fg, bd=0, activebackground="#2a2a2a",
+        b = tk.Button(parent, text=text, command=cmd, bg="#1C2430", fg=fg, bd=0, activebackground="#304055",
                       activeforeground=fg, cursor="hand2", **kw)
-        b.bind("<Enter>", lambda e: b.config(bg="#2a2a2a"))
-        b.bind("<Leave>", lambda e: b.config(bg="#1a1a1a"))
+        b.bind("<Enter>", lambda e: b.config(bg="#304055"))
+        b.bind("<Leave>", lambda e: b.config(bg="#1C2430"))
         return b
 
     def setup_top_bar(self, parent):
-        top = tk.Frame(parent, bg="#0d0d0d")
+        top = tk.Frame(parent, bg="#101318")
         top.pack(fill=tk.X, pady=(0, 8))
-        tk.Label(top, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#ff3b30", bg="#0d0d0d").pack(
+        tk.Label(top, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#8AB4F8", bg="#101318").pack(
             side=tk.LEFT, padx=5)
 
-        tk.Label(top, text="Source:", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=(15, 3))
+        tk.Label(top, text="Source:", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=(15, 3))
         self.source_var = tk.StringVar(value=self.settings.get("last_source"))
         self.source_menu = ttk.Combobox(top, textvariable=self.source_var, values=list(self.all_sources().keys()),
                                         width=34, state="readonly")
@@ -859,33 +859,33 @@ class IPTVPro:
         self.btn(top, "➕ URL", self.add_custom_source, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
         self.btn(top, "📂 File", self.open_m3u_file, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
         self.btn(top, "🔧 Fix dead links", self.fix_all_dead, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.link_btn = self.btn(top, "🔒 Links Hidden", self.toggle_link_visibility, fg="#ff3b30", padx=10, pady=4)
+        self.link_btn = self.btn(top, "🔒 Links Hidden", self.toggle_link_visibility, fg="#8AB4F8", padx=10, pady=4)
         self.link_btn.pack(side=tk.LEFT, padx=2)
 
-        right = tk.Frame(top, bg="#0d0d0d")
+        right = tk.Frame(top, bg="#101318")
         right.pack(side=tk.RIGHT)
         self.live_var = tk.BooleanVar(value=self.settings.get("live_update", True))
         tk.Checkbutton(right, text="Live update every", variable=self.live_var, command=self.on_live_toggle,
-                       bg="#0d0d0d", fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
+                       bg="#101318", fg="#CFD8E7", selectcolor="#1C2430", activebackground="#101318",
                        activeforeground="#ffffff").pack(side=tk.LEFT)
         self.refresh_var = tk.StringVar(value=str(self.settings.get("refresh_minutes", 30)))
         cb = ttk.Combobox(right, textvariable=self.refresh_var, values=["5", "10", "15", "30", "60", "120"], width=4,
                           state="readonly")
         cb.pack(side=tk.LEFT)
         cb.bind("<<ComboboxSelected>>", self.on_live_toggle)
-        tk.Label(right, text="min", fg="#bbbbbb", bg="#0d0d0d").pack(side=tk.LEFT, padx=(2, 8))
+        tk.Label(right, text="min", fg="#CFD8E7", bg="#101318").pack(side=tk.LEFT, padx=(2, 8))
         self.fix_var = tk.BooleanVar(value=self.settings.get("auto_fix", True))
         tk.Checkbutton(right, text="Auto-fix links", variable=self.fix_var, command=self.on_live_toggle,
-                       bg="#0d0d0d", fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
+                       bg="#101318", fg="#CFD8E7", selectcolor="#1C2430", activebackground="#101318",
                        activeforeground="#ffffff").pack(side=tk.LEFT)
 
-        info = tk.Frame(parent, bg="#0d0d0d")
+        info = tk.Frame(parent, bg="#101318")
         info.pack(fill=tk.X, pady=(0, 4))
-        self.source_status = tk.Label(info, text="", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d")
+        self.source_status = tk.Label(info, text="", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318")
         self.source_status.pack(side=tk.LEFT, padx=5)
-        self.update_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d")
+        self.update_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318")
         self.update_label.pack(side=tk.LEFT, padx=10)
-        self.link_count_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d")
+        self.link_count_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318")
         self.link_count_label.pack(side=tk.RIGHT, padx=5)
 
     def setup_tabs(self, parent):
@@ -906,28 +906,28 @@ class IPTVPro:
 
     # ---- IPTV tab
     def setup_iptv_tab(self, parent):
-        left = tk.Frame(parent, bg="#0d0d0d", width=430)
+        left = tk.Frame(parent, bg="#101318", width=430)
         left.pack(side=tk.LEFT, fill=tk.BOTH, padx=(0, 10))
         left.pack_propagate(False)
         self.setup_channel_list(left)
-        right = tk.Frame(parent, bg="#0d0d0d")
+        right = tk.Frame(parent, bg="#101318")
         right.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
         self.setup_player(right)
 
     def setup_channel_list(self, parent):
-        h = tk.Frame(parent, bg="#0d0d0d")
+        h = tk.Frame(parent, bg="#101318")
         h.pack(fill=tk.X, pady=(0, 4))
-        self.channel_count = tk.Label(h, text="📺 0 channels", font=("Segoe UI", 11), fg="#888888", bg="#0d0d0d")
+        self.channel_count = tk.Label(h, text="📺 0 channels", font=("Segoe UI", 11), fg="#A1ACBC", bg="#101318")
         self.channel_count.pack(side=tk.LEFT)
-        tk.Label(h, text="Sort:", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=(12, 2))
+        tk.Label(h, text="Sort:", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=(12, 2))
         self.sort_var = tk.StringVar(value=self.settings.get("sort", "Name (A→Z)"))
         sm = ttk.Combobox(h, textvariable=self.sort_var, values=SORT_MODES, width=17, state="readonly")
         sm.pack(side=tk.LEFT)
         sm.bind("<<ComboboxSelected>>", self.on_sort_change)
 
-        f2 = tk.Frame(parent, bg="#0d0d0d")
+        f2 = tk.Frame(parent, bg="#101318")
         f2.pack(fill=tk.X, pady=(0, 4))
-        tk.Label(f2, text="Category:", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT)
+        tk.Label(f2, text="Category:", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT)
         self.category_var = tk.StringVar(value="All")
         self.category_menu = ttk.Combobox(f2, textvariable=self.category_var, values=["All"], width=16, state="readonly")
         self.category_menu.pack(side=tk.LEFT, padx=3)
@@ -937,14 +937,14 @@ class IPTVPro:
         stf.pack(side=tk.LEFT, padx=3)
         stf.bind("<<ComboboxSelected>>", self.on_status_filter)
         self.pin_var = tk.BooleanVar(value=self.settings.get("pin_favs", True))
-        tk.Checkbutton(f2, text="★ on top", variable=self.pin_var, command=self.on_sort_change, bg="#0d0d0d",
-                       fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
+        tk.Checkbutton(f2, text="★ on top", variable=self.pin_var, command=self.on_sort_change, bg="#101318",
+                       fg="#CFD8E7", selectcolor="#1C2430", activebackground="#101318",
                        activeforeground="#ffffff").pack(side=tk.LEFT, padx=4)
 
-        quality_row = tk.Frame(parent, bg="#0d0d0d")
+        quality_row = tk.Frame(parent, bg="#101318")
         quality_row.pack(fill=tk.X, pady=(0, 4))
         tk.Label(quality_row, text="Playback preference:", font=("Segoe UI", 9),
-                 fg="#bbbbbb", bg="#0d0d0d").pack(side=tk.LEFT)
+                 fg="#CFD8E7", bg="#101318").pack(side=tk.LEFT)
         self.quality_var = tk.StringVar(
             value=self.settings.get("quality_preference", "Balanced"))
         quality_menu = ttk.Combobox(
@@ -954,7 +954,7 @@ class IPTVPro:
         quality_menu.pack(side=tk.LEFT, padx=(8, 0))
         quality_menu.bind("<<ComboboxSelected>>", self.on_live_toggle)
 
-        self.search_entry = tk.Entry(parent, font=("Segoe UI", 10), bg="#1a1a1a", fg="#666666", bd=0,
+        self.search_entry = tk.Entry(parent, font=("Segoe UI", 10), bg="#1C2430", fg="#666666", bd=0,
                                      insertbackground="#ffffff")
         self.search_entry.pack(fill=tk.X, ipady=6, pady=(0, 4))
         self.search_entry.insert(0, "🔍 Search channels...")
@@ -962,7 +962,7 @@ class IPTVPro:
         self.search_entry.bind("<FocusOut>", self.on_search_blur)
         self.search_entry.bind("<KeyRelease>", self.on_search)
 
-        lf = tk.Frame(parent, bg="#0d0d0d")
+        lf = tk.Frame(parent, bg="#101318")
         lf.pack(fill=tk.BOTH, expand=True)
         self.tree = ttk.Treeview(lf, style="Ch.Treeview", columns=("cat", "st"), selectmode="browse")
         self.tree.heading("#0", text="Channel ▲", anchor="w", command=lambda: self.header_sort("name"))
@@ -971,7 +971,9 @@ class IPTVPro:
         self.tree.column("#0", width=230, stretch=True)
         self.tree.column("cat", width=95, stretch=False)
         self.tree.column("st", width=34, stretch=False, anchor="center")
-        sb = tk.Scrollbar(lf, orient=tk.VERTICAL, command=self.tree.yview)
+        sb = tk.Scrollbar(lf, orient=tk.VERTICAL, command=self.tree.yview,
+                          width=16, bg="#8AB4F8", activebackground="#AFC8F2",
+                          troughcolor="#1C2430", highlightthickness=0, bd=0)
         # Keep the vertical scrollbar attached to the channel list at all times.
         self.channel_scrollbar = sb
         self.tree.configure(yscrollcommand=lambda a, b: (sb.set(a, b), self.schedule_logo_load()))
@@ -982,49 +984,49 @@ class IPTVPro:
         self.tree.bind("<Button-3>", self.show_channel_menu)
         self.tree.bind("<Configure>", lambda e: self.schedule_logo_load())
 
-        self.loading_label = tk.Label(parent, text="⏳ Loading channels...", font=("Segoe UI", 12), fg="#888888",
-                                      bg="#0d0d0d")
+        self.loading_label = tk.Label(parent, text="⏳ Loading channels...", font=("Segoe UI", 12), fg="#A1ACBC",
+                                      bg="#101318")
 
     # ---- player
     def setup_player(self, parent):
         self.video_slot = tk.Frame(parent, bg="#000000", relief=tk.SUNKEN, bd=2)
         self.video_slot.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
 
-        now = tk.Frame(parent, bg="#0d0d0d")
+        now = tk.Frame(parent, bg="#101318")
         now.pack(fill=tk.X, pady=5)
-        self.now_logo = tk.Label(now, bg="#0d0d0d")
+        self.now_logo = tk.Label(now, bg="#101318")
         self.now_logo.pack(side=tk.LEFT, padx=(0, 8))
-        self.now_playing = tk.Label(now, text="📺 Ready", font=("Segoe UI", 12), fg="#888888", bg="#0d0d0d")
+        self.now_playing = tk.Label(now, text="📺 Ready", font=("Segoe UI", 12), fg="#A1ACBC", bg="#101318")
         self.now_playing.pack(side=tk.LEFT)
-        self.live_badge = tk.Label(now, text="", font=("Segoe UI", 9, "bold"), fg="#ffffff", bg="#0d0d0d", padx=6)
+        self.live_badge = tk.Label(now, text="", font=("Segoe UI", 9, "bold"), fg="#ffffff", bg="#101318", padx=6)
         self.live_badge.pack(side=tk.LEFT, padx=8)
-        self.fav_btn = self.btn(now, "☆", self.toggle_favorite, fg="#888888", font=("Segoe UI", 14), padx=8)
+        self.fav_btn = self.btn(now, "☆", self.toggle_favorite, fg="#A1ACBC", font=("Segoe UI", 14), padx=8)
         self.fav_btn.pack(side=tk.RIGHT)
         self.fix_btn = self.btn(now, "🔧 Fix link", self.fix_current, padx=8, pady=3)
         self.fix_btn.pack(side=tk.RIGHT, padx=6)
 
-        controls = tk.Frame(parent, bg="#0d0d0d")
+        controls = tk.Frame(parent, bg="#101318")
         controls.pack(fill=tk.X)
-        seek = tk.Frame(controls, bg="#0d0d0d")
+        seek = tk.Frame(controls, bg="#101318")
         seek.pack(fill=tk.X, pady=(0, 6))
-        self.time_label = tk.Label(seek, text="00:00 / 00:00", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d")
+        self.time_label = tk.Label(seek, text="00:00 / 00:00", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318")
         self.time_label.pack(side=tk.LEFT)
-        self.seek_bar = tk.Scale(seek, from_=0, to=1000, orient=tk.HORIZONTAL, showvalue=False, bg="#0d0d0d",
-                                 fg="#ff3b30", highlightthickness=0, troughcolor="#2a2a2a", sliderlength=14)
+        self.seek_bar = tk.Scale(seek, from_=0, to=1000, orient=tk.HORIZONTAL, showvalue=False, bg="#101318",
+                                 fg="#8AB4F8", highlightthickness=0, troughcolor="#304055", sliderlength=14)
         self.seek_bar.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=8)
         self.seek_bar.bind("<ButtonPress-1>", lambda e: setattr(self, "seeking", True))
         self.seek_bar.bind("<ButtonRelease-1>", self.seek_to)
-        vf = tk.Frame(seek, bg="#0d0d0d")
+        vf = tk.Frame(seek, bg="#101318")
         vf.pack(side=tk.RIGHT)
-        self.vol_icon = tk.Label(vf, text="🔊", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d")
+        self.vol_icon = tk.Label(vf, text="🔊", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318")
         self.vol_icon.pack(side=tk.LEFT)
-        self.vol_bar = tk.Scale(vf, from_=0, to=100, orient=tk.HORIZONTAL, showvalue=False, bg="#0d0d0d", fg="#ff3b30",
-                                highlightthickness=0, troughcolor="#2a2a2a", sliderlength=14, length=80,
+        self.vol_bar = tk.Scale(vf, from_=0, to=100, orient=tk.HORIZONTAL, showvalue=False, bg="#101318", fg="#8AB4F8",
+                                highlightthickness=0, troughcolor="#304055", sliderlength=14, length=80,
                                 command=lambda v: self.set_volume())
         self.vol_bar.set(self.settings.get("volume", 70))
         self.vol_bar.pack(side=tk.LEFT, padx=5)
 
-        bf = tk.Frame(controls, bg="#0d0d0d")
+        bf = tk.Frame(controls, bg="#101318")
         bf.pack(pady=6)
         for text, cmd in (("⏮", self.prev_channel), ("⏪", lambda: self.seek_by(-10)), ("▶", self.play_pause),
                           ("⏩", lambda: self.seek_by(10)), ("⏭", self.next_channel), ("⏹", self.stop),
@@ -1035,7 +1037,7 @@ class IPTVPro:
                 self.play_btn = b
         tk.Label(parent, text="Space: Play/Pause  |  F or double-click video: Fullscreen  |  PgUp/PgDn: Channel  |  "
                               "↑ ↓: Volume  |  M: Mute  |  Ctrl+L: Links  |  Ctrl+F: Search",
-                 font=("Segoe UI", 8), fg="#555555", bg="#0d0d0d").pack(pady=4)
+                 font=("Segoe UI", 8), fg="#555555", bg="#101318").pack(pady=4)
 
     def build_video_container(self):
         c = self.video_container
@@ -1055,10 +1057,10 @@ class IPTVPro:
         for text, cmd in (("⛶ Exit", self.exit_fullscreen), ("⏭", self.next_channel), ("⏹", self.stop),
                           ("🔇", self.toggle_mute), ("⏮", self.prev_channel)):
             b = tk.Button(self.fs_bar, text=text, command=cmd, bg="#111111", fg="#ffffff", bd=0, padx=10,
-                          font=("Segoe UI", 13), cursor="hand2", activebackground="#333333", activeforeground="#fff")
+                          font=("Segoe UI", 13), cursor="hand2", activebackground="#34465E", activeforeground="#fff")
             b.pack(side=tk.RIGHT, padx=2)
         self.fs_play = tk.Button(self.fs_bar, text="⏸", command=self.play_pause, bg="#111111", fg="#ffffff", bd=0,
-                                 padx=12, font=("Segoe UI", 16), cursor="hand2", activebackground="#333333",
+                                 padx=12, font=("Segoe UI", 16), cursor="hand2", activebackground="#34465E",
                                  activeforeground="#fff")
         self.fs_play.pack(side=tk.RIGHT, padx=2)
         self.fs_hide_job = None
@@ -1084,25 +1086,25 @@ class IPTVPro:
 
     # ---- search tab (as in v3)
     def setup_search_tab(self, parent):
-        sf = tk.Frame(parent, bg="#0d0d0d")
+        sf = tk.Frame(parent, bg="#101318")
         sf.pack(fill=tk.X, pady=10)
-        tk.Label(sf, text="🔍 Search Videos:", font=("Segoe UI", 12), fg="#ffffff", bg="#0d0d0d").pack(side=tk.LEFT, padx=10)
-        self.video_search_entry = tk.Entry(sf, font=("Segoe UI", 11), bg="#1a1a1a", fg="#ffffff", bd=0,
+        tk.Label(sf, text="🔍 Search Videos:", font=("Segoe UI", 12), fg="#ffffff", bg="#101318").pack(side=tk.LEFT, padx=10)
+        self.video_search_entry = tk.Entry(sf, font=("Segoe UI", 11), bg="#1C2430", fg="#ffffff", bd=0,
                                            insertbackground="#ffffff", width=40)
         self.video_search_entry.pack(side=tk.LEFT, padx=10, ipady=6)
         self.video_search_entry.bind("<Return>", self.perform_video_search)
         self.btn(sf, "🔍 Search", self.perform_video_search, padx=15, pady=5).pack(side=tk.LEFT, padx=5)
-        s2 = tk.Frame(parent, bg="#0d0d0d")
+        s2 = tk.Frame(parent, bg="#101318")
         s2.pack(fill=tk.X, pady=5)
-        tk.Label(s2, text="Source:", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=10)
+        tk.Label(s2, text="Source:", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=10)
         self.video_source_var = tk.StringVar(value="All")
         sm = ttk.Combobox(s2, textvariable=self.video_source_var, values=["All"] + list(VIDEO_SOURCES.keys()),
                           width=15, state="readonly")
         sm.pack(side=tk.LEFT, padx=5)
         sm.bind("<<ComboboxSelected>>", self.perform_video_search)
-        rf = tk.Frame(parent, bg="#0d0d0d")
+        rf = tk.Frame(parent, bg="#101318")
         rf.pack(fill=tk.BOTH, expand=True, pady=10)
-        self.video_results_listbox = tk.Listbox(rf, bg="#1a1a1a", fg="#ffffff", selectbackground="#ff3b30",
+        self.video_results_listbox = tk.Listbox(rf, bg="#1C2430", fg="#ffffff", selectbackground="#8AB4F8",
                                                 selectforeground="#ffffff", font=("Segoe UI", 10), bd=0,
                                                 highlightthickness=0)
         sb = tk.Scrollbar(rf, orient=tk.VERTICAL, command=self.video_results_listbox.yview)
@@ -1112,17 +1114,17 @@ class IPTVPro:
         self.video_results_listbox.bind("<Double-1>", self.play_video_search_result)
         self.video_results_listbox.bind("<Return>", self.play_video_search_result)
         self.search_status = tk.Label(parent, text="Enter a search term above", font=("Segoe UI", 9), fg="#666666",
-                                      bg="#0d0d0d")
+                                      bg="#101318")
         self.search_status.pack(pady=5)
         self.video_results = []
 
     # ---- favorites / history tabs
     def setup_saved_tab(self, parent, title, attr):
-        h = tk.Frame(parent, bg="#0d0d0d")
+        h = tk.Frame(parent, bg="#101318")
         h.pack(fill=tk.X, pady=10)
-        tk.Label(h, text=title, font=("Segoe UI", 14, "bold"), fg="#ffffff", bg="#0d0d0d").pack(side=tk.LEFT, padx=10)
-        self.btn(h, "🗑️ Clear All", lambda: self.clear_saved(attr), fg="#ff3b30", padx=12, pady=5).pack(side=tk.RIGHT, padx=10)
-        lb = tk.Listbox(parent, bg="#1a1a1a", fg="#ffffff", selectbackground="#ff3b30", selectforeground="#ffffff",
+        tk.Label(h, text=title, font=("Segoe UI", 14, "bold"), fg="#ffffff", bg="#101318").pack(side=tk.LEFT, padx=10)
+        self.btn(h, "🗑️ Clear All", lambda: self.clear_saved(attr), fg="#8AB4F8", padx=12, pady=5).pack(side=tk.RIGHT, padx=10)
+        lb = tk.Listbox(parent, bg="#1C2430", fg="#ffffff", selectbackground="#8AB4F8", selectforeground="#ffffff",
                         font=("Segoe UI", 11), bd=0, highlightthickness=0)
         sb = tk.Scrollbar(parent, orient=tk.VERTICAL, command=lb.yview)
         lb.configure(yscrollcommand=sb.set)
@@ -1693,10 +1695,11 @@ class IPTVPro:
     def _finish_auto_repair(self, ch, old_url, found):
         self.auto_repair_seen.discard(old_url)
         self.auto_repair_busy = False
-        if not self.is_closing and found and ch in self.channels and ch.get("url") == old_url:
-            self.apply_fix(ch, found)
+        active = next((c for c in self.channels if c.get("url") == old_url), None)
+        if not self.is_closing and found and active is not None:
+            self.apply_fix(active, found)
             self.display_channels()
-            self.set_status(f"Recovered an alternative stream for {ch['name']}")
+            self.set_status(f"Recovered an alternative stream for {active['name']}")
         self._run_auto_repair()
 
     def fix_current(self):
@@ -1738,6 +1741,7 @@ class IPTVPro:
         ch["url"] = found["url"]
         ch["opts"] = found.get("opts", [])
         ch["working"], ch["checked"] = True, time.time()
+        self.health.record(found["url"], True)
         if found.get("logo") and not ch.get("logo"):
             ch["logo"] = found["logo"]
         self.overrides[old] = found["url"]
@@ -1829,7 +1833,7 @@ class IPTVPro:
             self.play_btn.config(text="⏸")
             self.fs_play.config(text="⏸")
             self.now_playing.config(text=f"▶ {ch['name']}", fg="#ffffff")
-            self.live_badge.config(text="", bg="#0d0d0d")
+            self.live_badge.config(text="", bg="#101318")
             self.set_now_logo(ch)
             self.fs_title.config(text=ch["name"])
             self.show_osd(ch["name"])
@@ -1862,9 +1866,9 @@ class IPTVPro:
         self.is_playing = self.is_paused = False
         self.current = None
         self.play_btn.config(text="▶")
-        self.now_playing.config(text="⏹ Stopped", fg="#888888")
+        self.now_playing.config(text="⏹ Stopped", fg="#A1ACBC")
         self.now_logo.config(image="")
-        self.live_badge.config(text="", bg="#0d0d0d")
+        self.live_badge.config(text="", bg="#101318")
         self.placeholder.place(relx=0.5, rely=0.5, anchor="center")
         self.set_status("Stopped")
 
@@ -1940,13 +1944,13 @@ class IPTVPro:
                     length, t = self.player.get_length(), self.player.get_time()
                     if length > 0:
                         self.cur_is_live = False
-                        self.live_badge.config(text="", bg="#0d0d0d")
+                        self.live_badge.config(text="", bg="#101318")
                         self.time_label.config(text=f"{fmt_time(t)} / {fmt_time(length)}")
                         if not self.seeking:
                             self.seek_bar.set(int(1000 * t / max(1, length)))
                     else:
                         self.cur_is_live = True
-                        self.live_badge.config(text="● LIVE", bg="#ff3b30")
+                        self.live_badge.config(text="● LIVE", bg="#B73D4B")
                         self.time_label.config(text=f"{fmt_time(t)}")
                         if not self.seeking:
                             self.seek_bar.set(1000)
@@ -2082,7 +2086,7 @@ class IPTVPro:
 
     def update_fav_button(self):
         fav = self.current is not None and is_favorite(self.current, self.favorites)
-        self.fav_btn.config(text="★" if fav else "☆", fg="#ff3b30" if fav else "#888888")
+        self.fav_btn.config(text="★" if fav else "☆", fg="#8AB4F8" if fav else "#A1ACBC")
 
     def add_history(self, ch):
         self.history = [h for h in self.history if h.get("url") != ch.get("url")]
@@ -2189,7 +2193,7 @@ class IPTVPro:
     def toggle_link_visibility(self):
         if self.is_authenticated:
             self.is_authenticated = False
-            self.link_btn.config(text="🔒 Links Hidden", fg="#ff3b30")
+            self.link_btn.config(text="🔒 Links Hidden", fg="#8AB4F8")
             self.set_status("Links hidden")
             return
         pw = simpledialog.askstring("Private links", "Enter access code:", show="*")
@@ -2206,14 +2210,14 @@ class IPTVPro:
     def relock_links(self):
         self.is_authenticated = False
         self.links_relock_job = None
-        self.link_btn.config(text="🔒 Links Hidden", fg="#ff3b30")
+        self.link_btn.config(text="🔒 Links Hidden", fg="#8AB4F8")
 
     def show_channel_menu(self, event):
         iid = self.tree.identify_row(event.y)
         if not iid:
             return
         self.tree.selection_set(iid)
-        m = tk.Menu(self.root, tearoff=0, bg="#1a1a1a", fg="#ffffff")
+        m = tk.Menu(self.root, tearoff=0, bg="#1C2430", fg="#ffffff")
         m.add_command(label="▶ Play", command=self.play_selected)
         m.add_command(label="🔧 Fix broken link", command=self.fix_selected)
         m.add_command(label="🔎 Re-check this link", command=self.recheck_selected)
@@ -2296,7 +2300,7 @@ def main():
     except Exception:
         pass
     root = tk.Tk()
-    root.configure(bg="#0d0d0d")
+    root.configure(bg="#101318")
     try:
         root.iconbitmap(default="icon.ico")
     except Exception:
