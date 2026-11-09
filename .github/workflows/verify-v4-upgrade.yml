@@ -1,0 +1,43 @@
+name: Verify BANG IPTV v4.1 on Windows
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - name: Check out proposed source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        shell: pwsh
+        run: python -m pip install -r requirements-v4.txt pyinstaller
+      - name: Compile changed modules
+        shell: pwsh
+        run: |
+          python -m py_compile bang_iptv_v4.py stream_reliability.py
+          python -m compileall -q tests
+      - name: Run full offline regression suite
+        shell: pwsh
+        run: python -m unittest discover -s tests -v
+      - name: Build v4.1 Windows EXE
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_v4_1 --hidden-import vlc --hidden-import requests --hidden-import bs4 --hidden-import PIL --hidden-import PIL.ImageTk bang_iptv_v4.py
+          if (-not (Test-Path dist/BANG_IPTV_v4_1.exe)) { throw "EXE not created" }
+      - name: Store review build
+        uses: actions/upload-artifact@v4
+        with:
+          name: BANG-IPTV-v4.1-review-Windows
+          path: dist/BANG_IPTV_v4_1.exe
+          retention-days: 14
+          if-no-files-found: error
