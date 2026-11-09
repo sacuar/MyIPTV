@@ -35,7 +35,7 @@ from collections import deque
 from stream_reliability import HealthBook, ordered_alternatives, confirm_probe
 
 APP_NAME = "BANG IPTV"
-APP_VERSION = "4.1 Beta Preview"
+APP_VERSION = "4.1 Beta 1"
 
 
 def _ensure(module, pip_name=None):
