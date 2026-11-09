@@ -30,9 +30,12 @@ import urllib.parse
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import deque
+
+from stream_reliability import HealthBook, ordered_alternatives, confirm_probe
 
 APP_NAME = "BANG IPTV"
-APP_VERSION = "4.0 Beta 1"
+APP_VERSION = "4.1 Beta 1"
 
 
 def _ensure(module, pip_name=None):
@@ -115,7 +118,9 @@ DEFAULT_SETTINGS = {
     "live_update": True,
     "refresh_minutes": 30,
     "auto_fix": True,
+    "quality_preference": "Balanced",
     "custom_sources": [],
+    "last_local_file": "",
 }
 
 # ============================================
@@ -181,6 +186,52 @@ IPTV_SOURCES["🌐 MEGA pack (all major sources)"] = {
              "https://raw.githubusercontent.com/sacuar/MyIPTV/main/play.m3u",
              "https://raw.githubusercontent.com/time2shine/IPTV/refs/heads/master/combined.m3u"],
     "desc": "Everything merged - biggest list, takes longer"}
+
+# User-supplied optional M3U presets. These require explicit selection and
+# are deliberately excluded from startup, South Asia and MEGA bundles.
+# A list downloading successfully does not establish that its streams play.
+OPTIONAL_PLAYLIST_SOURCES = {
+    "📺 Roku FAST (community)": {
+        "urls": ["https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/roku_all.m3u"],
+        "desc": "Community Roku channel playlist, availability varies",
+    },
+    "📺 Tubi FAST (community)": {
+        "urls": ["https://raw.githubusercontent.com/BuddyChewChew/app-m3u-generator/refs/heads/main/playlists/tubi_all.m3u"],
+        "desc": "Community Tubi channel playlist, availability varies",
+    },
+    "🇺🇸 US Local (APSAT, unverified)": {
+        "urls": ["https://www.apsattv.com/uslg.m3u"],
+        "desc": "US local playlist supplied by user; playback not verified",
+    },
+    "📁 Play1 (legacy, unverified)": {
+        "urls": ["https://raw.githubusercontent.com/sacuar/MyIPTV/main/Play1.m3u"],
+        "desc": "Older playlist from this repository; streams may be outdated",
+    },
+}
+
+# Keep age-restricted presets isolated. They are never auto-loaded or
+# included in general, country, language, or mega collections.
+OPTIONAL_ADULT_PLAYLIST_SOURCES = {
+    "18+ · MyIPTV adult (legacy)": {
+        "urls": ["https://raw.githubusercontent.com/sacuar/MyIPTV/main/adult.m3u"],
+        "desc": "Optional age-restricted legacy playlist",
+    },
+    "18+ · IPTV Mate (adult)": {
+        "urls": ["https://iptvmate.net/files/adult.m3u"],
+        "desc": "Optional age-restricted list, unverified",
+    },
+    "18+ · IPTV Mate (XXX)": {
+        "urls": ["https://iptvmate.net/files/xxx.m3u"],
+        "desc": "Optional age-restricted list, unverified",
+    },
+    "18+ · Older archive (2022)": {
+        "urls": ["https://adultm3u.com/dl/x-adultm3u-com-07-03-2022.m3u"],
+        "desc": "Optional older archive, availability unverified",
+    },
+}
+IPTV_SOURCES.update(OPTIONAL_PLAYLIST_SOURCES)
+IPTV_SOURCES.update(OPTIONAL_ADULT_PLAYLIST_SOURCES)
+
 
 # ============================================
 # VIDEO SEARCH SOURCES (unchanged from v3)
@@ -439,82 +490,67 @@ def check_stream(url, opts=(), timeout=6):
 
 
 class Repairer:
-    """Index of every channel we have ever seen, used to find a working replacement for a dead link."""
+    """Find alternatives for the same broadcaster, ranking actual success history."""
 
-    def __init__(self):
+    def __init__(self, health=None):
         self.lock = threading.Lock()
-        self.by_id, self.by_norm, self.by_prefix = {}, {}, {}
+        self.by_id, self.by_norm = {}, {}
         self.urls = set()
+        self.health = health if health is not None else HealthBook()
 
     def add(self, chans):
         with self.lock:
-            for c in chans:
-                if c["url"] in self.urls:
+            for ch in chans:
+                url = ch.get("url")
+                if not url or url in self.urls:
                     continue
-                self.urls.add(c["url"])
-                if c.get("tvg_id"):
-                    self.by_id.setdefault(c["tvg_id"], []).append(c)
-                n = c.get("norm")
-                if n:
-                    lst = self.by_norm.setdefault(n, [])
-                    lst.append(c)
-                    if len(lst) == 1:
-                        self.by_prefix.setdefault(n[:2], []).append(n)
+                self.urls.add(url)
+                if ch.get("tvg_id"):
+                    self.by_id.setdefault(ch["tvg_id"].casefold(), []).append(ch)
+                if ch.get("norm"):
+                    self.by_norm.setdefault(ch["norm"], []).append(ch)
 
-    def candidates(self, ch, exclude=(), limit=12):
-        """Channel dicts that are plausibly the same channel, best matches first."""
-        seen = set(exclude) | {ch["url"]}
-        out = []
-
-        def push(c):
-            if c["url"] not in seen and len(out) < limit * 2:
-                seen.add(c["url"])
-                out.append(c)
-
+    def candidates(self, ch, exclude=(), limit=12, preference="Balanced"):
+        seen = set(exclude) | {ch.get("url")}
+        candidates = []
         with self.lock:
-            for u in ch.get("alts", []):
-                push({"url": u, "opts": [], "quality": 0})
             if ch.get("tvg_id"):
-                for c in self.by_id.get(ch["tvg_id"], []):
-                    push(c)
-            n = ch.get("norm")
-            if n:
-                for c in self.by_norm.get(n, []):
-                    push(c)
-                if len(out) < limit:
-                    sm = difflib.SequenceMatcher(autojunk=False)
-                    sm.set_seq2(n)
-                    for other in self.by_prefix.get(n[:2], []):
-                        if other == n or abs(len(other) - len(n)) > 3:
-                            continue
-                        if re.sub(r"\D", "", other) != re.sub(r"\D", "", n):
-                            continue          # 'Channel 8' must never match 'Channel 9'
-                        sm.set_seq1(other)
-                        if sm.real_quick_ratio() >= 0.88 and sm.quick_ratio() >= 0.88 and sm.ratio() >= 0.88:
-                            for c in self.by_norm[other]:
-                                push(c)
-        out.sort(key=lambda c: (not c["url"].startswith("https"), -c.get("quality", 0)))
-        return out[:limit]
+                candidates.extend(self.by_id.get(ch["tvg_id"].casefold(), []))
+            if ch.get("norm"):
+                candidates.extend(self.by_norm.get(ch["norm"], []))
+            # Alt URLs came from channels with the same TVG ID or exact name.
+            for url in ch.get("alts", []):
+                candidates.append({"url": url, "name": ch.get("name"),
+                                   "tvg_id": ch.get("tvg_id"), "opts": [],
+                                   "quality": 0})
+        ranked = ordered_alternatives(
+            ch, candidates, self.health, preference=preference, limit=limit * 2
+        )
+        return [c for c in ranked if c.get("url") not in seen][:limit]
 
-    def find_working(self, ch, exclude=(), checker=None, workers=8):
+    def find_working(self, ch, exclude=(), checker=None, workers=6,
+                     preference="Balanced"):
         checker = checker or check_stream
-        cands = self.candidates(ch, exclude)
-        if not cands:
+        candidates = self.candidates(ch, exclude, preference=preference)
+        if not candidates:
             return None
-        with ThreadPoolExecutor(max_workers=min(workers, len(cands))) as ex:
-            futs = {ex.submit(checker, c["url"], c.get("opts", [])): c for c in cands}
-            winner = None
-            for f in as_completed(futs):
+
+        # Probe candidates concurrently, but choose the most reliable eligible
+        # one, not whichever server answers first. HTTP success does not prove
+        # VLC can decode it, so real playback is recorded separately.
+        with ThreadPoolExecutor(max_workers=min(max(1, workers), len(candidates), 6)) as pool:
+            futures = {
+                pool.submit(confirm_probe, checker, c["url"], c.get("opts", [])): c
+                for c in candidates
+            }
+            good = []
+            for future in as_completed(futures):
                 try:
-                    ok = f.result()
-                except Exception:
-                    ok = False
-                if ok:
-                    winner = futs[f]
-                    break
-            for f in futs:
-                f.cancel()
-        return winner
+                    if future.result() is True:
+                        good.append(futures[future])
+                except (OSError, ValueError, TimeoutError):
+                    pass
+        return max(good, key=lambda c: self.health.score(c, preference=preference)) if good else None
 
 
 def fmt_time(ms):
@@ -614,7 +650,7 @@ class IPTVPro:
         self.root.title(f"🎬 {APP_NAME} v{APP_VERSION}")
         self.root.geometry("1400x900")
         self.root.minsize(1100, 700)
-        self.root.configure(bg="#0d0d0d")
+        self.root.configure(bg="#101318")
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.is_closing = False
         self.is_authenticated = False
@@ -645,6 +681,7 @@ class IPTVPro:
         self.seen_playing = False
         self.cur_is_live = False
         self.fix_attempted = False
+        self.connection_retry_remaining = 1
         self.fullscreen = False
         self.seeking = False
         self.loading_gen = 0
@@ -661,7 +698,9 @@ class IPTVPro:
         self.favorites = self.normalize_saved(jload(APP_DIR / "favorites.json", []))
         self.history = self.normalize_saved(jload(APP_DIR / "history.json", []))
         self.overrides = jload(APP_DIR / "link_overrides.json", {})
-        self.repairer = Repairer()
+        # Local playback and reachability history; never transmitted to playlist providers.
+        self.health = HealthBook(jload(APP_DIR / "stream_health.json", {}))
+        self.repairer = Repairer(self.health)
         self.logos = LogoStore(APP_DIR)
 
         # thread -> UI plumbing (tkinter is not thread safe: workers only post callables here)
@@ -671,6 +710,15 @@ class IPTVPro:
         self.val_gen = 0
         self.val_buf, self.val_lock = [], threading.Lock()
         self.val_total = self.val_done = 0
+        self.val_queue = deque()
+        self.val_inflight = 0
+        self.recheck_cursor = 0
+        self.public_index_lock = threading.Lock()
+        self.public_index_updated = {}
+        self.auto_repair_queue = deque()
+        self.auto_repair_seen = set()
+        self.auto_repair_last = {}
+        self.auto_repair_busy = False
         self.logo_img = {}             # (url,size) -> PhotoImage
         self.logo_req = set()
         self.placeholders = {}
@@ -731,12 +779,18 @@ class IPTVPro:
         jsave(APP_DIR / "favorites.json", self.favorites)
         jsave(APP_DIR / "history.json", self.history)
         jsave(APP_DIR / "link_overrides.json", self.overrides)
+        jsave(APP_DIR / "stream_health.json", self.health.snapshot())
 
     def set_status(self, text):
         self.status.config(text=text)
 
     def all_sources(self):
         d = dict(IPTV_SOURCES)
+        recent_file = self.settings.get("last_local_file", "")
+        if isinstance(recent_file, str) and recent_file and Path(recent_file).is_file():
+            d["📂 Local M3U file"] = {
+                "urls": [recent_file], "desc": "Last selected local playlist"
+            }
         for cs in self.settings.get("custom_sources", []):
             d[f"⭐ {cs['name']}"] = {"urls": [cs["url"]], "desc": "Custom"}
         return d
@@ -748,30 +802,30 @@ class IPTVPro:
             st.theme_use("clam")
         except Exception:
             pass
-        bg, fg = "#1a1a1a", "#ffffff"
+        bg, fg = "#1C2430", "#ffffff"
         st.configure("Ch.Treeview", background=bg, fieldbackground=bg, foreground=fg, rowheight=self.ROW_H,
                      borderwidth=0, font=("Segoe UI", 10))
-        st.map("Ch.Treeview", background=[("selected", "#ff3b30")], foreground=[("selected", "#ffffff")])
-        st.configure("Ch.Treeview.Heading", background="#232323", foreground="#bbbbbb", relief="flat",
+        st.map("Ch.Treeview", background=[("selected", "#31567D")], foreground=[("selected", "#ffffff")])
+        st.configure("Ch.Treeview.Heading", background="#253144", foreground="#CFD8E7", relief="flat",
                      font=("Segoe UI", 9, "bold"))
-        st.map("Ch.Treeview.Heading", background=[("active", "#333333")])
-        st.configure("TNotebook", background="#0d0d0d", borderwidth=0)
-        st.configure("TNotebook.Tab", background="#1a1a1a", foreground="#cccccc", padding=(14, 6))
-        st.map("TNotebook.Tab", background=[("selected", "#ff3b30")], foreground=[("selected", "#ffffff")])
-        st.configure("TFrame", background="#0d0d0d")
-        st.configure("TCombobox", fieldbackground="#1a1a1a", background="#2a2a2a", foreground="#ffffff",
+        st.map("Ch.Treeview.Heading", background=[("active", "#34465E")])
+        st.configure("TNotebook", background="#101318", borderwidth=0)
+        st.configure("TNotebook.Tab", background="#1C2430", foreground="#cccccc", padding=(14, 6))
+        st.map("TNotebook.Tab", background=[("selected", "#8AB4F8")], foreground=[("selected", "#ffffff")])
+        st.configure("TFrame", background="#101318")
+        st.configure("TCombobox", fieldbackground="#1C2430", background="#304055", foreground="#ffffff",
                      arrowcolor="#ffffff")
-        st.map("TCombobox", fieldbackground=[("readonly", "#1a1a1a")], foreground=[("readonly", "#ffffff")])
-        self.root.option_add("*TCombobox*Listbox.background", "#1a1a1a")
+        st.map("TCombobox", fieldbackground=[("readonly", "#1C2430")], foreground=[("readonly", "#ffffff")])
+        self.root.option_add("*TCombobox*Listbox.background", "#1C2430")
         self.root.option_add("*TCombobox*Listbox.foreground", "#ffffff")
-        self.root.option_add("*TCombobox*Listbox.selectBackground", "#ff3b30")
+        self.root.option_add("*TCombobox*Listbox.selectBackground", "#8AB4F8")
 
     # ---------------------------------------------------------------- UI
     def setup_ui(self):
         # The video container lives directly under root so it can be moved to full screen
         # without re-embedding VLC. It is positioned over `video_slot` with place(in_=...).
         self.video_container = tk.Frame(self.root, bg="#000000")
-        self.main_frame = tk.Frame(self.root, bg="#0d0d0d")
+        self.main_frame = tk.Frame(self.root, bg="#101318")
         self.setup_status_bar()
         self.main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         self.setup_top_bar(self.main_frame)
@@ -781,63 +835,69 @@ class IPTVPro:
         self.root.after(200, self.place_video)
 
     def setup_status_bar(self):
-        self.status = tk.Label(self.root, text="Ready", font=("Segoe UI", 9), fg="#888888", bg="#1a1a1a",
+        self.status = tk.Label(self.root, text="Ready", font=("Segoe UI", 9), fg="#A1ACBC", bg="#1C2430",
                                anchor=tk.W, padx=10)
         self.status.pack(side=tk.BOTTOM, fill=tk.X)
 
     def btn(self, parent, text, cmd, fg="#ffffff", **kw):
-        b = tk.Button(parent, text=text, command=cmd, bg="#1a1a1a", fg=fg, bd=0, activebackground="#2a2a2a",
+        kw.setdefault("font", ("Segoe UI", 10))
+        kw.setdefault("highlightthickness", 0)
+        b = tk.Button(parent, text=text, command=cmd, bg="#1C2430", fg=fg, bd=0, activebackground="#304055",
                       activeforeground=fg, cursor="hand2", **kw)
-        b.bind("<Enter>", lambda e: b.config(bg="#2a2a2a"))
-        b.bind("<Leave>", lambda e: b.config(bg="#1a1a1a"))
+        b.bind("<Enter>", lambda e: b.config(bg="#304055"))
+        b.bind("<Leave>", lambda e: b.config(bg="#1C2430"))
         return b
 
     def setup_top_bar(self, parent):
-        top = tk.Frame(parent, bg="#0d0d0d")
+        top = tk.Frame(parent, bg="#101318")
         top.pack(fill=tk.X, pady=(0, 8))
-        tk.Label(top, text="🎬 BANG IPTV Pro", font=("Segoe UI", 18, "bold"), fg="#ff3b30", bg="#0d0d0d").pack(
+        header = tk.Frame(top, bg="#101318")
+        header.pack(fill=tk.X, pady=(0, 8))
+        actions = tk.Frame(top, bg="#101318")
+        actions.pack(fill=tk.X)
+        tk.Label(header, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#8AB4F8", bg="#101318").pack(
             side=tk.LEFT, padx=5)
 
-        tk.Label(top, text="Source:", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=(15, 3))
+        tk.Label(actions, text="Source:", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=(15, 3))
         self.source_var = tk.StringVar(value=self.settings.get("last_source"))
-        self.source_menu = ttk.Combobox(top, textvariable=self.source_var, values=list(self.all_sources().keys()),
-                                        width=34, state="readonly")
+        self.source_menu = ttk.Combobox(actions, textvariable=self.source_var, values=list(self.all_sources().keys()),
+                                        width=28, state="readonly")
         self.source_menu.pack(side=tk.LEFT, padx=3)
         self.source_menu.bind("<<ComboboxSelected>>", lambda e: self.load_selected_source())
 
-        self.btn(top, "📥 Load", self.load_selected_source, padx=10, pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "🔄 Update now", lambda: self.load_source(self.source_var.get(), silent=True), padx=10,
+        self.btn(actions, "Load", self.load_selected_source, padx=10, pady=4).pack(side=tk.LEFT, padx=2)
+        self.btn(actions, "Refresh", lambda: self.load_source(self.source_var.get(), silent=True), padx=10,
                  pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "➕ URL", self.add_custom_source, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "📂 File", self.open_m3u_file, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "🔧 Fix dead links", self.fix_all_dead, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.link_btn = self.btn(top, "🔒 Links Hidden", self.toggle_link_visibility, fg="#ff3b30", padx=10, pady=4)
+        self.btn(actions, "Add URL", self.add_custom_source, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
+        self.btn(actions, "Open file", self.open_m3u_file, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
+        self.btn(actions, "Repair", self.fix_all_dead, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
+        self.link_btn = self.btn(actions, "🔒 Links Hidden", self.toggle_link_visibility, fg="#8AB4F8", padx=10, pady=4)
         self.link_btn.pack(side=tk.LEFT, padx=2)
 
-        right = tk.Frame(top, bg="#0d0d0d")
+        right = tk.Frame(header, bg="#101318")
         right.pack(side=tk.RIGHT)
         self.live_var = tk.BooleanVar(value=self.settings.get("live_update", True))
         tk.Checkbutton(right, text="Live update every", variable=self.live_var, command=self.on_live_toggle,
-                       bg="#0d0d0d", fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
+                       bg="#101318", fg="#CFD8E7", selectcolor="#1C2430", activebackground="#101318",
                        activeforeground="#ffffff").pack(side=tk.LEFT)
         self.refresh_var = tk.StringVar(value=str(self.settings.get("refresh_minutes", 30)))
         cb = ttk.Combobox(right, textvariable=self.refresh_var, values=["5", "10", "15", "30", "60", "120"], width=4,
                           state="readonly")
         cb.pack(side=tk.LEFT)
         cb.bind("<<ComboboxSelected>>", self.on_live_toggle)
-        tk.Label(right, text="min", fg="#bbbbbb", bg="#0d0d0d").pack(side=tk.LEFT, padx=(2, 8))
+        tk.Label(right, text="min", fg="#CFD8E7", bg="#101318").pack(side=tk.LEFT, padx=(2, 8))
         self.fix_var = tk.BooleanVar(value=self.settings.get("auto_fix", True))
         tk.Checkbutton(right, text="Auto-fix links", variable=self.fix_var, command=self.on_live_toggle,
-                       bg="#0d0d0d", fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
+                       bg="#101318", fg="#CFD8E7", selectcolor="#1C2430", activebackground="#101318",
                        activeforeground="#ffffff").pack(side=tk.LEFT)
 
-        info = tk.Frame(parent, bg="#0d0d0d")
+        info = tk.Frame(parent, bg="#101318")
         info.pack(fill=tk.X, pady=(0, 4))
-        self.source_status = tk.Label(info, text="", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d")
+        self.source_status = tk.Label(info, text="", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318")
         self.source_status.pack(side=tk.LEFT, padx=5)
-        self.update_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d")
+        self.update_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318")
         self.update_label.pack(side=tk.LEFT, padx=10)
-        self.link_count_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d")
+        self.link_count_label = tk.Label(info, text="", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318")
         self.link_count_label.pack(side=tk.RIGHT, padx=5)
 
     def setup_tabs(self, parent):
@@ -858,28 +918,28 @@ class IPTVPro:
 
     # ---- IPTV tab
     def setup_iptv_tab(self, parent):
-        left = tk.Frame(parent, bg="#0d0d0d", width=430)
+        left = tk.Frame(parent, bg="#101318", width=430)
         left.pack(side=tk.LEFT, fill=tk.BOTH, padx=(0, 10))
         left.pack_propagate(False)
         self.setup_channel_list(left)
-        right = tk.Frame(parent, bg="#0d0d0d")
+        right = tk.Frame(parent, bg="#101318")
         right.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
         self.setup_player(right)
 
     def setup_channel_list(self, parent):
-        h = tk.Frame(parent, bg="#0d0d0d")
+        h = tk.Frame(parent, bg="#101318")
         h.pack(fill=tk.X, pady=(0, 4))
-        self.channel_count = tk.Label(h, text="📺 0 channels", font=("Segoe UI", 11), fg="#888888", bg="#0d0d0d")
+        self.channel_count = tk.Label(h, text="📺 0 channels", font=("Segoe UI", 11), fg="#A1ACBC", bg="#101318")
         self.channel_count.pack(side=tk.LEFT)
-        tk.Label(h, text="Sort:", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=(12, 2))
+        tk.Label(h, text="Sort:", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=(12, 2))
         self.sort_var = tk.StringVar(value=self.settings.get("sort", "Name (A→Z)"))
         sm = ttk.Combobox(h, textvariable=self.sort_var, values=SORT_MODES, width=17, state="readonly")
         sm.pack(side=tk.LEFT)
         sm.bind("<<ComboboxSelected>>", self.on_sort_change)
 
-        f2 = tk.Frame(parent, bg="#0d0d0d")
+        f2 = tk.Frame(parent, bg="#101318")
         f2.pack(fill=tk.X, pady=(0, 4))
-        tk.Label(f2, text="Category:", font=("Segoe UI", 9), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT)
+        tk.Label(f2, text="Category:", font=("Segoe UI", 9), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT)
         self.category_var = tk.StringVar(value="All")
         self.category_menu = ttk.Combobox(f2, textvariable=self.category_var, values=["All"], width=16, state="readonly")
         self.category_menu.pack(side=tk.LEFT, padx=3)
@@ -889,11 +949,24 @@ class IPTVPro:
         stf.pack(side=tk.LEFT, padx=3)
         stf.bind("<<ComboboxSelected>>", self.on_status_filter)
         self.pin_var = tk.BooleanVar(value=self.settings.get("pin_favs", True))
-        tk.Checkbutton(f2, text="★ on top", variable=self.pin_var, command=self.on_sort_change, bg="#0d0d0d",
-                       fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
+        tk.Checkbutton(f2, text="★ on top", variable=self.pin_var, command=self.on_sort_change, bg="#101318",
+                       fg="#CFD8E7", selectcolor="#1C2430", activebackground="#101318",
                        activeforeground="#ffffff").pack(side=tk.LEFT, padx=4)
 
-        self.search_entry = tk.Entry(parent, font=("Segoe UI", 10), bg="#1a1a1a", fg="#666666", bd=0,
+        quality_row = tk.Frame(parent, bg="#101318")
+        quality_row.pack(fill=tk.X, pady=(0, 4))
+        tk.Label(quality_row, text="Playback preference:", font=("Segoe UI", 9),
+                 fg="#CFD8E7", bg="#101318").pack(side=tk.LEFT)
+        self.quality_var = tk.StringVar(
+            value=self.settings.get("quality_preference", "Balanced"))
+        quality_menu = ttk.Combobox(
+            quality_row, textvariable=self.quality_var,
+            values=["Balanced", "High quality", "Data saver"],
+            width=16, state="readonly")
+        quality_menu.pack(side=tk.LEFT, padx=(8, 0))
+        quality_menu.bind("<<ComboboxSelected>>", self.on_live_toggle)
+
+        self.search_entry = tk.Entry(parent, font=("Segoe UI", 10), bg="#1C2430", fg="#666666", bd=0,
                                      insertbackground="#ffffff")
         self.search_entry.pack(fill=tk.X, ipady=6, pady=(0, 4))
         self.search_entry.insert(0, "🔍 Search channels...")
@@ -901,7 +974,7 @@ class IPTVPro:
         self.search_entry.bind("<FocusOut>", self.on_search_blur)
         self.search_entry.bind("<KeyRelease>", self.on_search)
 
-        lf = tk.Frame(parent, bg="#0d0d0d")
+        lf = tk.Frame(parent, bg="#101318")
         lf.pack(fill=tk.BOTH, expand=True)
         self.tree = ttk.Treeview(lf, style="Ch.Treeview", columns=("cat", "st"), selectmode="browse")
         self.tree.heading("#0", text="Channel ▲", anchor="w", command=lambda: self.header_sort("name"))
@@ -910,7 +983,9 @@ class IPTVPro:
         self.tree.column("#0", width=230, stretch=True)
         self.tree.column("cat", width=95, stretch=False)
         self.tree.column("st", width=34, stretch=False, anchor="center")
-        sb = tk.Scrollbar(lf, orient=tk.VERTICAL, command=self.tree.yview)
+        sb = tk.Scrollbar(lf, orient=tk.VERTICAL, command=self.tree.yview,
+                          width=16, bg="#8AB4F8", activebackground="#AFC8F2",
+                          troughcolor="#1C2430", highlightthickness=0, bd=0)
         # Keep the vertical scrollbar attached to the channel list at all times.
         self.channel_scrollbar = sb
         self.tree.configure(yscrollcommand=lambda a, b: (sb.set(a, b), self.schedule_logo_load()))
@@ -921,49 +996,49 @@ class IPTVPro:
         self.tree.bind("<Button-3>", self.show_channel_menu)
         self.tree.bind("<Configure>", lambda e: self.schedule_logo_load())
 
-        self.loading_label = tk.Label(parent, text="⏳ Loading channels...", font=("Segoe UI", 12), fg="#888888",
-                                      bg="#0d0d0d")
+        self.loading_label = tk.Label(parent, text="⏳ Loading channels...", font=("Segoe UI", 12), fg="#A1ACBC",
+                                      bg="#101318")
 
     # ---- player
     def setup_player(self, parent):
         self.video_slot = tk.Frame(parent, bg="#000000", relief=tk.SUNKEN, bd=2)
         self.video_slot.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
 
-        now = tk.Frame(parent, bg="#0d0d0d")
+        now = tk.Frame(parent, bg="#101318")
         now.pack(fill=tk.X, pady=5)
-        self.now_logo = tk.Label(now, bg="#0d0d0d")
+        self.now_logo = tk.Label(now, bg="#101318")
         self.now_logo.pack(side=tk.LEFT, padx=(0, 8))
-        self.now_playing = tk.Label(now, text="📺 Ready", font=("Segoe UI", 12), fg="#888888", bg="#0d0d0d")
+        self.now_playing = tk.Label(now, text="📺 Ready", font=("Segoe UI", 12), fg="#A1ACBC", bg="#101318")
         self.now_playing.pack(side=tk.LEFT)
-        self.live_badge = tk.Label(now, text="", font=("Segoe UI", 9, "bold"), fg="#ffffff", bg="#0d0d0d", padx=6)
+        self.live_badge = tk.Label(now, text="", font=("Segoe UI", 9, "bold"), fg="#ffffff", bg="#101318", padx=6)
         self.live_badge.pack(side=tk.LEFT, padx=8)
-        self.fav_btn = self.btn(now, "☆", self.toggle_favorite, fg="#888888", font=("Segoe UI", 14), padx=8)
+        self.fav_btn = self.btn(now, "☆", self.toggle_favorite, fg="#A1ACBC", font=("Segoe UI", 14), padx=8)
         self.fav_btn.pack(side=tk.RIGHT)
         self.fix_btn = self.btn(now, "🔧 Fix link", self.fix_current, padx=8, pady=3)
         self.fix_btn.pack(side=tk.RIGHT, padx=6)
 
-        controls = tk.Frame(parent, bg="#0d0d0d")
+        controls = tk.Frame(parent, bg="#101318")
         controls.pack(fill=tk.X)
-        seek = tk.Frame(controls, bg="#0d0d0d")
+        seek = tk.Frame(controls, bg="#101318")
         seek.pack(fill=tk.X, pady=(0, 6))
-        self.time_label = tk.Label(seek, text="00:00 / 00:00", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d")
+        self.time_label = tk.Label(seek, text="00:00 / 00:00", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318")
         self.time_label.pack(side=tk.LEFT)
-        self.seek_bar = tk.Scale(seek, from_=0, to=1000, orient=tk.HORIZONTAL, showvalue=False, bg="#0d0d0d",
-                                 fg="#ff3b30", highlightthickness=0, troughcolor="#2a2a2a", sliderlength=14)
+        self.seek_bar = tk.Scale(seek, from_=0, to=1000, orient=tk.HORIZONTAL, showvalue=False, bg="#101318",
+                                 fg="#8AB4F8", highlightthickness=0, troughcolor="#304055", sliderlength=14)
         self.seek_bar.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=8)
         self.seek_bar.bind("<ButtonPress-1>", lambda e: setattr(self, "seeking", True))
         self.seek_bar.bind("<ButtonRelease-1>", self.seek_to)
-        vf = tk.Frame(seek, bg="#0d0d0d")
+        vf = tk.Frame(seek, bg="#101318")
         vf.pack(side=tk.RIGHT)
-        self.vol_icon = tk.Label(vf, text="🔊", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d")
+        self.vol_icon = tk.Label(vf, text="🔊", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318")
         self.vol_icon.pack(side=tk.LEFT)
-        self.vol_bar = tk.Scale(vf, from_=0, to=100, orient=tk.HORIZONTAL, showvalue=False, bg="#0d0d0d", fg="#ff3b30",
-                                highlightthickness=0, troughcolor="#2a2a2a", sliderlength=14, length=80,
+        self.vol_bar = tk.Scale(vf, from_=0, to=100, orient=tk.HORIZONTAL, showvalue=False, bg="#101318", fg="#8AB4F8",
+                                highlightthickness=0, troughcolor="#304055", sliderlength=14, length=80,
                                 command=lambda v: self.set_volume())
         self.vol_bar.set(self.settings.get("volume", 70))
         self.vol_bar.pack(side=tk.LEFT, padx=5)
 
-        bf = tk.Frame(controls, bg="#0d0d0d")
+        bf = tk.Frame(controls, bg="#101318")
         bf.pack(pady=6)
         for text, cmd in (("⏮", self.prev_channel), ("⏪", lambda: self.seek_by(-10)), ("▶", self.play_pause),
                           ("⏩", lambda: self.seek_by(10)), ("⏭", self.next_channel), ("⏹", self.stop),
@@ -974,7 +1049,7 @@ class IPTVPro:
                 self.play_btn = b
         tk.Label(parent, text="Space: Play/Pause  |  F or double-click video: Fullscreen  |  PgUp/PgDn: Channel  |  "
                               "↑ ↓: Volume  |  M: Mute  |  Ctrl+L: Links  |  Ctrl+F: Search",
-                 font=("Segoe UI", 8), fg="#555555", bg="#0d0d0d").pack(pady=4)
+                 font=("Segoe UI", 8), fg="#555555", bg="#101318").pack(pady=4)
 
     def build_video_container(self):
         c = self.video_container
@@ -994,10 +1069,10 @@ class IPTVPro:
         for text, cmd in (("⛶ Exit", self.exit_fullscreen), ("⏭", self.next_channel), ("⏹", self.stop),
                           ("🔇", self.toggle_mute), ("⏮", self.prev_channel)):
             b = tk.Button(self.fs_bar, text=text, command=cmd, bg="#111111", fg="#ffffff", bd=0, padx=10,
-                          font=("Segoe UI", 13), cursor="hand2", activebackground="#333333", activeforeground="#fff")
+                          font=("Segoe UI", 13), cursor="hand2", activebackground="#34465E", activeforeground="#fff")
             b.pack(side=tk.RIGHT, padx=2)
         self.fs_play = tk.Button(self.fs_bar, text="⏸", command=self.play_pause, bg="#111111", fg="#ffffff", bd=0,
-                                 padx=12, font=("Segoe UI", 16), cursor="hand2", activebackground="#333333",
+                                 padx=12, font=("Segoe UI", 16), cursor="hand2", activebackground="#34465E",
                                  activeforeground="#fff")
         self.fs_play.pack(side=tk.RIGHT, padx=2)
         self.fs_hide_job = None
@@ -1023,25 +1098,25 @@ class IPTVPro:
 
     # ---- search tab (as in v3)
     def setup_search_tab(self, parent):
-        sf = tk.Frame(parent, bg="#0d0d0d")
+        sf = tk.Frame(parent, bg="#101318")
         sf.pack(fill=tk.X, pady=10)
-        tk.Label(sf, text="🔍 Search Videos:", font=("Segoe UI", 12), fg="#ffffff", bg="#0d0d0d").pack(side=tk.LEFT, padx=10)
-        self.video_search_entry = tk.Entry(sf, font=("Segoe UI", 11), bg="#1a1a1a", fg="#ffffff", bd=0,
+        tk.Label(sf, text="🔍 Search Videos:", font=("Segoe UI", 12), fg="#ffffff", bg="#101318").pack(side=tk.LEFT, padx=10)
+        self.video_search_entry = tk.Entry(sf, font=("Segoe UI", 11), bg="#1C2430", fg="#ffffff", bd=0,
                                            insertbackground="#ffffff", width=40)
         self.video_search_entry.pack(side=tk.LEFT, padx=10, ipady=6)
         self.video_search_entry.bind("<Return>", self.perform_video_search)
         self.btn(sf, "🔍 Search", self.perform_video_search, padx=15, pady=5).pack(side=tk.LEFT, padx=5)
-        s2 = tk.Frame(parent, bg="#0d0d0d")
+        s2 = tk.Frame(parent, bg="#101318")
         s2.pack(fill=tk.X, pady=5)
-        tk.Label(s2, text="Source:", font=("Segoe UI", 10), fg="#888888", bg="#0d0d0d").pack(side=tk.LEFT, padx=10)
+        tk.Label(s2, text="Source:", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=10)
         self.video_source_var = tk.StringVar(value="All")
         sm = ttk.Combobox(s2, textvariable=self.video_source_var, values=["All"] + list(VIDEO_SOURCES.keys()),
                           width=15, state="readonly")
         sm.pack(side=tk.LEFT, padx=5)
         sm.bind("<<ComboboxSelected>>", self.perform_video_search)
-        rf = tk.Frame(parent, bg="#0d0d0d")
+        rf = tk.Frame(parent, bg="#101318")
         rf.pack(fill=tk.BOTH, expand=True, pady=10)
-        self.video_results_listbox = tk.Listbox(rf, bg="#1a1a1a", fg="#ffffff", selectbackground="#ff3b30",
+        self.video_results_listbox = tk.Listbox(rf, bg="#1C2430", fg="#ffffff", selectbackground="#8AB4F8",
                                                 selectforeground="#ffffff", font=("Segoe UI", 10), bd=0,
                                                 highlightthickness=0)
         sb = tk.Scrollbar(rf, orient=tk.VERTICAL, command=self.video_results_listbox.yview)
@@ -1051,17 +1126,17 @@ class IPTVPro:
         self.video_results_listbox.bind("<Double-1>", self.play_video_search_result)
         self.video_results_listbox.bind("<Return>", self.play_video_search_result)
         self.search_status = tk.Label(parent, text="Enter a search term above", font=("Segoe UI", 9), fg="#666666",
-                                      bg="#0d0d0d")
+                                      bg="#101318")
         self.search_status.pack(pady=5)
         self.video_results = []
 
     # ---- favorites / history tabs
     def setup_saved_tab(self, parent, title, attr):
-        h = tk.Frame(parent, bg="#0d0d0d")
+        h = tk.Frame(parent, bg="#101318")
         h.pack(fill=tk.X, pady=10)
-        tk.Label(h, text=title, font=("Segoe UI", 14, "bold"), fg="#ffffff", bg="#0d0d0d").pack(side=tk.LEFT, padx=10)
-        self.btn(h, "🗑️ Clear All", lambda: self.clear_saved(attr), fg="#ff3b30", padx=12, pady=5).pack(side=tk.RIGHT, padx=10)
-        lb = tk.Listbox(parent, bg="#1a1a1a", fg="#ffffff", selectbackground="#ff3b30", selectforeground="#ffffff",
+        tk.Label(h, text=title, font=("Segoe UI", 14, "bold"), fg="#ffffff", bg="#101318").pack(side=tk.LEFT, padx=10)
+        self.btn(h, "🗑️ Clear All", lambda: self.clear_saved(attr), fg="#8AB4F8", padx=12, pady=5).pack(side=tk.RIGHT, padx=10)
+        lb = tk.Listbox(parent, bg="#1C2430", fg="#ffffff", selectbackground="#8AB4F8", selectforeground="#ffffff",
                         font=("Segoe UI", 11), bd=0, highlightthickness=0)
         sb = tk.Scrollbar(parent, orient=tk.VERTICAL, command=lb.yview)
         lb.configure(yscrollcommand=sb.set)
@@ -1123,17 +1198,20 @@ class IPTVPro:
         self.load_selected_source()
 
     def open_m3u_file(self):
-        path = filedialog.askopenfilename(title="Open playlist", filetypes=[("Playlists", "*.m3u *.m3u8 *.txt"), ("All", "*.*")])
+        path = filedialog.askopenfilename(
+            title="Open playlist", filetypes=[
+                ("Playlists", "*.m3u *.m3u8 *.txt"), ("All", "*.*")])
         if not path:
             return
-        try:
-            text = Path(path).read_text(encoding="utf-8", errors="ignore")
-        except OSError as e:
-            self.show_error(str(e))
+        if not Path(path).is_file():
+            self.show_error("The selected file could not be opened.")
             return
-        chans = merge_playlists([parse_m3u(text, "file")], self.overrides)
-        self.loading_gen += 1
-        self.finish_load(self.loading_gen, chans, False, [], f"📂 {Path(path).name}")
+        self.settings["last_local_file"] = str(path)
+        self.settings["last_source"] = "📂 Local M3U file"
+        self.save_all()
+        self.source_menu["values"] = list(self.all_sources().keys())
+        self.source_var.set("📂 Local M3U file")
+        self.load_source(self.source_var.get())
 
     def load_source(self, name, silent=False):
         src = self.all_sources().get(name)
@@ -1150,6 +1228,14 @@ class IPTVPro:
         threading.Thread(target=self.fetch_source, args=(gen, name, src["urls"], silent), daemon=True).start()
 
     def fetch_text(self, url, conditional):
+        # Local playlists are loaded privately from disk, never uploaded to
+        # GitHub or to a third-party website.
+        if "://" not in url:
+            local_path = Path(url)
+            if local_path.is_file():
+                if local_path.stat().st_size > 8 * 1024 * 1024:
+                    raise ValueError("Local playlist exceeds the 8 MB safety limit.")
+                return local_path.read_text(encoding="utf-8-sig", errors="replace"), True
         if requests is None:
             raise RuntimeError("The requests package is required to load online playlists.")
         headers = dict(UA)
@@ -1211,6 +1297,12 @@ class IPTVPro:
             new_urls = {c["url"] for c in chans}
             added = sum(1 for c in chans if c["url"] not in old)
             removed = sum(1 for u in old if u not in new_urls)
+        # Reuse recent status checks across launches without trusting stale marks.
+        for c in chans:
+            status = self.health.status(c["url"])
+            if status is not None:
+                c["working"] = status
+                c["checked"] = self.health.entries[c["url"]]["checked"]
         self.channels = chans
         if self.current is not None:      # keep pointing at the same channel after a refresh
             same = next((c for c in chans if c["url"] == self.current.get("url")), None)
@@ -1236,6 +1328,7 @@ class IPTVPro:
     def on_live_toggle(self, e=None):
         self.settings["live_update"] = bool(self.live_var.get())
         self.settings["auto_fix"] = bool(self.fix_var.get())
+        self.settings["quality_preference"] = self.quality_var.get()
         try:
             self.settings["refresh_minutes"] = int(self.refresh_var.get())
         except ValueError:
@@ -1270,15 +1363,14 @@ class IPTVPro:
         gen = self.display_gen
         keep_url = self.current["url"] if self.current else None
         self.view = self.current_filtered()
-        previous_scroll = self.tree.yview()[0] if self.tree.get_children() else 0
+        previous_scroll = self.tree.yview()[0] if self.tree.get_children() else None
+        self._scroll_restore = previous_scroll
         self.tree.delete(*self.tree.get_children())
         self.by_iid = {}
         self.channel_count.config(text=f"📺 {len(self.view):,} / {len(self.channels):,}")
         self.update_headings()
         self._insert_chunk(gen, 0, keep_url)
-        # Restore the position when health checks filter out stopped rows.
-        if previous_scroll and not keep_url:
-            self.root.after(80, lambda: self.tree.yview_moveto(previous_scroll) if gen == self.display_gen else None)
+        # Restore the scroll after the final insertion batch, not mid-render.
 
     def _insert_chunk(self, gen, start, keep_url):
         if gen != self.display_gen:
@@ -1293,12 +1385,13 @@ class IPTVPro:
             if keep_url and ch["url"] == keep_url:
                 try:
                     self.tree.selection_set(iid)
-                    self.tree.see(iid)
                 except Exception:
                     pass
         if end < len(self.view):
             self.root.after(5, self._insert_chunk, gen, end, keep_url)
         else:
+            if self._scroll_restore is not None:
+                self.tree.yview_moveto(self._scroll_restore)
             self.schedule_logo_load()
 
     def update_headings(self):
@@ -1427,70 +1520,211 @@ class IPTVPro:
             self.logo_pool.submit(work)
 
     # ================================================================ LINK VALIDATION
-    def start_validation(self, force=False):
+    def start_validation(self, force=False, subset=None):
+        """Check streams in bounded background batches, prioritising visible rows."""
         self.val_gen += 1
         gen = self.val_gen
         if self.val_pool:
             self.val_pool.shutdown(wait=False, cancel_futures=True)
-        todo = [c for c in self.view if force or c.get("working") is None]
-        seen = {id(c) for c in todo}
-        todo += [c for c in self.channels if id(c) not in seen and (force or c.get("working") is None)]
+
+        if subset is not None:
+            todo = list(subset)
+        else:
+            todo = [c for c in self.view if force or c.get("working") is None]
+            seen = {id(c) for c in todo}
+            todo.extend(c for c in self.channels
+                        if id(c) not in seen and (force or c.get("working") is None))
+        self.val_queue = deque(todo)
+        self.val_inflight = 0
         self.val_total, self.val_done = len(todo), 0
         if not todo:
-            self.link_count_label.config(text=f"🔗 all {len(self.channels):,} checked")
+            self.link_count_label.config(
+                text=f"🔗 {len(self.channels):,} recently checked")
             return
-        self.val_pool = ThreadPoolExecutor(max_workers=24)
-        for c in todo:
-            self.val_pool.submit(self.val_task, c, gen)
-        self.root.after(400, self.flush_validation, gen)
+        # Eight workers; no more than 32 queued futures, even for 30k links.
+        self.val_pool = ThreadPoolExecutor(
+            max_workers=8, thread_name_prefix="bang-stream-health")
+        self._submit_validation_batch(gen)
+        self.root.after(300, self.flush_validation, gen)
+
+    def _submit_validation_batch(self, gen):
+        if gen != self.val_gen or self.is_closing or self.val_pool is None:
+            return
+        while self.val_queue and self.val_inflight < 32:
+            ch = self.val_queue.popleft()
+            self.val_inflight += 1
+            self.val_pool.submit(self.val_task, ch, gen)
 
     def val_task(self, ch, gen):
         if gen != self.val_gen or self.is_closing:
             return
-        ok = check_stream(ch["url"], ch.get("opts", []))
+        try:
+            result = confirm_probe(check_stream, ch["url"], ch.get("opts", []))
+        except Exception:
+            result = None
         with self.val_lock:
-            self.val_buf.append((ch, ok, gen))
+            self.val_buf.append((ch, result, gen))
 
     def flush_validation(self, gen):
         if gen != self.val_gen or self.is_closing:
             return
         with self.val_lock:
             batch, self.val_buf = self.val_buf, []
-        for ch, ok, g in batch:
-            if g != gen:
+        for ch, result, generation in batch:
+            if generation != gen:
                 continue
-            ch["working"], ch["checked"] = ok, time.time()
+            # confirm_probe already repeated 404/410; preserve two-failure
+            # evidence in the local reliability book.
+            if result is False:
+                self.health.record(ch["url"], False)
+            status = self.health.record(ch["url"], result)
+            ch["working"], ch["checked"] = status, time.time()
+            if status is False:
+                self._queue_auto_repair(ch)
             self.val_done += 1
-            iid = str(ch["_i"])
+            self.val_inflight = max(0, self.val_inflight - 1)
+            iid = str(ch.get("_i", ""))
             if self.tree.exists(iid):
                 self.tree.set(iid, "st", self.status_icon(ch))
-        good = sum(1 for c in self.channels if c.get("working") is True)
-        bad = sum(1 for c in self.channels if c.get("working") is False)
-        self.link_count_label.config(text=f"🔗 {self.val_done}/{self.val_total} checked   ✅ {good:,}   ❌ {bad:,}")
-        if (batch and self.status_var.get() in ("Hide dead", "Dead only", "Working only")
-                and time.monotonic() - self._last_filter_redraw >= 4):
-            self._last_filter_redraw = time.monotonic()
-            self.display_channels()
+        self._submit_validation_batch(gen)
+
+        reachable = sum(c.get("working") is True for c in self.channels)
+        missing = sum(c.get("working") is False for c in self.channels)
+        self.link_count_label.config(
+            text=f"Links {self.val_done:,}/{self.val_total:,} · "
+                 f"Reachable {reachable:,} · Missing {missing:,}")
+        if batch and self.status_var.get() in ("Hide dead", "Dead only", "Working only"):
+            if time.monotonic() - self._last_filter_redraw >= 8:
+                self._last_filter_redraw = time.monotonic()
+                self.display_channels()
+
         if self.val_done < self.val_total:
-            self.root.after(400, self.flush_validation, gen)
-        elif self.sort_var.get() == "Working first" or self.status_var.get() != "All":
-            self.display_channels()
+            self.root.after(350, self.flush_validation, gen)
+        else:
+            self.val_pool.shutdown(wait=False)
+            self.val_pool = None
+            self.save_all()
+            if self.sort_var.get() == "Working first" or self.status_var.get() != "All":
+                self.display_channels()
 
     def recheck_loop(self):
-        """Every few minutes: give dead links another chance and refresh stale 'working' marks."""
+        """Rotate through stale links so no section of a large playlist starves."""
         try:
             if self.channels and not self.is_closing and self.val_done >= self.val_total:
+                total = len(self.channels)
+                start = self.recheck_cursor % total
+                rotated = self.channels[start:] + self.channels[:start]
                 now = time.time()
-                stale = [c for c in self.channels if c.get("working") is False or now - c.get("checked", 0) > 1800][:300]
-                for c in stale:
-                    c["working"] = None
+                stale = [ch for ch in rotated
+                         if ch.get("working") is False or
+                         now - ch.get("checked", 0) > 1800][:160]
+                self.recheck_cursor = (start + 160) % total
                 if stale:
-                    self.start_validation()
+                    # Keep confirmed dead channels hidden while probing again;
+                    # show them only after a positive result.
+                    self.start_validation(subset=stale)
         finally:
             if not self.is_closing:
                 self.root.after(5 * 60000, self.recheck_loop)
 
     # ================================================================ LINK REPAIR
+    def _discover_public_alternatives(self, ch):
+        """Fetch an official, public IPTV index on demand; no private URLs sent.
+
+        A failed stream's name or credential is not transmitted to the index.
+        Rate-limit each index to one request per six hours.
+        """
+        if requests is None:
+            return
+        country = (ch.get("country") or "").strip().lower()
+        country = country if re.fullmatch(r"[a-z]{2}", country) else None
+        suffix = f"countries/{country}.m3u" if country else "index.m3u"
+        url = "https://iptv-org.github.io/iptv/" + suffix
+        with self.public_index_lock:
+            if time.time() - self.public_index_updated.get(url, 0) < 6 * 3600:
+                return
+            # Avoid repeatedly hammering a source that is unavailable.
+            self.public_index_updated[url] = time.time()
+            try:
+                response = requests.get(url, headers=UA, timeout=(5, 15),
+                                        stream=True)
+                try:
+                    response.raise_for_status()
+                    total = 0
+                    chunks = []
+                    for block in response.iter_content(65536):
+                        if block:
+                            total += len(block)
+                            if total > 8 * 1024 * 1024:
+                                return
+                            chunks.append(block)
+                finally:
+                    response.close()
+                content = b"".join(chunks).decode("utf-8-sig", errors="replace")
+                if not content.lstrip().startswith("#EXTM3U"):
+                    return
+                self.repairer.add(parse_m3u(content, url))
+            except Exception:
+                return
+
+    def _find_replacement(self, ch, exclude=(), workers=4):
+        preference = self.settings.get("quality_preference", "Balanced")
+        found = self.repairer.find_working(
+            ch, exclude=exclude, workers=workers, preference=preference)
+        if found is not None:
+            return found
+        # Don't mix age-restricted channels into general public discovery.
+        if self.source_var.get().startswith("18+"):
+            return None
+        self._discover_public_alternatives(ch)
+        return self.repairer.find_working(
+            ch, exclude=exclude, workers=workers, preference=preference)
+
+    def _queue_auto_repair(self, ch):
+        if not self.settings.get("auto_fix", True) or self.is_closing:
+            return
+        if self.source_var.get().startswith("18+"):
+            return
+        url = ch.get("url")
+        if not url or url in self.auto_repair_seen:
+            return
+        now = time.time()
+        if now - self.auto_repair_last.get(url, 0) < 3600:
+            return
+        if len(self.auto_repair_queue) >= 16:
+            return
+        self.auto_repair_seen.add(url)
+        self.auto_repair_last[url] = now
+        self.auto_repair_queue.append(ch)
+        self._run_auto_repair()
+
+    def _run_auto_repair(self):
+        if self.auto_repair_busy or not self.auto_repair_queue or self.is_closing:
+            return
+        ch = self.auto_repair_queue.popleft()
+        url = ch.get("url")
+        self.auto_repair_busy = True
+
+        def worker():
+            dead = {c["url"] for c in self.channels if c.get("working") is False}
+            try:
+                found = self._find_replacement(ch, exclude=dead)
+            except Exception:
+                found = None
+            self.call_ui(self._finish_auto_repair, ch, url, found)
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _finish_auto_repair(self, ch, old_url, found):
+        self.auto_repair_seen.discard(old_url)
+        self.auto_repair_busy = False
+        active = next((c for c in self.channels if c.get("url") == old_url), None)
+        if not self.is_closing and found and active is not None:
+            self.apply_fix(active, found)
+            self.display_channels()
+            self.set_status(f"Recovered an alternative stream for {active['name']}")
+        self._run_auto_repair()
+
     def fix_current(self):
         if self.current:
             self.repair_channel(self.current, auto_play=True, manual=True)
@@ -1507,7 +1741,7 @@ class IPTVPro:
         dead = {c["url"] for c in self.channels if c.get("working") is False}
 
         def work():
-            found = self.repairer.find_working(ch, exclude=dead)
+            found = self._find_replacement(ch, exclude=dead)
             self.call_ui(done, found)
 
         def done(found):
@@ -1517,9 +1751,11 @@ class IPTVPro:
                 if manual:
                     messagebox.showinfo("Fix link", f"No working alternative found for\n{ch['name']}.\n\n"
                                                     "Try loading a bigger source (MEGA pack) so more candidates exist.")
+                self.display_channels()
                 return
             self.apply_fix(ch, found)
-            self.set_status(f"✅ Fixed {ch['name']} — new link works")
+            self.display_channels()
+            self.set_status(f"✅ Fixed {ch['name']} — new link responds")
             if auto_play and self.current is ch:
                 self.play_channel(ch)
 
@@ -1530,6 +1766,7 @@ class IPTVPro:
         ch["url"] = found["url"]
         ch["opts"] = found.get("opts", [])
         ch["working"], ch["checked"] = True, time.time()
+        self.health.record(found["url"], True)
         if found.get("logo") and not ch.get("logo"):
             ch["logo"] = found["logo"]
         self.overrides[old] = found["url"]
@@ -1554,7 +1791,7 @@ class IPTVPro:
             for i, ch in enumerate(dead, 1):
                 if self.is_closing:
                     return
-                found = self.repairer.find_working(ch, exclude=deadset, workers=6)
+                found = self._find_replacement(ch, exclude=deadset, workers=4)
                 if found:
                     fixed += 1
                     self.call_ui(self.apply_fix, ch, found)
@@ -1584,19 +1821,28 @@ class IPTVPro:
                 return
         self.play_channel(ch)
 
-    def play_channel(self, ch):
-        """ch: dict with at least name + url (opts/logo optional)."""
+    def play_channel(self, ch, retry=False):
+        """Start playback; preserve one automatic reconnect attempt per selection."""
+        if not retry:
+            self.connection_retry_remaining = 1
         try:
             ch.setdefault("opts", [])
             self.current = ch
             self.placeholder.place_forget()
             media = self.instance.media_new(ch["url"])
+            preference = self.settings.get("quality_preference", "Balanced")
+            buffer_ms = {"High quality": 2200, "Balanced": 1500,
+                         "Data saver": 1000}.get(preference, 1500)
+            media.add_option(f":network-caching={buffer_ms}")
+            media.add_option(f":live-caching={buffer_ms}")
+            media.add_option(":http-reconnect")
             for o in ch["opts"]:
                 try:
                     media.add_option(o)
                 except Exception:
                     pass
             self.player.set_media(media)
+            media.release()
             if sys.platform == "win32":
                 self.player.set_hwnd(self.video_frame.winfo_id())
             elif sys.platform == "darwin":
@@ -1604,14 +1850,15 @@ class IPTVPro:
             else:
                 self.player.set_xwindow(self.video_frame.winfo_id())
             self.player.audio_set_volume(int(self.vol_bar.get()))
-            self.player.play()
+            if self.player.play() == -1:
+                raise RuntimeError("VLC could not start this stream")
             self.is_playing, self.is_paused = True, False
             self.play_started, self.seen_playing, self.cur_is_live = time.time(), False, False
             self.fix_attempted = False
             self.play_btn.config(text="⏸")
             self.fs_play.config(text="⏸")
             self.now_playing.config(text=f"▶ {ch['name']}", fg="#ffffff")
-            self.live_badge.config(text="", bg="#0d0d0d")
+            self.live_badge.config(text="", bg="#101318")
             self.set_now_logo(ch)
             self.fs_title.config(text=ch["name"])
             self.show_osd(ch["name"])
@@ -1644,9 +1891,9 @@ class IPTVPro:
         self.is_playing = self.is_paused = False
         self.current = None
         self.play_btn.config(text="▶")
-        self.now_playing.config(text="⏹ Stopped", fg="#888888")
+        self.now_playing.config(text="⏹ Stopped", fg="#A1ACBC")
         self.now_logo.config(image="")
-        self.live_badge.config(text="", bg="#0d0d0d")
+        self.live_badge.config(text="", bg="#101318")
         self.placeholder.place(relx=0.5, rely=0.5, anchor="center")
         self.set_status("Stopped")
 
@@ -1714,19 +1961,21 @@ class IPTVPro:
                     if not self.seen_playing:
                         self.seen_playing = True
                         self.current["working"] = True
+                        self.health.record(
+                            self.current["url"], True, playback=True)
                         iid = str(self.current.get("_i", ""))
                         if self.tree.exists(iid):
                             self.tree.set(iid, "st", "✅")
                     length, t = self.player.get_length(), self.player.get_time()
                     if length > 0:
                         self.cur_is_live = False
-                        self.live_badge.config(text="", bg="#0d0d0d")
+                        self.live_badge.config(text="", bg="#101318")
                         self.time_label.config(text=f"{fmt_time(t)} / {fmt_time(length)}")
                         if not self.seeking:
                             self.seek_bar.set(int(1000 * t / max(1, length)))
                     else:
                         self.cur_is_live = True
-                        self.live_badge.config(text="● LIVE", bg="#ff3b30")
+                        self.live_badge.config(text="● LIVE", bg="#B73D4B")
                         self.time_label.config(text=f"{fmt_time(t)}")
                         if not self.seeking:
                             self.seek_bar.set(1000)
@@ -1739,21 +1988,38 @@ class IPTVPro:
             if not self.is_closing:
                 self.root.after(500, self.tick)
 
+    def _retry_channel(self, ch):
+        if not self.is_closing and self.current is ch:
+            self.play_channel(ch, retry=True)
+
     def on_stream_failure(self):
         ch = self.current
         if ch is None or self.fix_attempted:
             return
         self.fix_attempted = True
+        if self.connection_retry_remaining > 0:
+            # One short retry avoids treating a temporary buffering problem
+            # as a permanently dead broadcaster.
+            self.connection_retry_remaining -= 1
+            self.set_status(f"Reconnecting to {ch['name']}…")
+            self.root.after(1100, self._retry_channel, ch)
+            return
+
+        # After a repeated VLC failure, hide the channel until reconnection
+        # or a validated alternative becomes available.
+        self.health.record(ch["url"], False)
+        self.health.record(ch["url"], False)
         ch["working"] = False
         iid = str(ch.get("_i", ""))
         if self.tree.exists(iid):
             self.tree.set(iid, "st", "❌")
-        self.live_badge.config(text="✖ BROKEN", bg="#7a1d16")
+        self.live_badge.config(text="✖ UNAVAILABLE", bg="#7a1d16")
         if self.settings.get("auto_fix", True) and "_i" in ch:
-            self.set_status(f"⚠ {ch['name']} stopped working — searching for a replacement link...")
+            self.set_status(f"Trying another stream for {ch['name']}…")
             self.repair_channel(ch, auto_play=True)
         else:
-            self.set_status(f"⚠ {ch['name']} could not be played")
+            self.set_status(f"{ch['name']} could not be played")
+            self.display_channels()
 
     # ================================================================ FULL SCREEN
     def toggle_fullscreen(self):
@@ -1845,7 +2111,7 @@ class IPTVPro:
 
     def update_fav_button(self):
         fav = self.current is not None and is_favorite(self.current, self.favorites)
-        self.fav_btn.config(text="★" if fav else "☆", fg="#ff3b30" if fav else "#888888")
+        self.fav_btn.config(text="★" if fav else "☆", fg="#8AB4F8" if fav else "#A1ACBC")
 
     def add_history(self, ch):
         self.history = [h for h in self.history if h.get("url") != ch.get("url")]
@@ -1952,7 +2218,7 @@ class IPTVPro:
     def toggle_link_visibility(self):
         if self.is_authenticated:
             self.is_authenticated = False
-            self.link_btn.config(text="🔒 Links Hidden", fg="#ff3b30")
+            self.link_btn.config(text="🔒 Links Hidden", fg="#8AB4F8")
             self.set_status("Links hidden")
             return
         pw = simpledialog.askstring("Private links", "Enter access code:", show="*")
@@ -1969,14 +2235,14 @@ class IPTVPro:
     def relock_links(self):
         self.is_authenticated = False
         self.links_relock_job = None
-        self.link_btn.config(text="🔒 Links Hidden", fg="#ff3b30")
+        self.link_btn.config(text="🔒 Links Hidden", fg="#8AB4F8")
 
     def show_channel_menu(self, event):
         iid = self.tree.identify_row(event.y)
         if not iid:
             return
         self.tree.selection_set(iid)
-        m = tk.Menu(self.root, tearoff=0, bg="#1a1a1a", fg="#ffffff")
+        m = tk.Menu(self.root, tearoff=0, bg="#1C2430", fg="#ffffff")
         m.add_command(label="▶ Play", command=self.play_selected)
         m.add_command(label="🔧 Fix broken link", command=self.fix_selected)
         m.add_command(label="🔎 Re-check this link", command=self.recheck_selected)
@@ -2059,7 +2325,7 @@ def main():
     except Exception:
         pass
     root = tk.Tk()
-    root.configure(bg="#0d0d0d")
+    root.configure(bg="#101318")
     try:
         root.iconbitmap(default="icon.ico")
     except Exception:

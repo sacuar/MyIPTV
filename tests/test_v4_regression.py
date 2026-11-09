@@ -65,6 +65,32 @@ class V4RegressionTests(unittest.TestCase):
         )
         self.assertNotIn("bang_iptv_data", str(app.APP_DIR))
 
+    def test_optional_playlists_do_not_contaminate_general_sources(self):
+        self.assertIn("📺 Roku FAST (community)", app.IPTV_SOURCES)
+        self.assertIn("📺 Tubi FAST (community)", app.IPTV_SOURCES)
+        self.assertIn("🇺🇸 US Local (APSAT, unverified)", app.IPTV_SOURCES)
+        self.assertIn("📁 Play1 (legacy, unverified)", app.IPTV_SOURCES)
+        self.assertTrue(any(name.endswith("South Korea") for name in app.IPTV_SOURCES))
+
+        ordinary_urls = {
+            url for name, source in app.IPTV_SOURCES.items()
+            if not name.startswith("18+")
+            for url in source["urls"]
+        }
+        for source in app.OPTIONAL_ADULT_PLAYLIST_SOURCES.values():
+            for url in source["urls"]:
+                self.assertNotIn(url, ordinary_urls)
+                self.assertNotIn(url, app.IPTV_SOURCES["🌐 MEGA pack (all major sources)"]["urls"])
+                self.assertNotIn(url, app.IPTV_SOURCES[app.DEFAULT_SETTINGS["last_source"]]["urls"])
+
+    def test_shared_presets_are_single_secure_playlist_urls(self):
+        all_options = {**app.OPTIONAL_PLAYLIST_SOURCES, **app.OPTIONAL_ADULT_PLAYLIST_SOURCES}
+        self.assertEqual(len(all_options), 8)
+        for name, source in all_options.items():
+            with self.subTest(source=name):
+                self.assertEqual(len(source["urls"]), 1)
+                self.assertTrue(source["urls"][0].startswith("https://"))
+
     def test_source_contains_scrollbar_and_startup_autoload(self):
         from pathlib import Path
         source = Path(app.__file__).read_text(encoding="utf-8")
