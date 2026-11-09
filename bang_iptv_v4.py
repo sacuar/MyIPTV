@@ -30,9 +30,12 @@ import urllib.parse
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import deque
+
+from stream_reliability import HealthBook, ordered_alternatives, confirm_probe
 
 APP_NAME = "BANG IPTV"
-APP_VERSION = "4.0 Beta 1"
+APP_VERSION = "4.1 Beta Preview"
 
 
 def _ensure(module, pip_name=None):
@@ -115,6 +118,7 @@ DEFAULT_SETTINGS = {
     "live_update": True,
     "refresh_minutes": 30,
     "auto_fix": True,
+    "quality_preference": "Balanced",
     "custom_sources": [],
 }
 
@@ -485,82 +489,67 @@ def check_stream(url, opts=(), timeout=6):
 
 
 class Repairer:
-    """Index of every channel we have ever seen, used to find a working replacement for a dead link."""
+    """Find alternatives for the same broadcaster, ranking actual success history."""
 
-    def __init__(self):
+    def __init__(self, health=None):
         self.lock = threading.Lock()
-        self.by_id, self.by_norm, self.by_prefix = {}, {}, {}
+        self.by_id, self.by_norm = {}, {}
         self.urls = set()
+        self.health = health if health is not None else HealthBook()
 
     def add(self, chans):
         with self.lock:
-            for c in chans:
-                if c["url"] in self.urls:
+            for ch in chans:
+                url = ch.get("url")
+                if not url or url in self.urls:
                     continue
-                self.urls.add(c["url"])
-                if c.get("tvg_id"):
-                    self.by_id.setdefault(c["tvg_id"], []).append(c)
-                n = c.get("norm")
-                if n:
-                    lst = self.by_norm.setdefault(n, [])
-                    lst.append(c)
-                    if len(lst) == 1:
-                        self.by_prefix.setdefault(n[:2], []).append(n)
+                self.urls.add(url)
+                if ch.get("tvg_id"):
+                    self.by_id.setdefault(ch["tvg_id"].casefold(), []).append(ch)
+                if ch.get("norm"):
+                    self.by_norm.setdefault(ch["norm"], []).append(ch)
 
-    def candidates(self, ch, exclude=(), limit=12):
-        """Channel dicts that are plausibly the same channel, best matches first."""
-        seen = set(exclude) | {ch["url"]}
-        out = []
-
-        def push(c):
-            if c["url"] not in seen and len(out) < limit * 2:
-                seen.add(c["url"])
-                out.append(c)
-
+    def candidates(self, ch, exclude=(), limit=12, preference="Balanced"):
+        seen = set(exclude) | {ch.get("url")}
+        candidates = []
         with self.lock:
-            for u in ch.get("alts", []):
-                push({"url": u, "opts": [], "quality": 0})
             if ch.get("tvg_id"):
-                for c in self.by_id.get(ch["tvg_id"], []):
-                    push(c)
-            n = ch.get("norm")
-            if n:
-                for c in self.by_norm.get(n, []):
-                    push(c)
-                if len(out) < limit:
-                    sm = difflib.SequenceMatcher(autojunk=False)
-                    sm.set_seq2(n)
-                    for other in self.by_prefix.get(n[:2], []):
-                        if other == n or abs(len(other) - len(n)) > 3:
-                            continue
-                        if re.sub(r"\D", "", other) != re.sub(r"\D", "", n):
-                            continue          # 'Channel 8' must never match 'Channel 9'
-                        sm.set_seq1(other)
-                        if sm.real_quick_ratio() >= 0.88 and sm.quick_ratio() >= 0.88 and sm.ratio() >= 0.88:
-                            for c in self.by_norm[other]:
-                                push(c)
-        out.sort(key=lambda c: (not c["url"].startswith("https"), -c.get("quality", 0)))
-        return out[:limit]
+                candidates.extend(self.by_id.get(ch["tvg_id"].casefold(), []))
+            if ch.get("norm"):
+                candidates.extend(self.by_norm.get(ch["norm"], []))
+            # Alt URLs came from channels with the same TVG ID or exact name.
+            for url in ch.get("alts", []):
+                candidates.append({"url": url, "name": ch.get("name"),
+                                   "tvg_id": ch.get("tvg_id"), "opts": [],
+                                   "quality": 0})
+        ranked = ordered_alternatives(
+            ch, candidates, self.health, preference=preference, limit=limit * 2
+        )
+        return [c for c in ranked if c.get("url") not in seen][:limit]
 
-    def find_working(self, ch, exclude=(), checker=None, workers=8):
+    def find_working(self, ch, exclude=(), checker=None, workers=6,
+                     preference="Balanced"):
         checker = checker or check_stream
-        cands = self.candidates(ch, exclude)
-        if not cands:
+        candidates = self.candidates(ch, exclude, preference=preference)
+        if not candidates:
             return None
-        with ThreadPoolExecutor(max_workers=min(workers, len(cands))) as ex:
-            futs = {ex.submit(checker, c["url"], c.get("opts", [])): c for c in cands}
-            winner = None
-            for f in as_completed(futs):
+
+        # Probe candidates concurrently, but choose the most reliable eligible
+        # one, not whichever server answers first. HTTP success does not prove
+        # VLC can decode it, so real playback is recorded separately.
+        with ThreadPoolExecutor(max_workers=min(max(1, workers), len(candidates), 6)) as pool:
+            futures = {
+                pool.submit(confirm_probe, checker, c["url"], c.get("opts", [])): c
+                for c in candidates
+            }
+            good = []
+            for future in as_completed(futures):
                 try:
-                    ok = f.result()
-                except Exception:
-                    ok = False
-                if ok:
-                    winner = futs[f]
-                    break
-            for f in futs:
-                f.cancel()
-        return winner
+                    if future.result() is True:
+                        good.append(futures[future])
+                except (OSError, ValueError, TimeoutError):
+                    pass
+        return max(good, key=lambda c: self.health.score(c, preference=preference)) if good else None
 
 
 def fmt_time(ms):
