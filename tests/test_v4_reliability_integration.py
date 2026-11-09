@@ -64,6 +64,28 @@ class V4ReliabilityIntegrationTests(unittest.TestCase):
             with self.subTest(hook=hook):
                 self.assertIn(hook, source)
 
+    def test_local_m3u_can_be_saved_and_loaded_on_next_launch(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        from unittest.mock import patch
+
+        with TemporaryDirectory() as folder:
+            playlist = Path(folder) / "all.m3u8"
+            playlist.write_text(
+                "#EXTM3U\\n#EXTINF:-1,Bangla TV\\nhttps://example.com/stream.m3u8\\n",
+                encoding="utf-8",
+            )
+            player = app.IPTVPro.__new__(app.IPTVPro)
+            player.settings = {"last_local_file": str(playlist), "custom_sources": []}
+            sources = player.all_sources()
+            self.assertIn("📂 Local M3U file", sources)
+            self.assertEqual(sources["📂 Local M3U file"]["urls"], [str(playlist)])
+            with patch.object(app, "requests", None):
+                result, changed = player.fetch_text(str(playlist), False)
+            self.assertTrue(changed)
+            self.assertIn("Bangla TV", result)
+            self.assertIn("#EXTM3U", result)
+
     def test_persisted_quality_preference_default(self):
         self.assertEqual(app.DEFAULT_SETTINGS["quality_preference"], "Balanced")
         self.assertEqual(app.DEFAULT_SETTINGS["status_filter"], "Hide dead")
