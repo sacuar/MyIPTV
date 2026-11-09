@@ -1346,15 +1346,14 @@ class IPTVPro:
         gen = self.display_gen
         keep_url = self.current["url"] if self.current else None
         self.view = self.current_filtered()
-        previous_scroll = self.tree.yview()[0] if self.tree.get_children() else 0
+        previous_scroll = self.tree.yview()[0] if self.tree.get_children() else None
+        self._scroll_restore = previous_scroll
         self.tree.delete(*self.tree.get_children())
         self.by_iid = {}
         self.channel_count.config(text=f"📺 {len(self.view):,} / {len(self.channels):,}")
         self.update_headings()
         self._insert_chunk(gen, 0, keep_url)
-        # Restore the position when health checks filter out stopped rows.
-        if previous_scroll and not keep_url:
-            self.root.after(80, lambda: self.tree.yview_moveto(previous_scroll) if gen == self.display_gen else None)
+        # Restore the scroll after the final insertion batch, not mid-render.
 
     def _insert_chunk(self, gen, start, keep_url):
         if gen != self.display_gen:
@@ -1369,12 +1368,13 @@ class IPTVPro:
             if keep_url and ch["url"] == keep_url:
                 try:
                     self.tree.selection_set(iid)
-                    self.tree.see(iid)
                 except Exception:
                     pass
         if end < len(self.view):
             self.root.after(5, self._insert_chunk, gen, end, keep_url)
         else:
+            if self._scroll_restore is not None:
+                self.tree.yview_moveto(self._scroll_restore)
             self.schedule_logo_load()
 
     def update_headings(self):
@@ -1577,7 +1577,7 @@ class IPTVPro:
             text=f"Links {self.val_done:,}/{self.val_total:,} · "
                  f"Reachable {reachable:,} · Missing {missing:,}")
         if batch and self.status_var.get() in ("Hide dead", "Dead only", "Working only"):
-            if time.monotonic() - self._last_filter_redraw >= 3:
+            if time.monotonic() - self._last_filter_redraw >= 8:
                 self._last_filter_redraw = time.monotonic()
                 self.display_channels()
 
@@ -1734,9 +1734,11 @@ class IPTVPro:
                 if manual:
                     messagebox.showinfo("Fix link", f"No working alternative found for\n{ch['name']}.\n\n"
                                                     "Try loading a bigger source (MEGA pack) so more candidates exist.")
+                self.display_channels()
                 return
             self.apply_fix(ch, found)
-            self.set_status(f"✅ Fixed {ch['name']} — new link works")
+            self.display_channels()
+            self.set_status(f"✅ Fixed {ch['name']} — new link responds")
             if auto_play and self.current is ch:
                 self.play_channel(ch)
 
