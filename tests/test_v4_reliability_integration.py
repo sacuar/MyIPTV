@@ -72,7 +72,7 @@ class V4ReliabilityIntegrationTests(unittest.TestCase):
         with TemporaryDirectory() as folder:
             playlist = Path(folder) / "all.m3u8"
             playlist.write_text(
-                "#EXTM3U\\n#EXTINF:-1,Bangla TV\\nhttps://example.com/stream.m3u8\\n",
+                "#EXTM3U\n#EXTINF:-1,Bangla TV\nhttps://example.com/stream.m3u8\n",
                 encoding="utf-8",
             )
             player = app.IPTVPro.__new__(app.IPTVPro)
