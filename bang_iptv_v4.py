@@ -1230,11 +1230,12 @@ class IPTVPro:
     def fetch_text(self, url, conditional):
         # Local playlists are loaded privately from disk, never uploaded to
         # GitHub or to a third-party website.
-        local_path = Path(url)
-        if "://" not in url and local_path.is_file():
-            if local_path.stat().st_size > 8 * 1024 * 1024:
-                raise ValueError("Local playlist exceeds the 8 MB safety limit.")
-            return local_path.read_text(encoding="utf-8-sig", errors="replace"), True
+        if "://" not in url:
+            local_path = Path(url)
+            if local_path.is_file():
+                if local_path.stat().st_size > 8 * 1024 * 1024:
+                    raise ValueError("Local playlist exceeds the 8 MB safety limit.")
+                return local_path.read_text(encoding="utf-8-sig", errors="replace"), True
         if requests is None:
             raise RuntimeError("The requests package is required to load online playlists.")
         headers = dict(UA)
