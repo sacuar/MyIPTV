@@ -834,6 +834,8 @@ class IPTVPro:
         self.status.pack(side=tk.BOTTOM, fill=tk.X)
 
     def btn(self, parent, text, cmd, fg="#ffffff", **kw):
+        kw.setdefault("font", ("Segoe UI", 10))
+        kw.setdefault("highlightthickness", 0)
         b = tk.Button(parent, text=text, command=cmd, bg="#1C2430", fg=fg, bd=0, activebackground="#304055",
                       activeforeground=fg, cursor="hand2", **kw)
         b.bind("<Enter>", lambda e: b.config(bg="#304055"))
@@ -843,26 +845,30 @@ class IPTVPro:
     def setup_top_bar(self, parent):
         top = tk.Frame(parent, bg="#101318")
         top.pack(fill=tk.X, pady=(0, 8))
-        tk.Label(top, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#8AB4F8", bg="#101318").pack(
+        header = tk.Frame(top, bg="#101318")
+        header.pack(fill=tk.X, pady=(0, 8))
+        actions = tk.Frame(top, bg="#101318")
+        actions.pack(fill=tk.X)
+        tk.Label(header, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#8AB4F8", bg="#101318").pack(
             side=tk.LEFT, padx=5)
 
-        tk.Label(top, text="Source:", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=(15, 3))
+        tk.Label(actions, text="Source:", font=("Segoe UI", 10), fg="#A1ACBC", bg="#101318").pack(side=tk.LEFT, padx=(15, 3))
         self.source_var = tk.StringVar(value=self.settings.get("last_source"))
-        self.source_menu = ttk.Combobox(top, textvariable=self.source_var, values=list(self.all_sources().keys()),
-                                        width=34, state="readonly")
+        self.source_menu = ttk.Combobox(actions, textvariable=self.source_var, values=list(self.all_sources().keys()),
+                                        width=28, state="readonly")
         self.source_menu.pack(side=tk.LEFT, padx=3)
         self.source_menu.bind("<<ComboboxSelected>>", lambda e: self.load_selected_source())
 
-        self.btn(top, "📥 Load", self.load_selected_source, padx=10, pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "🔄 Update now", lambda: self.load_source(self.source_var.get(), silent=True), padx=10,
+        self.btn(actions, "Load", self.load_selected_source, padx=10, pady=4).pack(side=tk.LEFT, padx=2)
+        self.btn(actions, "Refresh", lambda: self.load_source(self.source_var.get(), silent=True), padx=10,
                  pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "➕ URL", self.add_custom_source, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "📂 File", self.open_m3u_file, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.btn(top, "🔧 Fix dead links", self.fix_all_dead, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
-        self.link_btn = self.btn(top, "🔒 Links Hidden", self.toggle_link_visibility, fg="#8AB4F8", padx=10, pady=4)
+        self.btn(actions, "Add URL", self.add_custom_source, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
+        self.btn(actions, "Open file", self.open_m3u_file, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
+        self.btn(actions, "Repair", self.fix_all_dead, padx=8, pady=4).pack(side=tk.LEFT, padx=2)
+        self.link_btn = self.btn(actions, "🔒 Links Hidden", self.toggle_link_visibility, fg="#8AB4F8", padx=10, pady=4)
         self.link_btn.pack(side=tk.LEFT, padx=2)
 
-        right = tk.Frame(top, bg="#101318")
+        right = tk.Frame(header, bg="#101318")
         right.pack(side=tk.RIGHT)
         self.live_var = tk.BooleanVar(value=self.settings.get("live_update", True))
         tk.Checkbutton(right, text="Live update every", variable=self.live_var, command=self.on_live_toggle,
