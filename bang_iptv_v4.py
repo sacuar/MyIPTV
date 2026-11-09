@@ -696,7 +696,9 @@ class IPTVPro:
         self.favorites = self.normalize_saved(jload(APP_DIR / "favorites.json", []))
         self.history = self.normalize_saved(jload(APP_DIR / "history.json", []))
         self.overrides = jload(APP_DIR / "link_overrides.json", {})
-        self.repairer = Repairer()
+        # Local playback and reachability history; never transmitted to playlist providers.
+        self.health = HealthBook(jload(APP_DIR / "stream_health.json", {}))
+        self.repairer = Repairer(self.health)
         self.logos = LogoStore(APP_DIR)
 
         # thread -> UI plumbing (tkinter is not thread safe: workers only post callables here)
@@ -706,6 +708,11 @@ class IPTVPro:
         self.val_gen = 0
         self.val_buf, self.val_lock = [], threading.Lock()
         self.val_total = self.val_done = 0
+        self.val_queue = deque()
+        self.val_inflight = 0
+        self.recheck_cursor = 0
+        self.public_index_lock = threading.Lock()
+        self.public_index_updated = 0.0
         self.logo_img = {}             # (url,size) -> PhotoImage
         self.logo_req = set()
         self.placeholders = {}
@@ -766,6 +773,7 @@ class IPTVPro:
         jsave(APP_DIR / "favorites.json", self.favorites)
         jsave(APP_DIR / "history.json", self.history)
         jsave(APP_DIR / "link_overrides.json", self.overrides)
+        jsave(APP_DIR / "stream_health.json", self.health.snapshot())
 
     def set_status(self, text):
         self.status.config(text=text)
@@ -927,6 +935,19 @@ class IPTVPro:
         tk.Checkbutton(f2, text="★ on top", variable=self.pin_var, command=self.on_sort_change, bg="#0d0d0d",
                        fg="#bbbbbb", selectcolor="#1a1a1a", activebackground="#0d0d0d",
                        activeforeground="#ffffff").pack(side=tk.LEFT, padx=4)
+
+        quality_row = tk.Frame(parent, bg="#0d0d0d")
+        quality_row.pack(fill=tk.X, pady=(0, 4))
+        tk.Label(quality_row, text="Playback preference:", font=("Segoe UI", 9),
+                 fg="#bbbbbb", bg="#0d0d0d").pack(side=tk.LEFT)
+        self.quality_var = tk.StringVar(
+            value=self.settings.get("quality_preference", "Balanced"))
+        quality_menu = ttk.Combobox(
+            quality_row, textvariable=self.quality_var,
+            values=["Balanced", "High quality", "Data saver"],
+            width=16, state="readonly")
+        quality_menu.pack(side=tk.LEFT, padx=(8, 0))
+        quality_menu.bind("<<ComboboxSelected>>", self.on_live_toggle)
 
         self.search_entry = tk.Entry(parent, font=("Segoe UI", 10), bg="#1a1a1a", fg="#666666", bd=0,
                                      insertbackground="#ffffff")
@@ -1246,6 +1267,12 @@ class IPTVPro:
             new_urls = {c["url"] for c in chans}
             added = sum(1 for c in chans if c["url"] not in old)
             removed = sum(1 for u in old if u not in new_urls)
+        # Reuse recent status checks across launches without trusting stale marks.
+        for c in chans:
+            status = self.health.status(c["url"])
+            if status is not None:
+                c["working"] = status
+                c["checked"] = self.health.entries[c["url"]]["checked"]
         self.channels = chans
         if self.current is not None:      # keep pointing at the same channel after a refresh
             same = next((c for c in chans if c["url"] == self.current.get("url")), None)
@@ -1271,6 +1298,7 @@ class IPTVPro:
     def on_live_toggle(self, e=None):
         self.settings["live_update"] = bool(self.live_var.get())
         self.settings["auto_fix"] = bool(self.fix_var.get())
+        self.settings["quality_preference"] = self.quality_var.get()
         try:
             self.settings["refresh_minutes"] = int(self.refresh_var.get())
         except ValueError:
