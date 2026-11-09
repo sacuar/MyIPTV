@@ -1,0 +1,76 @@
+name: Publish BANG IPTV v4.1 beta
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/publish-v4-1-beta.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout latest player source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        shell: pwsh
+        run: python -m pip install -r requirements-v4.txt pyinstaller
+      - name: Compile source and execute tests
+        shell: pwsh
+        run: |
+          python -m py_compile bang_iptv_v4.py stream_reliability.py
+          python -m unittest discover -s tests -v
+      - name: Build BANG IPTV v4.1 executable
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_v4_1 --hidden-import vlc --hidden-import requests --hidden-import bs4 --hidden-import PIL --hidden-import PIL.ImageTk bang_iptv_v4.py
+          if (-not (Test-Path dist/BANG_IPTV_v4_1.exe)) { throw "Windows EXE was not created" }
+      - name: Upload Windows EXE artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BANG-IPTV-v4.1-Beta-Windows
+          path: dist/BANG_IPTV_v4_1.exe
+          retention-days: 30
+          if-no-files-found: error
+      - name: Publish separate beta release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v4.1.0-beta.1
+          target_commitish: ${{ github.sha }}
+          name: BANG IPTV v4.1 Beta 1 — Playback and Reliability
+          prerelease: true
+          make_latest: false
+          fail_on_unmatched_files: true
+          files: dist/BANG_IPTV_v4_1.exe
+          body: |
+            ## BANG IPTV v4.1 Beta 1 — New Windows build
+            This beta preserves the richer v4 layout and all historical releases.
+
+            ### Improvements
+            - Cleaner dark interface, compact two-row header, blue accents and visible channel-list scrollbar.
+            - Stream preference: Balanced, High quality or Data saver.
+            - Tune per-stream VLC buffering and reconnect once on a playback failure.
+            - Validate links in bounded background batches (8 workers, 32 in-flight).
+            - Rotate stale checks across large playlists rather than repeatedly checking only the first entries.
+            - Save local playback/reachability history and prioritise proven reliable replacements.
+            - Automatically discover and check matching public alternatives after confirmed failure.
+            - Existing source refresh also adds channels newly available in source M3U files.
+            - Optional Roku, Tubi, APSAT and previous Play1 sources; adult sources stay separate.
+
+            ### Limitations
+            - Requires an installed, matching-architecture VLC Media Player.
+            - Online URL responses are not guaranteed playable HD video.
+            - Automatic repairs are best effort; the player cannot bypass DRM, subscription or geographic restrictions.
+            - High quality preference prioritises candidates with matching IDs/names and known reliability; it does not upscale lower-resolution video.
+            - Windows build and automated tests passed; actual playback must still be tested on a user's PC.
+            - The original stable EXE, all v3 releases and v4.0 Beta 1 are unchanged.
+
+            Download BANG_IPTV_v4_1.exe from Assets.
