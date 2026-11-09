@@ -1603,8 +1603,8 @@ class IPTVPro:
                          now - ch.get("checked", 0) > 1800][:160]
                 self.recheck_cursor = (start + 160) % total
                 if stale:
-                    for ch in stale:
-                        ch["working"] = None
+                    # Keep confirmed dead channels hidden while probing again;
+                    # show them only after a positive result.
                     self.start_validation(subset=stale)
         finally:
             if not self.is_closing:
