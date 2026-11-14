@@ -1,6 +1,6 @@
 # Managing BANG IPTV screenshots on GitHub
 
-The images in [README.md](../README.md) are displayed in the **Screenshot** section. They are currently GitHub-hosted image attachments, **not editable files inside this repository**. To replace or crop them, upload a new image and change the Markdown reference.
+The images in [README.md](../README.md) are displayed in the **Screenshots** section and are stored in this repository at `screenshots/scr2.png` and `screenshots/scrr1.png`. You can replace either PNG in the screenshots folder or upload a newly named file and update the Markdown image path.
 
 ## Edit the app icon separately
 
@@ -12,11 +12,11 @@ To change the icon later, replace that PNG in GitHub and rebuild the executable.
 
 1. Take a screenshot of BANG IPTV on Windows. Crop in Paint, Photos or another editor as needed. Consider hiding personal playlists, account details, tokens or URLs.
 2. Open the [screenshots folder](../screenshots) in this repository, select **Add file → Upload files**, drop your `.png` or `.webp` image there, then **Commit changes**.
-3. Open [README.md](../README.md), choose **Edit** (pencil icon), and find **`## Screenshot`**.
+3. Open [README.md](../README.md), choose **Edit** (pencil icon), and find **`## Screenshots`**.
 4. Replace only the address inside the screenshot image Markdown. Example:
 
    ```markdown
-   ![BANG IPTV v4 interface](screenshots/bang-iptv-v4.png)
+   ![BANG IPTV Windows player](screenshots/scr2.png)
    ```
 
 5. Choose **Preview** and **Commit changes**. The image displayed on the repository's homepage will update.
@@ -25,7 +25,7 @@ For two screenshots, add two Markdown image lines pointing at two uploaded files
 
 ## Distinguish versions
 
-The README currently includes a historical screenshot of the **August 2026 original app**. Do not describe it as v4 unless you upload an actual v4 screenshot.
+The README currently shows two existing Windows app screenshots. Do not assign a specific release version to either image unless you have verified which EXE produced it.
 
 Suggested filename convention:
 
