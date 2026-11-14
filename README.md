@@ -1,6 +1,12 @@
-# BANG IPTV
+# 📺 BANG IPTV
 
-A Windows IPTV player for M3U playlists, with VLC playback, channel browsing, favourites and playlist management.
+**Free Windows live-TV player** with M3U playlists, VLC playback, favourites and automatic playlist maintenance.
+
+**Created and maintained by [sacuar](https://github.com/sacuar).** Built with personal time and effort. If BANG IPTV helps you, please credit the original project when sharing it.
+
+[![Buy Me a Coffee — support the creator](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_the_creator-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/sacuar)
+
+[**Downloads**](#download) · [**Screenshots**](#screenshot) · [**Support & recognition**](#support-the-creator) · [**Code use**](#code-use-and-credits)
 
 ## Download
 
@@ -37,6 +43,8 @@ Broken-link detection and alternative stream searches are best-effort. A playlis
 Python is **not** required to run the EXE. The latest v4.1 Beta 2 has passed Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
 
 ## Screenshot
+
+**[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
 
 ![BANG IPTV — original stable Windows player](https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049)
 
@@ -87,16 +95,24 @@ python bang_iptv_v4.py
 
 The earlier [v3 source](bang_iptv_player.py) remains available. The full source used for the original August 2026 EXE is not present in this repository.
 
-## Support
+## Support the creator
 
-Found a bug or have an idea? [Open a GitHub issue](https://github.com/sacuar/MyIPTV/issues).
+BANG IPTV is **free to download and use**. Support is optional, not a fee for watching TV. Sharing feedback, reporting bugs and acknowledging the project also helps.
 
-If you would like to support ongoing development, [Buy Me a Coffee](https://www.buymeacoffee.com/sacuar) is optional. Testing, feedback and code contributions are also appreciated.
+| ☕ Buy Me a Coffee | 💳 Stripe |
+|:--|:--|
+| [![Buy Me a Coffee](https://img.shields.io/badge/Support_on-Buy_Me_a_Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/sacuar) | ![Stripe payment link pending](https://img.shields.io/badge/Stripe-Link_not_added_yet-635BFF?logo=stripe&logoColor=white) |
+| Optional support for the developer | Waiting for the creator's **public Stripe Payment Link**; no payment destination is guessed |
 
-## Copyright and paid code reuse
+**[Report a problem or suggest an improvement](https://github.com/sacuar/MyIPTV/issues)** · [**Credit the creator**](AUTHORS.md)
 
-**BANG IPTV is free to download for personal use, but newly authored, original code contributions are not offered for free copying into other projects.** See the [current source-code rights notice](LICENSE) for the precise scope. Contact the [maintainer](https://github.com/sacuar/MyIPTV/issues) to agree a **paid written licence** before reusing covered new code.
+## Code use and credits
 
-**Important historical exception:** This repository previously used [The Unlicense](LICENSE-LEGACY-UNLICENSE.txt). Permissions already granted for that material and older released versions are **not revoked**, and the new notice does not grant ownership of third-party code, playlists or broadcaster assets. The new restriction applies prospectively only to eligible original additions. Consider professional legal review before relying on it commercially.
+**BANG IPTV was started and maintained by [sacuar](https://github.com/sacuar).** If you redistribute, feature or build on the project, please give visible credit, for example **"Based on BANG IPTV by sacuar"**, with a link to [this repository](https://github.com/sacuar/MyIPTV).
 
-The link-visibility code is a convenience privacy control, not encryption.
+- **Using official app builds:** free for personal, noncommercial use under their release-specific terms.
+- **Reusing newly authored original code:** obtain permission under the [current rights notice](LICENSE); attribution is expected, and commercial repackaging may involve a paid licence.
+- **Historical source code:** the repository previously used [The Unlicense](LICENSE-LEGACY-UNLICENSE.txt). Its earlier permissions cannot be withdrawn retroactively. Attribution for material covered by it is **requested as a courtesy**, not falsely presented as a legal requirement.
+- **Third-party content:** broadcasts, playlists, images and dependencies retain their respective rights; they are not owned by this project.
+
+Please preserve the author's recognition when sharing BANG IPTV. This project is free to use, and contributions or financial support are appreciated but not mandatory.
