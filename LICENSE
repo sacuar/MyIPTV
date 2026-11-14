@@ -1,24 +1,66 @@
-This is free and unencumbered software released into the public domain.
+BANG IPTV — NEW ORIGINAL CODE RIGHTS NOTICE
+Effective date: 14 November 2026
+Copyright (c) 2026 sacuar. All rights reserved in eligible original additions.
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+IMPORTANT: THIS NOTICE IS PROSPECTIVE AND DOES NOT REVOKE EARLIER RIGHTS.
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+1. COVERED MATERIAL
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+This notice applies only to copyright-protected, original software code,
+documentation, artwork or other contributions first authored and released by
+sacuar on or after the effective date, and only to the extent sacuar owns
+or has the rights to license those contributions ("Covered Contributions").
 
-For more information, please refer to <http://unlicense.org/>
+It does not claim ownership of material authored by others, external
+playlists, broadcast streams, broadcaster names/logos, public-domain work,
+or code already released under a licence allowing reuse.
+
+2. COPYING OR REUSING COVERED CONTRIBUTIONS
+
+Except where authorised by applicable law, GitHub's terms for viewing and
+forking the repository, or a separate written agreement, no permission is
+granted to reproduce, modify, sublicense, redistribute, publish, resell,
+embed in another project, or commercialise Covered Contributions.
+
+A person or organisation wishing to copy or reuse Covered Contributions
+beyond those limited permissions must first obtain written permission
+from the rights holder and agree a PAID SOFTWARE LICENCE.
+
+Pricing is negotiated case by case; there is no automatic permission
+to copy merely by offering payment. Contact the maintainer:
+https://github.com/sacuar/MyIPTV/issues
+
+3. PERSONAL USE OF OFFICIAL BUILDS
+
+Official BANG IPTV binary releases may be downloaded and run without a
+source-code reuse fee for personal, noncommercial use, subject to the
+terms actually accompanying each specific release. This paragraph does not
+grant permission to redistribute or modify Covered Contributions.
+
+4. EXISTING UNLICENSED / PUBLIC-DOMAIN MATERIAL
+
+Before this notice, the repository carried The Unlicense, whose text
+is preserved verbatim in LICENSE-LEGACY-UNLICENSE.txt. Existing permissions
+under that notice and any other valid prior licence are not withdrawn by
+this new notice. Prior releases and underlying previously licensed material
+remain usable under their original terms, including where the same material
+appears alongside later modifications.
+
+A fee may be sought for eligible new original additions; it cannot be
+retroactively imposed for material already released under The Unlicense.
+
+5. THIRD-PARTY RIGHTS
+
+All third-party libraries, VLC, Python packages, logos, metadata, linked
+streams and playlist collections remain subject to their respective terms.
+Do not interpret this notice as a claim to broadcasters' content or as
+permission to access unauthorised streams.
+
+6. DISCLAIMER
+
+The Covered Contributions are provided "AS IS", without warranties of any
+kind, to the maximum extent permitted by applicable law. Nothing here
+limits statutory exceptions or rights which cannot lawfully be excluded.
+
+For commercial source-code licensing, contact the repository owner above.
+For release-specific rights, consult the files distributed with that release.

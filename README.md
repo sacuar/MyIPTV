@@ -21,6 +21,7 @@ The v4.1 beta is a separate application build. It does **not** replace the origi
 - **Reliability:** Bounded background checks, a VLC reconnect attempt and automatic searches for matching public replacement streams.
 - **Playback preference:** Balanced, High quality and Data saver; successful playback history takes priority over advertised quality labels.
 - **Local files:** Open an M3U/M3U8 from disk once and v4.1 remembers it for the next launch.
+- **Safer updates (next beta):** An incomplete multi-source refresh keeps the existing channel list rather than dropping sources that temporarily failed.
 - **Link privacy:** Stream URLs are hidden unless you unlock their display; they are automatically hidden again after five minutes.
 
 Broken-link detection and alternative stream searches are best-effort. A playlist can load successfully even when individual broadcasts are inaccessible, geographically restricted or no longer available.
@@ -34,16 +35,16 @@ Broken-link detection and alternative stream searches are best-effort. A playlis
 
 Python is **not** required to run the EXE. v4.1 has passed Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
 
-## Screenshots
+## Screenshot
+
+![BANG IPTV — original stable Windows player](https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049)
+
+*Original August 2026 Windows application. This is a genuine historical screenshot, not a verified screenshot of the v4 beta.*
 
 <details>
-<summary>Show screenshots of the original application</summary>
+<summary>View another original channel-list screenshot</summary>
 
-![Original BANG IPTV player](https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049)
-
-![Original Bangladesh channel view](https://github.com/user-attachments/assets/1205d635-c3d6-40ec-88c3-820a7ec451a4)
-
-*These images show the original release, not the v4 beta.*
+![BANG IPTV — original Bangladesh channel list](https://github.com/user-attachments/assets/1205d635-c3d6-40ec-88c3-820a7ec451a4)
 
 </details>
 
@@ -91,4 +92,10 @@ Found a bug or have an idea? [Open a GitHub issue](https://github.com/sacuar/MyI
 
 If you would like to support ongoing development, [Buy Me a Coffee](https://www.buymeacoffee.com/sacuar) is optional. Testing, feedback and code contributions are also appreciated.
 
-**Note:** The repository's [licence](LICENSE) is the Unlicense, while earlier documentation described the original executable as proprietary. The maintainer should clarify which terms apply to each release. The link-visibility code is a convenience privacy control, not encryption.
+## Copyright and paid code reuse
+
+**BANG IPTV is free to download for personal use, but newly authored, original code contributions are not offered for free copying into other projects.** See the [current source-code rights notice](LICENSE) for the precise scope. Contact the [maintainer](https://github.com/sacuar/MyIPTV/issues) to agree a **paid written licence** before reusing covered new code.
+
+**Important historical exception:** This repository previously used [The Unlicense](LICENSE-LEGACY-UNLICENSE.txt). Permissions already granted for that material and older released versions are **not revoked**, and the new notice does not grant ownership of third-party code, playlists or broadcaster assets. The new restriction applies prospectively only to eligible original additions. Consider professional legal review before relying on it commercially.
+
+The link-visibility code is a convenience privacy control, not encryption.

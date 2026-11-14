@@ -692,12 +692,16 @@ class IPTVPro:
         self.display_gen = 0
 
         self.settings = dict(DEFAULT_SETTINGS)
-        self.settings.update(jload(APP_DIR / "settings.json", {}))
+        saved_settings = jload(APP_DIR / "settings.json", {})
+        if isinstance(saved_settings, dict):
+            self.settings.update(saved_settings)
         if self.settings.get("status_filter") not in STATUS_FILTERS:
             self.settings["status_filter"] = "Hide dead"
         self.favorites = self.normalize_saved(jload(APP_DIR / "favorites.json", []))
         self.history = self.normalize_saved(jload(APP_DIR / "history.json", []))
         self.overrides = jload(APP_DIR / "link_overrides.json", {})
+        if not isinstance(self.overrides, dict):
+            self.overrides = {}
         # Local playback and reachability history; never transmitted to playlist providers.
         self.health = HealthBook(jload(APP_DIR / "stream_health.json", {}))
         self.repairer = Repairer(self.health)
@@ -1245,14 +1249,28 @@ class IPTVPro:
                 headers["If-None-Match"] = cached["etag"]
             if cached.get("lm"):
                 headers["If-Modified-Since"] = cached["lm"]
-        r = requests.get(url, headers=headers, timeout=40)
-        if r.status_code == 304 and cached:
-            return cached["text"], False
-        r.raise_for_status()
-        r.encoding = r.encoding or "utf-8"
-        text = r.content.decode("utf-8", errors="ignore")
-        self.http_cache[url] = {"etag": r.headers.get("ETag"), "lm": r.headers.get("Last-Modified"), "text": text}
-        return text, True
+        response = requests.get(url, headers=headers, timeout=(5, 20), stream=True)
+        try:
+            if response.status_code == 304 and cached:
+                return cached["text"], False
+            response.raise_for_status()
+            chunks, total = [], 0
+            for chunk in response.iter_content(chunk_size=64 * 1024):
+                if not chunk:
+                    continue
+                total += len(chunk)
+                if total > 8 * 1024 * 1024:
+                    raise ValueError("Playlist exceeds 8 MB; keeping the existing channel list.")
+                chunks.append(chunk)
+            text = b"".join(chunks).decode("utf-8-sig", errors="replace")
+            self.http_cache[url] = {
+                "etag": response.headers.get("ETag"),
+                "lm": response.headers.get("Last-Modified"),
+                "text": text,
+            }
+            return text, True
+        finally:
+            response.close()
 
     def fetch_source(self, gen, name, urls, silent):
         lists, errors = [], []
@@ -1280,6 +1298,12 @@ class IPTVPro:
         if gen != self.loading_gen:
             return
         self.loading_label.pack_forget()
+        if silent and errors and self.channels:
+            # A partial outage must not remove channels fetched successfully
+            # earlier from other sources in the same playlist group.
+            self.source_status.config(text="⚠️ Partial refresh failed; previous channels kept")
+            self.set_status("Refresh incomplete; kept the existing channel list. Will retry later.")
+            return
         if not chans:
             self.source_status.config(text="❌ Failed")
             if not silent:
@@ -2257,15 +2281,20 @@ class IPTVPro:
             return
 
         def work():
-            ok = check_stream(ch["url"], ch.get("opts", []))
+            ok = confirm_probe(check_stream, ch["url"], ch.get("opts", []))
             self.call_ui(done, ok)
 
         def done(ok):
-            ch["working"], ch["checked"] = ok, time.time()
+            if ok is False:
+                self.health.record(ch["url"], False)
+            status = self.health.record(ch["url"], ok)
+            ch["working"], ch["checked"] = status, time.time()
             iid = str(ch["_i"])
             if self.tree.exists(iid):
                 self.tree.set(iid, "st", self.status_icon(ch))
-            self.set_status(f"{ch['name']}: {'✅ working' if ok else '❌ not working'}")
+            label = "reachable" if status is True else "unavailable" if status is False else "not verified"
+            self.set_status(f"{ch['name']}: {label}")
+            self.display_channels()
 
         threading.Thread(target=work, daemon=True).start()
 
