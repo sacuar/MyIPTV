@@ -6,11 +6,12 @@ A Windows IPTV player for M3U playlists, with VLC playback, channel browsing, fa
 
 | Version | Download | Status |
 |---|---|---|
-| **BANG IPTV v4.1 Beta 1** | **[Download updated Windows EXE (23 MB)](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.1/BANG_IPTV_v4_1.exe)** | Current beta; playback and reliability improvements |
+| **BANG IPTV v4.1 Beta 2** | **[Download stability update (23 MB)](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.2/BANG_IPTV_v4_1_stability.exe)** | Latest beta; safer playlist refresh and link checks |
+| BANG IPTV v4.1 Beta 1 | [Earlier v4.1 EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.1/BANG_IPTV_v4_1.exe) | Previous beta, preserved |
 | BANG IPTV v4.0 Beta 1 | [Earlier v4 EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.0.0-beta.1/BANG_IPTV_v4.exe) | Previous beta, preserved |
 | **Original BANG IPTV** | [Download original stable version (31 MB)](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe) | August 2026 release; preserved unchanged |
 
-The v4.1 beta is a separate application build. It does **not** replace the original stable release or previous betas. [View all releases](https://github.com/sacuar/MyIPTV/releases).
+The latest v4.1 beta is a separate application build. It does **not** replace the original stable release or previous betas. [View all releases](https://github.com/sacuar/MyIPTV/releases).
 
 ## Features
 
@@ -21,7 +22,7 @@ The v4.1 beta is a separate application build. It does **not** replace the origi
 - **Reliability:** Bounded background checks, a VLC reconnect attempt and automatic searches for matching public replacement streams.
 - **Playback preference:** Balanced, High quality and Data saver; successful playback history takes priority over advertised quality labels.
 - **Local files:** Open an M3U/M3U8 from disk once and v4.1 remembers it for the next launch.
-- **Safer updates (next beta):** An incomplete multi-source refresh keeps the existing channel list rather than dropping sources that temporarily failed.
+- **Safer updates:** An incomplete multi-source refresh keeps the existing channel list rather than dropping sources that temporarily failed.
 - **Link privacy:** Stream URLs are hidden unless you unlock their display; they are automatically hidden again after five minutes.
 
 Broken-link detection and alternative stream searches are best-effort. A playlist can load successfully even when individual broadcasts are inaccessible, geographically restricted or no longer available.
@@ -29,11 +30,11 @@ Broken-link detection and alternative stream searches are best-effort. A playlis
 ## Getting started
 
 1. Install [VLC Media Player](https://www.videolan.org/vlc/) for Windows.
-2. Download [BANG IPTV v4.1 Beta 1](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.1/BANG_IPTV_v4_1.exe), or choose an older release above.
+2. Download [BANG IPTV v4.1 Beta 2](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.2/BANG_IPTV_v4_1_stability.exe), or choose an older release above.
 3. Open the EXE. In v4, the saved playlist loads automatically.
 4. Select a channel and double-click to watch. Use **Refresh** to update the source playlist and **Hide dead** to filter unavailable links. Use **Open file** to load your local `all.m3u8` or another M3U playlist.
 
-Python is **not** required to run the EXE. v4.1 has passed Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
+Python is **not** required to run the EXE. The latest v4.1 Beta 2 has passed Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
 
 ## Screenshot
 
