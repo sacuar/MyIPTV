@@ -101,8 +101,8 @@ BANG IPTV is **free to download and use**. Support is optional, not a fee for wa
 
 | ☕ Buy Me a Coffee | 💳 Stripe |
 |:--|:--|
-| [![Buy Me a Coffee](https://img.shields.io/badge/Support_on-Buy_Me_a_Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/sacuar) | ![Stripe payment link pending](https://img.shields.io/badge/Stripe-Link_not_added_yet-635BFF?logo=stripe&logoColor=white) |
-| Optional support for the developer | Waiting for the creator's **public Stripe Payment Link**; no payment destination is guessed |
+| [☕ Support via Buy Me a Coffee](https://www.buymeacoffee.com/sacuar) | ![Stripe payment link pending](https://img.shields.io/badge/Stripe-Link_not_added_yet-635BFF?logo=stripe&logoColor=white) |
+| Optional creator support | [How to activate a verified Stripe link](docs/STRIPE-SUPPORT.md) |
 
 **[Report a problem or suggest an improvement](https://github.com/sacuar/MyIPTV/issues)** · [**Credit the creator**](AUTHORS.md)
 
