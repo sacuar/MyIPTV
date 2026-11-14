@@ -10,22 +10,23 @@
 
 [![Buy Me a Coffee — support the creator](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_the_creator-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/sacuar)
 
-[**Downloads**](#download) · [**Screenshots**](#screenshot) · [**Support & recognition**](#support-the-creator) · [**Code use**](#code-use-and-credits)
-## Screenshot
+[**Download**](#download) · [**Screenshots**](#screenshots) · [**Support & recognition**](#support-the-creator) · [**Code use**](#code-use-and-credits)
+
+## Screenshots
 
 **[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
 
-The current BANG IPTV application icon is [stored in this repository](screenshots/scr1.png))
-
+The current BANG IPTV screenshot is [stored in this repository](screenshots/scr1.png).
 
 *Original August 2026 Windows application. This is a genuine historical screenshot, not a verified screenshot of the v4 beta.*
 
 <details>
 <summary>View another original channel-list screenshot</summary>
 
-![BANG IPTV — original Bangladesh channel list](![BANG IPTV v4 player](screenshots/scrr1.png))
+![BANG IPTV — original Bangladesh channel list screenshot](screenshots/scrr1.png)
 
 </details>
+
 ## Download
 
 | Version | Download | Status |
@@ -62,8 +63,6 @@ Broken-link detection and alternative stream searches are best-effort. A playlis
 
 Python is **not** required to run the EXE. The current beta is built and verified through GitHub's Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
 
-
-
 ## More downloads and playlists
 
 <details>
@@ -98,28 +97,3 @@ To run v4 from source on Windows with Python 3.12+ and VLC installed:
 ```powershell
 python -m pip install -r requirements-v4.txt
 python bang_iptv_v4.py
-```
-
-The earlier [v3 source](bang_iptv_player.py) remains available. The full source used for the original August 2026 EXE is not present in this repository.
-
-## Support the creator
-
-BANG IPTV is **free to download and use**. Support is optional, not a fee for watching TV. Sharing feedback, reporting bugs and acknowledging the project also helps.
-
-| ☕ Buy Me a Coffee | 💳 Stripe |
-|:--|:--|
-| [☕ Support via Buy Me a Coffee](https://buymeacoffee.com/sacuar) | [![Stripe support page — activation required](https://img.shields.io/badge/Stripe-Buy_Button_prepared-635BFF?logo=stripe&logoColor=white)](docs/STRIPE-SUPPORT.md) |
-| Active external support option | The embedded button is ready in [the support-page source](docs/support/index.html); [GitHub Pages must first be enabled](docs/STRIPE-SUPPORT.md) for checkout to work |
-
-**[Report a problem or suggest an improvement](https://github.com/sacuar/MyIPTV/issues)** · [**Credit the creator**](AUTHORS.md)
-
-## Code use and credits
-
-**BANG IPTV was started and maintained by [sacuar](https://github.com/sacuar).** If you redistribute, feature or build on the project, please give visible credit, for example **"Based on BANG IPTV by sacuar"**, with a link to [this repository](https://github.com/sacuar/MyIPTV).
-
-- **Using official app builds:** free for personal, noncommercial use under their release-specific terms.
-- **Reusing newly authored original code:** obtain permission under the [current rights notice](LICENSE); attribution is expected, and commercial repackaging may involve a paid licence.
-- **Historical source code:** the repository previously used [The Unlicense](LICENSE-LEGACY-UNLICENSE.txt). Its earlier permissions cannot be withdrawn retroactively. Attribution for material covered by it is **requested as a courtesy**, not falsely presented as a legal requirement.
-- **Third-party content:** broadcasts, playlists, images and dependencies retain their respective rights; they are not owned by this project.
-
-Please preserve the author's recognition when sharing BANG IPTV. This project is free to use, and contributions or financial support are appreciated but not mandatory.
