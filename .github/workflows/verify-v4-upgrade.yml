@@ -29,10 +29,13 @@ jobs:
       - name: Run full offline regression suite
         shell: pwsh
         run: python -m unittest discover -s tests -v
-      - name: Build v4.1 Windows EXE
+      - name: Generate Windows icon from bundled emerald artwork
+        shell: pwsh
+        run: python scripts/build_iptv_icon.py
+      - name: Build v4.1 Windows EXE with new icon
         shell: pwsh
         run: |
-          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_v4_1 --hidden-import vlc --hidden-import requests --hidden-import bs4 --hidden-import PIL --hidden-import PIL.ImageTk bang_iptv_v4.py
+          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_v4_1 --icon assets/iptv_icon.ico --add-data "assets/iptv_icon.png;assets" --hidden-import vlc --hidden-import requests --hidden-import bs4 --hidden-import PIL --hidden-import PIL.ImageTk bang_iptv_v4.py
           if (-not (Test-Path dist/BANG_IPTV_v4_1.exe)) { throw "EXE not created" }
       - name: Store review build
         uses: actions/upload-artifact@v4

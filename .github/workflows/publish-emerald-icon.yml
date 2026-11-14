@@ -1,0 +1,77 @@
+name: Publish BANG IPTV emerald icon beta
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/publish-emerald-icon.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows-icon-release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install requirements
+        shell: pwsh
+        run: python -m pip install -r requirements-v4.txt pyinstaller
+      - name: Compile and run offline regression tests
+        shell: pwsh
+        run: |
+          python -m py_compile bang_iptv_v4.py stream_reliability.py scripts/build_iptv_icon.py
+          python -m unittest discover -s tests -v
+      - name: Generate multi-resolution Windows ICO
+        shell: pwsh
+        run: |
+          python scripts/build_iptv_icon.py
+          if (-not (Test-Path assets/iptv_icon.ico)) { throw "Missing generated ICO" }
+      - name: Package BANG IPTV EXE with window and file icons
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --clean --onefile --windowed --name BANG_IPTV_v4_1_emerald --icon assets/iptv_icon.ico --add-data "assets/iptv_icon.png;assets" --hidden-import vlc --hidden-import requests --hidden-import bs4 --hidden-import PIL --hidden-import PIL.ImageTk bang_iptv_v4.py
+          if (-not (Test-Path dist/BANG_IPTV_v4_1_emerald.exe)) { throw "Windows executable missing" }
+      - name: Upload preview EXE and icon files
+        uses: actions/upload-artifact@v4
+        with:
+          name: BANG-IPTV-Emerald-Icon-Beta-Windows
+          path: |
+            dist/BANG_IPTV_v4_1_emerald.exe
+            assets/iptv_icon.png
+            assets/iptv_icon.ico
+          retention-days: 30
+          if-no-files-found: error
+      - name: Publish independent beta release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v4.1.0-beta.3
+          target_commitish: ${{ github.sha }}
+          name: BANG IPTV v4.1 Beta 3 — Emerald icon
+          prerelease: true
+          make_latest: false
+          fail_on_unmatched_files: true
+          files: |
+            dist/BANG_IPTV_v4_1_emerald.exe
+            assets/iptv_icon.png
+            assets/iptv_icon.ico
+            LICENSE
+            LICENSE-LEGACY-UNLICENSE.txt
+          body: |
+            ## BANG IPTV v4.1 Beta 3 — Emerald artwork
+            New visual identity based on the approved dark-green IPTV icon.
+
+            - Same TV/play artwork in the Windows EXE file icon, application window and app header.
+            - Icon is bundled correctly within the one-file PyInstaller executable, not loaded from a missing external path.
+            - The GitHub README displays the same artwork.
+            - Includes the v4.1 Beta 2 stability fixes, without changing playlist handling, playback or saved settings.
+            - Maintains free personal use and credits project author sacuar.
+
+            **Build verification:** Windows compilation, icon generation and offline regression tests passed. Live playback and the actual taskbar appearance still need checking on your Windows PC.
+            **Older EXEs and release tags stay available.** VLC Media Player must be installed.

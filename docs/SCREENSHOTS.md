@@ -2,6 +2,12 @@
 
 The images in [README.md](../README.md) are displayed in the **Screenshot** section. They are currently GitHub-hosted image attachments, **not editable files inside this repository**. To replace or crop them, upload a new image and change the Markdown reference.
 
+## Edit the app icon separately
+
+The approved dark-green application icon is [`assets/iptv_icon.png`](../assets/iptv_icon.png). It appears in the README and is bundled into the Windows EXE and app window.
+
+To change the icon later, replace that PNG in GitHub and rebuild the executable. The [icon builder](../scripts/build_iptv_icon.py) generates a multi-resolution `.ico` for the EXE. Changing only the README image will not update an already downloaded EXE; a new release build is necessary.
+
 ## Replace the visible screenshot
 
 1. Take a screenshot of BANG IPTV on Windows. Crop in Paint, Photos or another editor as needed. Consider hiding personal playlists, account details, tokens or URLs.

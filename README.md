@@ -1,4 +1,8 @@
-# 📺 BANG IPTV
+# BANG IPTV
+
+<p align="center">
+  <img src="assets/iptv_icon.png" width="132" alt="BANG IPTV approved dark-emerald television app icon">
+</p>
 
 **Free Windows live-TV player** with M3U playlists, VLC playback, favourites and automatic playlist maintenance.
 
@@ -12,7 +16,8 @@
 
 | Version | Download | Status |
 |---|---|---|
-| **BANG IPTV v4.1 Beta 2** | **[Download stability update (23 MB)](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.2/BANG_IPTV_v4_1_stability.exe)** | Latest beta; safer playlist refresh and link checks |
+| **BANG IPTV v4.1 Beta 3** | **[Download emerald-icon EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.3/BANG_IPTV_v4_1_emerald.exe)** | Latest beta; approved icon in EXE and app |
+| BANG IPTV v4.1 Beta 2 | [Previous stability build](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.2/BANG_IPTV_v4_1_stability.exe) | Previous beta, preserved |
 | BANG IPTV v4.1 Beta 1 | [Earlier v4.1 EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.1/BANG_IPTV_v4_1.exe) | Previous beta, preserved |
 | BANG IPTV v4.0 Beta 1 | [Earlier v4 EXE](https://github.com/sacuar/MyIPTV/releases/download/v4.0.0-beta.1/BANG_IPTV_v4.exe) | Previous beta, preserved |
 | **Original BANG IPTV** | [Download original stable version (31 MB)](https://github.com/sacuar/MyIPTV/releases/download/BANG_IPTV_Player_PRO/BANG_IPTV_Pro.exe) | August 2026 release; preserved unchanged |
@@ -21,6 +26,7 @@ The latest v4.1 beta is a separate application build. It does **not** replace th
 
 ## Features
 
+- **Distinct emerald identity:** The approved dark-green icon appears in the Windows executable, application window and app header.
 - **Live TV:** Embedded VLC player, volume, mute, fullscreen and channel switching.
 - **Easy browsing:** Scrollable channel list, logos, search, categories, sorting, favourites and viewing history.
 - **Ready on launch:** Automatically loads your previously selected playlist. New installations default to a free Bangladesh playlist.
@@ -36,15 +42,17 @@ Broken-link detection and alternative stream searches are best-effort. A playlis
 ## Getting started
 
 1. Install [VLC Media Player](https://www.videolan.org/vlc/) for Windows.
-2. Download [BANG IPTV v4.1 Beta 2](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.2/BANG_IPTV_v4_1_stability.exe), or choose an older release above.
+2. Download [BANG IPTV v4.1 Beta 3](https://github.com/sacuar/MyIPTV/releases/download/v4.1.0-beta.3/BANG_IPTV_v4_1_emerald.exe), or choose an older release above.
 3. Open the EXE. In v4, the saved playlist loads automatically.
 4. Select a channel and double-click to watch. Use **Refresh** to update the source playlist and **Hide dead** to filter unavailable links. Use **Open file** to load your local `all.m3u8` or another M3U playlist.
 
-Python is **not** required to run the EXE. The latest v4.1 Beta 2 has passed Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
+Python is **not** required to run the EXE. The current beta is built and verified through GitHub's Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
 
 ## Screenshot
 
 **[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
+
+The current BANG IPTV application icon is [stored in this repository](assets/iptv_icon.png) and can be replaced independently of screenshots.
 
 ![BANG IPTV — original stable Windows player](https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049)
 
@@ -84,7 +92,7 @@ For updated public free-to-access channels, see [iptv-org](https://github.com/ip
 
 ## Developers
 
-The latest application source is [`bang_iptv_v4.py`](bang_iptv_v4.py), with [stream reliability logic](stream_reliability.py), [dependencies](requirements-v4.txt), [regression tests](tests/test_v4_reliability_integration.py), and the [v4.1 Windows release workflow](.github/workflows/publish-v4-1-beta.yml).
+The latest application source is [`bang_iptv_v4.py`](bang_iptv_v4.py), with [stream reliability logic](stream_reliability.py), [dependencies](requirements-v4.txt), [regression tests](tests/test_v4_reliability_integration.py), the [icon artwork](assets/iptv_icon.png), [icon builder](scripts/build_iptv_icon.py), and the [current Windows release workflow](.github/workflows/publish-emerald-icon.yml).
 
 To run v4 from source on Windows with Python 3.12+ and VLC installed:
 
