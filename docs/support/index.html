@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#071912">
+  <meta name="description" content="Optional support for BANG IPTV, a free Windows IPTV player created and maintained by sacuar.">
+  <title>Support BANG IPTV · sacuar</title>
+  <style>
+    :root {font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:#ebf5ee; background:#08130f}
+    * {box-sizing:border-box}
+    body {margin:0; min-height:100vh; display:grid; place-items:center; padding:28px 16px; background:radial-gradient(ellipse at 50% -10%,#174a32 0%,#0c2018 47%,#08130f 80%)}
+    main {width:min(100%,600px); padding:clamp(24px,5vw,46px); background:rgba(10,28,21,.92); border:1px solid #28634a; border-radius:25px; box-shadow:0 24px 70px #0008}
+    header {display:flex;align-items:center;gap:18px}
+    .app-icon {width:88px;height:88px;flex-shrink:0;border-radius:20px;object-fit:cover;box-shadow:0 4px 25px #0009}
+    h1 {font-size:clamp(24px,5vw,32px);line-height:1.12;margin:0}
+    .subtitle {color:#a4c9b3;font-size:14px;margin-top:9px}
+    p {line-height:1.6;color:#c5d7ce}
+    .callout {margin:25px 0; padding:17px 20px;border-radius:14px;background:#143323;border:1px solid #275b43}
+    .callout strong {color:#8cffb7}
+    h2 {margin:26px 0 14px;font-size:18px}
+    .payment {border-radius:16px;background:#fff;padding:16px;min-height:100px;display:flex;align-items:center;justify-content:center;color:#1b2820}
+    stripe-buy-button {display:block;width:100%}
+    .divider {display:flex;align-items:center;gap:15px;margin:25px 0 18px;color:#9bb7a7;font-size:13px}
+    .divider::before,.divider::after{content:"";height:1px;background:#315541;flex:1}
+    .coffee {display:block;text-align:center;background:#ffdf73;color:#17251d;text-decoration:none;border-radius:12px;padding:15px 20px;font-weight:750}
+    .coffee:hover,.coffee:focus-visible{background:#fff0a9}
+    footer{font-size:13px;color:#9bb7a7;line-height:1.6;margin-top:28px}
+    footer a{color:#b4fad0}
+    .brand{font-size:13px;margin-top:26px}
+    @media(max-width:430px){header{align-items:flex-start}.app-icon{width:64px;height:64px;border-radius:15px}.payment{padding:10px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img class="app-icon" alt="BANG IPTV emerald television icon" src="https://raw.githubusercontent.com/sacuar/MyIPTV/main/assets/iptv_icon.png" width="88" height="88">
+      <div>
+        <h1>Support BANG IPTV</h1>
+        <div class="subtitle">A free Windows IPTV player · Created by <strong>sacuar</strong></div>
+      </div>
+    </header>
+    <div class="callout">
+      <strong>Free to use. Support is entirely optional.</strong>
+      <p>If BANG IPTV has helped you, your contribution recognises the time spent designing, troubleshooting and maintaining the project. No contribution is required to download or use the app.</p>
+    </div>
+    <h2>Support securely with Stripe</h2>
+    <div class="payment">
+      <!-- Account-scoped, public Stripe Buy Button values supplied by the creator. No secret API keys. -->
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1UbnuMQtfKJZh7WUGb4UCRbI"
+        publishable-key="pk_live_51U3VVUQtfKJZh7WUZ7OXkxKHfKlVghABFuRZvNaKieXmVRVu1IIfR0ssADSYez7m8CAEIKPGFWIzYSpE7ZhEHN2g00WBpHxu3s">
+      </stripe-buy-button>
+    </div>
+    <div class="divider">or</div>
+    <a class="coffee" href="https://buymeacoffee.com/sacuar" rel="noopener noreferrer">☕ Support through Buy Me a Coffee</a>
+    <footer>
+      Payments made through the Stripe button are handled by Stripe. The BANG IPTV repository does not collect card numbers. Check the payment name and amount shown by Stripe before confirming.
+      <div class="brand">♥ Thanks for acknowledging the work. <a href="https://github.com/sacuar/MyIPTV" rel="noopener noreferrer">Return to the BANG IPTV project</a>.</div>
+    </footer>
+  </main>
+</body>
+</html>

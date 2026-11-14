@@ -1,20 +1,28 @@
-# Set up an optional Stripe support button
+# Activate the BANG IPTV Stripe support page
 
-BANG IPTV's README already displays an **unlinked Stripe icon** with the label **Link not added yet**. It intentionally does not send visitors to an unverified payment destination.
+The real Stripe Buy Button embed provided by the project creator is now installed in [docs/support/index.html](support/index.html). It includes the supplied public `buy-button-id` and `pk_live_` publishable key. **No secret key has been added.**
 
-## Add your public Stripe Payment Link
+**The checkout page is not published yet:** GitHub Pages is disabled for this repository. A GitHub README cannot run JavaScript or a `<stripe-buy-button>` component.
 
-1. Log in to your own [Stripe Dashboard](https://dashboard.stripe.com/payment_links) and create or select a suitable public Payment Link for optional project support.
-2. Copy the **public HTTPS Payment Link** (normally a URL starting `https://buy.stripe.com/`). Never copy an API secret key, restricted API key, live checkout-session URL or a Stripe dashboard URL.
-3. Open [README.md](../README.md), choose **Edit**, and find the **Support the creator** table.
-4. Replace the existing *non-clickable* Stripe image with a linked badge, substituting your actual verified public URL:
+## One-time GitHub Pages setup
 
-   ```markdown
-   [![Support via Stripe](https://img.shields.io/badge/Stripe-Support_the_creator-635BFF?logo=stripe&logoColor=white)](https://buy.stripe.com/YOUR_PUBLIC_PAYMENT_LINK)
-   ```
+1. Go to the repository's [Settings → Pages](https://github.com/sacuar/MyIPTV/settings/pages).
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Choose **Branch: main**, **Folder: /docs**, then **Save**.
+4. Once GitHub confirms deployment, visit **https://sacuar.github.io/MyIPTV/support/** and verify the Stripe Buy Button renders.
+5. In Stripe's dashboard, confirm the live payment description, currency, amount and payment methods are correct. Check the Stripe checkout page opens before sharing the link publicly. You do not need to make a payment to confirm the checkout form opens.
 
-5. Replace the explanatory placeholder below it with a short message, e.g. `Optional, secure card payment through Stripe`. Preview the README and commit.
+When that public support URL is live, edit [README.md](../README.md) and make the Stripe badge point to `https://sacuar.github.io/MyIPTV/support/` instead of this guide.
 
-**Do not treat this project as a registered charity or use charitable tax-relief claims unless that status has been established.** An optional contribution may be a taxable business receipt; seek professional accounting advice as appropriate.
+## Already have a public Payment Link?
 
-For a seamless handoff, send the exact public Stripe Payment Link and the repository can be updated without touching application source or releases.
+If you prefer to avoid GitHub Pages altogether, copy the **public** `https://buy.stripe.com/...` link from [Stripe Payment Links](https://dashboard.stripe.com/payment_links). That URL can be used directly in GitHub Markdown and does not require a JavaScript embed or a separate website.
+
+The embedded `buy_btn_...` identifier is **not** the same as a direct Payment Link URL; one cannot reliably be reconstructed from the other.
+
+## Privacy and support
+
+- The `pk_live_...` publishable key is designed to appear in publicly served web pages. Keep `sk_live_...` secret API keys out of this repository.
+- The payment interface is hosted and processed by Stripe; don't collect or store payment-card data on GitHub.
+- Buy Me a Coffee remains an independent option: https://buymeacoffee.com/sacuar
+- Contributions are optional; BANG IPTV remains free to download and use under the applicable release terms.
