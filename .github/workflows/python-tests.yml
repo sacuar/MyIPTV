@@ -20,5 +20,7 @@ jobs:
           python-version: "3.12"
       - name: Compile Python files
         run: python -m compileall -q gui2.py m3u_export.py playlist_service.py scripts/clean_playlists.py
+      - name: Install icon-test dependency
+        run: python -m pip install pillow
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
