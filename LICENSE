@@ -22,13 +22,20 @@ forking the repository, or a separate written agreement, no permission is
 granted to reproduce, modify, sublicense, redistribute, publish, resell,
 embed in another project, or commercialise Covered Contributions.
 
-A person or organisation wishing to copy or reuse Covered Contributions
-beyond those limited permissions must first obtain written permission
-from the rights holder and agree a PAID SOFTWARE LICENCE.
+A person or organisation wishing to redistribute, modify for further
+distribution, incorporate, or rebrand Covered Contributions beyond those
+limited permissions should first request written permission from the
+rights holder. Permission for eligible noncommercial uses may be granted
+at no charge. Permission to repackage, resell, or commercially exploit
+Covered Contributions may require a separately negotiated PAID LICENCE.
 
-Pricing is negotiated case by case; there is no automatic permission
-to copy merely by offering payment. Contact the maintainer:
-https://github.com/sacuar/MyIPTV/issues
+Where written permission is granted, visibly acknowledge the developer
+as "BANG IPTV by sacuar" with a link to the original repository, unless
+the separate permission agreement explicitly states otherwise.
+
+No payment is required merely to download and personally use official
+BANG IPTV builds in accordance with their applicable release terms.
+Contact the maintainer: https://github.com/sacuar/MyIPTV/issues
 
 3. PERSONAL USE OF OFFICIAL BUILDS
 
