@@ -6,4 +6,4 @@ To add images: open this folder on GitHub → **Add file** → **Upload files** 
 
 Then edit the image link in the main [README](../README.md). See the [screenshot editing guide](../docs/SCREENSHOTS.md).
 
-Current README screenshots are historical GitHub-hosted attachments, not files in this folder yet. This folder gives future screenshots a permanent, simple-to-edit repository location.
+The README currently displays `scr2.png` and `scrr1.png` from this folder. You can replace those files or upload new images and update their links in the README.
