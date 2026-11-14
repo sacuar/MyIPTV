@@ -35,7 +35,13 @@ from collections import deque
 from stream_reliability import HealthBook, ordered_alternatives, confirm_probe
 
 APP_NAME = "BANG IPTV"
-APP_VERSION = "4.1 Beta 1"
+APP_VERSION = "4.1 Beta 3"
+
+
+def resource_path(relative):
+    """Find bundled assets in both a normal checkout and one-file Windows EXE."""
+    base = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
+    return base / relative
 
 
 def _ensure(module, pip_name=None):
@@ -859,6 +865,17 @@ class IPTVPro:
         header.pack(fill=tk.X, pady=(0, 8))
         actions = tk.Frame(top, bg="#101318")
         actions.pack(fill=tk.X)
+        # Display the same approved emerald icon used on the EXE and README.
+        if PIL_OK and ImageTk is not None:
+            try:
+                icon_file = resource_path("assets/iptv_icon.png")
+                with Image.open(icon_file) as artwork:
+                    small_icon = artwork.convert("RGBA").resize((36, 36), Image.Resampling.LANCZOS)
+                self._header_icon = ImageTk.PhotoImage(small_icon)
+                tk.Label(header, image=self._header_icon, bg="#101318").pack(
+                    side=tk.LEFT, padx=(5, 3))
+            except (OSError, ValueError, RuntimeError, tk.TclError):
+                pass
         tk.Label(header, text="BANG IPTV", font=("Segoe UI", 18, "bold"), fg="#8AB4F8", bg="#101318").pack(
             side=tk.LEFT, padx=5)
 
@@ -2355,9 +2372,13 @@ def main():
         pass
     root = tk.Tk()
     root.configure(bg="#101318")
+    # iconphoto works from source and after PyInstaller extracts its resources.
     try:
-        root.iconbitmap(default="icon.ico")
-    except Exception:
+        icon_file = resource_path("assets/iptv_icon.png")
+        if icon_file.is_file():
+            root._bang_icon = tk.PhotoImage(file=str(icon_file))
+            root.iconphoto(True, root._bang_icon)
+    except (OSError, tk.TclError):
         pass
     app = IPTVPro(root)
     if getattr(app, "ok", False):
