@@ -15,7 +15,7 @@
 
 **[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
 
-The current BANG IPTV application icon is [stored in this repository](assets/iptv_icon.png) and can be replaced independently of screenshots.
+The current BANG IPTV application icon is [stored in this repository](screenshots/scr2.png) .
 
 ![BANG IPTV — original stable Windows player](![BANG IPTV v4 player](screenshots/scr2.png))
 
