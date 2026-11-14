@@ -11,7 +11,22 @@
 [![Buy Me a Coffee — support the creator](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_the_creator-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/sacuar)
 
 [**Downloads**](#download) · [**Screenshots**](#screenshot) · [**Support & recognition**](#support-the-creator) · [**Code use**](#code-use-and-credits)
+## Screenshot
 
+**[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
+
+The current BANG IPTV application icon is [stored in this repository](assets/iptv_icon.png) and can be replaced independently of screenshots.
+
+![BANG IPTV — original stable Windows player](![BANG IPTV v4 player](screenshots/scr2.png))
+
+*Original August 2026 Windows application. This is a genuine historical screenshot, not a verified screenshot of the v4 beta.*
+
+<details>
+<summary>View another original channel-list screenshot</summary>
+
+![BANG IPTV — original Bangladesh channel list](![BANG IPTV v4 player](screenshots/scrr1.png))
+
+</details>
 ## Download
 
 | Version | Download | Status |
@@ -48,22 +63,7 @@ Broken-link detection and alternative stream searches are best-effort. A playlis
 
 Python is **not** required to run the EXE. The current beta is built and verified through GitHub's Windows build checks and automated tests. Real stream playback and replacement quality still need validation on your own computer; no source can guarantee every URL will remain available.
 
-## Screenshot
 
-**[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
-
-The current BANG IPTV application icon is [stored in this repository](assets/iptv_icon.png) and can be replaced independently of screenshots.
-
-![BANG IPTV — original stable Windows player](https://github.com/user-attachments/assets/c384d4f4-f754-4d7c-959c-f5482bde6049)
-
-*Original August 2026 Windows application. This is a genuine historical screenshot, not a verified screenshot of the v4 beta.*
-
-<details>
-<summary>View another original channel-list screenshot</summary>
-
-![BANG IPTV — original Bangladesh channel list](https://github.com/user-attachments/assets/1205d635-c3d6-40ec-88c3-820a7ec451a4)
-
-</details>
 
 ## More downloads and playlists
 
