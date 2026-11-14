@@ -8,7 +8,7 @@
 
 **Created and maintained by [sacuar](https://github.com/sacuar).** Built with personal time and effort. If BANG IPTV helps you, please credit the original project when sharing it.
 
-[![Buy Me a Coffee — support the creator](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_the_creator-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/sacuar)
+[![Buy Me a Coffee — support the creator](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_the_creator-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/sacuar)
 
 [**Downloads**](#download) · [**Screenshots**](#screenshot) · [**Support & recognition**](#support-the-creator) · [**Code use**](#code-use-and-credits)
 ## Screenshot
@@ -109,8 +109,8 @@ BANG IPTV is **free to download and use**. Support is optional, not a fee for wa
 
 | ☕ Buy Me a Coffee | 💳 Stripe |
 |:--|:--|
-| [☕ Support via Buy Me a Coffee](https://www.buymeacoffee.com/sacuar) | ![Stripe payment link pending](https://img.shields.io/badge/Stripe-Link_not_added_yet-635BFF?logo=stripe&logoColor=white) |
-| Optional creator support | [How to activate a verified Stripe link](docs/STRIPE-SUPPORT.md) |
+| [☕ Support via Buy Me a Coffee](https://buymeacoffee.com/sacuar) | [![Stripe support page — activation required](https://img.shields.io/badge/Stripe-Buy_Button_prepared-635BFF?logo=stripe&logoColor=white)](docs/STRIPE-SUPPORT.md) |
+| Active external support option | The embedded button is ready in [the support-page source](docs/support/index.html); [GitHub Pages must first be enabled](docs/STRIPE-SUPPORT.md) for checkout to work |
 
 **[Report a problem or suggest an improvement](https://github.com/sacuar/MyIPTV/issues)** · [**Credit the creator**](AUTHORS.md)
 
