@@ -14,18 +14,13 @@
 
 ## Screenshots
 
-**[Edit or replace the screenshots — simple GitHub instructions](docs/SCREENSHOTS.md)**
+The screenshots below show BANG IPTV running on Windows. The interface may differ between releases.
 
-The current BANG IPTV screenshot is [stored in this repository](screenshots/scr1.png).
+![BANG IPTV Windows player — screenshot 1](screenshots/scr2.png)
 
-*Original August 2026 Windows application. This is a genuine historical screenshot, not a verified screenshot of the v4 beta.*
+![BANG IPTV Windows player — screenshot 2](screenshots/scrr1.png)
 
-<details>
-<summary>View another original channel-list screenshot</summary>
-
-![BANG IPTV — original Bangladesh channel list screenshot](screenshots/scrr1.png)
-
-</details>
+[How to replace these screenshots](docs/SCREENSHOTS.md)
 
 ## Download
 
